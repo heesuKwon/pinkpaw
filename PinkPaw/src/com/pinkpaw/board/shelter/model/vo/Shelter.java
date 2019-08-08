@@ -1,7 +1,5 @@
 package com.pinkpaw.board.shelter.model.vo;
 
-import java.sql.Date;
-
 public class Shelter {
 	
 	private int shelterNo;
@@ -20,6 +18,7 @@ public class Shelter {
 	private String shelterWkEnd;
 	private String shelterHoliday;
 	private String shelterPhone;
+	private String place;
 	
 	
 	public Shelter() {
@@ -30,7 +29,7 @@ public class Shelter {
 	public Shelter(int shelterNo, String shelterCenterName, String shelterInsName, String shelterKind,
 			String shelterAnimalKind, String shelterRdnmAddress, String shelterInmAddress, String shelterLatitude,
 			String shelterHardress, String shelterCenterDate, String shelterWdOpen, String shelterWdEnd,
-			String shelterWkOpen, String shelterWkEnd, String shelterHoliday, String shelterPhone) {
+			String shelterWkOpen, String shelterWkEnd, String shelterHoliday, String shelterPhone, String place) {
 		super();
 		this.shelterNo = shelterNo;
 		this.shelterCenterName = shelterCenterName;
@@ -48,6 +47,7 @@ public class Shelter {
 		this.shelterWkEnd = shelterWkEnd;
 		this.shelterHoliday = shelterHoliday;
 		this.shelterPhone = shelterPhone;
+		this.place = place;
 	}
 
 
@@ -209,6 +209,15 @@ public class Shelter {
 	public void setShelterPhone(String shelterPhone) {
 		this.shelterPhone = shelterPhone;
 	}
+	
+	public String getPlace() {
+		return place;
+	}
+
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
 
 
 	@Override
@@ -219,7 +228,7 @@ public class Shelter {
 				+ ", shelterLatitude=" + shelterLatitude + ", shelterHardress=" + shelterHardress
 				+ ", shelterCenterDate=" + shelterCenterDate + ", shelterWdOpen=" + shelterWdOpen + ", shelterWdEnd="
 				+ shelterWdEnd + ", shelterWkOpen=" + shelterWkOpen + ", shelterWkEnd=" + shelterWkEnd
-				+ ", shelterHoliday=" + shelterHoliday + ", shelterPhone=" + shelterPhone + "]";
+				+ ", shelterHoliday=" + shelterHoliday + ", shelterPhone=" + shelterPhone + ", place=" + place + "]";
 	}
 
 

@@ -81,14 +81,12 @@
 
 		<script>
 		$(function(){
-​
 			$('.headerWrap').mouseover(function(e){
 				$(this).css('background','rgba(34,34,34,0.7)');
 			});
 			$('.headerWrap').mouseout(function(e){
 				$(this).css('background','none');}
 			);
-​
 			$('header>div>ul:first-child>li').mouseover(function(e){
 				$('.headerWrap').css('height','140px');
 				});
@@ -127,7 +125,7 @@
 			<dl class="ddSize">
 				<dt class="sub_menu">보호소</dt>
 				<dd>
-					<a href="../business/schoolteacher.php">보호소 찾기</a>
+					<a href="<%=request.getContextPath() %>/shelter/shelterList">보호소 찾기</a>
 				</dd>
 				<dd>
 					<a href="../business/official.php">보호소 봉사요청</a>
