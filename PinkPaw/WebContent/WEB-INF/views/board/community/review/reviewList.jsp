@@ -43,7 +43,7 @@ $(()=>{
 		</tr>
 		<%if(list==null || list.isEmpty()){ %>
 		<tr>
-			<td rowspan="6" align="center">게시글이 없습니다.</td>
+			<td colspan="6" align="center">게시글이 없습니다.</td>
 		</tr>
 		<%}
 		else{
@@ -53,8 +53,10 @@ $(()=>{
 			<td>
 			<!-- 첨부파일이 있는 경우, 
 			file.png이미지가 해당 td에 보이도록 하세요 -->
-				<%if(b.getReviewOriginalImg()!=null){%>
-					<%-- <img src="<%=request.getContextPath()%>/images/file.png" alt="첨부파일" width="3px"/> --%>
+				<%if(b.getReviewOriginalImg()!=null){
+					String[] renamedImgList = b.getReviewRenamedImg().split("§");%>
+					<img src="<%=request.getContextPath()%>/upload/board/review/<%=renamedImgList[0]%>" alt="첨부파일" style='width:80px;'/>
+					
 				<%}%>
 			</td>
 			<td><%=b.getReviewKind() %></td>
