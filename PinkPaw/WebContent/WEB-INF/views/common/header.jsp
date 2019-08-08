@@ -1,8 +1,36 @@
+<%@page import="com.pinkpaw.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
+<% 
+	//로그인성공후 session객체에 저장된 memberLoggedIn가져오기
+	/* Member memberLoggedIn
+		= (Member)session.getAttribute("memberLoggedIn"); */
+	Member memberLoggedIn = new Member();
+	memberLoggedIn.setMemberId("admin");
+	System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 	
-%>
+	//쿠키관련 처리
+	Cookie[] cookies = request.getCookies();
+	boolean saveId = false;
+	String memberId = "";
+	
+	if(cookies != null){
+		System.out.println("-------------------------");
+		for(Cookie c: cookies){
+			String key = c.getName();
+			String value = c.getValue();
+			System.out.println(key+" : "+value);
+			
+			//전송된 saveId쿠키가 있는 경우
+			if("saveId".equals(key)){
+				saveId = true;
+				memberId = value;
+			}
+		}
+		System.out.println("-------------------------");
+	}
+	
+%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +54,7 @@
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/css/main.css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/css/Font.css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/css/swiper.css"
+<link href="<%=request.getContextPath()%>/css/Swiper.css"
 	rel="stylesheet" />
 
 <script src="<%=request.getContextPath()%>/js/jquery-3.4.1.js"></script>
@@ -48,7 +76,7 @@
 	<div class="headerWrap">
 	<header>
 		<h1>
-			<a href="#"><img src="<%=request.getContextPath()%>/images/main/logo_white.png" alt="logo"></a>
+			<a href="<%=request.getContextPath()%>"><img src="<%=request.getContextPath()%>/images/main/logo_color.png" alt="logo"></a>
 		</h1>
 
 		<script>
@@ -71,7 +99,7 @@
 		</script>
 		<div>
 			​ <a href="#none" onClick="$('.menuWrap').fadeIn(300);"><img
-				src="<%=request.getContextPath()%>/images/main/icon_meun.png" alt="메뉴바"></a>
+				src="<%=request.getContextPath()%>/images/main/icon_meun_black.png" alt="메뉴바"></a>
 		</div>
 	</header>
 	​ ​
@@ -115,7 +143,7 @@
 					<a href="../pr_center/culture.php">분양동물</a>
 				</dd>
 				<dd>
-					<a href="../pr_center/culture.php">후기</a>
+					<a href="<%=request.getContextPath()%>/board/review/reviewList">후기</a>
 				</dd>
 				<dd>
 					<a href="../pr_center/culture.php">자유게시판</a>

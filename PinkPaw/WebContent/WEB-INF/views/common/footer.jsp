@@ -5,7 +5,7 @@
 	<article>
 		<div class="footerInfo">
 			<h1>
-				<img src="images/common/foot_logo.png" alt="로고">
+				<img src="<%=request.getContextPath()%>/images/common/footer/foot_logo.png" alt="로고">
 			</h1>
 			<div class="footer_txt">
 				<ul>
@@ -13,7 +13,7 @@
 				</ul>
 				<ul>
 					<li>         
-         				 ⓒ핑크포우제공/데이터 출처 <img src="<%=request.getContextPath()%>/images/common/maf.png" /> 농림축산식품부 <br />
+         				 ⓒ핑크포우제공/데이터 출처 <img src="<%=request.getContextPath()%>/images/common/footer/maf.png" /> 농림축산식품부 <br />
 						</li>
 				</ul>
 				<ul>

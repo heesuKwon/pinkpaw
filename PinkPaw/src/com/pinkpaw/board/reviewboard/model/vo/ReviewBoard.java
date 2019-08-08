@@ -4,18 +4,18 @@ import java.sql.Date;
 
 public class ReviewBoard {
 
-	private int reviewNo;
-	private String reviewTitle;
-	private String reviewWriter;
-	private String reviewKind;
-	private String reviewContent;
-	private String reviewOriginalImg;
-	private String reviewRenamedImg;
-	private Date reviewEnrollDate;
-	private int reviewCount;
-	private int reviewLike;
-	private int reviewReportCount;
-	private String reviewReportReason;
+	private int reviewNo; //후기 번호
+	private String reviewTitle; //제목
+	private String reviewWriter; //작성자
+	private String reviewKind; //게시물 종류
+	private String reviewContent; //상세설명
+	private String reviewOriginalImg; //업로드이미지
+	private String reviewRenamedImg; //서버상이미지
+	private Date reviewEnrollDate; //게시일
+	private int reviewCount; //조회수
+	private int reviewLike; //좋아요
+	private int reviewReportCount; //신고수
+	private String reviewReportReason; //신고사유
 			
 	public ReviewBoard() {
 		super();
