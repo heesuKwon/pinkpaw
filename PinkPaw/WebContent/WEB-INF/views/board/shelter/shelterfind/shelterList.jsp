@@ -12,8 +12,8 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
 <style>
-#shelter{width: 1024px; height: 760px; background: lightgray;}
-table{
+#shelter{width: 900px; height: 760px; margin-top: 100px; margin-left: 100px}
+/* table{
 	width: 900px;
 	margin: 0 auto;
 	border: 1px solid white;
@@ -26,7 +26,7 @@ table td {
 	border: 1px solid;
 	padding: 5px 0 5px 15px;
 	text-align: center;
-}
+} */
 table td.shelname{width: 330px;}
 .more{
 	display: none;
@@ -94,15 +94,28 @@ function detailView(no) {
 }
 </script>
 <div id="shelter">
-	<table id="sheltertbl">
+	<table id="tbl-board" class="table table-hover">
 	<tr>
 		<td colspan="3">
 			<form action="<%=request.getContextPath() %>/shelter/shelterListByCity">
-			<select name="sido" id="sido"></select>
-			<select name="gugun" id="gugun"></select>
-			<input type="submit" value="검색하기"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" style="border-radius: 0" name="sido" id="sido"></select>
+			<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" style="border-radius: 0" name="gugun" id="gugun"></select>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="btn btn-outline-secondary" style="border-radius: 0" type="submit" value="검색하기"/>
 			</form>
 		</td>
+	</tr>
+	<tr>
+		<th scope="col">보호소 이름</th>
+		<th scope="col">위치</th>
+		<th scope="col">전화번호</th>
 	</tr>
 	<%for(Shelter s : list) {
 		if(num<10){%>
@@ -137,7 +150,7 @@ function more() {
 		i = i + 1;
 		$(".more").eq(a).css("display", "table-row");
 	}
-	var size = parseInt($("#shelter").css("height"))+260;
+	var size = parseInt($("#shelter").css("height"))+400;
 	$("#shelter").css("height", size+"px");
 }
 function byebye() {
