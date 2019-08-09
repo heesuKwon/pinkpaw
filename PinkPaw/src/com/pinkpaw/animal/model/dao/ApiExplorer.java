@@ -1,4 +1,4 @@
-package com.pinkpaw.common;
+package com.pinkpaw.animal.model.dao;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -76,6 +76,8 @@ public class ApiExplorer {
 
 		NodeList nList = doc.getElementsByTagName("item");
 		System.out.println("파싱할 리스트 수 : "+ nList.getLength());
+		
+		System.out.println("전체");
 
 		for(int temp = 0; temp < nList.getLength(); temp++){
 			Node nNode = nList.item(temp);

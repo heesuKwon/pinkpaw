@@ -121,7 +121,7 @@
 					<a href="../investment/ir_info.php">유기동물 통계</a>
 				</dd>
 				<dd>
-					<a href="../investment/ir_notice.php">유기동물 공고</a>
+					<a href="<%=request.getContextPath()%>/animal/animalNotice">유기동물 공고</a>
 				</dd>
 			</dl>
 			<dl class="ddSize">
