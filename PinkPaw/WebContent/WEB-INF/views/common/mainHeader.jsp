@@ -127,7 +127,7 @@
 			<dl class="ddSize">
 				<dt class="sub_menu">보호소</dt>
 				<dd>
-					<a href="../business/schoolteacher.php">보호소 찾기</a>
+					<a href="<%=request.getContextPath()%>/shelter/shelterList">보호소 찾기</a>
 				</dd>
 				<dd>
 					<a href="../business/official.php">보호소 봉사요청</a>
