@@ -198,4 +198,252 @@ public class ReviewDAO {
 		return reviewNo;
 	}
 
+
+	public List<ReviewBoard> selectReviewBoardListByKind(Connection conn, int cPage, int numPerPage, String kind) {
+		List<ReviewBoard> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewBoardListByKind");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (cPage-1)*numPerPage+1;
+			int end = cPage*numPerPage;
+			
+			pstmt.setString(1, kind);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				ReviewBoard rb = new ReviewBoard();
+				rb.setReviewNo(rset.getInt("review_no"));
+				rb.setReviewTitle(rset.getString("review_title"));
+				rb.setReviewWriter(rset.getString("review_writer"));
+				rb.setReviewKind(rset.getString("review_kind"));
+				rb.setReviewContent(rset.getString("review_content"));
+				rb.setReviewOriginalImg(rset.getString("review_original_img"));
+				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
+				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
+				rb.setReviewCount(rset.getInt("review_count"));
+				rb.setReviewLike(rset.getInt("review_like"));
+				rb.setReviewReportCount(rset.getInt("review_112_count"));
+				rb.setReviewReportReason(rset.getString("review_112_reason"));
+				list.add(rb);
+			}			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
+	}
+
+
+	public List<ReviewBoard> selectReviewBoardListAllAll(Connection conn, int cPage, int numPerPage, String keyword) {
+		List<ReviewBoard> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewBoardListAllAll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (cPage-1)*numPerPage+1;
+			int end = cPage*numPerPage;
+			
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setString(2, "%"+keyword+"%");
+			pstmt.setString(3, "%"+keyword+"%");
+			pstmt.setInt(4, start);
+			pstmt.setInt(5, end);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				ReviewBoard rb = new ReviewBoard();
+				rb.setReviewNo(rset.getInt("review_no"));
+				rb.setReviewTitle(rset.getString("review_title"));
+				rb.setReviewWriter(rset.getString("review_writer"));
+				rb.setReviewKind(rset.getString("review_kind"));
+				rb.setReviewContent(rset.getString("review_content"));
+				rb.setReviewOriginalImg(rset.getString("review_original_img"));
+				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
+				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
+				rb.setReviewCount(rset.getInt("review_count"));
+				rb.setReviewLike(rset.getInt("review_like"));
+				rb.setReviewReportCount(rset.getInt("review_112_count"));
+				rb.setReviewReportReason(rset.getString("review_112_reason"));
+				list.add(rb);
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return list;
+	}
+
+
+	public List<ReviewBoard> selectReviewBoardListAllnotAll(Connection conn, int cPage, int numPerPage, String key,
+			String keyword) {
+		List<ReviewBoard> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "";
+		switch (key) {
+		case "review_title": sql = prop.getProperty("selectReviewBoardListAllnotAllTitle"); break;
+		case "review_writer": sql = prop.getProperty("selectReviewBoardListAllnotAllWriter"); break;
+		case "review_content": sql = prop.getProperty("selectReviewBoardListAllnotAllContent"); break;
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (cPage-1)*numPerPage+1;
+			int end = cPage*numPerPage;
+			
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				ReviewBoard rb = new ReviewBoard();
+				rb.setReviewNo(rset.getInt("review_no"));
+				rb.setReviewTitle(rset.getString("review_title"));
+				rb.setReviewWriter(rset.getString("review_writer"));
+				rb.setReviewKind(rset.getString("review_kind"));
+				rb.setReviewContent(rset.getString("review_content"));
+				rb.setReviewOriginalImg(rset.getString("review_original_img"));
+				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
+				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
+				rb.setReviewCount(rset.getInt("review_count"));
+				rb.setReviewLike(rset.getInt("review_like"));
+				rb.setReviewReportCount(rset.getInt("review_112_count"));
+				rb.setReviewReportReason(rset.getString("review_112_reason"));
+				list.add(rb);
+			}			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
+	}
+
+
+	public List<ReviewBoard> selectReviewBoardListnotAllAll(Connection conn, int cPage, int numPerPage, String kind,
+			String keyword) {
+		List<ReviewBoard> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewBoardListnotAllAll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (cPage-1)*numPerPage+1;
+			int end = cPage*numPerPage;
+			
+			pstmt.setString(1, kind);
+			pstmt.setString(2, "%"+keyword+"%");
+			pstmt.setString(3, "%"+keyword+"%");
+			pstmt.setString(4, "%"+keyword+"%");
+			pstmt.setInt(5, start);
+			pstmt.setInt(6, end);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				ReviewBoard rb = new ReviewBoard();
+				rb.setReviewNo(rset.getInt("review_no"));
+				rb.setReviewTitle(rset.getString("review_title"));
+				rb.setReviewWriter(rset.getString("review_writer"));
+				rb.setReviewKind(rset.getString("review_kind"));
+				rb.setReviewContent(rset.getString("review_content"));
+				rb.setReviewOriginalImg(rset.getString("review_original_img"));
+				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
+				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
+				rb.setReviewCount(rset.getInt("review_count"));
+				rb.setReviewLike(rset.getInt("review_like"));
+				rb.setReviewReportCount(rset.getInt("review_112_count"));
+				rb.setReviewReportReason(rset.getString("review_112_reason"));
+				list.add(rb);
+			}			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
+	}
+
+
+	public List<ReviewBoard> selectReviewBoardListnotAllnotAll(Connection conn, int cPage, int numPerPage, String kind,
+			String key, String keyword) {
+		List<ReviewBoard> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "";
+		switch (key) {
+		case "review_title": sql = prop.getProperty("selectReviewBoardListnotAllnotAllTitle"); break;
+		case "review_writer": sql = prop.getProperty("selectReviewBoardListnotAllnotAllWriter"); break;
+		case "review_content": sql = prop.getProperty("selectReviewBoardListnotAllnotAllContent"); break;
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (cPage-1)*numPerPage+1;
+			int end = cPage*numPerPage;
+			
+			pstmt.setString(1, kind);
+			pstmt.setString(2, key);
+			pstmt.setString(3, "%"+keyword+"%");
+			pstmt.setInt(4, start);
+			pstmt.setInt(5, end);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				ReviewBoard rb = new ReviewBoard();
+				rb.setReviewNo(rset.getInt("review_no"));
+				rb.setReviewTitle(rset.getString("review_title"));
+				rb.setReviewWriter(rset.getString("review_writer"));
+				rb.setReviewKind(rset.getString("review_kind"));
+				rb.setReviewContent(rset.getString("review_content"));
+				rb.setReviewOriginalImg(rset.getString("review_original_img"));
+				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
+				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
+				rb.setReviewCount(rset.getInt("review_count"));
+				rb.setReviewLike(rset.getInt("review_like"));
+				rb.setReviewReportCount(rset.getInt("review_112_count"));
+				rb.setReviewReportReason(rset.getString("review_112_reason"));
+				list.add(rb);
+			}			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
+	}
+
 }

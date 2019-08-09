@@ -41,10 +41,9 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+crossorigin="anonymous"></script>
 
 <!--<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">-->
@@ -81,12 +80,14 @@
 
 		<script>
 		$(function(){
+​
 			$('.headerWrap').mouseover(function(e){
 				$(this).css('background','rgba(34,34,34,0.7)');
 			});
 			$('.headerWrap').mouseout(function(e){
 				$(this).css('background','none');}
 			);
+​
 			$('header>div>ul:first-child>li').mouseover(function(e){
 				$('.headerWrap').css('height','140px');
 				});
