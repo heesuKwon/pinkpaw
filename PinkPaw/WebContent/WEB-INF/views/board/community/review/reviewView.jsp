@@ -136,13 +136,12 @@ $(()=>{
 			<th>첨부파일</th>
 			<td>
 			<!-- 첨부파일이 있는 경우만 보임 처리 -->
-			<%if(reviewBoard.getReviewOriginalImg()!=null) {%>
-				<a href="javascript:fileDownload('<%=reviewBoard.getReviewOriginalImg()%>','<%=reviewBoard.getReviewRenamedImg()%>');">
-					<img src="<%=request.getContextPath()%>/images/file.png" alt="" />
-					<!-- 사용자가 업로드한 파일명 -->
-					<%=reviewBoard.getReviewOriginalImg() %>
-				</a>
-			<%} %>
+			<%if(reviewBoard.getReviewOriginalImg()!=null) {
+				String[] renamedImgList = reviewBoard.getReviewRenamedImg().split("§");
+				for(int i=0;i<renamedImgList.length;i++){%>
+				<img src="<%=request.getContextPath()%>/upload/board/review/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:200px;' />					
+			<%} 
+			}%>
 			</td>
 		</tr>
 		<tr>

@@ -2,6 +2,9 @@ package com.pinkpaw.board.reviewboard.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,7 +55,7 @@ public class ReviewWriteEndServlet extends HttpServlet {
 		//a.saveDirectory: 실제 파일 저장 경로(절대경로)
 		//application 호출 : getServletContext()
 		String root = getServletContext().getRealPath("/");
-		String saveDirectory = root + "upload" + File.separator + "board";
+		String saveDirectory = root + "upload" + File.separator + "board/review";
 		System.out.println("saveDirectory="+saveDirectory);
 
 		//b.maxPostSize: 파일 최대 용량 (10MB = 1KB * 1KB * 10)
@@ -75,26 +78,57 @@ public class ReviewWriteEndServlet extends HttpServlet {
 		String reviewTitle = mReq.getParameter("reviewTitle");
 		String reviewWriter = mReq.getParameter("reviewWriter");
 		String reviewKind = mReq.getParameter("reviewKind");
+		
+		//파일을 리스트로 관리
+		List<String> originalImgList = new ArrayList<>();
+		List<String> renamedImgList = new ArrayList<>();
+		
 		//첨부파일
-		String renamedFileName = mReq.getFilesystemName("upFile");
-		String originalFileName = mReq.getOriginalFileName("upFile");
-		System.out.println("renamedFileName="+renamedFileName);
-		System.out.println("originalFileName="+originalFileName);
-
+		
+		if(mReq.getOriginalFileName("upFile")!=null && mReq.getFilesystemName("upFile")!=null) {
+			originalImgList.add(mReq.getOriginalFileName("upFile"));
+			renamedImgList.add(mReq.getFilesystemName("upFile"));
+		}
+		if(mReq.getOriginalFileName("upFile1")!=null && mReq.getFilesystemName("upFile1")!=null) {
+			originalImgList.add(mReq.getOriginalFileName("upFile1"));
+			renamedImgList.add(mReq.getFilesystemName("upFile1"));
+		}
+		if(mReq.getOriginalFileName("upFile2")!=null && mReq.getFilesystemName("upFile2")!=null) {
+			originalImgList.add(mReq.getOriginalFileName("upFile2"));
+			renamedImgList.add(mReq.getFilesystemName("upFile2"));
+		}
+		
+		
 		//XSS Cross-site Scripting:
 		//사용자 작성 내용이 필터링 없이 db에 저장될 경우
 		//개인정보 탈취 및 보안상 여러 위험을 야기할 수 있다.
-		String boardContent = mReq.getParameter("reviewContent");
-		boardContent = boardContent.replaceAll("<", "&lt;")
+		String reviewContent = mReq.getParameter("reviewContent");
+		reviewContent = reviewContent.replaceAll("<", "&lt;")
 				.replaceAll(">", "&gt;");
+		
+		String originalImg = "";
+		String renamedImg = "";
+		for(int i=0;i<originalImgList.size();i++) {
+			if(i==originalImgList.size()-1) {
+				originalImg += originalImgList.get(i);
+				renamedImg += renamedImgList.get(i);
+			}				
+			else {
+				originalImg += originalImgList.get(i)+"§";
+				renamedImg += renamedImgList.get(i)+"§";
+			}
+		}
+		
+		System.out.println("originalImg="+originalImg);
+		System.out.println("renamedImg="+renamedImg);
 
 		ReviewBoard rb = new ReviewBoard();
 		rb.setReviewTitle(reviewTitle);
 		rb.setReviewWriter(reviewWriter);
 		rb.setReviewKind(reviewKind);
-		rb.setReviewContent(boardContent);
-		rb.setReviewOriginalImg(originalFileName);
-		rb.setReviewRenamedImg(renamedFileName);
+		rb.setReviewContent(reviewContent);
+		rb.setReviewOriginalImg(originalImg);
+		rb.setReviewRenamedImg(renamedImg);
 
 		//2.업무로직
 		int result = new ReviewService().insertReview(rb);

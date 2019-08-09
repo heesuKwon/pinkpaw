@@ -24,13 +24,13 @@
 			<tr>
 				<th>게시물 종류</th>
 				<td>
-					<input type="radio" name="reviewKind" id="organic" value="입양후기"/>
+					<input type="radio" name="reviewKind" id="organic" value="입양후기" required/>
 					<label for="organic">입양후기</label>
-					<input type="radio" name="reviewKind" id="parcelout" value="분양후기"/>
+					<input type="radio" name="reviewKind" id="parcelout" value="분양후기" required/>
 					<label for="parcelout">분양후기</label>
-					<input type="radio" name="reviewKind" id="missing" value="찾은후기"/>
+					<input type="radio" name="reviewKind" id="missing" value="찾은후기" required/>
 					<label for="missing">찾은후기</label>
-					<input type="radio" name="reviewKind" id="volunteer" value="봉사후기"/>
+					<input type="radio" name="reviewKind" id="volunteer" value="봉사후기" required/>
 					<label for="volunteer">봉사후기</label>
 				</td>
 			</tr>
@@ -153,7 +153,7 @@ attachFile = {
         idx:0,
         add:function(){ // 파일필드 추가
         	if(cnt>1){
-        		alert("사진은 세장까지만 추가가 가능합니다.");
+        		alert("사진은 세장까지만 추가가 가능합니다.")
         		return;
         	}
         	cnt = cnt+1;
@@ -168,9 +168,9 @@ attachFile = {
             dv.style.marginTop = '3px';
             dv.id = 'dv' + o.idx;
 
-            var file = document.all ? document.createElement('<input name="files">') : document.createElement('input');
+            var file = document.all ? document.createElement('<input name="upFile"+cnt>') : document.createElement('input');
             file.type = 'file';
-            file.name = 'files';
+            file.name = 'upFile'+cnt;
             file.size = '40';
             file.id = 'fileField' + o.idx;
             file.onchange = function(){o.prev(this,'dv'+idx)};
@@ -191,9 +191,9 @@ attachFile = {
             o.idx++;
         },
         del:function(idx){ // 파일필드 삭제
-            /* if(document.getElementById('fileField' + idx).value != '' && !confirm('삭제 하시겠습니까?')){
+            if(document.getElementById('fileField' + idx).value != '' && !confirm('삭제 하시겠습니까?')){
                 return;
-            } */
+            }
             document.getElementById('attachFileDiv').removeChild(document.getElementById('file' + idx));
                         document.getElementById('attachFileDiv').removeChild(document.getElementById('dv' + idx));
         },
