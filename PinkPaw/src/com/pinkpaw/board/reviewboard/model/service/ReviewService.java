@@ -73,5 +73,41 @@ public class ReviewService {
 		close(conn);
 		return result;
 	}
+	
+	public List<ReviewBoard> selectReviewBoardListByKind(int cPage, int numPerPage, String kind) {
+		Connection conn = getConnection();
+		List<ReviewBoard> list = new ReviewDAO().selectReviewBoardListByKind(conn, cPage, numPerPage, kind);
+		close(conn);
+		return list;
+	}
+
+	public List<ReviewBoard> selectReviewBoardListAllAll(int cPage, int numPerPage, String keyword) {
+		Connection conn = getConnection();
+		List<ReviewBoard> list = new ReviewDAO().selectReviewBoardListAllAll(conn, cPage, numPerPage, keyword);
+		close(conn);
+		return list;
+	}
+
+	public List<ReviewBoard> selectReviewBoardListAllnotAll(int cPage, int numPerPage, String key, String keyword) {
+		Connection conn = getConnection();
+		List<ReviewBoard> list = new ReviewDAO().selectReviewBoardListAllnotAll(conn, cPage, numPerPage, key, keyword);
+		close(conn);
+		return list;
+	}
+
+	public List<ReviewBoard> selectReviewBoardListnotAllAll(int cPage, int numPerPage, String kind, String keyword) {
+		Connection conn = getConnection();
+		List<ReviewBoard> list = new ReviewDAO().selectReviewBoardListnotAllAll(conn, cPage, numPerPage, kind, keyword);
+		close(conn);
+		return list;
+	}
+
+	public List<ReviewBoard> selectReviewBoardListnotAllnotAll(int cPage, int numPerPage, String kind, String key,
+			String keyword) {
+		Connection conn = getConnection();
+		List<ReviewBoard> list = new ReviewDAO().selectReviewBoardListnotAllnotAll(conn, cPage, numPerPage, kind, key, keyword);
+		close(conn);
+		return list;
+	}
 
 }

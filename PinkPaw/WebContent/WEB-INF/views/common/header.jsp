@@ -41,10 +41,9 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+crossorigin="anonymous"></script>
 
 <!--<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">-->
@@ -121,13 +120,13 @@
 					<a href="../investment/ir_info.php">유기동물 통계</a>
 				</dd>
 				<dd>
-					<a href="../investment/ir_notice.php">유기동물 공고</a>
+					<a href="<%=request.getContextPath()%>/animal/animalNotice">유기동물 공고</a>
 				</dd>
 			</dl>
 			<dl class="ddSize">
 				<dt class="sub_menu">보호소</dt>
 				<dd>
-					<a href="../business/schoolteacher.php">보호소 찾기</a>
+					<a href="<%=request.getContextPath() %>/shelter/shelterList">보호소 찾기</a>
 				</dd>
 				<dd>
 					<a href="../business/official.php">보호소 봉사요청</a>
