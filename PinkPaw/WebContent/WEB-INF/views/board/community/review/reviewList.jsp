@@ -13,9 +13,9 @@
 $(()=>{
 	//테이블의 열을 클릭시 해당 게시물로 이동
 	$("td").click((e)=>{		
-		var reviewNo = $(e.target).parent().children("th").text();
+		var reviewNo = $(e.target).parents("tr").children("th").text();
 		
-		location.href = "<%=request.getContextPath()%>/board/review/reviewView?boardNo="+reviewNo; 
+		location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+reviewNo; 
 	});
 });
 			

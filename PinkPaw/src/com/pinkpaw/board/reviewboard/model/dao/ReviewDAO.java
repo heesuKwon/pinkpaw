@@ -198,4 +198,51 @@ public class ReviewDAO {
 		return reviewNo;
 	}
 
+
+	public int deleteReview(Connection conn, int reviewNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("deleteReview");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, reviewNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+	public int updateReview(Connection conn, ReviewBoard rb) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, rb.getReviewTitle());
+			pstmt.setString(2, rb.getReviewKind());
+			pstmt.setString(3, rb.getReviewContent());
+			pstmt.setString(4, rb.getReviewOriginalImg());
+			pstmt.setString(5, rb.getReviewRenamedImg());
+			pstmt.setInt(6, rb.getReviewNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

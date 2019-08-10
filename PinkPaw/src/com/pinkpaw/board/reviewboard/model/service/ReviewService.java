@@ -47,4 +47,31 @@ public class ReviewService {
 		return result;
 	}
 
+	public int deleteReview(int reviewNo) {
+		Connection conn = getConnection();
+		
+		int result = new ReviewDAO().deleteReview(conn, reviewNo);
+		
+		//트랜잭션 처리
+		if(result>0) commit(conn);
+		else rollback(conn);
+
+		close(conn);
+
+		return result;
+	}
+
+	public int updateReview(ReviewBoard rb) {
+		Connection conn = getConnection();
+
+		int result = new ReviewDAO().updateReview(conn, rb);
+
+		//트랜잭션 처리
+		if(result>0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		return result;
+	}
+
 }

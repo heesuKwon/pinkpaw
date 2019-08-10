@@ -1,7 +1,6 @@
 package com.pinkpaw.board.reviewboard.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pinkpaw.board.common.model.service.ReviewCommentService;
-import com.pinkpaw.board.common.model.vo.BoardComment;
+import com.pinkpaw.board.common.model.exception.BoardException;
 import com.pinkpaw.board.reviewboard.model.service.ReviewService;
 import com.pinkpaw.board.reviewboard.model.vo.ReviewBoard;
 
 /**
- * Servlet implementation class ReviewViewServlet
+ * Servlet implementation class ReviewUpdateServlet
  */
-@WebServlet("/board/review/reviewView")
-public class ReviewViewServlet extends HttpServlet {
+@WebServlet("/board/review/reviewUpdate")
+public class ReviewUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewViewServlet() {
+    public ReviewUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,22 +32,20 @@ public class ReviewViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1.파라미터 핸들링
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		System.out.println("reviewBoardNo@ReviewViewServlet="+reviewNo);
-		
+		int reviewNo;
+		try{
+			reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+		} catch(NumberFormatException e){
+			throw new BoardException("유효하지 않은 게시글 요청입니다.");
+		}
+
 		//2.업무로직
-		ReviewBoard reviewBoard = new ReviewService().selectOne(reviewNo);
-		System.out.println("reviewBoard@ReviewViewServlet="+reviewBoard);
-		
-		List<BoardComment> boardCommentList = new ReviewCommentService().selectBoardCommentList(reviewNo);
-		System.out.println("boardCommentList@ReviewViewServlet="+boardCommentList.toString());
-		
+		ReviewBoard rb = new ReviewService().selectOne(reviewNo);
+
 		//3.view단 처리
-		request.setAttribute("reviewBoard", reviewBoard);
-		request.setAttribute("boardCommentList", boardCommentList);
-		
-		request.getRequestDispatcher("/WEB-INF/views/board/community/review/reviewView.jsp")
-				.forward(request, response);
+		request.setAttribute("ReviewBoard", rb);
+		request.getRequestDispatcher("/WEB-INF/views/board/community/review/reviewUpdate.jsp")
+		.forward(request, response);
 	}
 
 	/**

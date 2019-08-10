@@ -27,6 +27,8 @@ function loginAlert() {
 	alert("로그인 후 이용가능 합니다.");
 	$("#memberId").focus();
 }
+
+
 //jQuery코드는 클라이언트단에서 실행
 $(()=>{
 	//로그인하지 않고 댓글 쓰기 방지
@@ -162,28 +164,33 @@ $(()=>{
 				onclick="deleteBoard();" />
 			</th>
 		</tr>
-		<form action="<%=request.getContextPath()%>/board/boardDelete"
-			name="boardDeleteFrm"
+		<form action="<%=request.getContextPath()%>/board/review/reviewDelete"
+			name="reviewDeleteFrm"
 			method="post">
-			<input type="hidden" name="boardNo" 
+			<input type="hidden" name="reviewNo" 
 				value="<%=reviewBoard.getReviewNo()%>"/>
-			<input type="hidden" name="renamedFileName"
+			<input type="hidden" name="reviewRenamedImg"
 				value="<%=reviewBoard.getReviewRenamedImg()!=null?reviewBoard.getReviewRenamedImg():""%>"/>
 		</form>
 		<script>
 		function updateBoard(){
-			location.href = "<%=request.getContextPath()%>/board/boardUpdateForm?boardNo=<%=reviewBoard.getReviewNo()%>";
+			location.href = "<%=request.getContextPath()%>/board/review/reviewUpdate?reviewNo=<%=reviewBoard.getReviewNo()%>";
 		}
 		function deleteBoard(){
 			//확인: true, 취소: false
 			if(!confirm("정말 삭제하시겠습니까?")){
 				return;
 			}
-			$("[name=boardDeleteFrm]").submit();
+			$("[name=reviewDeleteFrm]").submit();
+		}
+		function goReviewList(){
+			location.href = "<%=request.getContextPath()%>/board/review/reviewList";
 		}
 		</script>
 		<%} %>
 	</table>
+	<input type="button" value="목록으로"
+				onclick="goReviewList();" />
 	
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container">
