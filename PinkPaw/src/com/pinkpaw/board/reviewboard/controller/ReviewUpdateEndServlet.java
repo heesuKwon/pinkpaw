@@ -82,26 +82,72 @@ public class ReviewUpdateEndServlet extends HttpServlet {
 				 2) 새로운 파일을 첨부한 경우: upFile있음. 기존파일은 삭제
 				 3) 기존 파일을 삭제만 하는 경우(delFile): upFile=null.기존파일 삭제
 		 */
-		String delFile = mReq.getParameter("delFile");
-		System.out.println("delFile="+delFile);
+		
 		//파일을 리스트로 관리
 		List<String> originalImgList = new ArrayList<>();
 		List<String> renamedImgList = new ArrayList<>();
-
+		
+		//이전 파일 내역을 불러옴
+		if(!"".equals(mReq.getParameter("oldOName"))&&!"".equals(mReq.getParameter("oldRName"))){
+			String oldOName = mReq.getParameter("oldOName");
+			String oldRName = mReq.getParameter("oldRName");
+			
+			System.out.println("oldOName="+oldOName);
+			System.out.println("oldRName="+oldRName);
+			
+			String[] oldONames = oldOName.split("§");
+			String[] oldRNames = oldRName.split("§");
+			
+			for(int i=0;i<oldONames.length;i++) {
+				originalImgList.add(oldONames[i]);
+				renamedImgList.add(oldRNames[i]);
+			}
+		}
+		System.out.println(originalImgList.size());
+		System.out.println(renamedImgList.size());
+		
+		//삭제될 파일을 String배열로 받아옴
+		String[] delOriginalImg = mReq.getParameterValues("delOriginalImg");
+		String[] delRenamedImg = mReq.getParameterValues("delRenamedImg");
+		if(delOriginalImg != null && delRenamedImg != null) {
+			for(int i=0;i<delOriginalImg.length;i++) {
+				System.out.println("delOriginalImg="+delOriginalImg[i]);
+				System.out.println("delRenamedImg="+delRenamedImg[i]);
+				//리스트에 파일이 있으면 삭제
+				if(originalImgList.contains(delOriginalImg[i])) {
+					originalImgList.remove(delOriginalImg[i]);
+				}
+				if(renamedImgList.contains(delRenamedImg[i])) {
+					renamedImgList.remove(delRenamedImg[i]);
+				}
+			}
+		}
+		System.out.println("삭제할 파일 삭제 후 : "+originalImgList.size());
+		System.out.println("삭제할 파일 삭제 후 : "+renamedImgList.size());
+		
+		
 		//첨부파일
-
-		if(mReq.getOriginalFileName("upFile")!=null && mReq.getFilesystemName("upFile")!=null) {
-			originalImgList.add(mReq.getOriginalFileName("upFile"));
-			renamedImgList.add(mReq.getFilesystemName("upFile"));
+		for(int i=1;i<=3;i++) {
+			String original=mReq.getOriginalFileName("upFile"+i);
+			String renamed=mReq.getFilesystemName("upFile"+i);
+			if(original!=null && renamed!=null) {
+				originalImgList.add(original);
+				renamedImgList.add(renamed);
+			}
 		}
-		if(mReq.getOriginalFileName("upFile1")!=null && mReq.getFilesystemName("upFile1")!=null) {
-			originalImgList.add(mReq.getOriginalFileName("upFile1"));
-			renamedImgList.add(mReq.getFilesystemName("upFile1"));
-		}
-		if(mReq.getOriginalFileName("upFile2")!=null && mReq.getFilesystemName("upFile2")!=null) {
-			originalImgList.add(mReq.getOriginalFileName("upFile2"));
-			renamedImgList.add(mReq.getFilesystemName("upFile2"));
-		}
+		
+//		if(mReq.getOriginalFileName("upFile2")!=null && mReq.getFilesystemName("upFile2")!=null) {
+//			originalImgList.add(mReq.getOriginalFileName("upFile2"));
+//			renamedImgList.add(mReq.getFilesystemName("upFile2"));
+//		}
+//		if(mReq.getOriginalFileName("upFile3")!=null && mReq.getFilesystemName("upFile3")!=null) {
+//			originalImgList.add(mReq.getOriginalFileName("upFile3"));
+//			renamedImgList.add(mReq.getFilesystemName("upFile3"));
+//		}
+		
+		System.out.println("추가된 파일 추가 후 : "+originalImgList.size());
+		System.out.println("추가된 파일 추가 후 : "+renamedImgList.size());
+		
 		
 		String originalImg = "";
 		String renamedImg = "";
@@ -115,17 +161,16 @@ public class ReviewUpdateEndServlet extends HttpServlet {
 				renamedImg += renamedImgList.get(i)+"§";
 			}
 		}
+		System.out.println("originalImg="+originalImg);
+		System.out.println("renamedImg="+renamedImg);
 		
+	
+		//기존에 첨부한 파일이 있다면, 후처리 작업 if(!"".equals(oldOName)) {
+		System.out.println("******* 기존 첨부파일이 있는 경우, 후처리 *******");
 
-		String oldOName = mReq.getParameter("oldOName");
-		String oldRName = mReq.getParameter("oldRName");
+		//업로드된 파일에 대한 객체 생성 File f = mReq.getFile("upFile");
 
 		/*
-		 * //기존에 첨부한 파일이 있다면, 후처리 작업 if(!"".equals(oldOName)) {
-		 * System.out.println("******* 기존 첨부파일이 있는 경우, 후처리 *******");
-		 * 
-		 * //업로드된 파일에 대한 객체 생성 File f = mReq.getFile("upFile");
-		 * 
 		 * //2)새로운 파일을 첨부한 경우: upFile 있음. 기존파일은 삭제 if(f!=null &&f.length()>0) { //이름 //
 		 * b.setOriginalFileName(originalFileName);//새로운파일 //
 		 * b.setRenamedFileName(renamedFileName);//새로운파일 //실제파일: 기존파일 삭제필요 // File
@@ -159,6 +204,20 @@ public class ReviewUpdateEndServlet extends HttpServlet {
 
 		//2.업무로직
 		int result = new ReviewService().updateReview(rb);
+		
+		//update 성공시
+		if(result>0) {
+			//삭제된 파일이 있으면
+			if(delOriginalImg != null && delRenamedImg != null) {
+				//삭제된 파일 메모리에서 삭제
+				for(int i=0;i<delRenamedImg.length;i++) {
+					File delOldFile = new File(saveDirectory+File.separator+delRenamedImg[i]);
+					System.out.println("delOldFile="+delOldFile);
+					boolean bool = delOldFile.delete();
+					System.out.println("삭제여부: "+bool);		
+				}
+			}
+		}
 
 		String msg = "";
 		String loc = "/board/review/reviewList";

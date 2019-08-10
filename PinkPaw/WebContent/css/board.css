@@ -6,7 +6,7 @@
 	margin: 0 0 15px;
 }
 /*게시판*/
-section.board-container{padding-top: 100px; width:800px; margin:0 auto; text-align:center;}
+section.board-container{padding-top: 100px; width:800px; margin:0 auto; text-align:center; height: 1000px!important;}
 section.board-container h2{margin:10px 0;}
 
 /*페이지바*/

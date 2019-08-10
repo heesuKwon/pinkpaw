@@ -3,7 +3,6 @@ package com.pinkpaw.board.reviewboard.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -139,7 +138,7 @@ public class ReviewWriteEndServlet extends HttpServlet {
 
 		if(result>0) {
 			msg = "게시글 등록 성공!";
-			loc = "/board/review/reviewView?boardNo="+result;
+			loc = "/board/review/reviewView?reviewNo="+result;
 		} else {
 			msg = "게시글 등록 실패!";
 		}

@@ -35,7 +35,7 @@ public class ReviewUpdateServlet extends HttpServlet {
 		int reviewNo;
 		try{
 			reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		} catch(NumberFormatException e){
+		} catch(Exception e){
 			throw new BoardException("유효하지 않은 게시글 요청입니다.");
 		}
 
@@ -43,9 +43,9 @@ public class ReviewUpdateServlet extends HttpServlet {
 		ReviewBoard rb = new ReviewService().selectOne(reviewNo);
 
 		//3.view단 처리
-		request.setAttribute("ReviewBoard", rb);
+		request.setAttribute("reviewBoard", rb);
 		request.getRequestDispatcher("/WEB-INF/views/board/community/review/reviewUpdate.jsp")
-		.forward(request, response);
+			.forward(request, response);
 	}
 
 	/**

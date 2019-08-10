@@ -76,8 +76,8 @@ footer h4 {
 			$('nav>ul>li').removeClass('on');
 			$('nav>ul>li:nth-child(1)').addClass('on');
 			$('.headerWrap').css({'background':'none', 'border-bottom':'none'});
-			$('header>h1>a>img').attr('src','images/main/logo_white.png');
-			$('header>div>a>img').attr('src','images/main/icon_meun.png');
+			$('header>h1>a>img').attr('src','<%=request.getContextPath()%>/images/main/logo_white.png');
+			$('header>div>a>img').attr('src','<%=request.getContextPath()%>/images/main/icon_meun.png');
 			$('header>div>ul>li>a').css('color','#fff');
 			$('.headerWrap').mouseover(function(e){$(this).css('background','rgba(34,34,34,0.7)');});
 			$('.headerWrap').mouseout(function(e){$(this).css('background','none');});
@@ -91,8 +91,8 @@ footer h4 {
 			} else {
 				$('.headerWrap').css({'background':'#fff', 'height':'84px', 'border-bottom':'1px solid #eee', 'box-sizing':'border-box'});
 			}
-			$('header>h1>a>img').attr('src','images/main/logo_color.png');
-			$('header>div>a>img').attr('src','images/main/icon_meun_black.png');
+			$('header>h1>a>img').attr('src','<%=request.getContextPath()%>/images/main/logo_color.png');
+			$('header>div>a>img').attr('src','<%=request.getContextPath()%>/images/main/icon_meun_black.png');
 			$('header>div>ul>li>a').css('color','#222');
 			$('.headerWrap').mouseover(function(e){$(this).css('background','#fff');});
 			$('.headerWrap').mouseout(function(e){$(this).css('background','#fff');});

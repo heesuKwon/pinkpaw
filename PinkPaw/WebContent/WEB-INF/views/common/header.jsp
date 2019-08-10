@@ -106,7 +106,7 @@ crossorigin="anonymous"></script>
 	<div class="menuWrap">
 		<div class="menu">
 			<a href="#none" onClick="$('.menuWrap').fadeOut(300);"
-				class="menu_closeBtn"><img src="images/main/modal_close.gif"
+				class="menu_closeBtn"><img src="<%=request.getContextPath()%>/images/main/modal_close.gif"
 				alt="닫기"></a>
 			<dl>
 				<dt>
