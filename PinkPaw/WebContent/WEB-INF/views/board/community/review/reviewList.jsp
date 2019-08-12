@@ -18,7 +18,10 @@ $(()=>{
 		location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+reviewNo; 
 	});
 });
-			
+function view(tr) {		
+	var reviewNo = $(tr).children("th").text();
+	location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+reviewNo;
+}
 </script>
 <section class="board-container">
 
@@ -59,7 +62,7 @@ $(()=>{
 				var num = 1;
 				$(data).each((i,b)=>{
 					num = num + 1;
-					html += "<tr>";
+					html += "<tr onclick='view(this);'>";
 					html += "<th scope='row'>"+b.reviewNo+"</th>";
 					html += "<td></td>";
 					html += "<td>"+b.reviewKind+"</td>";
@@ -98,7 +101,7 @@ $(()=>{
 				var num = 1;
 				$(data).each((i,b)=>{
 					num = num + 1;
-					html += "<tr>";
+					html += "<tr onclick='view(this);'>";
 					html += "<th scope='row'>"+b.reviewNo+"</th>";
 					html += "<td></td>";
 					html += "<td>"+b.reviewKind+"</td>";
