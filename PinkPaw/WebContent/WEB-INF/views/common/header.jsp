@@ -139,7 +139,7 @@ crossorigin="anonymous"></script>
 					<a href="../pr_center/culture.php">실종동물</a>
 				</dd>
 				<dd>
-					<a href="../pr_center/culture.php">분양동물</a>
+					<a href="<%=request.getContextPath()%>/board/parcelout/parceloutList">분양동물</a>
 				</dd>
 				<dd>
 					<a href="<%=request.getContextPath()%>/board/review/reviewList">후기</a>
