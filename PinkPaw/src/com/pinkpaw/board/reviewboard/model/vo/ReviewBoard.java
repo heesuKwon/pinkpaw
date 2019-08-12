@@ -13,7 +13,6 @@ public class ReviewBoard {
 	private String reviewRenamedImg; //서버상이미지
 	private Date reviewEnrollDate; //게시일
 	private int reviewCount; //조회수
-	private int reviewLike; //좋아요
 	private int reviewReportCount; //신고수
 	private String reviewReportReason; //신고사유
 			
@@ -22,7 +21,7 @@ public class ReviewBoard {
 	}
 
 	public ReviewBoard(int reviewNo, String reviewTitle, String reviewWriter, String reviewKind, String reviewContent,
-			String reviewOriginalImg, String reviewRenamedImg, Date reviewEnrollDate, int reviewCount, int reviewLike,
+			String reviewOriginalImg, String reviewRenamedImg, Date reviewEnrollDate, int reviewCount,
 			int reviewReportCount, String reviewReportReason) {
 		super();
 		this.reviewNo = reviewNo;
@@ -34,7 +33,6 @@ public class ReviewBoard {
 		this.reviewRenamedImg = reviewRenamedImg;
 		this.reviewEnrollDate = reviewEnrollDate;
 		this.reviewCount = reviewCount;
-		this.reviewLike = reviewLike;
 		this.reviewReportCount = reviewReportCount;
 		this.reviewReportReason = reviewReportReason;
 	}
@@ -111,14 +109,6 @@ public class ReviewBoard {
 		this.reviewCount = reviewCount;
 	}
 
-	public int getReviewLike() {
-		return reviewLike;
-	}
-
-	public void setReviewLike(int reviewLike) {
-		this.reviewLike = reviewLike;
-	}
-
 	public int getReviewReportCount() {
 		return reviewReportCount;
 	}
@@ -140,11 +130,9 @@ public class ReviewBoard {
 		return "ReviewBoard [reviewNo=" + reviewNo + ", reviewTitle=" + reviewTitle + ", reviewWriter=" + reviewWriter
 				+ ", reviewKind=" + reviewKind + ", reviewContent=" + reviewContent + ", reviewOriginalImg="
 				+ reviewOriginalImg + ", reviewRenamedImg=" + reviewRenamedImg + ", reviewEnrollDate="
-				+ reviewEnrollDate + ", reviewCount=" + reviewCount + ", reviewLike=" + reviewLike
-				+ ", reviewReportCount=" + reviewReportCount + ", reviewReportReason=" + reviewReportReason + "]";
+				+ reviewEnrollDate + ", reviewCount=" + reviewCount + ", reviewReportCount=" + reviewReportCount
+				+ ", reviewReportReason=" + reviewReportReason + "]";
 	}
 
-	
-	
 	
 }

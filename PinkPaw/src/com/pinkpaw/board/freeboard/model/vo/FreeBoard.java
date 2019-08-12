@@ -3,25 +3,23 @@ package com.pinkpaw.board.freeboard.model.vo;
 import java.sql.Date;
 
 public class FreeBoard {
-
-	private int freeNo;
-	private String freeTitle;
-	private String freeWriter;
-	private String freeContent;
-	private String freeOriginalImg;
-	private String freeRenamedImg;
-	private Date freeEnrolldate;
-	private int freeCount;
-	private int freeLike;
-	private int freeReportCount;
-	private String freeReportReason;
+		
+	private int freeNo; // 자유게시판 - 글 번호
+	private String freeTitle; // 자유게시판 - 글 제목
+	private String freeWriter; // 자유게시판 - 글 작성자
+	private String freeContent; // 자유게시판 - 글 내용
+	private String freeOriginalImg; // 자유게시판 - 업로드 이미지
+	private String freeRenamedImg; // 자유게시판 - 서버상 이미지
+	private Date freeEnrolldate; // 자유게시판 - 게시일
+	private int freeCount; // 자유게시판 - 조회수
+	private int freeReportCount; // 자유게시판 - 신고 누적수
+	private String freeReportReason; // 자유게시판 - 신고 사유
 		
 	public FreeBoard() {
 	}
 
 	public FreeBoard(int freeNo, String freeTitle, String freeWriter, String freeContent, String freeOriginalImg,
-			String freeRenamedImg, Date freeEnrolldate, int freeCount, int freeLike, int freeReportCount,
-			String freeReportReason) {
+			String freeRenamedImg, Date freeEnrolldate, int freeCount, int freeReportCount, String freeReportReason) {
 		super();
 		this.freeNo = freeNo;
 		this.freeTitle = freeTitle;
@@ -31,7 +29,6 @@ public class FreeBoard {
 		this.freeRenamedImg = freeRenamedImg;
 		this.freeEnrolldate = freeEnrolldate;
 		this.freeCount = freeCount;
-		this.freeLike = freeLike;
 		this.freeReportCount = freeReportCount;
 		this.freeReportReason = freeReportReason;
 	}
@@ -100,14 +97,6 @@ public class FreeBoard {
 		this.freeCount = freeCount;
 	}
 
-	public int getFreeLike() {
-		return freeLike;
-	}
-
-	public void setFreeLike(int freeLike) {
-		this.freeLike = freeLike;
-	}
-
 	public int getFreeReportCount() {
 		return freeReportCount;
 	}
@@ -128,8 +117,8 @@ public class FreeBoard {
 	public String toString() {
 		return "FreeBoard [freeNo=" + freeNo + ", freeTitle=" + freeTitle + ", freeWriter=" + freeWriter
 				+ ", freeContent=" + freeContent + ", freeOriginalImg=" + freeOriginalImg + ", freeRenamedImg="
-				+ freeRenamedImg + ", freeEnrolldate=" + freeEnrolldate + ", freeCount=" + freeCount + ", freeLike="
-				+ freeLike + ", freeReportCount=" + freeReportCount + ", freeReportReason=" + freeReportReason + "]";
+				+ freeRenamedImg + ", freeEnrolldate=" + freeEnrolldate + ", freeCount=" + freeCount
+				+ ", freeReportCount=" + freeReportCount + ", freeReportReason=" + freeReportReason + "]";
 	}
 
 	

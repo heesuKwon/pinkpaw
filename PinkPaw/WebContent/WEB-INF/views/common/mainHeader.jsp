@@ -146,7 +146,7 @@
 					<a href="<%=request.getContextPath()%>/board/review/reviewList">후기</a>
 				</dd>
 				<dd>
-					<a href="../pr_center/culture.php">자유게시판</a>
+					<a href="<%=request.getContextPath()%>/board/community/free/freeList">자유게시판</a>
 				</dd>
 			</dl>
 

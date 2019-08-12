@@ -127,10 +127,6 @@ $(()=>{
 			<td><%=reviewBoard.getReviewCount() %></td>
 		</tr>
 		<tr>
-			<th>좋아요</th>
-			<td><%=reviewBoard.getReviewLike() %></td>
-		</tr>
-		<tr>
 			<th>게시일</th>
 			<td><%=reviewBoard.getReviewEnrollDate() %></td>
 		</tr>

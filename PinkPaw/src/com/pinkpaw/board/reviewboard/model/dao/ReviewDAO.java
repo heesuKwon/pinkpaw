@@ -63,7 +63,6 @@ public class ReviewDAO {
 				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
 				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
 				rb.setReviewCount(rset.getInt("review_count"));
-				rb.setReviewLike(rset.getInt("review_like"));
 				rb.setReviewReportCount(rset.getInt("review_112_count"));
 				rb.setReviewReportReason(rset.getString("review_112_reason"));
 				
@@ -132,7 +131,6 @@ public class ReviewDAO {
 				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
 				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
 				rb.setReviewCount(rset.getInt("review_count"));
-				rb.setReviewLike(rset.getInt("review_like"));
 				rb.setReviewReportCount(rset.getInt("review_112_count"));
 				rb.setReviewReportReason(rset.getString("review_112_reason"));				
 			}
@@ -274,7 +272,6 @@ public class ReviewDAO {
 				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
 				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
 				rb.setReviewCount(rset.getInt("review_count"));
-				rb.setReviewLike(rset.getInt("review_like"));
 				rb.setReviewReportCount(rset.getInt("review_112_count"));
 				rb.setReviewReportReason(rset.getString("review_112_reason"));
 				list.add(rb);
@@ -322,7 +319,6 @@ public class ReviewDAO {
 				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
 				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
 				rb.setReviewCount(rset.getInt("review_count"));
-				rb.setReviewLike(rset.getInt("review_like"));
 				rb.setReviewReportCount(rset.getInt("review_112_count"));
 				rb.setReviewReportReason(rset.getString("review_112_reason"));
 				list.add(rb);
@@ -372,7 +368,6 @@ public class ReviewDAO {
 				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
 				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
 				rb.setReviewCount(rset.getInt("review_count"));
-				rb.setReviewLike(rset.getInt("review_like"));
 				rb.setReviewReportCount(rset.getInt("review_112_count"));
 				rb.setReviewReportReason(rset.getString("review_112_reason"));
 				list.add(rb);
@@ -422,7 +417,6 @@ public class ReviewDAO {
 				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
 				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
 				rb.setReviewCount(rset.getInt("review_count"));
-				rb.setReviewLike(rset.getInt("review_like"));
 				rb.setReviewReportCount(rset.getInt("review_112_count"));
 				rb.setReviewReportReason(rset.getString("review_112_reason"));
 				list.add(rb);
@@ -476,7 +470,6 @@ public class ReviewDAO {
 				rb.setReviewRenamedImg(rset.getString("review_renamed_img"));
 				rb.setReviewEnrollDate(rset.getDate("review_enrolldate"));
 				rb.setReviewCount(rset.getInt("review_count"));
-				rb.setReviewLike(rset.getInt("review_like"));
 				rb.setReviewReportCount(rset.getInt("review_112_count"));
 				rb.setReviewReportReason(rset.getString("review_112_reason"));
 				list.add(rb);
