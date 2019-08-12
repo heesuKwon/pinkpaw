@@ -452,9 +452,10 @@ public class ReviewDAO {
 			int end = cPage*numPerPage;
 			
 			pstmt.setString(1, kind);
-			pstmt.setString(2, "%"+keyword+"%");
-			pstmt.setInt(3, start);
-			pstmt.setInt(4, end);
+			pstmt.setString(2, key);
+			pstmt.setString(3, "%"+keyword+"%");
+			pstmt.setInt(4, start);
+			pstmt.setInt(5, end);
 			
 			rset = pstmt.executeQuery();
 			

@@ -16,8 +16,8 @@
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%-- <link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" />
- --%>
+	  href="<%=request.getContextPath()%>/css/board.css" /> --%>
+
 <section class="board-container">
 
 
@@ -33,6 +33,10 @@
 	}
 	</script>		
 	<%} %>
+	<%if(list==null || list.isEmpty()){ %>
+	<div class="card" id="layout">게시글이없습니다.</div>
+	<%} else{ %>
+	
 			<% for(MissingBoard b : list){ %>
 	<a href="<%=request.getContextPath()%>/board/missingView?missingNo=<%=b.getMissingNo() %>">
 	<div class="card" id="layout">
@@ -56,7 +60,8 @@
 	</div>
 	</a>
 				
-	<%} %>
+		<%}
+	}%>
 	<style>
 #layout {
 	display: inline-block;

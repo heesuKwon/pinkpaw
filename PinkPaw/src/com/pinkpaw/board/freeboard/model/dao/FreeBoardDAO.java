@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -420,102 +419,6 @@ public class FreeBoardDAO {
 		}
 		
 		return result;
-	}
-
-
-	public List<FreeBoard> selectFreeBoardListAllAll(Connection conn, int cPage, int numPerPage, String keyword) {
-		List<FreeBoard> list = new ArrayList<FreeBoard>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectFreeBoardListAllAll");
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			int start = (cPage-1)*numPerPage+1;
-			int end = cPage*numPerPage;
-			
-			pstmt.setString(1, "%"+keyword+"%");
-			pstmt.setString(2, "%"+keyword+"%");
-			pstmt.setString(3, "%"+keyword+"%");
-			pstmt.setInt(4, start);
-			pstmt.setInt(5, end);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				FreeBoard freeBoard = new FreeBoard();
-				
-				freeBoard.setFreeNo(rset.getInt("free_no"));
-				freeBoard.setFreeTitle(rset.getString("free_title"));
-				freeBoard.setFreeWriter(rset.getString("free_writer"));
-				freeBoard.setFreeContent(rset.getString("free_content"));
-				freeBoard.setFreeOriginalImg(rset.getString("free_original_img"));
-				freeBoard.setFreeRenamedImg(rset.getString("free_renamed_img"));
-				freeBoard.setFreeEnrolldate(rset.getDate("free_enrolldate"));
-				freeBoard.setFreeCount(rset.getInt("free_count"));
-				freeBoard.setFreeReportCount(rset.getInt("free_112_count"));
-				freeBoard.setFreeReportReason(rset.getString("free_112_reason"));
-
-				list.add(freeBoard);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-			close(rset);
-		}
-		
-		return list;
-	}
-
-
-	public List<FreeBoard> selectFreeBoardListAllnotAll(Connection conn, int cPage, int numPerPage, String key, String keyword) {
-		List<FreeBoard> list = new ArrayList<FreeBoard>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = "";
-		switch (key) {
-		case "free_title": sql = prop.getProperty("selectFreeBoardListAllnotAllTitle"); break;
-		case "free_writer": sql = prop.getProperty("selectFreeBoardListAllnotAllWriter"); break;
-		case "free_content": sql = prop.getProperty("selectFreeBoardListAllnotAllContent"); break;
-		}
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			int start = (cPage-1)*numPerPage+1;
-			int end = cPage*numPerPage;
-			
-			pstmt.setString(1, "%"+keyword+"%");
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				FreeBoard freeBoard = new FreeBoard();
-				
-				freeBoard.setFreeNo(rset.getInt("free_no"));
-				freeBoard.setFreeTitle(rset.getString("free_title"));
-				freeBoard.setFreeWriter(rset.getString("free_writer"));
-				freeBoard.setFreeContent(rset.getString("free_content"));
-				freeBoard.setFreeOriginalImg(rset.getString("free_original_img"));
-				freeBoard.setFreeRenamedImg(rset.getString("free_renamed_img"));
-				freeBoard.setFreeEnrolldate(rset.getDate("free_enrolldate"));
-				freeBoard.setFreeCount(rset.getInt("free_count"));
-				freeBoard.setFreeReportCount(rset.getInt("free_112_count"));
-				freeBoard.setFreeReportReason(rset.getString("free_112_reason"));
-
-				list.add(freeBoard);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-			close(rset);
-		}
-		return list;
 	}
 
 }
