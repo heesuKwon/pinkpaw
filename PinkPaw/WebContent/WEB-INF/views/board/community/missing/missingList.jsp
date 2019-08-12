@@ -15,9 +15,9 @@
 	%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<link rel="stylesheet" 
+<%-- <link rel="stylesheet" 
 	  href="<%=request.getContextPath()%>/css/board.css" />
-
+ --%>
 <section class="board-container">
 
 
