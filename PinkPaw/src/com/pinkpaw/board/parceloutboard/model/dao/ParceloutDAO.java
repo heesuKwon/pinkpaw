@@ -23,7 +23,7 @@ public class ParceloutDAO {
 	public ParceloutDAO() {
 		try {
 			String fileName 
-			= ParceloutDAO.class.getResource("/sql/board/parcelout/parcelout-query.properties").getPath();
+			= ParceloutDAO.class.getResource("/sql/board/parcelout-query.properties").getPath();
 			prop.load(new FileReader(fileName));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
