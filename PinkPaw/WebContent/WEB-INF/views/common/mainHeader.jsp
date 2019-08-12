@@ -137,7 +137,7 @@
 			<dl>
 				<dt class="sub_menu">커뮤니티</dt>
 				<dd>
-					<a href="../pr_center/culture.php">실종동물</a>
+					<a href="<%=request.getContextPath()%>/board/missingList">실종동물</a>
 				</dd>
 				<dd>
 					<a href="../pr_center/culture.php">분양동물</a>
