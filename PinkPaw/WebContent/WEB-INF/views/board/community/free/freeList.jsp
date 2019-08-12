@@ -35,6 +35,11 @@
 		});
 		
 	});
+	
+	function view(tr) {		
+		var freeNo = $(tr).children("th").text();
+		location.href = "<%=request.getContextPath()%>/board/community/free/freeView?freeNo="+freeNo;
+	}
 </script>
 
 
@@ -50,6 +55,62 @@
 
 
 <section class="board-container">
+
+	<div class="input-group mb-3" style="width: 600px">
+  		<div class="input-group-prepend">
+    		<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" name="key">
+				<option value="" selected hidden>키워드</option>
+				<option value="">전체</option>
+				<option value=free_title>제목</option>
+				<option value="free_writer">작성자</option>
+				<option value="free_content">내용</option>
+			</select>
+ 		 </div>
+  		<input type="text" class="form-control" aria-label="Text input with dropdown button" style="width: 200px" id="keyword">
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  		<button class="btn btn-outline-secondary" style="border-radius: 0" onclick="srch();">검색하기</button>
+	</div>
+	<script>
+	function srch() {
+		var key = $("[name=key]").val().trim();
+		var keyword = $("#keyword").val().trim();
+		$.ajax({
+			url: "<%=request.getContextPath()%>/board/community/free/freeSearch",
+			data: "key="+key+"&keyword="+keyword,
+			type: "get",
+			success: function(data){
+				console.log(data);
+				
+				var html = "<tr><th scope='col'>No</th><th scope='col'>사진</th><th scope='col'>제목</th><th scope='col'>작성자</th><th scope='col'>등록일</th><th scope='col'>조회수</th></tr>";
+				var num = 1;
+				$(data).each((i,b)=>{
+					num = num + 1;
+					html += "<tr onclick='view(this);'>";
+					html += "<th scope='row'>"+b.freeNo+"</th>";
+					html += "<td></td>";
+					html += "<td>"+b.freeTitle+"</td>";
+					html += "<td>"+b.freeWriter+"</td>";
+					html += "<td>"+b.freeEnrolldate+"</td>";
+					html += "<td>"+b.freeCount+"</td>";
+					html += "</tr>";
+				});
+				$("#tbl-board").html(html);
+				if(num < 10){
+					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+				}
+				else{
+					$("#pageBar").html("<%=pageBar %>");
+				}
+				
+			},
+			error: function(jqxhr, textStatus, errorThrown){
+				console.log("ajax 처리 실패");
+				console.log(jqxhr, textStatus, errorThrown);
+			}
+		});
+	}
+	</script>
+	
 	<%-- 로그인한 경우 글쓰기 가능 --%>
 	<%-- <% if(memberLoggedIn != null) {%> --%>
 	<input type="button" value="글쓰기" id="btn-add" onclick="goFreeWrite();" />

@@ -20,8 +20,10 @@
 
 <section class="board-container">
 
-
 	<h2>실종게시판</h2>
+	
+	
+	
 	<%-- 로그인한 경우 글쓰기 가능 --%>
 	<%if(memberLoggedIn!=null){ %>
 	<input type="button" value="글쓰기" id="btn-add"
