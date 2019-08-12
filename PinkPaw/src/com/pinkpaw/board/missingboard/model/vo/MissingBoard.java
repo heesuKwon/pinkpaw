@@ -1,13 +1,14 @@
 package com.pinkpaw.board.missingboard.model.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class MissingBoard {
+	
 	private int missingNo;
 	private String missingTitle;
 	private String missingWriter;
 	private String missingHpPlace;
-	private Date missingHpDate;
+	private String missingHpDate;
 	private int missingMoney;
 	private String missingPhone;
 	private String missingKind;
@@ -16,7 +17,7 @@ public class MissingBoard {
 	private String missingRenamedImg;
 	private Date missingEnrollDate;
 	private int missingCount;
-	private int missingLike;
+	//private int missingLike;
 	private int missingReportCount;
 	private String missingReportReason;
 	
@@ -25,9 +26,9 @@ public class MissingBoard {
 	}
 
 	public MissingBoard(int missingNo, String missingTitle, String missingWriter, String missingHpPlace,
-			Date missingHpDate, int missingMoney, String missingPhone, String missingKind, String missingContent,
+			String missingHpDate, int missingMoney, String missingPhone, String missingKind, String missingContent,
 			String missingOriginalImg, String missingRenamedImg, Date missingEnrollDate, int missingCount,
-			int missingLike, int missingReportCount, String missingReportReason) {
+			 int missingReportCount, String missingReportReason) {
 		super();
 		this.missingNo = missingNo;
 		this.missingTitle = missingTitle;
@@ -42,7 +43,7 @@ public class MissingBoard {
 		this.missingRenamedImg = missingRenamedImg;
 		this.missingEnrollDate = missingEnrollDate;
 		this.missingCount = missingCount;
-		this.missingLike = missingLike;
+		//this.missingLike = missingLike;
 		this.missingReportCount = missingReportCount;
 		this.missingReportReason = missingReportReason;
 	}
@@ -79,11 +80,11 @@ public class MissingBoard {
 		this.missingHpPlace = missingHpPlace;
 	}
 
-	public Date getMissingHpDate() {
+	public String getMissingHpDate() {
 		return missingHpDate;
 	}
 
-	public void setMissingHpDate(Date missingHpDate) {
+	public void setMissingHpDate(String missingHpDate) {
 		this.missingHpDate = missingHpDate;
 	}
 
@@ -151,13 +152,7 @@ public class MissingBoard {
 		this.missingCount = missingCount;
 	}
 
-	public int getMissingLike() {
-		return missingLike;
-	}
-
-	public void setMissingLike(int missingLike) {
-		this.missingLike = missingLike;
-	}
+	/**/
 
 	public int getMissingReportCount() {
 		return missingReportCount;
@@ -182,9 +177,15 @@ public class MissingBoard {
 				+ ", missingMoney=" + missingMoney + ", missingPhone=" + missingPhone + ", missingKind=" + missingKind
 				+ ", missingContent=" + missingContent + ", missingOriginalImg=" + missingOriginalImg
 				+ ", missingRenamedImg=" + missingRenamedImg + ", missingEnrollDate=" + missingEnrollDate
-				+ ", missingCount=" + missingCount + ", missingLike=" + missingLike + ", missingReportCount="
+				+ ", missingCount=" + missingCount + ", missingReportCount="
 				+ missingReportCount + ", missingReportReason=" + missingReportReason + "]";
 	}
+	
+	
+	
+	
+	
 
+	
 	
 }
