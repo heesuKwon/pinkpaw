@@ -16,4 +16,11 @@ public class GraphService {
 		return organicMap;
 	}
 
+	public Map<String, Integer> getSelectOrganic(String name1, String name2) {
+		Connection conn = getConnection();
+		Map<String, Integer> organicMapSelect = new GraphDAO().getSelectOrganic(conn, name1, name2);
+		close(conn);
+		return organicMapSelect;
+	}
+
 }

@@ -59,4 +59,33 @@ public class GraphDAO {
 		return organicMap;
 	}
 
+	public Map<String, Integer> getSelectOrganic(Connection conn,String name1, String name2) {
+		Map<String, Integer> organicMapSelect = new HashMap<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("getSelectOrganic");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, name1);
+			pstmt.setString(2, name2);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				organicMapSelect.put(rset.getString("processstate"),rset.getInt("cnt"));
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return organicMapSelect;
+	}
+
 }

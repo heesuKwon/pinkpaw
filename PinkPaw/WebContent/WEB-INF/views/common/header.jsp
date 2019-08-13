@@ -80,14 +80,14 @@ crossorigin="anonymous"></script>
 
 		<script>
 		$(function(){
-​
+			
 			$('.headerWrap').mouseover(function(e){
 				$(this).css('background','rgba(34,34,34,0.7)');
 			});
 			$('.headerWrap').mouseout(function(e){
 				$(this).css('background','none');}
 			);
-​
+			
 			$('header>div>ul:first-child>li').mouseover(function(e){
 				$('.headerWrap').css('height','140px');
 				});
@@ -101,7 +101,7 @@ crossorigin="anonymous"></script>
 				src="<%=request.getContextPath()%>/images/main/icon_meun_black.png" alt="메뉴바"></a>
 		</div>
 	</header>
-	​ ​
+	
 	<!--menu-->
 	<div class="menuWrap">
 		<div class="menu">

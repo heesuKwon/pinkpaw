@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.pinkpaw.board.organicboard.model.service.GraphService;
 
 /**
- * Servlet implementation class OrganicGraph
+ * Servlet implementation class OrganicGraphEndServlet
  */
-@WebServlet("/board/organic/graph/OrganicGraph")
-public class OrganicGraphServlet extends HttpServlet {
+@WebServlet("/board/organic/graph/OrganicGraphEnd")
+public class OrganicGraphEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrganicGraphServlet() {
+    public OrganicGraphEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +32,25 @@ public class OrganicGraphServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Map<String, Integer> organicMap = new HashMap<>();
-		organicMap = new GraphService().getAllOrganic();
 		
-		for(String key : organicMap.keySet()) {
-			System.out.println(key+" : "+organicMap.get(key));
+		request.setCharacterEncoding("utf-8");
+        response.setContentType("application/json; charset=utf-8");
+		
+		Map<String, Integer> organicMapSelect = new HashMap<>();
+		
+		String name1 = request.getParameter("date1");
+		String name2 = request.getParameter("date2");
+		System.out.println(name1+"555555555555555555555");
+		System.out.println(name2+"55dfasfdads555555555");
+		
+		organicMapSelect = new GraphService().getSelectOrganic(name1, name2);
+
+		for(String key : organicMapSelect.keySet()) {
+			System.out.println(key+" : "+organicMapSelect.get(key));
 		}
 		
-		request.setAttribute("organicMap", organicMap);
-		request.getRequestDispatcher("/WEB-INF/views/board/organic/graph.jsp").forward(request, response);
+		new Gson().toJson(organicMapSelect, response.getWriter());
+		
 	}
 
 	/**
