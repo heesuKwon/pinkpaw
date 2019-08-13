@@ -15,14 +15,14 @@ import java.util.Properties;
 
 import com.pinkpaw.board.common.model.vo.BoardComment;
 
-public class ReviewCommentDAO {
+public class VolunteerCommentDAO {
 	private Properties prop;
 
-	public ReviewCommentDAO() {
+	public VolunteerCommentDAO() {
 		prop = new Properties();
 		
 		String fileName = ReviewCommentDAO.class
-								.getResource("/sql/board/review-comment-query.properties")
+								.getResource("/sql/board/volunteer-comment-query.properties")
 								.getPath();
 		
 		try {
@@ -49,13 +49,13 @@ public class ReviewCommentDAO {
 			while(rset.next()) {
 				BoardComment bc = new BoardComment();
 				
-				bc.setBoardCommentNo(rset.getInt("r_comment_no"));
-				bc.setBoardCommentLevel(rset.getInt("r_comment_level"));
-				bc.setBoardCommentWriter(rset.getString("r_comment_writer"));
-				bc.setBoardCommentContent(rset.getString("r_comment_content"));
-				bc.setBoardRef(rset.getInt("r_comment_ref"));
-				bc.setBoardCommentRef(rset.getInt("r_comment_ref_no"));
-				bc.setBoardCommentDate(rset.getDate("r_comment_enrolldate"));
+				bc.setBoardCommentNo(rset.getInt("s_v_comment_no"));
+				bc.setBoardCommentLevel(rset.getInt("s_v_comment_level"));
+				bc.setBoardCommentWriter(rset.getString("s_v_comment_writer"));
+				bc.setBoardCommentContent(rset.getString("s_v_comment_content"));
+				bc.setBoardRef(rset.getInt("s_v_comment_ref"));
+				bc.setBoardCommentRef(rset.getInt("s_v_comment_ref_no"));
+				bc.setBoardCommentDate(rset.getDate("s_v_comment_enrolldate"));
 				
 				list.add(bc);
 			}

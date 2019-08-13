@@ -59,7 +59,7 @@ $(()=>{
 			//로그인한 경우	
 			var tr = $("<tr></tr>");
 			var html = "<td style='display:none; text-align:left;' colspan='2'>";
-			html += "<form action='<%=request.getContextPath()%>/board/boardCommentInsert' method='post'>";
+			html += "<form action='<%=request.getContextPath()%>/board/review/reviewBoardCommentInsert' method='post'>";
 			html += "<input type= 'hidden' name='boardRef' value='<%=reviewBoard.getReviewNo()%>'/>";
 			html += "<input type= 'hidden' name='boardCommentWriter' value='<%=memberLoggedIn.getMemberId()%>'/>";
 			html += "<input type= 'hidden' name='boardCommentLevel' value='2'/>";//답글(대댓글)이기 때문에 2로 작성
@@ -97,7 +97,10 @@ $(()=>{
 	
 	//댓글/답글 삭제버튼 클릭시
 	$(".btn-delete").on("click",(e)=>{
-		location.href = "<%=request.getContextPath()%>/board/boardCommentDelete"
+		if(!confirm("정말 삭제하시겠습니까?")){
+			return;
+		}		
+		location.href = "<%=request.getContextPath()%>/board/review/reviewBoardCommentDelete"
 			+"?boardCommentNo="+e.target.value+"&boardNo="+<%=reviewBoard.getReviewNo()%>;
 		
 	});
@@ -191,7 +194,7 @@ $(()=>{
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container">
 		<div class="comment-editor">
-			<form action="<%=request.getContextPath()%>/board/boardCommentInsert"
+			<form action="<%=request.getContextPath()%>/board/review/reviewBoardCommentInsert"
 				name="boardCommentFrm"
 				method="post">
 			<input type="hidden" name="boardRef" 

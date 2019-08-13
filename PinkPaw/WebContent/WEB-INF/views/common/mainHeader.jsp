@@ -130,7 +130,7 @@
 					<a href="<%=request.getContextPath()%>/shelter/shelterList">보호소 찾기</a>
 				</dd>
 				<dd>
-					<a href="../business/official.php">보호소 봉사요청</a>
+					<a href="<%=request.getContextPath()%>/board/volunteer/volunteerList">보호소 봉사요청</a>
 				</dd>
 
 			</dl>

@@ -1,35 +1,29 @@
-<%@page import="com.pinkpaw.board.reviewboard.model.vo.ReviewBoard"%>
+<%@page import="com.pinkpaw.board.volunteer.model.vo.VolunteerBoard"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%
-	ReviewBoard rb = (ReviewBoard)request.getAttribute("reviewBoard");
+	VolunteerBoard vb = (VolunteerBoard)request.getAttribute("volunteerBoard");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <section class="board-container">
-	<form action="<%=request.getContextPath()%>/board/review/reviewUpdateEnd"
+	<form action="<%=request.getContextPath()%>/board/volunteer/volunteerUpdateEnd"
 		method="post"
 		enctype="multipart/form-data">
 		<!-- 파일을 업로드하려면 enctype속성이 꼭 있어야 함. -->
-		<input type="hidden" name="reviewNo" value="<%=rb.getReviewNo()%>" />
+		<input type="hidden" name="volunteerNo" value="<%=vb.getVolunteerNo()%>" />
 		<table id="tbl-board-view">
 			<tr>
 				<th>제목</th>
 				<td>
-					<input type="text" name="reviewTitle" value="<%=rb.getReviewTitle()%>" required></input>
+					<input type="text" name="volunteerTitle" value="<%=vb.getVolunteerTitle()%>" required></input>
 				</td>
 			</tr>
 			<tr>
 				<th>작성자</th>
 				<td>
-					<input type="text" name="reviewWriter" value="<%=rb.getReviewWriter()%>"
-					required readonly></input>
-				</td>
-			</tr>
-			<tr>
-				<th>게시물 종류</th>
-				<td>
-					<input type="text" name="reviewKind" value="<%=rb.getReviewKind()%>"
+					<input type="text" name="volunteerWriter" value="<%=vb.getVolunteerWriter()%>"
 					required readonly></input>
 				</td>
 			</tr>
@@ -47,37 +41,29 @@
 					<!-- file태그의 value 속성은 보안상 이유로 임의 변경이 불가함. -->
 					첫번째로 첨부된 사진이 메인사진으로 등록됩니다.<br/>
 					<!-- 첨부파일이 있는 경우만 보임 처리 -->
-					<%if(rb.getReviewOriginalImg()!=null) {
-						String[] renamedImgList = rb.getReviewRenamedImg().split("§");
-						String[] originalImgList = rb.getReviewOriginalImg().split("§");
+					<%if(vb.getVolunteerOriginalImg()!=null) {
+						String[] renamedImgList = vb.getVolunteerRenamedImg().split("§");
+						String[] originalImgList = vb.getVolunteerOriginalImg().split("§");
 						for(int i=0;i<renamedImgList.length;i++){%>
 						<div>
 							<span id="originalImg"><%=originalImgList[i]%></span>
 							<span id="renamedImg" style="display:none;"><%=renamedImgList[i]%></span>
 							<input type="button" value="삭제" class="btn-delete"><br/>
-							<img src="<%=request.getContextPath()%>/upload/board/review/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:100px;' />												
+							<img src="<%=request.getContextPath()%>/upload/board/volunteer/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:100px;' />												
 						</div>
 					<%}
 					}%>
-						<input type="button" value="추가" onclick="attachFile.add()"><br/>
-						<div id="attachFileDiv">
-					<%-- <input type="file" name="upFile"/>
-					<span id="fname"><%=rb.getReviewOriginalImg()!=null?b.getOriginalFileName():""%></span>
-					첨부파일이 있는 경우 기존파일 삭제용
-					<%if(b.getOriginalFileName()!=null){ %>
-					<br />
-					<input type="checkbox" name="delFile" id="delFile" />
-					<label for="delFile">첨부파일삭제</label>
-					<%} %> --%>
-					<input type="hidden" name="oldOName" value="<%=rb.getReviewOriginalImg()!=null?rb.getReviewOriginalImg():""%>"/>
-					<input type="hidden" name="oldRName" value="<%=rb.getReviewRenamedImg()!=null?rb.getReviewRenamedImg():""%>"/>
+					<input type="button" value="추가" onclick="attachFile.add()"><br/>
+					<div id="attachFileDiv">
+					<input type="hidden" name="oldOName" value="<%=vb.getVolunteerOriginalImg()!=null?vb.getVolunteerOriginalImg():""%>"/>
+					<input type="hidden" name="oldRName" value="<%=vb.getVolunteerRenamedImg()!=null?vb.getVolunteerRenamedImg():""%>"/>
 				</td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea name="reviewContent" 
-							cols="40" rows="5" required><%=rb.getReviewContent()%>
+					<textarea name="volunteerContent" 
+							cols="40" rows="5" required><%=vb.getVolunteerContent()%>
 					</textarea>
 				</td>
 			</tr>
@@ -121,14 +107,13 @@ function boardValidate() {
 	return true;
 }
 function cancel(){
-	location.href="<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+<%=rb.getReviewNo()%>;
+	location.href="<%=request.getContextPath()%>/board/volunteer/volunteerView?volunteerNo="+<%=vb.getVolunteerNo()%>;
 }
-
 
 var cnt = 0;
 <%
-	if(rb.getReviewOriginalImg()!=null){
-		String[] renamedImgList = rb.getReviewRenamedImg().split("§");%>
+	if(vb.getVolunteerOriginalImg()!=null){
+		String[] renamedImgList = vb.getVolunteerRenamedImg().split("§");%>
 		cnt = <%=renamedImgList.length%>;
 	
 <%}
@@ -196,7 +181,7 @@ attachFile = {
             document.getElementById('attachFileDiv').removeChild(document.getElementById('dv' + idx));
         },
         prev:function(targetObj,View_area){ // 이미지 미리보기
-            var preview = document.getElementById(View_area); //div id
+            var pvolunteer = document.getElementById(View_area); //div id
             /* alert(View_area); */
            var ua = window.navigator.userAgent;
 
@@ -206,12 +191,12 @@ attachFile = {
             var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
             var prevImg = document.getElementById("prev_" + View_area);
             if (!file.type.match(imageType)){
-                preview.removeChild(prevImg);
+                pvolunteer.removeChild(prevImg);
                 continue;
                 }
              //이전에 미리보기가 있다면 삭제
             if (prevImg) {
-                preview.removeChild(prevImg);
+                pvolunteer.removeChild(prevImg);
             }
             var img = document.createElement("img"); 
             img.id = "prev_" + View_area;
@@ -219,7 +204,7 @@ attachFile = {
             img.file = file;
             img.style.width = '100px'; 
             img.style.height = '100px';
-            preview.appendChild(img);
+            pvolunteer.appendChild(img);
             if (window.FileReader) { // FireFox, Chrome, Opera 확인.
                 var reader = new FileReader();
                 reader.onloadend = (function(aImg) {
@@ -230,12 +215,12 @@ attachFile = {
                 reader.readAsDataURL(file);
             } else { // safari is not supported FileReader
                 //alert('not supported FileReader');
-                if (!document.getElementById("sfr_preview_error_"
+                if (!document.getElementById("sfr_pvolunteer_error_"
                         + View_area)) {
                     var info = document.createElement("p");
-                    info.id = "sfr_preview_error_" + View_area;
+                    info.id = "sfr_pvolunteer_error_" + View_area;
                     info.innerHTML = "not supported FileReader";
-                    preview.insertBefore(info, null);
+                    pvolunteer.insertBefore(info, null);
                 }
             }
         }

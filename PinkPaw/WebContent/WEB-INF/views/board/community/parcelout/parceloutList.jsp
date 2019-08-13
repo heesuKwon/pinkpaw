@@ -36,7 +36,7 @@ function goBoardForm(){
 <td>
 <% for(ParceloutBoard p : list){ %>
 	<div class="card" style="width: 18rem; height: 310px; display: inline-block; padding:20px, 20px;">
-	<a style="text-decoration: none; color: gray" href="<%=request.getContextPath()%>/board/community/parcelout/parceloutView?parceloutNo=<%=p.getParceloutNo()%>"></a>
+	<a style="text-decoration: none; color: gray" href="<%=request.getContextPath()%>/board/community/parcelout/parceloutView?parceloutNo=<%=p.getParceloutNo()%>">
  	 <% if(p.getParceloutOriginalImg() != null){
 				String[] renamedImgList = p.getParceloutRenamedImg().split("§");%>
 		<img class="d-block w-100" src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[0]%>" alt="첨부파일"  style='width:200px; height: 150px;' />	
@@ -53,6 +53,7 @@ function goBoardForm(){
     </p>
     <p style="font-size: 11px; color: gray; text-align: right;"><%=p.getParceloutEnrolldate() %></p>
   </div>
+  </a>
 </div>
 		<% } %>
 </td>
