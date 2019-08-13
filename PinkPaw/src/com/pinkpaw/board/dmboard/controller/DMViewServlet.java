@@ -34,7 +34,9 @@ public class DMViewServlet extends HttpServlet {
 		//업무로직
 		int dmNo = Integer.parseInt(request.getParameter("dmNo"));
 		System.out.println("뷰넘버"+dmNo);
+		
 		DM dm = new DMService().selectOne(dmNo);
+		
 		System.out.println("dm"+dm);
 		
 		
