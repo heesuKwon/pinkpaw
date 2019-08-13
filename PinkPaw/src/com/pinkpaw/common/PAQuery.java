@@ -51,7 +51,7 @@ public class PAQuery {
 		cal.add(Calendar.MONTH, -12);
 		String date2 = format.format(cal.getTime());
 		
-		File file = new File("test.sql");
+		File file = new File("graph.sql");
         FileWriter writer = null;
 		
 		try {
