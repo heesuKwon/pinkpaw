@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/*게시글 작성버튼*/
+#btn-add{
+	float: right;
+	margin: 0 0 15px;
+}
+/*게시판*/
+section.board-container{padding-top: 100px; width:800px; margin:0 auto; text-align:center; height: 1000px!important;}
+section.board-container h2{margin:10px 0;}
+
+/*페이지바*/
+div#pageBar{margin-top:10px; text-align:center;}
+div#pageBar span.cPage{ margin-right: 5px;}
+div#pageBar a{margin-right: 5px;}
