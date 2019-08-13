@@ -55,6 +55,16 @@
 		
 		return true;
 	}
+	
+	$(()=>{
+		
+		var close = <%=request.getParameter("close")%>;
+		if(close==true){
+			self.close();
+		}
+	})();
+
 </script>
+
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

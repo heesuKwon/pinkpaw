@@ -118,7 +118,7 @@
 			<dl>
 				<dt class="sub_menu">유기동물</dt>
 				<dd>
-					<a href="../investment/ir_info.php">유기동물 통계</a>
+					<a href="<%=request.getContextPath() %>/board/organic/graph/OrganicGraphServlet">유기동물 통계</a>
 				</dd>
 				<dd>
 					<a href="<%=request.getContextPath()%>/animal/animalNotice">유기동물 공고</a>
@@ -137,7 +137,7 @@
 			<dl>
 				<dt class="sub_menu">커뮤니티</dt>
 				<dd>
-					<a href="../pr_center/culture.php">실종동물</a>
+					<a href="<%=request.getContextPath()%>/board/missingList">실종동물</a>
 				</dd>
 				<dd>
 					<a href="../pr_center/culture.php">분양동물</a>
