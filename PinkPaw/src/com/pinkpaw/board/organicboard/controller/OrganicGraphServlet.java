@@ -15,14 +15,14 @@ import com.pinkpaw.board.organicboard.model.service.GraphService;
 /**
  * Servlet implementation class OrganicGraph
  */
-@WebServlet("/board/organic/graph/OrganicGraphServlet")
-public class OrganicGraph extends HttpServlet {
+@WebServlet("/board/organic/graph/OrganicGraph")
+public class OrganicGraphServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrganicGraph() {
+    public OrganicGraphServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

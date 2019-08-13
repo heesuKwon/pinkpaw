@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -421,8 +420,6 @@ public class FreeBoardDAO {
 		
 		return result;
 	}
-
-
 	public List<FreeBoard> selectFreeBoardListAllAll(Connection conn, int cPage, int numPerPage, String keyword) {
 		List<FreeBoard> list = new ArrayList<FreeBoard>();
 		PreparedStatement pstmt = null;

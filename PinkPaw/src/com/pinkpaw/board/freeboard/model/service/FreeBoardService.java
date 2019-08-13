@@ -156,7 +156,7 @@ public class FreeBoardService {
 		
 		return result;
 	}
-
+	
 	public List<FreeBoard> selectFreeBoardListAllAll(int cPage, int numPerPage, String keyword) {
 		Connection conn = getConnection();
 		List<FreeBoard> list = new FreeBoardDAO().selectFreeBoardListAllAll(conn, cPage, numPerPage, keyword);
@@ -170,6 +170,7 @@ public class FreeBoardService {
 		close(conn);
 		return list;
 	}
+
 	
 
 }

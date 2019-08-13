@@ -21,7 +21,7 @@ $(()=>{
 			
 </script>
 <section class="board-container">
-
+	
 	<div class="input-group mb-3" style="width: 600px">
 		<div class="input-group-prepend">
     		<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" name="kind" style="border-radius: 0" onchange="kindchange();">
@@ -59,7 +59,7 @@ $(()=>{
 				var num = 1;
 				$(data).each((i,b)=>{
 					num = num + 1;
-					html += "<tr>";
+					html += "<tr onclick='view(this);'>";
 					html += "<th scope='row'>"+b.reviewNo+"</th>";
 					html += "<td></td>";
 					html += "<td>"+b.reviewKind+"</td>";
@@ -98,7 +98,7 @@ $(()=>{
 				var num = 1;
 				$(data).each((i,b)=>{
 					num = num + 1;
-					html += "<tr>";
+					html += "<tr onclick='view(this);'>";
 					html += "<th scope='row'>"+b.reviewNo+"</th>";
 					html += "<td></td>";
 					html += "<td>"+b.reviewKind+"</td>";
@@ -121,6 +121,10 @@ $(()=>{
 				console.log(jqxhr, textStatus, errorThrown);
 			}
 		});
+	}
+	function view(tr) {		
+		var reviewNo = $(tr).children("th").text();
+		location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+reviewNo;
 	}
 	</script>
 
