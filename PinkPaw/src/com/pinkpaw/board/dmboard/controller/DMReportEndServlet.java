@@ -1,4 +1,4 @@
-package com.pinkpaw.board.freeboard.controller;
+package com.pinkpaw.board.dmboard.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,18 +7,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/board/community/free/freeBoardUploadImg")
-public class FreeBoardUploadImgServlet extends HttpServlet {
+/**
+ * Servlet implementation class DMReportEndServlet
+ */
+@WebServlet("/board/dm/dmReportEnd")
+public class DMReportEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    public FreeBoardUploadImgServlet() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DMReportEndServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String fileName = request.getParameter("upFile"); // 나중에 vo 이름 물어보고 변경하기
-		System.out.println(fileName);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

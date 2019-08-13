@@ -70,9 +70,9 @@ public class FreeBoardReportEndServlet extends HttpServlet {
 //			result = memberService.updatePassword(member);
 			if(result > 0){
 				msg = "신고 작성 성공";
-				String script = "self.close()";
+//				String script = "self.close()";
 //				//팝업창을 닫기위한 코드 추가
-				request.setAttribute("script",script);
+				loc = "/board/community/free/freeBoardReport?freeNo="+freeNo+"&close=true";
 			}
 //				
 //		}

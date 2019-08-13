@@ -20,8 +20,77 @@
 
 <section class="board-container">
 
-
 	<h2>실종게시판</h2>
+	
+	<div class="input-group mb-3" style="width: 600px">
+		<div class="input-group-prepend">
+    		<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" name="kind" style="border-radius: 0" onchange="kindchange();">
+				<option value="" selected hidden>동물종류</option>
+				<option value="">전체</option>
+				<option value="강아지">강아지</option>
+				<option value="고양이">고양이</option>
+				<option value="기타">기타동물</option>
+			</select>
+ 		</div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  		<div class="input-group-prepend">
+    		<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" name="key">
+				<option value="" selected hidden>키워드</option>
+				<option value="">전체</option>
+				<option value=review_title>제목</option>
+				<option value="review_writer">작성자</option>
+				<option value="review_content">내용</option>
+			</select>
+ 		 </div>
+  		<input type="text" class="form-control" aria-label="Text input with dropdown button" style="width: 200px" id="keyword">
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  		<button class="btn btn-outline-secondary" style="border-radius: 0" onclick="srch();">검색하기</button>
+	</div>
+	<script>
+	function srch() {
+		var kind = $("[name=kind]").val().trim();
+		var key = $("[name=key]").val().trim();
+		var keyword = $("#keyword").val().trim();
+		$.ajax({
+			url: "<%=request.getContextPath()%>/board/review/reviewSearch",
+			data: "kind="+kind+"&key="+key+"&keyword="+keyword,
+			type: "get",
+			success: function(data){
+				console.log(data);
+				
+				/* var html = "<tr><th scope='col'>번호</th><th scope='col'>첨부파일</th><th scope='col'>종류</th><th scope='col'>제목</th><th scope='col'>작성자</th><th scope='col'>게시일</th></tr>";
+				var num = 1;
+				$(data).each((i,b)=>{
+					num = num + 1;
+					html += "<tr onclick='view(this);'>";
+					html += "<th scope='row'>"+b.reviewNo+"</th>";
+					html += "<td></td>";
+					html += "<td>"+b.reviewKind+"</td>";
+					html += "<td>"+b.reviewTitle+"</td>";
+					html += "<td>"+b.reviewWriter+"</td>";
+					html += "<td>"+b.reviewEnrollDate+"</td>";
+					html += "</tr>"; */
+				});
+				$("#tbl-board").html(html);
+				if(num < 10){
+					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+				}
+				else{
+					$("#pageBar").html("<%=pageBar%>");
+				}
+				
+			},
+			error: function(jqxhr, textStatus, errorThrown){
+				console.log("ajax 처리 실패");
+				console.log(jqxhr, textStatus, errorThrown);
+			}
+		});
+	}
+	function view(tr) {		
+		var reviewNo = $(tr).children("th").text();
+		location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+reviewNo;
+	}
+	</script>
+	
 	<%-- 로그인한 경우 글쓰기 가능 --%>
 	<%if(memberLoggedIn!=null){ %>
 	<input type="button" value="글쓰기" id="btn-add"
@@ -33,6 +102,10 @@
 	}
 	</script>		
 	<%} %>
+	<%if(list==null || list.isEmpty()){ %>
+	<div class="card" id="layout">게시글이없습니다.</div>
+	<%} else{ %>
+	
 			<% for(MissingBoard b : list){ %>
 	<a href="<%=request.getContextPath()%>/board/missingView?missingNo=<%=b.getMissingNo() %>">
 	<div class="card" id="layout">
@@ -56,7 +129,8 @@
 	</div>
 	</a>
 				
-	<%} %>
+		<%}
+	}%>
 	<style>
 #layout {
 	display: inline-block;

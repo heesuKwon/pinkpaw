@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* Basic Style  */
+html, body { height:100%; -webkit-text-size-adjust:none; }
+body, input, select, button, textarea, h1, h2, h3, h4, h5, h6, table { font:normal 14px/1.5em "Malgun Gothic", "맑은 고딕", Dotum, AppleGothic, Helvetica,Sans-serif; color:#666; }
+
+html, body, div, form, input, button, textarea, legend, fieldset, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, blockquote, address, p, th, td, caption { margin:0; padding:0; }
+ol, ul, li { list-style:none; }
+img, fieldset { border:0 none; }
+input, select, textarea { vertical-align:middle; resize:none; position:relative; }
+input, textarea { -webkit-appearance:none; -webkit-border-radius:0; }
+input[type="checkbox"] { -webkit-appearance:checkbox; }
+input[type="radio"] { -webkit-appearance:radio; -webkit-border-radius:10px; }
+button { border:0 none; background:transparent; cursor:pointer; }
+hr { display:none; }
+legend, .hide { width:0; height:0; visibility:hidden; font-size:0; line-height:0; position:absolute; top:0; left:0; overflow:hidden; }
+table caption { width:0; height:0; visibility:hidden; text-indent:-9999px; font-size:0; line-height:0; }
+table { border-collapse:collapse; border-spacing:0; }
+header, footer, section, article, aside, nav, hgroup, details, menu, figure, figcaption { display:block; }
+
+/* Sub */
+.sub {padding:18px; text-align:center; margin:0 auto; min-height:340px;}
+.sub h2 {background:url('../img/bullet.png') no-repeat; width:3px; height:14px; margin-bottom:20px}
+.sub .tit1 {width:100px; height:14px; padding-left:10px}
+.sub .tit2 {width:76px; height:14px; padding-left:10px}
+.sub .tit3 {width:103px; height:14px; padding-left:10px}
+.sub .tit4 {width:103px; height:14px; padding-left:10px}
+.sub .tit5 {width:128px; height:14px; padding-left:10px}
+.sub .tit6 {width:149px; height:14px; padding-left:10px}
+.sub .tit7 {width:138px; height:14px; padding-left:10px}
+.sub .tit8 {width:153px; height:14px; padding-left:10px}
+.p_srh {width:290px; height:113px; }
+.p_date {width:260px; height:109px; }
+.txt1 {color:#cc3300; text-align:left; margin-bottom:10px}
+.txt_ge {color:#333333; text-align:left; margin-bottom:10px}
+.txt_end {color:#333333; text-align:right; margin-bottom:10px}
+
+.roundbox {margin:20px 0; background-color:#ffffff; border:2px solid #da7f84; width:100%; overflow: hidden; -webkit-border-radius: 8px;}
+.roundbox table {width:100%; border:none;}
+.roundbox table th {background-color:#eee; border-right:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5; padding:5px 10px; }
+.roundbox table td {border-bottom:1px solid #e5e5e5; padding:5px 10px;}
+.roundbox table th.last {border-bottom:none}
+.roundbox table td.last {border-bottom:none}
+.ani_photo {text-align:center; margin:0 auto; padding:5px; background-color:#ffffff; border:1px solid #da7f84; line-height:0}
+.map {text-align:center; margin:0 auto; background-color:#ffffff; border:1px solid #b4d584; line-height:0}
+.photoimg {width:280px; height:210px}
+.btncenter img{ width:92px; height:29px} /* 20130706 */
+
+.gonggo_area {clear:both; position:relative}
+.gonggo_photo {text-align:center; margin:0 auto; background-color:#ffffff; border:1px solid #b4d584; line-height:0; float:left;}
+.gonggo_photo img{ width:75px; height:61px; margin:3px}
+.btn_view{position:absolute; top:78px; left:10px; width:65px; height:20px}
+.btn_view img{ width:65px; height:20px}
+
+.list_table01 { margin:0 20px; background-color:none; border:none; width:100%; font:normal 12px/1.2em "Malgun Gothic", "맑은 고딕", Dotum, AppleGothic, Helvetica,Sans-serif; }
+.list_table01 th{ border:none}
+.list_table01 td{ border:none; padding:1px; text-align:left;}
+.list_table01 img { width:53px; height:14px; } 
+.ani_cnt{ float:left;margin-bottom:20px}
+
+.comp_list {text-align:left; background-color:#ffffff; border:2px solid #b4d584; width:100%; margin:15px 0; overflow: hidden; -webkit-border-radius: 8px;}
+.comp_list ul { }
+.comp_list li { padding:7px 5px; }
+.comp_list li :first-child { margin-top:0; }
+.comp_list li .last {border-bottom:none }
+.comp_list .odd {background-color:#e5f3e5; }
+.comp_list .comp_name {font-weight:bold; color:#336600}
+.comp_list .name1 {font-weight:bold; color:#333333}
+.btn_link, .btn_link a{background-image:url('../img/bg_tel.png');background-repeat:no-repeat; color:#333; display:inline-block; font:normal 12px/1.2em "Malgun Gothic", "맑은 고딕", Dotum, AppleGothic, Helvetica,Sans-serif; white-space:nowrap;}
+.btn_link a:hover{color:#3375a0;text-decoration:none!important;}
+.btn_link a{height:20px; padding:3px 5px 3px 15px;}
+.btn_link{background-position:right 0}
+.btn_link a{background-position:left 0; margin-right:5px;}
+
+.paging { text-align:center; padding:3px 0 3px 0; line-height:1; clear:both }
+.paging img { margin-bottom:-2px; vertical-align:top; }
+.paging a { padding:0 2px 0 2px; color:#808080; }
+.paging a strong { color:#535353; }
+.paging .number { margin:0 1px; }
+.paging .number a { display:inline-block; width:20px; text-align:center; border-left:1px solid #ebe7e5; padding:0 0 0 0; margin-left:0; }
+.paging .number a.first { border:0 none; }
+.paging .number a:hover { font-weight:bold; color:#009900 }

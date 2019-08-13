@@ -35,6 +35,11 @@
 		});
 		
 	});
+	
+	function view(tr) {		
+		var freeNo = $(tr).children("th").text();
+		location.href = "<%=request.getContextPath()%>/board/community/free/freeView?freeNo="+freeNo;
+	}
 </script>
 
 
@@ -80,7 +85,7 @@
 				var num = 1;
 				$(data).each((i,b)=>{
 					num = num + 1;
-					html += "<tr>";
+					html += "<tr onclick='view(this);'>";
 					html += "<th scope='row'>"+b.freeNo+"</th>";
 					html += "<td></td>";
 					html += "<td>"+b.freeTitle+"</td>";
@@ -105,7 +110,7 @@
 		});
 	}
 	</script>
-
+	
 	<%-- 로그인한 경우 글쓰기 가능 --%>
 	<%-- <% if(memberLoggedIn != null) {%> --%>
 	<input type="button" value="글쓰기" id="btn-add" onclick="goFreeWrite();" />
