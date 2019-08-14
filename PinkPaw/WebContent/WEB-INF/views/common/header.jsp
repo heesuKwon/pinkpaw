@@ -6,7 +6,7 @@
 	/* Member memberLoggedIn
 		= (Member)session.getAttribute("memberLoggedIn"); */
 	Member memberLoggedIn = new Member();
-	memberLoggedIn.setMemberId("admin");
+	
 	System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 	
 	//쿠키관련 처리

@@ -4,19 +4,22 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%
 	List<Member> list = (List<Member>)request.getAttribute("list");
+	
+	String searchType = request.getParameter("searchType");
+	String searchKeyword = request.getParameter("searchKeyword");
+
 	String pageBar = (String)request.getAttribute("pageBar");
-	int numPerPage = (int)request.getAttribute("numPerPage");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
 <style>
 div#search-container{
 	margin: 0 0 10px;
 	padding: 3px;
-	/*background-color: rgba(0,188,212,0.3);*/
+	background-color: rgba(0,188,212,0.3)
 }
-div#search-memberId{display: inline-block;}
-div#search-memberName{display: none;}
-div#search-gender{display: none;
+div#search-memberId{display: <%="memberId".equals(searchType)?"inline-block":"none"%>;}
+div#search-memberName{display: <%="memberName".equals(searchType)?"inline-block":"none"%>;}
+div#search-gender{display: <%="gender".equals(searchType)?"inline-block":"none"%>;}
 </style>
 <script>
 $(()=>{
@@ -27,13 +30,9 @@ $(()=>{
 		$("#search-"+type).css('display','inline-block');
 		
 	});
-	
-	$("#numPerPage").on("change",()=>{
-		$("#numPerPageFrm").submit();
-	});
-	
 });
 </script>
+
 <br />
 <br />
 <br />
@@ -44,56 +43,44 @@ $(()=>{
 <br />
 <br />
 <br />
+
 <section id="memberList-container">
 	<h2>회원관리</h2>
-	<div id="head-wrapper">
-		<div id="search-container">
-			검색타입: 
-			<select id="searchType">
-				<option value="memberId">아이디</option>
-				<option value="memberName">회원명</option>
-			</select>	
-			<div id="search-memberId" class="searchFrm">
-				<form action="<%=request.getContextPath()%>/admin/memberFinder">
-					<input type="hidden" 
-						   name="searchType" 
-						   value="memberId" />
-					<input type="search"
-						   name="searchKeyword"
-						   size="25"
-						   placeholder="검색할 아이디를 입력하세요." />
-					<input type="submit" value="검색" />
-				</form>
-			</div>
-			<div id="search-memberName" class="searchFrm">
-				<form action="<%=request.getContextPath()%>/admin/memberFinder">
-					<input type="hidden" 
-						   name="searchType" 
-						   value="memberName" />
-					<input type="search"
-						   name="searchKeyword"
-						   size="25"
-						   placeholder="검색할 회원명을 입력하세요." />
-					<input type="submit" value="검색" />
-				</form>
-			</div>
-		</div>
-		<!-- end of div#search-container -->
-		<div id="numPerPage-container">
-			페이지당 회원수:
-			<form name="numPerPageFrm"
-				  id="numPerPageFrm">
-				<select name="numPerPage" 
-						id="numPerPage">
-					<option value="20" <%=numPerPage==20?"selected":"" %>>20</option>
-					<option value="10" <%=numPerPage==10?"selected":"" %>>10</option>
-					<option value="5" <%=numPerPage==5?"selected":"" %>>5</option>
-				</select>				  
+	<div id="search-container">
+		검색타입: 
+		<select id="searchType">
+			<option value="memberId" <%="memberId".equals(searchType)?"selected":"" %>>아이디</option>
+			<option value="memberName" <%="memberName".equals(searchType)?"selected":"" %>>회원명</option>
+		</select>	
+		<div id="search-memberId" class="searchFrm">
+			<form action="<%=request.getContextPath()%>/admin/memberFinder">
+				<input type="hidden" 
+					   name="searchType" 
+					   value="memberId" />
+				<input type="search"
+					   name="searchKeyword"
+					   size="25"
+					   value="<%="memberId".equals(searchType)?searchKeyword:"" %>"
+					   placeholder="검색할 아이디를 입력하세요." />
+				<input type="submit" value="검색" />
 			</form>
 		</div>
-	</div>
-	<!-- end of div#head-wrapper -->
+		<div id="search-memberName" class="searchFrm">
+			<form action="<%=request.getContextPath()%>/admin/memberFinder">
+				<input type="hidden" 
+					   name="searchType" 
+					   value="memberName" />
+				<input type="search"
+					   name="searchKeyword"
+					   size="25"
+					   value="<%="memberName".equals(searchType)?searchKeyword:"" %>"
+					   placeholder="검색할 회원명을 입력하세요." />
+				<input type="submit" value="검색" />
+			</form>
+		</div>
 	
+	
+	</div>
 	<table id="tbl-member">
 		<thead>
 			<tr>
@@ -127,7 +114,7 @@ $(()=>{
 					<%=m.getMemberId()%>
 				    </a>
 				</td>
-                <td><%=m.getMemberName()%></td>
+                 <td><%=m.getMemberName()%></td>
                 <td><%=m.getEmail()%></td>
                 <td><%=m.getPhone()%></td>
                 <td><%=m.getAddress()%></td>
@@ -141,9 +128,12 @@ $(()=>{
 		
 		</tbody>
 	</table>
-	<div id="pageBar">
-		<%=pageBar %>
+	<div id='pageBar'>
+		<%=pageBar%>
 	</div>
 
 </section>
+
+
+
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

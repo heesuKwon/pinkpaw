@@ -1,10 +1,12 @@
 package com.pinkpaw.common;
 
 import java.io.FileReader;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class JDBCTemplate {
@@ -40,6 +42,15 @@ public class JDBCTemplate {
 			if(conn != null && !conn.isClosed())
 				conn.close();
 		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void close(Statement stmt) {
+		try {
+			if(stmt!=null & !stmt.isClosed())
+				stmt.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
