@@ -420,6 +420,7 @@ public class FreeBoardDAO {
 		
 		return result;
 	}
+	
 	public List<FreeBoard> selectFreeBoardListAllAll(Connection conn, int cPage, int numPerPage, String keyword) {
 		List<FreeBoard> list = new ArrayList<FreeBoard>();
 		PreparedStatement pstmt = null;

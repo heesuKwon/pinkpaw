@@ -106,6 +106,16 @@ $(()=>{
 	});
 	
 });
+
+	/*신고하기 부분  */
+	function goReviewViewReportOpen(){
+		
+		var url = "<%=request.getContextPath()%>/board/review/reviewBoardReport?reviewNo=<%=reviewBoard.getReviewNo()%>";
+		var target = "new";
+		var option = "top=200, left=450, width=450, height=300";
+		
+		window.open(url,target,option);
+	}
 </script>
 <section class="board-container">
 	<table id="tbl-board-view">
@@ -133,6 +143,17 @@ $(()=>{
 			<th>게시일</th>
 			<td><%=reviewBoard.getReviewEnrollDate() %></td>
 		</tr>
+		
+		<tr>
+			<th>신고수</th>
+			<td><%=reviewBoard.getReviewReportCount() %></td>
+		</tr>
+
+		<tr>
+			<th>신고 사유</th>
+			<td><%=reviewBoard.getReviewReportReason() %></td>
+		</tr>
+		
 		<tr>
 			<th>첨부파일</th>
 			<td>
@@ -190,6 +211,7 @@ $(()=>{
 	</table>
 	<input type="button" value="목록으로"
 				onclick="goReviewList();" />
+	<input type="button" value="신고하기" onclick="goReviewViewReportOpen();" />
 	
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container">

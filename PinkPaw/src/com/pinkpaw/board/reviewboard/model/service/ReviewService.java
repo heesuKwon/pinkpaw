@@ -3,6 +3,7 @@ package com.pinkpaw.board.reviewboard.model.service;
 import java.sql.Connection;
 import java.util.List;
 
+import com.pinkpaw.board.freeboard.model.dao.FreeBoardDAO;
 import com.pinkpaw.board.reviewboard.model.dao.ReviewDAO;
 import com.pinkpaw.board.reviewboard.model.vo.ReviewBoard;
 
@@ -109,5 +110,23 @@ public class ReviewService {
 		close(conn);
 		return list;
 	}
+
+	//신고하기 부분
+	public int updateReviewBoardReport(ReviewBoard r) {
+		Connection conn = getConnection();
+		
+		int result = new ReviewDAO().updateReviewBoardReport(conn, r);
+		
+		if(result > 0)
+			commit(conn);
+		else 
+			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	
 
 }
