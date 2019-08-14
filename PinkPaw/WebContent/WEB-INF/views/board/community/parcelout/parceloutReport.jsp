@@ -1,8 +1,13 @@
+<%@page import="com.pinkpaw.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	int parceloutNo = Integer.parseInt(request.getParameter("parceloutNo"));
-	
+	/* Member memberLoggedIn
+	= (Member)session.getAttribute("memberLoggedIn"); */
+	Member memberLoggedIn = new Member();
+	memberLoggedIn.setMemberId("admin");
+	System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +31,7 @@
 				<tr>
 					<th>작성자</th>
 					<td>
-						<input type="text" name="reportWriter" id="reportWriter" value="admin" readonly required>
+						<input type="text" name="reportWriter" id="reportWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly required>
 					</td>
 				</tr>
 				<tr>
@@ -38,8 +43,8 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit"  value="신고" onclick="return reportValidate();"/>&nbsp;
-						<input type="button" onclick="self.close();" value="닫기" />						
+						<input type="submit"  value="신고보내기" onclick="return reportValidate();"/>&nbsp;
+						<input type="button" value="취소" onclick="self.close();"/>						
 					</td>
 				</tr>
 			</table>
@@ -59,6 +64,13 @@ function reportValidate() {
 	
 	return true;
 }
+$(()=>{
+	
+	var close = <%=request.getParameter("close")%>;
+	if(close==true){
+		self.close();
+	}
+})();
 
 
 </script>

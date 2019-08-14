@@ -69,7 +69,7 @@ table#tbl-comment tr:hover button.btn-delete{
 <script>
 function goBoardList(){
 	location.href 
-		= "<%=request.getContextPath()%>/board/community/parcelout/parceloutList";	
+		= "<%=request.getContextPath()%>/board/parcelout/parceloutList";	
 }
 
 $(()=>{
