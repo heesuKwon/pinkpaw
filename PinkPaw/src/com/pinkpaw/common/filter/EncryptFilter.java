@@ -17,9 +17,13 @@ import com.pinkpaw.common.wrapper.EncryptWrapper;
 /**
  * Servlet Filter implementation class EncrypFilter
  */
-@WebFilter(servletNames= {"MemberLoginServlet",
-						"MemberEnrollEndServlet",
-						"UpdatePasswordServlet"})
+@WebFilter(servletNames= {
+		"MemberLoginServlet",
+		"MemberEnrollEndServlet",
+		"MemberUpdatePasswordEndServlet",
+		"MemberUpdatePasswordServlet",
+		"MemberEnrollServlet"
+   })
 public class EncryptFilter implements Filter {
 
     /**
