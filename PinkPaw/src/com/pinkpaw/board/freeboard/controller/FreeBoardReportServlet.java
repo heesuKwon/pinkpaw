@@ -19,8 +19,8 @@ public class FreeBoardReportServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("여기 freeBoardReport까지는 전송된다.");		
-		request.getRequestDispatcher("/WEB-INF/views/board/community/free/freeReport.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/board/community/free/freeReport.jsp")
+				.forward(request, response);
 	}
 
 	/**

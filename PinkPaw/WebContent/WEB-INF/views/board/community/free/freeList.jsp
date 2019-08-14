@@ -90,7 +90,13 @@
 					html += "<td></td>";
 					html += "<td>"+b.freeTitle+"</td>";
 					html += "<td>"+b.freeWriter+"</td>";
-					html += "<td>"+b.freeEnrolldate+"</td>";
+					var d = b.freeEnrollDate;
+                    var d_ = d.split(" ");
+                    var yyyy = parseInt(d_[2]);
+                    var mm = parseInt(d_[0]);
+                    var dd = parseInt(d_[1]);
+                    if(mm > 9){html += "<td>"+yyyy+"-"+mm+"-"+dd+"</td>";}
+                    else{html += "<td>"+yyyy+"-0"+mm+"-"+dd+"</td>";}
 					html += "<td>"+b.freeCount+"</td>";
 					html += "</tr>";
 				});

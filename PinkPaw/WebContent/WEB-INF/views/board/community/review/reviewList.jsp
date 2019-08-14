@@ -65,7 +65,13 @@ $(()=>{
 					html += "<td>"+b.reviewKind+"</td>";
 					html += "<td>"+b.reviewTitle+"</td>";
 					html += "<td>"+b.reviewWriter+"</td>";
-					html += "<td>"+b.reviewEnrollDate+"</td>";
+					var d = b.reviewEnrollDate;
+                    var d_ = d.split(" ");
+                    var yyyy = parseInt(d_[2]);
+                    var mm = parseInt(d_[0]);
+                    var dd = parseInt(d_[1]);
+                    if(mm > 9){html += "<td>"+yyyy+"-"+mm+"-"+dd+"</td>";}
+                    else{html += "<td>"+yyyy+"-0"+mm+"-"+dd+"</td>";}
 					html += "</tr>";
 				});
 				$("#tbl-board").html(html);
@@ -104,7 +110,13 @@ $(()=>{
 					html += "<td>"+b.reviewKind+"</td>";
 					html += "<td>"+b.reviewTitle+"</td>";
 					html += "<td>"+b.reviewWriter+"</td>";
-					html += "<td>"+b.reviewEnrollDate+"</td>";
+					var d = b.reviewEnrollDate;
+                    var d_ = d.split(" ");
+                    var yyyy = parseInt(d_[2]);
+                    var mm = parseInt(d_[0]);
+                    var dd = parseInt(d_[1]);
+                    if(mm > 9){html += "<td>"+yyyy+"-"+mm+"-"+dd+"</td>";}
+                    else{html += "<td>"+yyyy+"-0"+mm+"-"+dd+"</td>";}
 					html += "</tr>";
 				});
 				$("#tbl-board").html(html);
