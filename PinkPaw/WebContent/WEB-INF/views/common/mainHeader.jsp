@@ -7,6 +7,12 @@ Member memberLoggedIn
 	= (Member)session.getAttribute("memberLoggedIn");
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 
+
+int recvCount = 0;
+if(session.getAttribute("recvCount")!=null){
+		recvCount = (int)session.getAttribute("recvCount");
+}
+System.out.println("recvCount@header="+recvCount);
 //쿠키관련 처리
 Cookie[] cookies = request.getCookies();
 boolean saveId = false;
@@ -198,8 +204,8 @@ function validate(){
 						<td>
 							<input type="button" 
 								   value="쪽지" 
-								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmView"/>
-							
+								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
+								<%=recvCount %>
 							<%if(memberLoggedIn != null && "admin".equals(memberLoggedIn.getMemberId())){ %>
 							<input type="button" 
 								   value="신고쪽지" 
