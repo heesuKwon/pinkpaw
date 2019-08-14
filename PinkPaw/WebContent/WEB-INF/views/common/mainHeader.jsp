@@ -155,10 +155,7 @@ function validate(){
 									   tabindex="1" 
 									   value="<%=saveId?memberId:""%>"/>
 							</td>
-							<td>
-								<input type="submit" value="로그인"
-									   tabindex="3" />
-							</td>
+							
 						</tr>
 						<tr>
 							<td>
@@ -177,12 +174,25 @@ function validate(){
 									   id="saveId" 
 									   <%=saveId?"checked":""%>/>
 								<label for="saveId">아이디저장</label>
-								<input type="button" 
-									   value="회원가입"
-									   onclick="register();" />
+								
 																
 							</td>
 						</tr>
+						<tr>
+						
+						<td><input type="button" 
+									   value="회원가입"
+									   onclick="register();" />
+					   </td>
+					   
+					   <td>
+								<input type="submit" value="로그인"
+									   tabindex="3" />
+							</td>
+					   
+						
+						</tr>
+						
 					</table>
 				</form>	
 			<% } 
