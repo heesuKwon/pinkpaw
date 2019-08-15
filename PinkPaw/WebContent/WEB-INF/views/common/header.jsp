@@ -6,13 +6,18 @@
 Member memberLoggedIn
 	= (Member)session.getAttribute("memberLoggedIn");
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
-memberLoggedIn = new Member();
+/* memberLoggedIn = new Member();
 memberLoggedIn.setMemberId("admin");
+<<<<<<< HEAD
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 int recvCount = 0;
 if(session.getAttribute("recvCount")!=null){
 		recvCount = (int)session.getAttribute("recvCount");
 }
+=======
+System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn); */
+
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 //쿠키관련 처리
 Cookie[] cookies = request.getCookies();
 boolean saveId = false;
@@ -309,7 +314,7 @@ function validate(){
 					<a href="<%=request.getContextPath()%>/board/missingList">실종동물</a>
 				</dd>
 				<dd>
-					<a href="../pr_center/culture.php">분양동물</a>
+					<a href="<%=request.getContextPath()%>/board/parcelout/parceloutList">분양동물</a>
 				</dd>
 				<dd>
 					<a href="<%=request.getContextPath()%>/board/review/reviewList">후기</a>

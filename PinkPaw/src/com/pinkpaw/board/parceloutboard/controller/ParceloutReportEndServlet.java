@@ -39,13 +39,14 @@ public class ParceloutReportEndServlet extends HttpServlet {
 		int parceloutNo = Integer.parseInt(request.getParameter("parceloutNo"));
 		String reportWriter = request.getParameter("reportWriter");
 		String parceloutReportContent = request.getParameter("parceloutReportContent");
-		parceloutReportContent = parceloutReportContent.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+		String otherReason = request.getParameter("parceloutOtherReason");
+		otherReason = otherReason.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 				
 		ParceloutBoard parceloutBoard = new ParceloutService().selectOne(parceloutNo);
 		
 		// 신고 사례가 없는 경우
 		if(parceloutBoard.getParceloutReportReason() == null) {
-			newReport = parceloutReportContent;
+			newReport = parceloutReportContent + otherReason;
 			parceloutBoard.setParceloutReportReason(newReport);
 			
 			result = new ParceloutService().updateReport(parceloutBoard);
@@ -53,7 +54,7 @@ public class ParceloutReportEndServlet extends HttpServlet {
 		// 기존에 신고로 신고 사유가 존재하는 경우
 		else if(parceloutBoard.getParceloutReportReason().length() > 0) {
 			origin = parceloutBoard.getParceloutReportReason();
-			newReport = ", " + parceloutReportContent;
+			newReport = ", " + parceloutReportContent + otherReason;
 			
 			ParceloutBoard p = new ParceloutBoard();
 			p = new ParceloutService().selectOne(parceloutNo);

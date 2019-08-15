@@ -32,13 +32,14 @@ public class ReviewBoardReportEndServlet extends HttpServlet {
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		String reportWriter = request.getParameter("reportWriter");
 		String reviewReportContent = request.getParameter("reviewReportContent");
-		reviewReportContent = reviewReportContent.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+		String otherReason = request.getParameter("reviewOtherReason");
+		otherReason = otherReason.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 		
 		ReviewBoard reviewBoard = new ReviewService().selectOne(reviewNo);
 
 		// 신고 사례가 없는 경우
 		if(reviewBoard.getReviewReportReason() == null) {
-			newReport = reviewReportContent;
+			newReport = reviewReportContent + otherReason;
 			reviewBoard.setReviewReportReason(newReport);
 			
 			result = new ReviewService().updateReviewBoardReport(reviewBoard);
@@ -46,7 +47,7 @@ public class ReviewBoardReportEndServlet extends HttpServlet {
 		// 기존에 신고로 신고 사유가 존재하는 경우
 		else if(reviewBoard.getReviewReportReason().length() > 0) {
 			origin = reviewBoard.getReviewReportReason();
-			newReport = ", " + reviewReportContent;
+			newReport = ", " + reviewReportContent + otherReason;
 			
 			ReviewBoard r = new ReviewBoard();
 			r = new  ReviewService().selectOne(reviewNo);
