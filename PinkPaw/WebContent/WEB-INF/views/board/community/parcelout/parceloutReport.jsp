@@ -25,10 +25,6 @@
 		<form name="reportFrm" action="<%=request.getContextPath()%>/board/parceloutBoard/parceloutReport" method="post" >
 			<table>
 				<tr>
-					<th>신고 사유</th>
-					<td><input type="text" name="reportTitle" id="reportTitle" required></td>
-				</tr>
-				<tr>
 					<th>작성자</th>
 					<td>
 						<input type="text" name="reportWriter" id="reportWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly required>
@@ -37,8 +33,15 @@
 				<tr>
 					<th>신고 내용</th>
 					<td>	
-						<textarea name="reportContent" cols="40" rows="5"
-						placeholder="내용을 입력해주세요."></textarea>
+						<!-- <textarea name="reportContent" cols="40" rows="5"
+						placeholder="내용을 입력해주세요."></textarea> -->
+						<select name="parceloutReportContent">
+							<option value="">신고 사유 선택</option>
+							<option value="광고글">광고글</option>
+							<option value="언어폭력(욕설,비방,명예훼손 등)">언어폭력(욕설,비방,명예훼손 등)</option>
+							<option value="부적절한 이미지">부적절한 이미지</option>
+							<option value="부적절한 내용">부적절한 내용</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -54,10 +57,10 @@
 </section>
 <script>
 function reportValidate() {
-	var content = $("[name=reportContent]").val();
+	var content = $("[name=parceloutReportContent]").val();
 	//좌우 공백을 제거하고 길이가 0이면(내용이 비어 있는 경우)
 	if(content.trim().length == 0){
-		alert("내용을 입력하세요.");
+		alert("신고 사유를 선택하세요.");
 		return false;
 	}
 

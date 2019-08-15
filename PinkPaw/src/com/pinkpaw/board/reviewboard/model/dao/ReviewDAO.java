@@ -484,4 +484,29 @@ public class ReviewDAO {
 		return list;
 	}
 
+
+	// 신고하기 부분
+	public int updateReviewBoardReport(Connection conn, ReviewBoard r) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("updateReviewBoardReport"); 
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+
+			pstmt.setString(1, r.getReviewReportReason());
+			pstmt.setInt(2, r.getReviewNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

@@ -4,7 +4,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@page import=" com.pinkpaw.board.freeboard.model.vo.FreeBoard"%>
 <%@page import="java.util.List"%>
-<%--헤더는 나중에 우리 이미지로 수정하기 <%@ include file="/WEB-INF/views/common/header.jsp"%> --%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/board.css" />
 
@@ -118,13 +117,12 @@
 	</script>
 	
 	<%-- 로그인한 경우 글쓰기 가능 --%>
-	<%-- <% if(memberLoggedIn != null) {%> --%>
+	<% if(memberLoggedIn != null) {%>
 	<input type="button" value="글쓰기" id="btn-add" onclick="goFreeWrite();" />
 
-	<%-- <% } %> --%>
+	<% } %>
 
 	<table id="tbl-board" class="table table-hover">
-		<!-- <thead> -->
 			<tr>
 				<th scope="col">No</th>
 				<th scope="col">사진</th>
@@ -133,9 +131,7 @@
 				<th scope="col">등록일</th>
 				<th scope="col">조회수</th>
 			</tr>
-		<!-- </thead> -->
-
-		<!-- <tbody> -->
+	
 			<%if(list==null || list.isEmpty()) { %>
 			<tr>
 				<td colspan="6" align="center">조회 결과가 없습니다.</td>
@@ -160,7 +156,7 @@
 				<td><%=f.getFreeCount() %></td>
 			</tr>
 			<%}} %>
-		<!-- </tbody> -->
+
 	</table>
 
 	<div id="pageBar">

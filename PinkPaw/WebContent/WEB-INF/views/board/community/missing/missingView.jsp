@@ -112,17 +112,16 @@ $(()=>{
 });
 
 </script>	  
+<style>
+#board-container{
+	height:1000px;
+	width:1000px;
+	margin-top: 50px;
+}
+
+</style>
 <section id="board-container">
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 	<h2>실종게시판 상세보기</h2>
 			<p>
 			글번호:<%=b.getMissingNo() %> <br />
@@ -157,8 +156,8 @@ $(()=>{
 					   onclick="updateBoard();" />
 				<input type="button" value="삭제" 
 					   onclick="deleteBoard();" />
-				<input type="button" value="신고" 
-					   onclick="reportBoard();"	 />
+				<input type="button" value="신고하기" 
+					   onclick="goMissingViewReportOpen();"	 />
 				<input type="button" value="목록으로"
 				onclick="goMissingList();" />
 					   
@@ -173,7 +172,7 @@ $(()=>{
 				   value="<%=b.getMissingRenamedImg()!=null?
 						   		b.getMissingRenamedImg():""%>"/>      
 		</form>
-		<script>
+	<script>
 		function updateBoard(){
 			location.href = "<%=request.getContextPath()%>/board/missingUpdateForm?missingNo=<%=b.getMissingNo()%>"
 		}
@@ -187,7 +186,7 @@ $(()=>{
 		function goMissingList(){
 			location.href = "<%=request.getContextPath()%>/board/missingList";
 		}
-		</script>
+	</script>
 			
 		<%} %>
 	
@@ -272,18 +271,17 @@ $(()=>{
 	</div>
 </section> 
 
+<!-- 신고하기 부분 -->
 <script>
-//신고하기
-function reportBoard(){
-	var url = "<%=request.getContextPath()%>/board/missing/missingReport?missingNo=<%=b.getMissingNo()%>";
-    var title = "reportBoard";
-    var status =  "left=500px, top=200px, width=400px, height=500px";
-    
-	var popup = window.open(url,title,status);
+function goMissingViewReportOpen(){
 	
+	var url = "<%=request.getContextPath()%>/board/missing/missingReport?missingNo=<%=b.getMissingNo()%>";
+    var target = "new";
+    var option = "top=200, left=450, width=450, height=300";
+   /*  var status =  "left=500px, top=200px, width=400px, height=500px"; */
+    
+    window.open(url,target,option);
 }
-
-
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
