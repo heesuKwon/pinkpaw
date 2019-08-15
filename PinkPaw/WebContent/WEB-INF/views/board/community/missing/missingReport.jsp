@@ -36,13 +36,30 @@
 					<td>	
 						<!-- <textarea name="reportContent" cols="40" rows="5"
 						placeholder="내용을 입력해주세요."></textarea> -->
-						<select name="missingReportContent">
+						<select name="missingReportContent" id="missingReportContent" onchange="change()">
 							<option value="">신고 사유 선택</option>
 							<option value="광고글">광고글</option>
 							<option value="언어폭력(욕설,비방,명예훼손 등)">언어폭력(욕설,비방,명예훼손 등)</option>
 							<option value="부적절한 이미지">부적절한 이미지</option>
 							<option value="부적절한 내용">부적절한 내용</option>
+							<option value="기타">기타(직접 입력)</option>
 						</select>
+						<div id="missingOtherReason">
+							<textarea name="missingOtherReason" cols="40" rows="5" placeholder="내용을 입력해주세요." ></textarea>
+						</div>				
+						<script>
+							$("#missingOtherReason").hide();
+							function change() {
+								var state = $('#missingReportContent option:selected').val();
+								
+								if(state == "기타"){
+									$("#missingOtherReason").show();									
+								}
+								else{
+									$("#missingOtherReason").hide();							
+								}
+							}
+						</script>	
 					</td>
 				</tr>
 				<tr>

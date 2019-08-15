@@ -35,13 +35,14 @@ public class BoardReportEndServlet extends HttpServlet {
 		int missingNo = Integer.parseInt(request.getParameter("missingNo"));
 		String reportWriter = request.getParameter("reportWriter");
 		String missingContent = request.getParameter("missingReportContent");
-		missingContent = missingContent.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+		String otherReason = request.getParameter("missingOtherReason");
+		otherReason = otherReason.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 		
 		MissingBoard missingBoard = new MissingService().selectOne(missingNo);
 		
 		//신고 사례가 없는 경우
 		if(missingBoard.getMissingReportReason() == null) {
-			newReport = missingContent;
+			newReport = missingContent + otherReason;
 			missingBoard.setMissingReportReason(newReport);
 			
 			result = new MissingService().updateReport(missingBoard);
@@ -49,7 +50,7 @@ public class BoardReportEndServlet extends HttpServlet {
 		// 기존에 신고로 신고 사유가 존재하는 경우
 		else if(missingBoard.getMissingReportReason().length() > 0) {
 			origin = missingBoard.getMissingReportReason();
-			newReport = ", " + missingContent;
+			newReport = ", " + missingContent + otherReason;
 			
 			MissingBoard m = new MissingBoard();
 			m = new MissingService().selectOne(missingNo);
