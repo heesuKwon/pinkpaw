@@ -6,9 +6,9 @@
 Member memberLoggedIn
 	= (Member)session.getAttribute("memberLoggedIn");
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
-memberLoggedIn = new Member();
+/* memberLoggedIn = new Member();
 memberLoggedIn.setMemberId("admin");
-System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
+System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn); */
 
 //쿠키관련 처리
 Cookie[] cookies = request.getCookies();
@@ -263,7 +263,7 @@ function validate(){
 					<a href="<%=request.getContextPath()%>/board/missingList">실종동물</a>
 				</dd>
 				<dd>
-					<a href="../pr_center/culture.php">분양동물</a>
+					<a href="<%=request.getContextPath()%>/board/parcelout/parceloutList">분양동물</a>
 				</dd>
 				<dd>
 					<a href="<%=request.getContextPath()%>/board/review/reviewList">후기</a>
