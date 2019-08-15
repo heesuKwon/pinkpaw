@@ -1,7 +1,7 @@
+
 package com.pinkpaw.board.dmboard.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +12,16 @@ import com.pinkpaw.board.dmboard.model.service.DMService;
 import com.pinkpaw.board.dmboard.model.vo.DM;
 
 /**
- * Servlet implementation class DMViewServlet
+ * Servlet implementation class DMDeleteServlet
  */
-@WebServlet("/board/dm/DMView")
-public class DMViewServlet extends HttpServlet {
+@WebServlet("/board/dm/dmSendDelete")
+public class DMSendDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DMViewServlet() {
+    public DMSendDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,32 +30,39 @@ public class DMViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//업무로직
 		int dmNo = Integer.parseInt(request.getParameter("dmNo"));
-		int read = 0;
-		try {
-			
-			read = Integer.parseInt(request.getParameter("dmRead"));
-		}catch (NumberFormatException e) {
-			e.printStackTrace();
-		}catch (NullPointerException e) {
-			
-		}
+		System.out.println("Servelet"+dmNo);
+		
+		int result = 0;
 		System.out.println("뷰넘버"+dmNo);
+			System.out.println("result: "+result);
+			
 		
-		DM dm = new DMService().selectOne(dmNo, read);
-		
-		System.out.println("dm"+dm);
-		//System.out.println("읽었음?:"+dm.getDmRecvRead());
-		
-		
+//		
+		String sender = (String)request.getParameter("dmSender");
+		if(sender.length() != 0) 
+			result = new DMService().deleteSender(dmNo);
 		
 		
+		//3.view단 처리
+				String view = "/WEB-INF/views/common/msg.jsp";
+				String msg = "";
+				String loc = "/board/dm/DMView?dmNo="+dmNo+"&dmRead=1";
+				String close = "";
+				if(result > 0) {
+					msg = "쪽지 삭제 성공!";
+					close= "true";
+				}
+				else {
+					msg = "쪽지 삭제 실패!";	
+					loc = "/board/dm/DMView?dmNo="+dmNo+"&dmRead=1";
+				
+				}
+				request.setAttribute("msg", msg);
+				request.setAttribute("loc", loc);
+				request.setAttribute("close", close);
+				request.getRequestDispatcher(view).forward(request, response);
 		
-		request.setAttribute("dm", dm);
-		request.getRequestDispatcher("/WEB-INF/views/board/dm/DMView.jsp")
-		   .forward(request, response);
 	}
 
 	/**

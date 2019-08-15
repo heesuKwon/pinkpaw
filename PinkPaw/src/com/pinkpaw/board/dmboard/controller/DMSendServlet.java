@@ -16,14 +16,14 @@ import com.pinkpaw.board.dmboard.model.vo.DM;
 /**
  * Servlet implementation class DMListServlet
  */
-@WebServlet("/board/dm/dmList")
-public class DMReciveServlet extends HttpServlet {
+@WebServlet("/board/dm/dmSendList")
+public class DMSendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DMReciveServlet() {
+    public DMSendServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +36,7 @@ public class DMReciveServlet extends HttpServlet {
 		//1.파라미터 인코딩
 				final int numPerPage = 10;
 				
-				String memberId = "admin";
+				String memberId = request.getParameter("memberId");
 				int cPage = 1;
 				try {
 					cPage = Integer.parseInt(request.getParameter("cPage"));
@@ -45,11 +45,11 @@ public class DMReciveServlet extends HttpServlet {
 				}
 				//2.업무로직
 				//2.1컨텐츠 영역
-				List<DM> list = new DMService().selectReceiveList(memberId,cPage, numPerPage);
+				List<DM> list = new DMService().selectSentList(memberId,cPage, numPerPage);
 				System.out.println("list@reviewListServlet="+list);
 				
 				//2.2페이지바 영역
-				int totalContents = new DMService().ReceiveTotalContents(memberId);
+				int totalContents = new DMService().SendTotalContents(memberId);
 				System.out.println("totalContents@dmListServlet="+totalContents);
 				
 				int totalPage = (int)Math.ceil((double)totalContents/numPerPage);
@@ -98,7 +98,7 @@ public class DMReciveServlet extends HttpServlet {
 				request.setAttribute("cPage", cPage);
 				request.setAttribute("numPerPage", numPerPage);
 		
-		request.getRequestDispatcher("/WEB-INF/views/board/dm/sendDMList.jsp")
+		request.getRequestDispatcher("/WEB-INF/views/board/dm/receiveDMList.jsp")
 			   .forward(request, response);
 	}
 

@@ -10,7 +10,7 @@
 	DM dm = (DM)request.getAttribute("dm");
 
 %>
-
+<!-- 수신함일때  -->
 </head>
 <body>
 	<table>
@@ -42,10 +42,25 @@
 	
 	</table>
 <script>
+$(()=>{
+var close = <%=request.getParameter("close")%>;
+if(close==true){
+	self.close();
+}
+	
+});
+
+
 function dmReport(){
 	
 	
 	location.href = "<%=request.getContextPath()%>/board/dm/dmReport?dmNo=<%=dm.getDmNo()%>"; 
+}
+function dmDelete(){
+	if(!confirm("정말 삭제하시겠습니까?")){
+		return;
+	}		
+	location.href = "<%=request.getContextPath()%>/board/dm/dmDelete?dmNo=<%=dm.getDmNo()%>&dmReceive=<%=dm.getDmRecive()%>"; 
 }
 
 </script>

@@ -18,10 +18,8 @@ $(()=>{
 	//테이블의 열을 클릭시 해당 게시물로 이동
 	$("td").click((e)=>{		
 		var dmNo = $(e.target).parents("tr").children("td").children("input[name=dmNo]").val();
-		console.log(dmNo);
-		var dmRead = $(e.target).parents("tr").children("td").children("input[name=dmRead]").val();
-		console.log(dmRead);
-		var url = "<%=request.getContextPath()%>/board/dm/DMView?dmNo="+dmNo+"&dmRead="+dmRead;
+		console.log("넘버"+dmNo);
+		var url = "<%=request.getContextPath()%>/board/dm/DMSendView?dmNo="+dmNo;
 		
 	    var title = "DMWrite";
 	    var status =  "left=500px, top=200px, width=400px, height=500px";
@@ -60,7 +58,7 @@ $(()=>{
 	
 	<table id="tbl-board" class="table table-hover">
 		<tr>
-			<th scope="col">보낸사람</th>
+			<th scope="col">받는사람</th>
 			<th scope="col">쪽지제목</th>
 			<th scope="col">읽음여부</th>
 			<th scope="col">날짜</th>
@@ -76,7 +74,7 @@ $(()=>{
 		<tr>
 			
 			<td scope="row">
-			<%=d.getDmSend() %>
+			<%=d.getDmRecive() %>
 			<input type="hidden" name="dmNo" value="<%=d.getDmNo() %>" />			
 			<input type="hidden" name="dmRead" value="<%=d.getDmRecvRead() %>" />			
 			</td>

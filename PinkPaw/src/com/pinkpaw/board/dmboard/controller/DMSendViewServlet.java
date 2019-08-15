@@ -14,14 +14,14 @@ import com.pinkpaw.board.dmboard.model.vo.DM;
 /**
  * Servlet implementation class DMViewServlet
  */
-@WebServlet("/board/dm/DMView")
-public class DMViewServlet extends HttpServlet {
+@WebServlet("/board/dm/DMSendView")
+public class DMSendViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DMViewServlet() {
+    public DMSendViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +33,7 @@ public class DMViewServlet extends HttpServlet {
 		
 		//업무로직
 		int dmNo = Integer.parseInt(request.getParameter("dmNo"));
-		int read = 0;
-		try {
-			
-			read = Integer.parseInt(request.getParameter("dmRead"));
-		}catch (NumberFormatException e) {
-			e.printStackTrace();
-		}catch (NullPointerException e) {
-			
-		}
+		int read = 1;
 		System.out.println("뷰넘버"+dmNo);
 		
 		DM dm = new DMService().selectOne(dmNo, read);
