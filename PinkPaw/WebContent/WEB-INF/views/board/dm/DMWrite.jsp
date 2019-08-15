@@ -13,13 +13,63 @@ String memberId = (String)request.getAttribute("memberId");
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
+
+<script>
+function validate(){
+	var content = $("[name=dmContent]").val();
+	var title = $("[name=dmTitle]").val();
+	var dmWriter = $("[name=dmWriter]").val();
+	var dmSender = $("[name=dmSender]").val();
+	if(content.trim().length == 0 || title.trim().length == 0){
+		alert("제목과 내용을 입력하세요.");
+		return false;
+	}
+	
+	var dm = {
+			type: "dm",
+			msg: content,
+			sender: dmWriter,
+			title: title,
+			/* receiver: $("#dm-client option:selected").val(), */
+			receiver: dmSender
+		}
+
+		var param = {
+				dm: JSON.stringify(dm)
+		}
+		
+		$.ajax({
+			url:"<%=request.getContextPath()%>/DMWriteEnd",
+			data: param,
+			dataType: "json",
+			success: data => {
+				var html = "";
+				
+				if(data == false){
+					alert("해당회원 아이디가 없습니다.");
+				}
+				else{
+					alert("메세지를 보냈습니다.")
+							self.close();
+				}
+			
+			}, 
+			error: (jqxhr, textStatus, err)=>{
+				console.log("ajax처리실패!");
+				console.log(jqxhr, textStatus, err);
+			}
+			
+		});
+	return true;
+}
+
+</script>
+
 </head>
 <body>
 	<div id="reportMissing-container">
-		<form name="dmWriteFrm"
-			action="<%=request.getContextPath()%>/dmWriteEnd"
-			method="post">
+		
 			<table>
 				<tr>
 					<th>보낼 사람</th>
@@ -33,7 +83,7 @@ String memberId = (String)request.getAttribute("memberId");
 				<tr>
 					<th>쪽지 제목 </th>
 					<td><input type="text" name="dmTitle" id="dmTitle"
-						value="" readonly required>
+						value=""  required>
 					</td>
 				</tr>
 				<tr>
@@ -42,12 +92,12 @@ String memberId = (String)request.getAttribute("memberId");
 							placeholder="내용을 입력해주세요."></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="보내기"
-						onclick="return reportValidate();" />&nbsp; <input type="button"
+					<td colspan="2"><input type="button" value="보내기"
+						onclick="return validate();" />&nbsp; <input type="button"
 						onclick="self.close();" value="닫기" /></td>
 				</tr>
 			</table>
-		</form>
+		
 	</div>
 	<script>
 function reportValidate() {
@@ -62,13 +112,7 @@ function reportValidate() {
 	return true;
 }
 
-$(()=>{
-	
-	var close = <%=request.getParameter("close")%>;
-	if(close==true){
-		self.close();
-	}
-})();
+
 
 </script>
 

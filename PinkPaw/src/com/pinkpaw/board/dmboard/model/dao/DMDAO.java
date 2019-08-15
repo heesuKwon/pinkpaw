@@ -365,4 +365,52 @@ public class DMDAO {
 
 		return result;
 	}
+
+	public int insertDM(Connection conn, DM dm) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("insertDM");
+		int result = 0;
+		System.out.println("DAO"+dm);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dm.getDmSend());
+			pstmt.setString(2, dm.getDmRecive());
+			pstmt.setString(3, dm.getDmTitle());
+			pstmt.setString(4, dm.getDmContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("result@dao="+result);
+		return result;
+	}
+
+	public int selectLastSeq(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int parceloutNo = 0;
+		String sql = prop.getProperty("selectLastSeq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				parceloutNo = rset.getInt("currval");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return parceloutNo;
+	}
 }

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.pinkpaw.board.dmboard.model.service.DMService;
-import com.pinkpaw.board.dmboard.model.service.dmService;
 import com.pinkpaw.member.model.service.MemberService;
 import com.pinkpaw.member.model.vo.Member;
 
@@ -130,9 +129,11 @@ public class MemberLoginServlet extends HttpServlet {
 			//System.out.println("sessionId="+session.getId());
 			session.setAttribute("memberLoggedIn", memberLoggedIn);
 			
-			int recvCount = new DMService().ReceiveTotalContents(memberId);
+			int recvCount = new DMService().ReceiveTotalContents(memberLoggedIn.getMemberId());
 			System.out.println("recvCount@servlet="+recvCount);
-			request.setAttribute("recvCount", recvCount);
+			session.setAttribute("recvCount", recvCount);
+			
+			
 			
 			//아이디저장관련 쿠키처리
 			if(saveId != null) {

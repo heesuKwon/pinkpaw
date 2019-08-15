@@ -9,7 +9,10 @@ System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 memberLoggedIn = new Member();
 memberLoggedIn.setMemberId("admin");
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
-
+int recvCount = 0;
+if(session.getAttribute("recvCount")!=null){
+		recvCount = (int)session.getAttribute("recvCount");
+}
 //쿠키관련 처리
 Cookie[] cookies = request.getCookies();
 boolean saveId = false;
@@ -78,7 +81,50 @@ function register(){
 	location.href="<%=request.getContextPath()%>/member/termsOfService";
 }
 
-</script>	
+
+$(()=>{
+	var host = location.host;
+	var ws = new WebSocket('ws://'+host+"<%=request.getContextPath()%>/chat/helloWebSocket");
+	
+	//최초연결시 open이벤트 핸들러
+	ws.onopen = e => {
+		console.log("ws open!");
+	};
+	//서버로부터 message를 전달 받았을 때 핸들러
+	ws.onmessage = e => {
+		//console.log("ws message: "+e.data);
+		var o = JSON.parse(e.data);
+		
+		//타입 메세지 처리
+		if(o.type === 'message'){
+			
+			var html = "<li class='list-group-item'>";
+			html += "<span class='badge badge-dark'>"+o.sender+"</span>";
+			html += "&nbsp;&nbsp;"+o.msg;
+			html += "</li>";
+			
+			$("#msg-container ul").append(html);
+			
+			//scroll처리
+			var scrollHeight = $("#msg-container").prop("scrollHeight");
+			//console.log(scrollHeight);
+			$("#msg-container").scrollTop(scrollHeight);
+		}
+		else if(o.type === "dm"){
+			alert("쪽지가 도착했습니다");
+		}
+	};
+	//서버처리 도중 error발생시 핸들러
+	ws.onerror = e =>{
+		console.log("ws error!");		
+	};
+	//서버와 연결 종료시 핸들러
+	ws.onclose = e =>{
+		console.log("ws close!");			
+	};
+	
+});
+</script>
 
 <script>
 function validate(){
