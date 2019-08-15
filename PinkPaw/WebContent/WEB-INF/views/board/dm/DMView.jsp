@@ -42,13 +42,16 @@
 	
 	</table>
 <script>
+
 $(()=>{
-var close = <%=request.getParameter("close")%>;
-if(close==true){
-	self.close();
-}
 	
-});
+	var close = <%=request.getParameter("close")%>;
+	if(close==true){
+		self.close();
+	}
+})();
+
+
 
 
 function dmReport(){
@@ -62,6 +65,7 @@ function dmDelete(){
 	}		
 	location.href = "<%=request.getContextPath()%>/board/dm/dmDelete?dmNo=<%=dm.getDmNo()%>&dmReceive=<%=dm.getDmRecive()%>"; 
 }
+
 
 </script>
 

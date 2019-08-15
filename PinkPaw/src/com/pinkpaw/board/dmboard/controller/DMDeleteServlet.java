@@ -67,7 +67,7 @@ public class DMDeleteServlet extends HttpServlet {
 		//3.view단 처리
 				String view = "/WEB-INF/views/common/msg.jsp";
 				String msg = "";
-				String loc = "/board/dm/DMView?dmNo="+dmNo+"&dmRead=1";
+				String loc = "/board/dm/dmReport?dmNo="+dmNo+"&close=true";
 				String close = "";
 				if(result > 0) {
 					msg = "쪽지 삭제 성공!";

@@ -48,8 +48,7 @@ $(()=>{
 		onclick="DMSend();"/>
 <input type="button" value="발신 쪽지함"
 		onclick="DMRecieve();"/>
-<input type="button" value="신고 쪽지함"
-		onclick="DMReport();"/>
+
 		
 		
 		

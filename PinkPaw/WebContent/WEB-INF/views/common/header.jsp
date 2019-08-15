@@ -6,18 +6,16 @@
 Member memberLoggedIn
 	= (Member)session.getAttribute("memberLoggedIn");
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
-/* memberLoggedIn = new Member();
+/*  memberLoggedIn = new Member();
 memberLoggedIn.setMemberId("admin");
-<<<<<<< HEAD
+ */
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 int recvCount = 0;
 if(session.getAttribute("recvCount")!=null){
 		recvCount = (int)session.getAttribute("recvCount");
 }
-=======
-System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn); */
+System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn); 
 
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 //쿠키관련 처리
 Cookie[] cookies = request.getCookies();
 boolean saveId = false;
@@ -251,7 +249,7 @@ function validate(){
 					<tr>
 						<td>
 							<input type="button" 
-								   value="쪽지" 
+								   value="쪽지:<%=recvCount %>개" 
 								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmView"/>
 							
 							<%if(memberLoggedIn != null && "admin".equals(memberLoggedIn.getMemberId())){ %>
