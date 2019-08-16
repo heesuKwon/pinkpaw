@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="com.pinkpaw.member.model.vo.Member" %>
+
 <%
 	//이후 관리자가 회원관리할 경우에 대비해서 session객체에서 값을 꺼내오지 않도록 함.
 	String memberId = (String)request.getParameter("memberId");
@@ -8,13 +9,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>비밀번호 변경</title>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
 <style>
-div#updatePassword-container{background:yellowgreen;}
-div#updatePassword-container table {margin:0 auto; border-spacing: 20px;}
-div#updatePassword-container table tr:last-of-type td {text-align:center;}
+/* div#updatePassword-container{background:yellowgreen;} */
+/* div#updatePassword-container table {margin:0 auto; border-spacing: 20px;} */
+/* div#updatePassword-container table tr:last-of-type td {text-align:center;} */
 </style>
 <script>
 function passwordValidate(){
@@ -34,7 +44,7 @@ function passwordValidate(){
 <body>
 	<div id="updatePassword-container">
 		<form name="updatePwdFrm" action="<%=request.getContextPath()%>/member/updatePasswordEnd" method="post" >
-			<table>
+			<table class="table table-danger">
 				<tr>
 					<th>현재 비밀번호</th>
 					<td><input type="password" name="password" id="password" required></td>
@@ -52,9 +62,9 @@ function passwordValidate(){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<input type="submit"  value="변경" onclick="return passwordValidate();"/>&nbsp;
-						<input type="button" onclick="self.close();" value="닫기" />						
+					<td colspan="2" >
+						<input type="submit" style="margin-left: 80px;" class="btn btn-info" value="변경" onclick="return passwordValidate();"/>&nbsp;
+						<input type="button" style="margin-left: 80px;" class="btn btn-info"  onclick="self.close();" value="닫기" />						
 					</td>
 				</tr>
 			</table>

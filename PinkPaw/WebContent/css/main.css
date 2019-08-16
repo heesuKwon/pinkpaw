@@ -51,7 +51,7 @@ header .sub li:hover>a{color:#fdb833;}
 
 /*menu_PC*/
 .menuWrap{width:100%; height:100%; position:fixed; top:0; left:0; z-index:999; background:rgba(34,34,34,0.7); display:none;}
-.menuWrap .menu{width:500px; height:100%; background:#fff; position:absolute; top:0; right:0; padding:219px 70px 0 70px;/*219px 120px 0 120px;*/ box-sizing:border-box;}
+.menuWrap .menu{width:500px; height:100%; background:#fff; position:absolute; top:0; right:0; padding:100px 70px 0 70px;/*219px 120px 0 120px;*/ box-sizing:border-box;}
 .menuWrap a.menu_closeBtn{width:27px; position:absolute; top:50px; right:50px;}
 .menuWrap a.menu_closeBtn>img{width:100%;}
 .menuWrap .menu>dl{width:100%; border-bottom:1px dashed #c3c3c3; overflow:hidden;}
@@ -204,7 +204,7 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec05 .noticeWrap>.linkBnr>ul>li>a>h2{font-size:20px; color:#222; margin-bottom:17px;}
 #sec05 .noticeWrap>.linkBnr>ul>li>a>p{width:26px; height:26px; text-align:center; line-height:26px; background:#a5a5a5; color:#fff; border-radius:13px; font-size:13px; margin:0 auto; transition:all 0.2s ease-in-out; font-family:'Noto Light';}
 #sec05 .noticeWrap>.linkBnr>ul>li>a:hover>p{width:94px; background:#222;}
-#sec05 .noticeWrap>.linkBnr>ul>li>a:hover>p:before{content:'���명��蹂닿린 ';}
+#sec05 .noticeWrap>.linkBnr>ul>li>a:hover>p:before{content:'占쏙옙占쎈�占쏙옙癰��용┛ ';}
 
 .dreamElement2{}
 .dreamElement2>ul{}
@@ -387,3 +387,5 @@ footer #footerFamilyWrap{display:none;}
 #sec02 .brandWrap{display:none;}
 #sec02 .mbrandWrap{display:block;}
 }
+
+

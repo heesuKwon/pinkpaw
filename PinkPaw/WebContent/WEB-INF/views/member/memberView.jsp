@@ -31,6 +31,9 @@ h2 {
 .btn4-container {
 	margin: 10px;
 }
+/* 메뉴바 */
+
+
 </style>
 
 
@@ -53,13 +56,29 @@ h2 {
 	System.out.println(split[1]);
 %>
 
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
 
 
 
 <section id="enroll-container">
 
-	<h2>마이페이지</h2>
 
+	<h2 style="font-size: 30px; font-weight: bold;">마이페이지</h2>
+	
+	
+	
 	<form action="<%=request.getContextPath()%>/member/myBoardEnd"
 		name="myBoardEnd" method="post">
 		<input type="hidden" name="memberId" value="<%=memberId_%>" />
@@ -68,9 +87,14 @@ h2 {
 	<form action="<%=request.getContextPath()%>/member/memberUpdate"
 		name="memberUpdateFrm" method="post" id="memberUpdateFrm"
 		onsubmit="return updateValidate();">
+		
+		
 
 		<div class="table-container">
+		
 			<table class="table table-gray table-hover">
+			
+			
 
 
 				<tr>
@@ -947,8 +971,7 @@ $(document).ready(function (){
 // 팝업창에서 비밀번호 변경
 
 function updatePassword(){
-	var url = "<%=request.getContextPath()%>/member/updatePassword?memberId=<%=memberId%>
-	";
+	var url = "<%=request.getContextPath()%>/member/updatePassword?memberId=<%=memberId%>";
 		var title = "updatePassword";
 		var status = "left=500px, top=200px, width=400px, height=210px";
 

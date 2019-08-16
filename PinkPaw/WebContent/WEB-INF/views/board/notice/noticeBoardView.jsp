@@ -11,7 +11,7 @@
 	  href="<%=request.getContextPath()%>/css/board.css" />
   
 <section id="board-container">
-	<h2>게시판 상세보기</h2>
+	<h2>공지사항</h2>
 	<table class="table table-gray table-hover">
 			<tr>
 				<th>글번호</th>

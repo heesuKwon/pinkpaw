@@ -156,9 +156,9 @@ function validate(){
             <div class="panel-heading">
                 <div class="panel-title"></div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style="border: 1px solid #e1c1c6; background-color: #e1c1c6;">
                
-               <div style="margin-left: 25px;">
+               <div style="margin-left: 55px; margin-top: 35px;">
                
                     <div>
                     	<input
@@ -169,9 +169,6 @@ function validate(){
 									   placeholder="아이디"
 									   tabindex="1" 
 									   value="<%=saveId?memberId:""%>"/>
-									   
-					
-                        
                         
                     </div>
                     
@@ -189,10 +186,25 @@ function validate(){
                     </div>
                     
                        <br>
-                    <br><br>
+                       <br />
+                    
                     
                   
                    </div>
+                   
+                    <div style="position: relative; text-align: center; float: left; left:30px">
+                    
+                    	
+								<input type="checkbox" 
+									   name="saveId" 
+									   id="saveId" 
+									   <%=saveId?"checked":""%>/>
+								<label for="saveId">아이디저장</label>
+								
+                    
+                    </div>
+                    
+                    <br /><br />
                     
                     <div style=" position: relative; text-align: center; float: left; left:30px">
                     				    
@@ -214,17 +226,7 @@ function validate(){
                      <br>
                     <br><br><br>
                     
-                    <div style="display: block; " >
-                    
-                    	
-								<input type="checkbox" 
-									   name="saveId" 
-									   id="saveId" 
-									   <%=saveId?"checked":""%>/>
-								<label for="saveId">아이디저장</label>
-								
-                    
-                    </div>
+                   
                 
             </div>
         </div>
@@ -241,15 +243,33 @@ function validate(){
 			<% } 
 			//로그인에 성공한 경우
 			else {%>	
-				
-				<div>
-					<h1>
-							<%=memberLoggedIn.getMemberName() %>님
+			
+			<div>
+			
+			<div>
+               
+               <div >
+								
+								<div>
+					<h1 style="font-size: 20px; font-weight: bold; float: left;">
+							<%=memberLoggedIn.getMemberName() %>님 환영합니다!
 						</h1>
+						
+						<input
+							style="float: right;" 
+							class="btn btn-info"
+							type="button" 
+								   value="로그아웃" 
+								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>
+						</div>
+						<br />
+						<br />
+						<br />
 					
 						<div>
 							<input 
-							class="btn btn-info"	
+							class="btn btn-info" 
+							style="float: left; border: 1px solid #e1c1c6; background-color: #e1c1c6;";"	
 							type="button" 
 								   value="쪽지" 
 								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmView"/>
@@ -257,20 +277,24 @@ function validate(){
 								   
 								   	   
 							<input
+							style="float: right; border: 1px solid #e1c1c6; background-color: #e1c1c6;"	
 							class="btn btn-info" 
 							type="button" 
 								   value="마이페이지" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/memberView?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
-								   
-							<input 
-							class="btn btn-info"
-							type="button" 
-								   value="로그아웃" 
-								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>
 									
 						</div>
+						</div>
+						
+						<br />
+						<br />
+						<br />
 				
 				</div>
+				
+				</div>
+				
+				
 				
 			<% } %>		
 			
