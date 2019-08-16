@@ -12,7 +12,8 @@
 	System.out.println("list@왜 아니ㅉㄲ혀 : "+list);
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <script>
 	function goFreeWrite(){
 		location.href = "<%=request.getContextPath()%>/board/community/free/freeWrite";	
