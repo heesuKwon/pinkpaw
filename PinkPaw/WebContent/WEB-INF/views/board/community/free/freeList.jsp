@@ -90,7 +90,7 @@
 					html += "<td></td>";
 					html += "<td>"+b.freeTitle+"</td>";
 					html += "<td>"+b.freeWriter+"</td>";
-					var d = b.freeEnrollDate;
+					var d = b.freeEnrolldate;
                     var d_ = d.split(" ");
                     var yyyy = parseInt(d_[2]);
                     var mm = parseInt(d_[0]);
