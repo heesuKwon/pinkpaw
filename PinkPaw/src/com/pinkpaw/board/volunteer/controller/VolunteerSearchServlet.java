@@ -35,7 +35,6 @@ public class VolunteerSearchServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("application/json; charset=utf-8");
 		
-		String kind = request.getParameter("kind");
 		String key = request.getParameter("key");
 		String keyword = request.getParameter("keyword");
 		
@@ -44,20 +43,11 @@ public class VolunteerSearchServlet extends HttpServlet {
 		
 		List<VolunteerBoard> list = null;
 		
-		if("".equals(kind)) { // 글종류 선택x, 전체일때
-			if("".equals(key)) {
-				list = new VolunteerService().selectVolunteerBoardListAllAll(cPage, numPerPage, keyword);
-			} else {
-				list = new VolunteerService().selectVolunteerBoardListAllnotAll(cPage, numPerPage, key, keyword);
-			}
-		}else { // 글종류 선택o
-			if("".equals(key)) {
-				list = new VolunteerService().selectVolunteerBoardListnotAllAll(cPage, numPerPage, kind, keyword);
-			} else {
-				list = new VolunteerService().selectVolunteerBoardListnotAllnotAll(cPage, numPerPage, kind, key, keyword);
-			}
+		if("".equals(key)) {
+			list = new VolunteerService().selectVolunteerBoardListAllAll(cPage, numPerPage, keyword);
+		} else {
+			list = new VolunteerService().selectVolunteerBoardListAllnotAll(cPage, numPerPage, key, keyword);
 		}
-		
 		new Gson().toJson(list, response.getWriter());
 	}
 

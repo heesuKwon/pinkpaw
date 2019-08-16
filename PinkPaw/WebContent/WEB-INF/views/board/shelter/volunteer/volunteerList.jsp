@@ -18,9 +18,9 @@ $(()=>{
 		location.href = "<%=request.getContextPath()%>/board/volunteer/volunteerView?volunteerNo="+volunteerNo; 
 	});
 });
-			
 </script>
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <div id="img">
 	<img id="volunteer_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 봉사 요청 사진" />
 </div>
@@ -52,61 +52,23 @@ $(()=>{
   		<button class="btn btn-outline-secondary" style="border-radius: 0" onclick="srch();">검색하기</button>
 	</div>
 	<script>
-	function kindchange() {
-		var kind = $("[name=kind]").val().trim();
-		$.ajax({
-			url: "<%=request.getContextPath()%>/board/volunteer/volunteerKindChange",
-			data: "kind="+kind,
-			type: "get",
-			success: function(data){
-				console.log(data);
-				var html = "<tr><th scope='col'>번호</th><th scope='col'>첨부파일</th><th scope='col'>종류</th><th scope='col'>제목</th><th scope='col'>작성자</th><th scope='col'>게시일</th></tr>";
-				var num = 1;
-				$(data).each((i,b)=>{
-					num = num + 1;
-					html += "<tr>";
-					html += "<th scope='row'>"+b.volunteerNo+"</th>";
-					html += "<td></td>";
-					html += "<td>"+b.volunteerKind+"</td>";
-					html += "<td>"+b.volunteerTitle+"</td>";
-					html += "<td>"+b.volunteerWriter+"</td>";
-					html += "<td>"+b.volunteerEnrollDate+"</td>";
-					html += "</tr>";
-				});
-				$("#tbl-board").html(html);
-				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
-				}
-				else{
-					$("#pageBar").html("<%=pageBar %>");
-				}
-			},
-			error: function(jqxhr, textStatus, errorThrown){
-				console.log("ajax 처리 실패");
-				console.log(jqxhr, textStatus, errorThrown);
-			}
-		});
-	}
-	
 	function srch() {
-		var kind = $("[name=kind]").val().trim();
 		var key = $("[name=key]").val().trim();
 		var keyword = $("#keyword").val().trim();
 		$.ajax({
 			url: "<%=request.getContextPath()%>/board/volunteer/volunteerSearch",
-			data: "kind="+kind+"&key="+key+"&keyword="+keyword,
+			data: "key="+key+"&keyword="+keyword,
 			type: "get",
 			success: function(data){
 				console.log(data);
 				
-				var html = "<tr><th scope='col'>번호</th><th scope='col'>첨부파일</th><th scope='col'>종류</th><th scope='col'>제목</th><th scope='col'>작성자</th><th scope='col'>게시일</th></tr>";
+				var html = "<tr><th scope='col'>No</th><th scope='col'>첨부파일</th><th scope='col'>제목</th><th scope='col'>작성자</th><th scope='col'>등록일</th></tr>";
 				var num = 1;
 				$(data).each((i,b)=>{
 					num = num + 1;
 					html += "<tr>";
 					html += "<th scope='row'>"+b.volunteerNo+"</th>";
 					html += "<td></td>";
-					html += "<td>"+b.volunteerKind+"</td>";
 					html += "<td>"+b.volunteerTitle+"</td>";
 					html += "<td>"+b.volunteerWriter+"</td>";
 					html += "<td>"+b.volunteerEnrollDate+"</td>";
@@ -114,7 +76,7 @@ $(()=>{
 				});
 				$("#tbl-board").html(html);
 				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+					$("#pageBar").html("<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span><span class='w3-bar-item w3-black w3-button'>1</span><span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>");
 				}
 				else{
 					$("#pageBar").html("<%=pageBar %>");
