@@ -103,7 +103,7 @@
 				});
 				$("#tbl-board").html(html);
 				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+					$("#pageBar").html("<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span><span class='w3-bar-item w3-black w3-button'>1</span><span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>");
 				}
 				else{
 					$("#pageBar").html("<%=pageBar %>");
