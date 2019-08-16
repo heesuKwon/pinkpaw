@@ -9,7 +9,7 @@
 %>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <style>
-#PA{width: 1000px; height: 1000px; margin-top: 100px; margin-left: 50px;}
+#PA{width: 1000px; height: 1450px; margin-top: 100px; margin-left: 20px;}
 .sub{display: none; border-radius: 0;}
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
