@@ -253,6 +253,7 @@ private Properties prop = new Properties();
 			close(cstmt);
 		}
 		
+				
 		
 		try {
 			stmt2 = conn.createStatement();

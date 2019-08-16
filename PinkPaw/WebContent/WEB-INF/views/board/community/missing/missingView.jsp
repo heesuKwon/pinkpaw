@@ -158,9 +158,7 @@ $(()=>{
 					   onclick="deleteBoard();" />
 				<input type="button" value="신고하기" 
 					   onclick="goMissingViewReportOpen();"	 />
-				<input type="button" value="목록으로"
-				onclick="goMissingList();" />
-					   
+				
 			
 	
 		<form action="<%=request.getContextPath()%>/board/missingDelete"
@@ -183,13 +181,13 @@ $(()=>{
 			$("[name=boardDeleteFrm]").submit();
 		}
 		
-		function goMissingList(){
-			location.href = "<%=request.getContextPath()%>/board/missingList";
-		}
 	</script>
 			
 		<%} %>
-	
+	<input type="button" value="목록으로"
+				onclick="goMissingList();" />
+					   
+
 	
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container">
@@ -273,6 +271,10 @@ $(()=>{
 
 <!-- 신고하기 부분 -->
 <script>
+function goMissingList(){
+	location.href = "<%=request.getContextPath()%>/board/missingList";
+}
+
 function goMissingViewReportOpen(){
 	
 	var url = "<%=request.getContextPath()%>/board/missing/missingReport?missingNo=<%=b.getMissingNo()%>";

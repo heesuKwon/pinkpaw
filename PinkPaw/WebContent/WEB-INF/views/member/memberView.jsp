@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/mainHeader.jsp"%>
 <%@ page import="com.pinkpaw.member.model.vo.*"%>
 
 
@@ -31,10 +31,13 @@ h2 {
 .btn4-container {
 	margin: 10px;
 }
-/* 메뉴바 */
+
 
 
 </style>
+
+
+
 
 
 <%
@@ -67,7 +70,88 @@ h2 {
 <br />
 <br />
 
+<style>
 
+body, ul {
+
+margin: 0;
+
+padding: 0;
+
+}
+
+li {
+
+list-style-type: none;
+
+}
+
+a {
+
+text-decoration: none;
+
+color: inherit;
+
+}
+
+
+
+body {
+
+text-align: center;
+
+}
+
+.horizontal-menu {
+
+display: inline-block;
+
+overflow: hidden;
+
+border-bottom: 3px solid #318294;
+
+}
+
+.horizontal-menu li {
+
+float: left;
+
+}
+
+.horizontal-menu a {
+
+display: block;
+
+height: 50px;
+
+line-height: 50px;
+
+background-color: #3ea3ba;
+
+color: #ddd;
+
+padding: 0 35px;
+
+border-right: 1px solid #358da1;
+
+}
+
+.horizontal-menu li:last-child a { 
+
+border-right: 0;
+
+}
+
+.horizontal-menu a:hover { 
+
+background-color: #358da1;
+
+color: #fff;
+
+}
+
+
+</style>
 
 
 
@@ -77,16 +161,43 @@ h2 {
 
 	<h2 style="font-size: 30px; font-weight: bold;">마이페이지</h2>
 	
-	
-	
 	<form action="<%=request.getContextPath()%>/member/myBoardEnd"
 		name="myBoardEnd" method="post">
 		<input type="hidden" name="memberId" value="<%=memberId_%>" />
 	</form>
+	
+
+	
+	
+	
 
 	<form action="<%=request.getContextPath()%>/member/memberUpdate"
 		name="memberUpdateFrm" method="post" id="memberUpdateFrm"
 		onsubmit="return updateValidate();">
+		
+<ul class="horizontal-menu" style="margin-bottom: 15px;">
+
+<li><a href="<%=request.getContextPath()%>/">Home</a></li>
+
+<li><a href="<%=request.getContextPath()%>/member/myBoard">내가 쓴 글 보기</a></li>
+
+<li><a href="<%=request.getContextPath()%>/member/myComment">내가 쓴 댓글 보기</a></li>
+
+
+<%
+		if (memberLoggedIn != null && "admin".equals(memberLoggedIn.getMemberId())) {
+	%>
+	
+	<li><a href="<%=request.getContextPath()%>/admin/memberList">회원리스트</a></li>
+	<li><a href="<%=request.getContextPath()%>/board/dm/reportDMList">신고쪽지</a></li>
+	<li><a href="<%=request.getContextPath()%>/admin/reportBoardList">신고게시판</a></li>
+	
+	<%
+		}
+	%>
+
+
+</ul>
 		
 		
 
@@ -434,33 +545,14 @@ h2 {
 			</table>
 		</div>
 		<div class="btn2-container">
-			<input type="submit" value="정보수정" id="btn" /> <input type="button"
-				value="비밀번호변경" onclick="updatePassword();" /> <input type="button"
-				value="회원탈퇴" onclick="deleteMember();" />
+			<input type="submit" value="정보수정" id="btn" class="btn btn-info"/> 
+			<input type="button" value="비밀번호변경" onclick="updatePassword();" class="btn btn-info"/> 
+			<input type="button" value="회원탈퇴" onclick="deleteMember();" class="btn btn-info"/>
 		</div>
 
-		<div class="btn3-container">
-			<input type="button" value="내가쓴글보기"
-				onclick="location.href='<%=request.getContextPath()%>/member/myBoard'" />
-			<input type="button" value="내가쓴댓글보기"
-				onclick="location.href='<%=request.getContextPath()%>/member/myComment'" />
-		</div>
 		
-		<%
-		if (memberLoggedIn != null && "admin".equals(memberLoggedIn.getMemberId())) {
-	%>
-	<div class="btn4-container">
-
-		<input type="button" value="회원리스트"
-			onclick="location.href='<%=request.getContextPath()%>/admin/memberList'" />
-		<input type="button" value="신고쪽지"
-			onclick="location.href='<%=request.getContextPath()%>/board/dm/reportDMList'" />
-		<input type="button" value="신고게시판"
-			onclick="location.href='<%=request.getContextPath()%>/admin/reportBoardList'" />
-	</div>
-	<%
-		}
-	%>
+		
+		
 
 	</form>
 

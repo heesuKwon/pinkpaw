@@ -46,34 +46,34 @@ public class AnimalNotice extends HttpServlet {
 		int totalPage = (int)Math.ceil((double)totalContents/numPerPage);
 		
 		final int pageBarSize = 5;
-		String pageBar = "";
+		String pageBar = "<div class='w3-center w3-padding-32'><div class='w3-bar'>";
 		
 		int pageStart = ((cPage-1)/pageBarSize)*pageBarSize+1;
 		int pageEnd = pageStart+pageBarSize-1;
 		
 		int pageNo = pageStart;
 		if(pageNo == 1) {
-			pageBar += "<span>[이전]</span>";
+			pageBar += "<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span>";
 		}
 		else {
-			pageBar += "<a href='"+request.getContextPath()+"/animal/animalNotice?cPage="+(pageNo-1)+"'>[이전]</a>";
+			pageBar += "<a href='"+request.getContextPath()+"/animal/animalNotice?cPage="+(pageNo-1)+"' class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</a>";
 		}
 		while(pageNo <= pageEnd && pageNo <= totalPage) {
 			if(pageNo == cPage) {
-				pageBar += "<span class='cPage'>"+pageNo+"</span>";
+				pageBar += "<span class='w3-bar-item w3-black w3-button'>"+pageNo+"</span>";
 			}
 			else {
-				pageBar += "<a href='"+request.getContextPath()+"/animal/animalNotice?cPage="+pageNo+"'>"+pageNo+"</a>";				
+				pageBar += "<a href='"+request.getContextPath()+"/animal/animalNotice?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>"+pageNo+"</a>";				
 			}
 			pageNo++;
 		}
 		if(pageNo > totalPage) {
-			pageBar += "<span>[다음]</span>";
+			pageBar += "<span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>";
 		}
 		else {
-			pageBar += "<a href='"+request.getContextPath()+"/animal/animalNotice?cPage="+pageNo+"'>[다음]</a>";
+			pageBar += "<a href='"+request.getContextPath()+"/animal/animalNotice?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</a>";
 		}
-		
+		pageBar += "</div></div>";
 		request.setAttribute("list", list);
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("cPage", cPage);

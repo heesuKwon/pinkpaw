@@ -12,7 +12,8 @@
 	System.out.println("list@왜 아니ㅉㄲ혀 : "+list);
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <script>
 	function goFreeWrite(){
 		location.href = "<%=request.getContextPath()%>/board/community/free/freeWrite";	
@@ -41,8 +42,7 @@
 	}
 </script>
 
-
-<div>
+<div id="img">
 	<img id="free_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 자유게시판 사진" />
 </div>
 <style>
@@ -50,11 +50,13 @@
 		width: 1024px;
 		height: 300px;
 	}
+	#img{
+		text-align: center;
+	}
 </style>
 
 
-<section class="board-container">
-
+<section class="board-container">	
 	<div class="input-group mb-3" style="width: 600px">
   		<div class="input-group-prepend">
     		<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" name="key">
@@ -89,7 +91,7 @@
 					html += "<td></td>";
 					html += "<td>"+b.freeTitle+"</td>";
 					html += "<td>"+b.freeWriter+"</td>";
-					var d = b.freeEnrollDate;
+					var d = b.freeEnrolldate;
                     var d_ = d.split(" ");
                     var yyyy = parseInt(d_[2]);
                     var mm = parseInt(d_[0]);
@@ -101,7 +103,7 @@
 				});
 				$("#tbl-board").html(html);
 				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+					$("#pageBar").html("<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span><span class='w3-bar-item w3-black w3-button'>1</span><span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>");
 				}
 				else{
 					$("#pageBar").html("<%=pageBar %>");
@@ -134,7 +136,7 @@
 	
 			<%if(list==null || list.isEmpty()) { %>
 			<tr>
-				<td colspan="6" align="center">조회 결과가 없습니다.</td>
+				<td colspan="6" align="center">게시글이 없습니다.</td>
 			</tr>
 			<% }else{
 					for(FreeBoard f : list) { %>

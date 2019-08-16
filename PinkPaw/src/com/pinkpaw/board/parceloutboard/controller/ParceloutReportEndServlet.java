@@ -47,7 +47,7 @@ public class ParceloutReportEndServlet extends HttpServlet {
 		if(parceloutBoard.getParceloutReportReason() == null) {
 			newReport = parceloutReportContent;
 			parceloutBoard.setParceloutReportReason(newReport);
-			
+			System.out.println("newReport@servlet"+newReport);
 			result = new ParceloutService().updateReport(parceloutBoard);
 		}
 		// 기존에 신고로 신고 사유가 존재하는 경우
@@ -79,7 +79,7 @@ public class ParceloutReportEndServlet extends HttpServlet {
 //		}
 			else {
 				msg = "신고 실패.";
-				loc = "/board/community/parcelout/parceloutView?parceloutNo="+parceloutNo;
+				loc = "/board/parcelout/parceloutView?parceloutNo="+parceloutNo;
 			}
 			request.setAttribute("msg", msg);
 			request.setAttribute("loc", loc);

@@ -5,6 +5,7 @@
 <% 
 	List<ParceloutBoard> list = (List<ParceloutBoard>)request.getAttribute("list");
 	String pageBar = (String)request.getAttribute("pageBar");
+
 %>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -15,28 +16,34 @@ table#parcel-board th, table#tbl-board td {border:1px solid; padding: 5px 0; tex
 box-shadow: 10px 10px 8px rgba(135, 139, 133, 0.4); 
 cursor: pointer;
 }
+div#pageBar{margin-top:10px; text-align:center;}
+div#pageBar span.cPage{color: gray; margin-right: 5px;}
+div#pageBar a{margin-right: 5px;}
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<section style="margin-top: 100px;" id="board-container">
+<table id="parcel-board" style="border:0px; border-collapse: collapse;">
+<tr><td>
+<%if(memberLoggedIn!=null){ %>
+<input type="button" value="글쓰기" id="btn-add" onclick="goBoardForm();" />
+
 <script>
 function goBoardForm(){
 	location.href 
-		= "<%=request.getContextPath()%>/board/community/parcelout/parceloutWrite";	
+		= "<%=request.getContextPath()%>/board/parcelout/parceloutWrite";	
 }
 </script>
-</head>
-<body>
 
-<section id="board-container">
-<table id="parcel-board" style="border:0px; border-collapse: collapse;">
-<tr><td >
-<input type="button" value="글쓰기" id="btn-add" onclick="goBoardForm();" />
-</th></td>
+<%} %>
+</td>
+</tr>
 <tr>
 <td>
 <% for(ParceloutBoard p : list){ %>
-	<div class="card" style="width: 18rem; height: 310px; display: inline-block; padding:20px, 20px;">
-	<a style="text-decoration: none; color: gray" href="<%=request.getContextPath()%>/board/community/parcelout/parceloutView?parceloutNo=<%=p.getParceloutNo()%>">
+	<div class="card" style="width: 18rem; height: 310px; display: inline-block; margin-top:20px; margin-left: 20px;">
+	<a style="text-decoration: none; color: gray" href="<%=request.getContextPath()%>/board/parcelout/parceloutView?parceloutNo=<%=p.getParceloutNo()%>">
  	 <% if(p.getParceloutOriginalImg() != null){
 				String[] renamedImgList = p.getParceloutRenamedImg().split("§");%>
 		<img class="d-block w-100" src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[0]%>" alt="첨부파일"  style='width:200px; height: 150px;' />	
@@ -49,7 +56,10 @@ function goBoardForm(){
     <br />
     #<%=p.getParceloutPlace()%>
     <br />
-    #<%=p.getParceloutKind()%>
+    #<% if(p.getParceloutKind() != null){
+	String[] arr = p.getParceloutKind().split("_");%>
+	<%=arr.length == 1?p.getParceloutKind():arr[1]%>
+	<%} %>
     </p>
     <p style="font-size: 11px; color: gray; text-align: right;"><%=p.getParceloutEnrolldate() %></p>
   </div>
@@ -57,7 +67,7 @@ function goBoardForm(){
 </div>
 		<% } %>
 </td>
-		</tr>		
+</tr>		
 	</table>
 	<div id='pageBar'>
 		<%=pageBar %>

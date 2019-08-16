@@ -60,7 +60,7 @@ public class ParceloutCommentInsertServlet extends HttpServlet {
 	
 	String view = "/WEB-INF/views/common/msg.jsp";
 	String msg = "";
-	String loc = "/board/community/parcelout/parceloutView?parceloutNo="+boardRef;
+	String loc = "/board/parcelout/parceloutView?parceloutNo="+boardRef;
 	
 	if(result > 0) {
 		msg = "댓글 등록 성공!";

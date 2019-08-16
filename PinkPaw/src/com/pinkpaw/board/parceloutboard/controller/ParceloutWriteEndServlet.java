@@ -76,7 +76,20 @@ public class ParceloutWriteEndServlet extends HttpServlet {
 		int parceloutMoney = Integer.parseInt(mReq.getParameter("parceloutMoney"));
 		String parceloutKind = mReq.getParameter("parceloutKind");
 		String parceloutGender = mReq.getParameter("parceloutGender");
+		String others = mReq.getParameter("others");
 		
+		if(parceloutGender.equals("수")) {
+			parceloutGender = "m";
+		}else if(parceloutGender.equals("암")) {
+			parceloutGender = "f";
+		}else {
+			parceloutGender = "s";
+		}
+		
+		
+		if(parceloutKind.equals("animal")) {
+			parceloutKind = "기타_"+others;
+		}
 		//파일을 리스트로 관리
 				List<String> originalImgList = new ArrayList<>();
 				List<String> renamedImgList = new ArrayList<>();
@@ -143,11 +156,11 @@ public class ParceloutWriteEndServlet extends HttpServlet {
 		int result = new ParceloutService().insertParcelout(p);
 				
 		String msg = "";
-		String loc = "/board/community/parcelout/parceloutList";
+		String loc = "/board/parcelout/parceloutList";
 		
 		if(result>0) {
 			msg = "게시글 등록성공!";
-			loc = "/board/community/parcelout/parceloutView?parceloutNo="+result;
+			loc = "/board/parcelout/parceloutView?parceloutNo="+result;
 		}
 		else {
 			msg = "게시글 등록실패!";

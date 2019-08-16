@@ -9,6 +9,8 @@
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <script>
 $(()=>{
 	//테이블의 열을 클릭시 해당 게시물로 이동
@@ -20,6 +22,20 @@ $(()=>{
 });
 			
 </script>
+
+<div id="img">
+	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+</div>
+<style>
+	img#review_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
+
 <section class="board-container">
 	
 	<div class="input-group mb-3" style="width: 600px">
@@ -76,7 +92,7 @@ $(()=>{
 				});
 				$("#tbl-board").html(html);
 				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+					$("#pageBar").html("<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span><span class='w3-bar-item w3-black w3-button'>1</span><span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>");
 				}
 				else{
 					$("#pageBar").html("<%=pageBar %>");
@@ -121,7 +137,7 @@ $(()=>{
 				});
 				$("#tbl-board").html(html);
 				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+					$("#pageBar").html("<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span><span class='w3-bar-item w3-black w3-button'>1</span><span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>");
 				}
 				else{
 					$("#pageBar").html("<%=pageBar %>");

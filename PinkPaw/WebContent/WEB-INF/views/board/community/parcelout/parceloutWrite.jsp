@@ -1,11 +1,7 @@
+<%@page import="com.pinkpaw.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>PinkPaw / 분양 글쓰기</title>
-<script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
+<%@ include file="/WEB-INF/views/common/header.jsp"%><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
 #fileField {
 position: relative;
@@ -68,7 +64,7 @@ $('document').ready(function() {
 	      method="post"
 	      enctype="multipart/form-data">
 	      
-		<table id="tbl-board-view">
+		<table id="tbl-board-view" style="margin-top: 100px;">
 			<tr>
 				<th>제목</th>
 				<td><input type="text" name="parceloutTitle" required/></td>
@@ -77,7 +73,7 @@ $('document').ready(function() {
 				<th>작성자</th>
 				<td><input type="text" 
 						   name="parceloutWriter"
-						   value="admin"
+						   value="<%=memberLoggedIn.getMemberId()%>"
 						   required readonly/></td>
 			</tr>		
 			<tr>
@@ -100,12 +96,14 @@ $('document').ready(function() {
 			
 			<tr>
 				<th>분류</th>
-				<td>
-				<input type="radio" name="parceloutKind" value="dog" />개
-				<input type="radio" name="parceloutKind" value="cat" />고양이
-				<input type="radio" name="parceloutKind" value="etc" />기타
-				</td>
-			</tr>	
+				<td><input type="radio" id="animal-dog" name="parceloutKind" value="개" />개
+					<input type="radio" id="animal-cat" name="parceloutKind" value="고양이" />고양이
+					<input type="radio" id="animal" name="parceloutKind" value="animal" />기타&nbsp;&nbsp;
+					<div id='show-me' style='display: none'>
+						<input type="text" id="animal-and" name="others"
+							placeholder="기타 분류 입력해주세요">
+					</div></td>
+			</tr>
 			
 			<tr>
 				<th>암수구분</th>
@@ -148,6 +146,9 @@ $('document').ready(function() {
 					<input type="submit" 
 						   value="등록" 
 						   onclick="return parceloutValidate();"/>
+					<input type="button" 
+						   value="취소" 
+						   onclick="goList();"/>
 					
 				</th>
 			</tr>		
@@ -155,12 +156,34 @@ $('document').ready(function() {
 		</table>
 	</form>
 <script>
+
+$("input[id='animal']").click(function () {
+    $('#show-me').css('display', ($(this).val() === 'animal') ? 'inline':'none');
+});
+$("input[id='animal-dog']").click(function () {
+    $('#show-me').css('display', ($(this).val() === 'animal') ? 'inline':'none');
+});
+$("input[id='animal-cat']").click(function () {
+    $('#show-me').css('display', ($(this).val() === 'animal') ? 'inline':'none');
+});
+
+
+function goList() {
+	location.href = "<%=request.getContextPath()%>/board/parcelout/parceloutList";
+	
+}
 function parceloutValidate(){
 	var content = $("[name=parceloutContent]").val();
 	if(content.trim().length == 0){
 		alert("내용을 입력하세요.");
 		return false;
 	}
+	
+	if($("select[name^=sido]").val()=="시/도 선택"){
+		alert("지역을 선택하세요.");
+		return false;
+	}
+	
 	
 	return true;
 }
@@ -363,7 +386,4 @@ attachFile = {
   }
 }
 </script>	
-
- 
-</body>
-</html>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

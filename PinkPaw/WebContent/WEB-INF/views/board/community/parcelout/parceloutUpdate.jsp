@@ -4,12 +4,7 @@
 <%
 	ParceloutBoard p = (ParceloutBoard)request.getAttribute("p");
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>PinkPaw / 분양글 수정</title>
-<script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <style>
 #fileField {
 position: relative;
@@ -94,29 +89,23 @@ $('document').ready(function() {
 			<tr>
 				<th>책임비</th>
 				<td>
-				<input type="radio" id="money" name="parceloutMoney" value="10000" <%=p.getParceloutMoney()%>=="10000"?checked:"">1만원
+				<input type="radio" id="money" name="parceloutMoney" value="10000" >1만원
 			    <input type="radio" id="money" name="parceloutMoney" value="20000" >2만원
     			<input type="radio" id="money" name="parceloutMoney" value="30000" >3만원
     			<input type="radio" id="money" name="parceloutMoney" value="40000" >4만원
     			<input type="radio" id="money" name="parceloutMoney" value="50000" >5만원
 				</td>
 			</tr>	
-			
 			<tr>
 				<th>분류</th>
-				<td>
-				<input type="radio" name="parceloutKind" value="dog" />개
-				<input type="radio" name="parceloutKind" value="cat" />고양이
-				<input type="radio" name="parceloutKind" value="etc" />기타
-				
-<!-- 				<input type="radio" name="parceloutKind" value="dog" />개 -->
-<!-- 				<input type="radio" name="parceloutKind" value="cat"/>고양이 -->
-<!-- 				<input type="radio" id="animal" name="parceloutKind" value="animal"/>기타&nbsp;&nbsp; -->
-<!-- 				<div id='show-me' style='display:none'> -->
-<!-- 				<input type="text" id="etc" name="parceloutKind" placeholder="기타 분류 입력해주세요" > -->
-<!-- 				</div> -->
-				</td>
-			</tr>	
+				<td><input type="radio" id="animal-dog" name="parceloutKind" value="개" />개
+					<input type="radio" id="animal-cat" name="parceloutKind" value="고양이" />고양이
+					<input type="radio" id="animal" name="parceloutKind" value="animal" />기타&nbsp;&nbsp;
+					<div id='show-me' style='display: none'>
+						<input type="text" id="animal-and" name="others"
+							placeholder="기타 분류 입력해주세요">
+					</div></td>
+			</tr>
 			
 			<tr>
 				<th>암수구분</th>
@@ -196,9 +185,23 @@ function parceloutValidate(){
 		alert("내용을 입력하세요.");
 		return false;
 	}
+	if($("select[name^=sido]").val()=="시/도 선택"){
+		alert("지역을 선택하세요.");
+		return false;
+	}
 	
 	return true;
 }
+
+$("input[id='animal']").click(function () {
+    $('#show-me').css('display', ($(this).val() === 'animal') ? 'inline':'none');
+});
+$("input[id='animal-dog']").click(function () {
+    $('#show-me').css('display', ($(this).val() === 'animal') ? 'inline':'none');
+});
+$("input[id='animal-cat']").click(function () {
+    $('#show-me').css('display', ($(this).val() === 'animal') ? 'inline':'none');
+});
 
 </script>	
 <script>
@@ -300,12 +303,4 @@ $("input:radio[name='parceloutGender']:input[value='<%=p.getParceloutGender()%>'
             }
         }
    </script>	
-	
-	
-	
-	
-	
-	
-	
-</body>
-</html>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

@@ -20,19 +20,34 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
-<section id="board-container">
-	<h2>신고게시판</h2>
-	
-		
-	<table id="tbl-board">
-		<tr>
-			<th>테이블명</th>
-			<th>번호</th>
-			<th>제목</th>
-			<th>신고사유</th>
-		</tr>
+<div id="img">
+	<img id="reportBoard_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 신고쪽지 게시판 사진" />
+</div>
+<style>
+	img#reportBoard_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
 
-				<% for(int i = 0; i<list.size(); i++){ %>
+<section class="board-container">
+	<table id="tbl-board" class="table table-hover">
+		<tr>
+			<th scope="col">게시판명</th>
+			<th scope="col">글 번호</th>
+			<th scope="col">제목</th>
+			<th scope="col">신고사유</th>		
+		</tr>
+		<%if(list==null || list.isEmpty()){ %>
+		<tr>
+			<td colspan="6" align="center">게시글이 없습니다.</td>
+		</tr>
+		<%}
+		else{
+			for(int i = 0; i<list.size(); i++){ %>
 		<tr>
 			<td><%=list.get(i).getReportTableName() %></td>
 			<td><%=list.get(i).getReportNo() %></td>
@@ -43,7 +58,7 @@
 			</td>
 			<td><%= list.get(i).getReportReason() %></td>
 		</tr>
-		<% } %>
+		<% } }%>
 	</table>
 
 	<div id='pageBar'>

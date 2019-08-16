@@ -62,29 +62,29 @@ public class ReviewListServlet extends HttpServlet {
 		int pageNo = pageStart;
 		//a.[이전]
 		if(pageNo == 1) {
-			pageBar += "<span>[이전]</span>";
+			pageBar += "<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span>";
 		}
 		else {
-			pageBar += "<a href='"+request.getContextPath()+"/board/review/reviewList?cPage="+(pageNo-1)+"'>[이전]</a>";
+			pageBar += "<a href='"+request.getContextPath()+"/board/review/reviewList?cPage="+(pageNo-1)+"' class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</a>";
 		}
 		//b.page
 		while(pageNo <= pageEnd && pageNo <= totalPage) {
 			//현재페이지인 경우. 링크필요없음
 			if(pageNo == cPage) {
-				pageBar += "<span class='cPage'>"+pageNo+"</span>";
+				pageBar += "<span class='w3-bar-item w3-black w3-button'>"+pageNo+"</span>";
 			}
 			else {
-				pageBar += "<a href='"+request.getContextPath()+"/board/review/reviewList?cPage="+pageNo+"'>"+pageNo+"</a>";				
+				pageBar += "<a href='"+request.getContextPath()+"/board/review/reviewList?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>"+pageNo+"</a>";				
 			}
 			pageNo++;
 		}
 		//c.[다음]
 		if(pageNo > totalPage) {
-			pageBar += "<span>[다음]</span>";
+			pageBar += "<span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>";
 		}
 		//while문을 빠져나올 때 이미 pageNo가 증가되어있는 상태기 때문에 +1을 하지않고 pageNo로 이동시킨다.
 		else {
-			pageBar += "<a href='"+request.getContextPath()+"/board/review/reviewList?cPage="+pageNo+"'>[다음]</a>";
+			pageBar += "<a href='"+request.getContextPath()+"/board/review/reviewList?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</a>";
 		}
 		System.out.println("pageBar="+pageBar);
 		

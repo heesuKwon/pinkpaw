@@ -143,7 +143,7 @@ public class ParceloutDAO {
 				p.setParceloutEnrolldate(rset.getDate("parcelout_enrolldate"));
 				p.setParceloutCount(rset.getInt("parcelout_count"));
 				p.setParceloutReportCount(rset.getInt("parcelout_112_count"));
-				p.setParceloutReportReason("parcelout_112_reason");
+				p.setParceloutReportReason(rset.getString("parcelout_112_reason"));
 			}
 			
 		} catch (SQLException e) {
@@ -356,12 +356,12 @@ public class ParceloutDAO {
 		String sql = prop.getProperty("updateReport");
 		int result = 0;
 		
+		System.out.println(p.getParceloutReportReason());
 			try {
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(1, p.getParceloutReportReason());
 				pstmt.setInt(2, p.getParceloutNo());
-				
 				result = pstmt.executeUpdate();
 				
 			} catch (SQLException e) {
@@ -371,6 +371,24 @@ public class ParceloutDAO {
 			}
 			
 		System.out.println("result@dao="+result);
+		return result;
+	}
+	public int increaseReadCount(Connection conn, int parceloutNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseReadCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, parceloutNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 

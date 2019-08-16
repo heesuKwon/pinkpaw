@@ -9,9 +9,11 @@
 %>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <style>
-#PA{width: 1000px; height: 1000px; margin-top: 100px; margin-left: 50px;}
+#PA{width: 1000px; height: 1450px; margin-top: 100px; margin-left: 20px;}
 .sub{display: none; border-radius: 0;}
 </style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <script>
 function srch(val) {
 	var num = val.value;
@@ -390,7 +392,7 @@ function srchList() {
 		onclick="open('<%=request.getContextPath() %>/animal/animalView?age='+encodeURI('<%=p.getAge() %>')+'&careAddr='+encodeURI('<%=p.getCareAddr() %>')+'&careNm='+encodeURI('<%=p.getCareNm() %>')+'&careTel='+encodeURI('<%=p.getCareTel() %>')+'&chargeNm='+encodeURI('<%=p.getChargeNm() %>')+'&colorCd='+encodeURI('<%=p.getColorCd() %>')+'&desertionNo='+encodeURI('<%=p.getDesertionNo() %>')+'&filename='+encodeURI('<%=p.getFilename() %>')+'&happenDt='+encodeURI('<%=p.getHappenDt() %>')+'&happenPlace='+encodeURI('<%=p.getHappenPlace() %>')+'&kindCd='+encodeURI('<%=p.getKindCd() %>')+'&neuterYn='+encodeURI('<%=p.getNeuterYn() %>')+'&noticeEdt='+encodeURI('<%=p.getNoticeEdt() %>')+'&noticeNo='+encodeURI('<%=p.getNoticeNo() %>')+'&noticeSdt='+encodeURI('<%=p.getNoticeSdt() %>')+'&officetel='+encodeURI('<%=p.getOfficetel() %>')+'&orgNm='+encodeURI('<%=p.getOrgNm() %>')+'&popfile='+encodeURI('<%=p.getPopfile() %>')+'&processState='+encodeURI('<%=p.getProcessState() %>')+'&sexCd='+encodeURI('<%=p.getSexCd() %>')+'&specialMark='+encodeURI('<%=p.getSpecialMark() %>')+'&weight='+encodeURI('<%=p.getWeight() %>')
 		, '유기동물상세보기', 'width=900px, height=600px, top=30px, left=30px');" >
 		<td class="card" style="width: 300px; display: inline-block;" >
-  				<img src="<%=p.getPopfile() %>" class="card-img-top" alt="..." style="height: 100px">
+  				<img src="<%=p.getPopfile() %>" class="card-img-top" alt="..." style="height: 200px">
   				<div class="card-body">
     				<h5 class="card-title" style="width: 110%;">공고 번호 : <%=p.getNoticeNo() %></h5>
     				<p class="card-text">접수일 : <%=p.getHappenDt() %></p>

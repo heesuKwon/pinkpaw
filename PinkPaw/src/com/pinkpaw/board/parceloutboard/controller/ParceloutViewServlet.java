@@ -17,7 +17,7 @@ import com.pinkpaw.board.parceloutboard.model.vo.ParceloutBoard;
 /**
  * Servlet implementation class ParceloutViewServlet
  */
-@WebServlet("/board/community/parcelout/parceloutView")
+@WebServlet("/board/parcelout/parceloutView")
 public class ParceloutViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -71,7 +71,7 @@ public class ParceloutViewServlet extends HttpServlet {
 					response.addCookie(boardCookie);
 				}
 		
-		ParceloutBoard p = new ParceloutService().selectOne(parceloutNo);
+		ParceloutBoard p = new ParceloutService().selectOne(parceloutNo, hasRead);
 		List<BoardComment> commentList = new ParceloutService().selectCommentList(parceloutNo);
 		
 		System.out.println(p);
@@ -82,7 +82,7 @@ public class ParceloutViewServlet extends HttpServlet {
 		
 		if(p == null) {
 			request.setAttribute("msg", "조회한 게시글이 존재하지 않습니다.");
-			request.setAttribute("loc", "/board/community/parcelout/parceloutList");
+			request.setAttribute("loc", "/board/parcelout/parceloutList");
 			view = "/WEB-INF/views/common/msg.jsp";
 		}
 		request.getRequestDispatcher(view).forward(request, response);
