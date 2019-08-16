@@ -9,6 +9,8 @@
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <script>
 $(()=>{
 	//테이블의 열을 클릭시 해당 게시물로 이동
@@ -90,7 +92,7 @@ $(()=>{
 				});
 				$("#tbl-board").html(html);
 				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+					$("#pageBar").html("<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span><span class='w3-bar-item w3-black w3-button'>1</span><span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>");
 				}
 				else{
 					$("#pageBar").html("<%=pageBar %>");
@@ -135,7 +137,7 @@ $(()=>{
 				});
 				$("#tbl-board").html(html);
 				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+					$("#pageBar").html("<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span><span class='w3-bar-item w3-black w3-button'>1</span><span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>");
 				}
 				else{
 					$("#pageBar").html("<%=pageBar %>");
