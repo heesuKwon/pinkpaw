@@ -19,24 +19,33 @@
 	  href="<%=request.getContextPath()%>/css/board.css" /> --%>
 
 <style>
-#PA{width: 1000px; height: 1000px; margin-top: 100px; margin-left: 50px;}
+#btn-add{
+display: block
+}
 
+table#missing-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; border-radius: 5px; }
+table#missing-board th, table#tbl-board td {border:1px solid; padding: 5px 0; text-align:center;} 
+.card:hover{
+box-shadow: 10px 10px 8px rgba(135, 139, 133, 0.4); 
+cursor: pointer;
 
- #layout {
-	display: inline-block;
-	margin: 1em;
-	width: 17rem;
-	height: 18rem;
-} 
+div#pageBar{margin-top:10px; text-align:center;}
+div#pageBar span.cPage{color: gray; margin-right: 5px;}
+div#pageBar a{margin-right: 5px;}
+}
+
+.input-group mb-3{
+width: 600px; 
+text-align: center;
+}
 </style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<section style="margin-top: 100px;" id="board-container">
+<table id="missing-board" style="border:0px; border-collapse: collapse;">
 
-<div id="PA">
-
-
-	<h2>실종게시판</h2>
-	
-	<div class="input-group mb-3" style="width: 600px">
-		<div class="input-group-prepend">
+	<div class="input-group mb-3" >
+		<div class="input-group-prepend" >
     		<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" name="kind" style="border-radius: 0" onchange="kindchange();">
 				<option value="" selected hidden>동물종류</option>
 				<option value="">전체</option>
@@ -115,43 +124,41 @@
 	}
 	</script>		
 	<%} %>
-	<br/>
-	<%if(list==null || list.isEmpty()){ %>
-	<div class="card" id="layout">게시글이없습니다.</div>
-	<%} else{ %>
-	
-			<% for(MissingBoard b : list){ %>
-	<a href="<%=request.getContextPath()%>/board/missingView?missingNo=<%=b.getMissingNo() %>">
-	<div class="card" id="layout">
+	<% for(MissingBoard b : list){ %>
+	<div class="card" style="width: 18rem; height: 310px; display: inline-block; margin-top:20px; margin-left: 20px;">
+	<a style="text-decoration: none; color: gray" href="<%=request.getContextPath()%>/board/missingView?missingNo=<%=b.getMissingNo() %>">
 	<%if(b.getMissingOriginalImg()!=null) {
-				String[] renamedImgList = b.getMissingRenamedImg().split("§");
-				%>
-				<img src="<%=request.getContextPath()%>/upload/board/missing/<%=renamedImgList[0]%>" class="card-img-top" alt="logo"  style='width:200px; height:200px;' />					
-			<% 
-			}%>
-		<div class="card-body">
-
-			<h2>"잃어버린 <%=b.getMissingKind() %> 를 찾습니다"</h2>
-			<p class="card-text">
-				지역: <%=b.getMissingHpPlace().substring(0, b.getMissingHpPlace().indexOf(" ", 6)) %>
-			</p>
-			<p class="card-text">
-				사례금:<%=b.getMissingMoney() ==-1?"사례금협의":b.getMissingMoney() == 0?"사례금없음":b.getMissingMoney()+"만원" %>
-			</p>
-
-		</div>
+				String[] renamedImgList = b.getMissingRenamedImg().split("§");%>
+	<img class="d-block w-100" src="<%=request.getContextPath()%>/upload/board/missing/<%=renamedImgList[0]%>" style='width:200px; height:150px;' />					
+	<% }
+		else { %>
+ 	 <img src="<%=request.getContextPath()%>/images/bg.png"  class="card-img-top" style="height: 150px;">
+		<%} %>
+	<div class="card-body">
+	<p class="card-title">
+	<span style="font-size: 12px;">#<% if(b.getMissingKind() != null){
+ 			String[] arr = b.getMissingKind().split("_");%> 
+			<%=arr.length == 1?b.getMissingKind():arr[1]%>
+			<%} %>
+	</span>
+	<br />
+	<span style="font-weight:bold; font-size: 18px; color: dark-gray;"><%= b.getMissingTitle()%></span>		
+	<br />
+	<span style="font-size: 13px;"><%=b.getMissingHpPlace().substring(0, b.getMissingHpPlace().indexOf(" ", 6)) %></span>
+	</p>
+	<p style="font-size: 11px; color: gray; text-align: right;"><%=b.getMissingEnrollDate() %>
+	<br />
+	<%=b.getMissingWriter()%>
+	</p>
 	</div>
-	</a>
-				
-		<%}
-	}%>
-
-
-
-
-	<div id='pageBar'><%=pageBar %></div>
-
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+  </a>
 </div>
+		<% } %>
+</table>
+<div id='pageBar'>
+<%=pageBar%>
+</div>
+</section>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 

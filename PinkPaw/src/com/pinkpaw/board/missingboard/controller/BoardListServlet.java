@@ -32,7 +32,7 @@ public class BoardListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. 파라미터값 변수에 담기
-		final int numPerPage = 9;//한페이지당 수
+		final int numPerPage = 6;//한페이지당 수
 		int cPage = 1;//요청페이지
 		try{
 			cPage = Integer.parseInt(request.getParameter("cPage"));

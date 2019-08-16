@@ -67,7 +67,7 @@ $('document').ready(function() {
 	      method="post"
 	      enctype="multipart/form-data">
 	      <input type="hidden" name="parceloutNo" value="<%=p.getParceloutNo() %>" />
-		<table id="tbl-board-view">
+		<table id="tbl-board-view" style="margin-top: 100px;">
 			<tr>
 				<th>제목</th>
 				<td><input type="text" name="parceloutTitle" value="<%=p.getParceloutTitle() %>" required/></td>
