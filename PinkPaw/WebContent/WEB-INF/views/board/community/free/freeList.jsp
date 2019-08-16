@@ -41,8 +41,7 @@
 	}
 </script>
 
-
-<div>
+<div id="img">
 	<img id="free_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 자유게시판 사진" />
 </div>
 <style>
@@ -50,11 +49,13 @@
 		width: 1024px;
 		height: 300px;
 	}
+	#img{
+		text-align: center;
+	}
 </style>
 
 
-<section class="board-container">
-
+<section class="board-container">	
 	<div class="input-group mb-3" style="width: 600px">
   		<div class="input-group-prepend">
     		<select class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" name="key">
@@ -134,7 +135,7 @@
 	
 			<%if(list==null || list.isEmpty()) { %>
 			<tr>
-				<td colspan="6" align="center">조회 결과가 없습니다.</td>
+				<td colspan="6" align="center">게시글이 없습니다.</td>
 			</tr>
 			<% }else{
 					for(FreeBoard f : list) { %>

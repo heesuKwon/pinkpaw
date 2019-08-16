@@ -20,6 +20,20 @@ $(()=>{
 });
 			
 </script>
+
+<div id="img">
+	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+</div>
+<style>
+	img#review_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
+
 <section class="board-container">
 	
 	<div class="input-group mb-3" style="width: 600px">

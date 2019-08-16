@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ page import="com.pinkpaw.board.dmboard.model.vo.DM" %>
 <%@page import="java.util.List"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
 <%
 List<DM> list = (List<DM>)request.getAttribute("list");
@@ -34,14 +35,19 @@ $(()=>{
 });
 			
 </script>
+
+<div id="img">
+	<img id="sendDM_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 수신쪽지 사진" />
+</div>
 <style>
-#mar{ margin-top: 100px;
-}
-#tbl-board{
-	bacground: yellow;
-}
+	img#sendDM_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
 </style>
-<div id="mar">
 
 <input type="button" value="쪽지쓰기"
 		onclick="DMWrite();"/>
@@ -51,18 +57,14 @@ $(()=>{
 <input type="button" value="발신 쪽지함"
 		onclick="DMRecieve();"/>
 
-		
-		
-	
 	<%-- 함수를 console에 직접 쳐서 이동할 수 있으므로 그것을 방지하기 위해 if문 안에 script사용--%>
-	
+<section class="board-container">
 	<table id="tbl-board" class="table table-hover">
 		<tr>
 			<th scope="col">보낸사람</th>
 			<th scope="col">쪽지제목</th>
 			<th scope="col">읽음여부</th>
 			<th scope="col">날짜</th>
-			
 		</tr>
 		<%if(list==null || list.isEmpty()){ %>
 		<tr>
@@ -83,8 +85,6 @@ $(()=>{
 			</td>
 			<td><%=d.getDmRecvRead()==0?"안읽음":"읽음" %></td>			
 			<td><%=d.getDmDate() %></td>
-			
-			
 		</tr>
 		<%} 
 		}%>
@@ -92,14 +92,10 @@ $(()=>{
 	<div id="pageBar">
 		<%=pageBar %>
 	</div>
-		
+</section>
 
-
-</div>
 <script>
 //쪽지쓰기
-
-	
 function DMWrite(){
 	var url = "<%=request.getContextPath()%>/dmWrite?memberId=<%=memberLoggedIn.getMemberId()%>";
     var title = "DMWrite";

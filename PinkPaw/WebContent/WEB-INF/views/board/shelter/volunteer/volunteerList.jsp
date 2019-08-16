@@ -20,6 +20,20 @@ $(()=>{
 });
 			
 </script>
+
+<div id="img">
+	<img id="volunteer_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 봉사 요청 사진" />
+</div>
+<style>
+	img#volunteer_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
+
 <section class="board-container">
 
 	<div class="input-group mb-3" style="width: 600px">
@@ -128,11 +142,11 @@ $(()=>{
 	<%} %>
 	<table id="tbl-board" class="table table-hover">
 		<tr>
-			<th scope="col">번호</th>
+			<th scope="col">No</th>
 			<th scope="col">첨부파일</th>
 			<th scope="col">제목</th>
 			<th scope="col">작성자</th>
-			<th scope="col">게시일</th>
+			<th scope="col">등록일</th>
 		</tr>
 		<%if(list==null || list.isEmpty()){ %>
 		<tr>
