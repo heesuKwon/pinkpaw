@@ -110,7 +110,7 @@ function validate(){
 	<!--header-->
 	<div class="headerWrap">
 	<header>
-		<h1>
+		<h1 style="width: 800px;">
 			<a href="<%=request.getContextPath()%>"><img src="<%=request.getContextPath()%>/images/main/logo_white.png" alt="logo"></a>
 		</h1>
 
