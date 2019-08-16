@@ -107,8 +107,8 @@ function validate(){
 	<!--header-->
 	<div class="headerWrap">
 	<header>
-		<h1  style="width: 800px;">
-			<a href="<%=request.getContextPath()%>"><img src="<%=request.getContextPath()%>/images/main/logo_white.png" alt="logo"></a>
+		<h1  style="width: 800px; margin-left: -20px;">
+			<a href="<%=request.getContextPath()%>"><img src="<%=request.getContextPath()%>/images/main/logo_white.png" alt="logo" style="margin-top: -9px;"></a>
 		</h1>
 
 		<script>
