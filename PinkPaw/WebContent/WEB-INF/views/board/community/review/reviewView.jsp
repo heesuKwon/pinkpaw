@@ -5,12 +5,25 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick-theme.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
 
 <%
 	ReviewBoard reviewBoard = (ReviewBoard)request.getAttribute("reviewBoard");
 	List<BoardComment> boardCommentList = (List<BoardComment>)request.getAttribute("boardCommentList");
+	int count = 0;
+	if (reviewBoard.getReviewOriginalImg() != null) {
+		String[]	imgList = reviewBoard.getReviewRenamedImg().split("§");
+		count = imgList.length; 
+	}
+	
+	
 %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" /> --%>
 
 <script>
 function fileDownload(oName, rName){
@@ -116,74 +129,86 @@ $(()=>{
 		
 		window.open(url,target,option);
 	}
-</script>
-<section class="board-container">
-	<table id="tbl-board-view">
-		<tr>
-			<th>글번호</th>
-			<td><%=reviewBoard.getReviewNo() %></td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td><%=reviewBoard.getReviewTitle() %></td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td><%=reviewBoard.getReviewWriter() %></td>
-		</tr>
-		<tr>
-			<th>게시물 종류</th>
-			<td><%=reviewBoard.getReviewKind() %></td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td><%=reviewBoard.getReviewCount() %></td>
-		</tr>
-		<tr>
-			<th>게시일</th>
-			<td><%=reviewBoard.getReviewEnrollDate() %></td>
-		</tr>
-		
-		<tr>
-			<th>신고수</th>
-			<td><%=reviewBoard.getReviewReportCount() %></td>
-		</tr>
+	
 
-		<tr>
-			<th>신고 사유</th>
-			<td><%=reviewBoard.getReviewReportReason() %></td>
-		</tr>
-		
-		<tr>
-			<th>첨부파일</th>
-			<td>
-			<!-- 첨부파일이 있는 경우만 보임 처리 -->
-			<%if(reviewBoard.getReviewOriginalImg()!=null) {
-				String[] renamedImgList = reviewBoard.getReviewRenamedImg().split("§");
-				for(int i=0;i<renamedImgList.length;i++){%>
-				<img src="<%=request.getContextPath()%>/upload/board/review/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:200px;' />					
-			<%} 
-			}%>
-			</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>
-				<%=reviewBoard.getReviewContent() %>
-			</td>
-		</tr>
-		<!-- 글작성자/관리자인 경우에만 수정/삭제 버튼이 보이도록 함. -->
-		<%if(memberLoggedIn != null&&
+
+</script>
+
+<style>
+	img#review_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		/* text-align: center; */
+	}
+
+.tg {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: #da7f84;
+}
+
+.tg td {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 11px 5px;
+	border-style: solid;
+	border-width: 0px;
+	text-align:center;
+	overflow: hidden;
+	word-break: normal;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-color: #aaa;
+	color: #333;
+	background-color: #fff;
+}
+
+.tg th {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 11px 5px;
+	border-style: solid;
+	border-width: 0px;
+	overflow: hidden;
+	word-break: normal;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-color: #aaa;
+	color: #333;
+	background-color: #fff;
+	text-align: center;
+}
+/* input[type=button]{
+	background-color:#e1c1c6;
+	color: black;
+	
+} */
+
+.tg .tg-th{background-color:#da7f84;color:#333333;border-color:inherit;text-align:center;vertical-align:top}
+   td.tg-img{color:#333333;border-color:inherit;text-align:center; padding: 0px 100px;}
+
+</style>
+<section class="board-container">
+	<div id="img">
+	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+</div>
+			<%if(memberLoggedIn != null&&
 			(memberLoggedIn.getMemberId().equals(reviewBoard.getReviewWriter()) ||
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
-		<tr>
-			<th colspan="2">
-				<input type="button" value="수정"
-				onclick="updateBoard();" />
-				<input type="button" value="삭제"
+			<div style='height:50px;'>
+				<input type="button" value="삭제"  
+						class="btn btn-outline-danger"
+						style='position: absolute; right: 12em;'
 				onclick="deleteBoard();" />
-			</th>
-		</tr>
+				<input type="button" value="수정"  
+						class="btn btn-outline-danger"
+						style='position: absolute; right: 19em;'
+				onclick="updateBoard();" />
+			</div>
+				
 		<form action="<%=request.getContextPath()%>/board/review/reviewDelete"
 			name="reviewDeleteFrm"
 			method="post">
@@ -208,10 +233,93 @@ $(()=>{
 		}
 		</script>
 		<%} %>
+	<table class="tg" style="table-layout: fixed;   width: 1024px;">
+		<colgroup>
+			<col style="width: 35px">
+			<col style="width: 45px">
+			<col style="width: 73px">
+			<col style="width: 100px">
+		</colgroup>
+		<tr>
+			<th class="tg-th">작성자</th>
+			<th class="tg" colspan="3"><%=reviewBoard.getReviewWriter()%></th>
+		</tr>
+		<tr>
+			<td class="tg-th">제목</td>
+			<td class="tg" colspan="3"><%=reviewBoard.getReviewTitle()%></td>
+		</tr>
+		<tr>
+			<td class="tg-th">글번호</td>
+			<td class="tg-ml2k"><%=reviewBoard.getReviewNo()%></td>
+			<td class="tg-th">조회수</td>
+			<td class="tg-yc5w"><%=reviewBoard.getReviewCount()%></td>
+		</tr>
+		<tr>
+			<td class="tg-th">신고수</td>
+			<td class="tg-yc5w"><%=reviewBoard.getReviewReportCount()%></td>
+			<td class="tg-th">게시일</td>
+			<td class="tg-yc5w"><%=reviewBoard.getReviewEnrollDate()%></td>
+		</tr>
+		<tr>
+			<td class="tg-th">게시물 종류</td>
+			<td class="tg-kw6a" colspan="3"><%=reviewBoard.getReviewKind()%></td>
+		</tr>
+		<tr>
+			<td class="tg-th">사진</td>
+			<td class="tg-img"  colspan="3">
+				<!-- 첨부파일이 있는 경우만 보임 처리 -->
+				<%if(count > 0) {%>
+				<div class="slider slider-for" style='width: 700px; height: 450px;'>
+
+					<%
+						if (reviewBoard.getReviewOriginalImg() != null) {
+							String[] renamedImgList = reviewBoard.getReviewRenamedImg().split("§");
+							for (int i = 0; i < renamedImgList.length; i++) {
+					%>
+					<img
+						src="<%=request.getContextPath()%>/upload/board/review/<%=renamedImgList[i]%>"
+						alt="첨부파일" style='max-width: 700px; max-height: 450px;' />
+					<%
+						}
+						}
+					%>
+				</div>
+				<%} %>
+					<br />
+
+					<% if ( count == 2 || count == 3) {%>
+				<div class="slider slider-nav" align="center" style='width: 700px; height: 150px;'>
+						<% 
+						if (reviewBoard.getReviewOriginalImg() != null) {
+							String[] renamedImgList = reviewBoard.getReviewRenamedImg().split("§");
+							for (int i = 0; i < renamedImgList.length; i++) {
+					%>
+					<img
+							src="<%=request.getContextPath()%>/upload/board/review/<%=renamedImgList[i]%>"
+							alt="첨부파일" style='height: 150px; width: 200px;' />
+				
+					<%
+						}
+						}
+					}
+					%>
+				</div>
+				
+			</td>
+			
+		</tr>
+		<tr>
+			<td class="tg-th">내용</td>
+			<td class="tg-kw6a" colspan="3"><%=reviewBoard.getReviewContent()%></td>
+		</tr>
+
 	</table>
-	<input type="button" value="목록으로"
-				onclick="goReviewList();" />
-	<input type="button" value="신고하기" onclick="goReviewViewReportOpen();" />
+		<!-- 글작성자/관리자인 경우에만 수정/삭제 버튼이 보이도록 함. -->
+
+	<input type="button" value="목록으로"  class="btn btn-outline-danger"
+				onclick="goReviewList();" style='position: absolute; right: 12em;' /> &nbsp;&nbsp;
+	<input type="button" value="신고하기"  class="btn btn-outline-danger" style='position: absolute; right: 19em;' 
+				onclick="goReviewViewReportOpen();" />
 	
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container">
@@ -280,5 +388,52 @@ $(()=>{
 		}%>
 		</table>
 	</div>
-</section>
+	<div>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	</div>
+</section>
+
+
+
+<script>
+
+
+
+//3개일때
+$('.slider-for').slick({
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  arrows: false,
+	  fade: true,
+	  asNavFor: '.slider-nav'
+	});
+$('.slider-nav').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  asNavFor: '.slider-for',
+	  arrows: true,
+	  dots: false,
+	  centerMode: true,
+	  focusOnSelect: true
+	});
+
+//두개일때
+	/*  $('.slider-for').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  arrows: false,
+		  fade: true,
+		  asNavFor: '.slider-nav'
+		});
+		$('.slider-nav').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  asNavFor: '.slider-for',
+		  dots: true,
+		  centerMode: true,
+		  focusOnSelect: true
+		}); */
+
+
+
+</script>
