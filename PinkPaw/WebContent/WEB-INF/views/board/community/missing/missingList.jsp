@@ -15,10 +15,23 @@
 	%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" />
+<%-- <link rel="stylesheet" 
+	  href="<%=request.getContextPath()%>/css/board.css" /> --%>
 
-<section class="board-container">
+<style>
+#PA{width: 1000px; height: 1000px; margin-top: 100px; margin-left: 50px;}
+
+
+ #layout {
+	display: inline-block;
+	margin: 1em;
+	width: 17rem;
+	height: 18rem;
+} 
+</style>
+
+<div id="PA">
+
 
 	<h2>실종게시판</h2>
 	
@@ -92,7 +105,7 @@
 	</script>
 	
 	<%-- 로그인한 경우 글쓰기 가능 --%>
-	<%if(memberLoggedIn!=null){ %>
+	<%if(memberLoggedIn!=null  ){ %>
 	<input type="button" value="글쓰기" id="btn-add"
 			onclick="goReviewWrite();"/>
 	<%-- 함수를 console에 직접 쳐서 이동할 수 있으므로 그것을 방지하기 위해 if문 안에 script사용--%>
@@ -102,6 +115,7 @@
 	}
 	</script>		
 	<%} %>
+	<br/>
 	<%if(list==null || list.isEmpty()){ %>
 	<div class="card" id="layout">게시글이없습니다.</div>
 	<%} else{ %>
@@ -131,22 +145,13 @@
 				
 		<%}
 	}%>
-	<style>
-#layout {
-	display: inline-block;
-	margin: 1em;
-	width: 17rem;
-	height: 18rem;
-}
-</style>
+
 
 
 
 	<div id='pageBar'><%=pageBar %></div>
 
-
-
-
-
-</section>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
+</div>
+
+
