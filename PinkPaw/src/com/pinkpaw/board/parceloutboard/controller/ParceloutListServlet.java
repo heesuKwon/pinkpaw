@@ -33,7 +33,7 @@ public class ParceloutListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	//1. 파라미터값 변수에 담기
-			final int numPerPage = 9;//한페이지당 수
+			final int numPerPage = 6;//한페이지당 수
 			int cPage = 1;//요청페이지
 			try{
 				cPage = Integer.parseInt(request.getParameter("cPage"));
@@ -64,7 +64,7 @@ public class ParceloutListServlet extends HttpServlet {
 		//pageBar += "<span>[이전]</span>"; 
 	}
 	else {
-		pageBar += "<a href='"+request.getContextPath()+"/board/community/parcelout/parceloutList?cPage="+(pageNo-1)+"'>[이전]</a> ";
+		pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+(pageNo-1)+"'>[이전]</a> ";
 	}
 		
 	// pageNo section
@@ -75,7 +75,7 @@ public class ParceloutListServlet extends HttpServlet {
 			pageBar += "<span class='cPage'>"+pageNo+"</span> ";
 		} 
 		else {
-			pageBar += "<a href='"+request.getContextPath()+"/board/community/parcelout/parceloutList?cPage="+pageNo+"'>"+pageNo+"</a> ";
+			pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+pageNo+"'>"+pageNo+"</a> ";
 		}
 		pageNo++;
 	}
@@ -84,7 +84,7 @@ public class ParceloutListServlet extends HttpServlet {
 	if(pageNo > totalPage){
 		//pageBar += "<span>[다음]</span>";
 	} else {
-		pageBar += "<a href='"+request.getContextPath()+"/board/community/parcelout/parceloutList?cPage="+pageNo+"'>[다음]</a>";
+		pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+pageNo+"'>[다음]</a>";
 	}
 	
 		
