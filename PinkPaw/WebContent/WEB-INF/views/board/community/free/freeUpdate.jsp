@@ -4,7 +4,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%@page import="com.pinkpaw.board.freeboard.model.vo.FreeBoard" %>
 <%@page import="java.util.List"%>
-<%--헤더는 나중에 우리 이미지로 수정하기 <%@ include file="/WEB-INF/views/common/header.jsp"%> --%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
 <%

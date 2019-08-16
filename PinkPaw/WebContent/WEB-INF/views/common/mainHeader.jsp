@@ -68,6 +68,11 @@ if(cookies != null){
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Sans+KR:100,300,400,500,700,900"
 	rel="stylesheet" />
+	
+
+
+
+
 
 <script>
 
@@ -145,95 +150,127 @@ function validate(){
 					  id="loginFrm"
 					  method="post"
 					  onsubmit="return validate();">
-					<table>
-						<tr>
-							<td>
-								<input type="text" 
+					  <div class="container">
+
+					  <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title"></div>
+            </div>
+            <div class="panel-body">
+               
+               <div style="margin-left: 25px;">
+               
+                    <div>
+                    	<input
+                    	class="from-control"
+                    				 type="text" 
 									   name="memberId"
 									   id="memberId"
 									   placeholder="아이디"
 									   tabindex="1" 
 									   value="<%=saveId?memberId:""%>"/>
-							</td>
-							
-						</tr>
-						<tr>
-							<td>
-								<input type="password" 
+									   
+					
+                        
+                        
+                    </div>
+                    
+                    <br>
+                    <div>
+                    
+                    <input 
+                    					class="from-control"
+                    					type="password" 
 									   name="password" 
 									   id="password"
 									   placeholder="비밀번호" 
 									   tabindex="2"/>
-							</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td colspan="2">
+                       
+                    </div>
+                    
+                       <br>
+                    <br><br>
+                    
+                  
+                   </div>
+                    
+                    <div style=" position: relative; text-align: center; float: left; left:30px">
+                    				    
+                    <input
+								class="btn btn-info"
+								type="submit" value="로그인"
+									   tabindex="3" />
+					</div>				   
+				   <div style=" position: relative;  text-align: center; float: right; left:-90px; ">
+				   <button
+								class="btn btn-info" 
+								value="회원가입"
+								onclick="register();" >회원가입</button>
+									   
+								   
+				   </div>
+               
+                               
+                     <br>
+                    <br><br><br>
+                    
+                    <div style="display: block; " >
+                    
+                    	
 								<input type="checkbox" 
 									   name="saveId" 
 									   id="saveId" 
 									   <%=saveId?"checked":""%>/>
 								<label for="saveId">아이디저장</label>
 								
+                    
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+
+								
 																
-							</td>
-						</tr>
-						<tr>
 						
-						<td><input type="button" 
-									   value="회원가입"
-									   onclick="register();" />
-					   </td>
-					   
-					   <td>
-								<input type="submit" value="로그인"
-									   tabindex="3" />
-							</td>
-					   
-						
-						</tr>
-						
-					</table>
+					<br>
+					<br>
+					<br>
+					
 				</form>	
 			<% } 
 			//로그인에 성공한 경우
 			else {%>	
-				<table id="logged-in">
-					<tr>
-						<td>
-							<%=memberLoggedIn.getMemberName() %>님, 안녕하세요.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="button" 
+				
+				<div>
+					<h1>
+							<%=memberLoggedIn.getMemberName() %>님
+						</h1>
+					
+						<div>
+							<input 
+							class="btn btn-info"	
+							type="button" 
 								   value="쪽지" 
 								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmView"/>
 							
-							<%if(memberLoggedIn != null && "admin".equals(memberLoggedIn.getMemberId())){ %>
-							<input type="button" 
-								   value="신고쪽지" 
-								   onclick="location.href='<%=request.getContextPath()%>/board/dm/reportDMList'"/>
-								   <input type="button" 
-								   value="신고게시판" 
-								   onclick="location.href='<%=request.getContextPath()%>/admin/reportBoardList'"/>
-							<%} %>	   
+								   
 								   	   
-							<input type="button" 
+							<input
+							class="btn btn-info" 
+							type="button" 
 								   value="마이페이지" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/memberView?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
-							<input type="button" 
-								   value="내가쓴글보기" 
-								   onclick="location.href='<%=request.getContextPath()%>/member/myBoard'"/>
-								   <input type="button" 
-								   value="내가쓴댓글보기" 
-								   onclick="location.href='<%=request.getContextPath()%>/member/myComment'"/>	   
-							<input type="button" 
+								   
+							<input 
+							class="btn btn-info"
+							type="button" 
 								   value="로그아웃" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>
-						</td>
-					</tr>				
-				</table>
+									
+						</div>
+				
+				</div>
 				
 			<% } %>		
 			
@@ -278,11 +315,6 @@ function validate(){
 				<dd>
 					<a href="<%=request.getContextPath()%>/board/community/free/freeList">자유게시판</a>
 				</dd>
-			</dl>
-			<dl>
-					<%if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())){ %>
-					<a href="<%=request.getContextPath()%>/admin/memberList">회원리스트</a>
-					<%} %>
 			</dl>
 		</div>
 		<script>

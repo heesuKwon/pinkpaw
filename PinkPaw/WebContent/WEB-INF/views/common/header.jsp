@@ -6,6 +6,9 @@
 Member memberLoggedIn
 	= (Member)session.getAttribute("memberLoggedIn");
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
+/* memberLoggedIn = new Member();
+memberLoggedIn.setMemberId("admin");
+System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn); */
 
 //쿠키관련 처리
 Cookie[] cookies = request.getCookies();
@@ -156,7 +159,7 @@ function validate(){
 									   value="<%=saveId?memberId:""%>"/>
 							</td>
 							<td>
-								<input type="submit" value="로그인"
+								<input type="submit" value="로그인" class="btn btn-primary"
 									   tabindex="3" />
 							</td>
 						</tr>
@@ -177,9 +180,12 @@ function validate(){
 									   id="saveId" 
 									   <%=saveId?"checked":""%>/>
 								<label for="saveId">아이디저장</label>
-								<input type="button" 
-									   value="회원가입"
-									   onclick="register();" />
+								
+								<button
+								class="btn btn-primary" 
+								value="회원가입"
+								onclick="register();" >회원가입</button>
+								
 																
 							</td>
 						</tr>
@@ -260,7 +266,7 @@ function validate(){
 					<a href="<%=request.getContextPath()%>/board/missingList">실종동물</a>
 				</dd>
 				<dd>
-					<a href="../pr_center/culture.php">분양동물</a>
+					<a href="<%=request.getContextPath()%>/board/parcelout/parceloutList">분양동물</a>
 				</dd>
 				<dd>
 					<a href="<%=request.getContextPath()%>/board/review/reviewList">후기</a>

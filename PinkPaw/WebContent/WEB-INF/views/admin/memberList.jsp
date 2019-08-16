@@ -42,10 +42,13 @@ $(()=>{
 <br />
 <br />
 <br />
-<br />
-<br />
+<br >
+<br >
 <section id="memberList-container">
-	<h2>회원관리</h2>
+	<h2 style="margin: 15px; text-align: center;">회원관리</h2>
+<br >
+<br >	
+	
 	<div id="head-wrapper">
 		<div id="search-container">
 			검색타입: 
@@ -79,7 +82,7 @@ $(()=>{
 			</div>
 		</div>
 		<!-- end of div#search-container -->
-		<div id="numPerPage-container">
+		<div id="numPerPage-container" style="margin: 15px">
 			페이지당 회원수:
 			<form name="numPerPageFrm"
 				  id="numPerPageFrm">
@@ -94,7 +97,7 @@ $(()=>{
 	</div>
 	<!-- end of div#head-wrapper -->
 	
-	<table id="tbl-member">
+	<table class="table table-gray table-hover">
 		<thead>
 			<tr>
 				<th>아이디</th>

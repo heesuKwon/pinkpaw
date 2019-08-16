@@ -13,3 +13,8 @@ section.board-container h2{margin:10px 0;}
 div#pageBar{margin-top:10px; text-align:center;}
 div#pageBar span.cPage{ margin-right: 5px;}
 div#pageBar a{margin-right: 5px;}
+
+
+#loginFrm{
+        padding: 20px;
+    }

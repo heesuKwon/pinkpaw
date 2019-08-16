@@ -9,8 +9,22 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
+<script>
+
+$(document).ready(function(){
+	
+	if("#noticeList td").click(function(){
+		
+		alert("dddd");
+	});
+	
+});
+
+</script>
+
+
 <section id="board-container">
-	<h2>게시판</h2>
+	<h2>공지사항</h2>
 	
 		<%-- 관리자만 글쓰기가능 --%>
 	<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>
@@ -24,7 +38,7 @@
 	</script>
 	<% } %>
 	
-	<table id="tbl-board">
+	<table class="table table-gray table-hover" id="noticeList">
 		<tr>
 			<th>번호</th>
 			<th>작성자</th>

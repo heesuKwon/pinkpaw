@@ -29,8 +29,7 @@ public class FreeBoardReportEndServlet extends HttpServlet {
 		
 		//1. 파라미터 핸들링
 		int freeNo = Integer.parseInt(request.getParameter("freeNo"));
-		String freeReportWriter = request.getParameter("freeReportWriter");
-		String freeReportTitle = request.getParameter("freeReportTitle");
+		String freeReportWriter = request.getParameter("reportWriter");
 		String freeReportContent = request.getParameter("freeReportContent");
 		freeReportContent = freeReportContent.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 		
@@ -70,11 +69,8 @@ public class FreeBoardReportEndServlet extends HttpServlet {
 //			result = memberService.updatePassword(member);
 			if(result > 0){
 				msg = "신고 작성 성공";
-//				String script = "self.close()";
-//				//팝업창을 닫기위한 코드 추가
 				loc = "/board/community/free/freeBoardReport?freeNo="+freeNo+"&close=true";
 			}
-//				
 //		}
 		else {
 			msg = "신고 실패.";

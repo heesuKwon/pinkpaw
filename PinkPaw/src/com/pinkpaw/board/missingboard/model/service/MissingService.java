@@ -148,7 +148,9 @@ public class MissingService {
 
 	public int updateReport(MissingBoard b) {
 		Connection conn = getConnection();
+		
 		int result = new MissingDAO().updateReport(conn, b);
+		
 		if(result>0){
 			commit(conn);
 		}

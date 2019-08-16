@@ -129,13 +129,12 @@ $(()=>{
 	
 });
 			
-function reportBoard(){
+function goParceloutViewReportOpen(){
 	var url = "<%=request.getContextPath()%>/board/parcelout/parceloutReport?parceloutNo=<%=p.getParceloutNo()%>";
-    var title = "reportBoard";
-    var status =  "left=500px, top=200px, width=400px, height=500px";
-    
-	var popup = window.open(url,title,status);
+	var target = "new";
+	var option = "top=200, left=450, width=450, height=300";
 	
+	window.open(url,target,option);
 }
 </script>
 </head>
@@ -144,7 +143,7 @@ function reportBoard(){
 <section id="board-container">
 <h2>게시판 상세보기</h2>
 <input type="button" value="목록" onclick="goBoardList();"/>
-<input type="button" value="신고" onclick="reportBoard();"	 />
+<input type="button" value="신고하기" onclick="goParceloutViewReportOpen();"	 />
 <table id="tbl-parcelout-view">
 <tr>
 	<th>
@@ -211,6 +210,17 @@ function reportBoard(){
 				<th>조회수</th>
 				<td><%=p.getParceloutCount() %></td>
 			</tr>
+			
+			<tr>
+				<th>신고수</th>
+				<td><%=p.getParceloutReportCount() %></td>
+			</tr>
+
+			<tr>
+				<th>신고 사유</th>
+				<td><%=p.getParceloutReportReason() %></td>
+			</tr>
+			
 		<tr>
 			<th>첨부파일</th>
 			<td>

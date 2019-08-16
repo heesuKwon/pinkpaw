@@ -81,7 +81,7 @@ $(()=>{
 	
 	
 	</div>
-	<table id="tbl-member">
+	<table class="table table-gray table-hover">
 		<thead>
 			<tr>
 				<th>아이디</th>

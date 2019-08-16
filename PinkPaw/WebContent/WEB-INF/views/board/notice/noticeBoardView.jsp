@@ -12,7 +12,7 @@
   
 <section id="board-container">
 	<h2>게시판 상세보기</h2>
-	<table id="tbl-board-view">
+	<table class="table table-gray table-hover">
 			<tr>
 				<th>글번호</th>
 				<td><%=b.getNoticeNo() %></td>
