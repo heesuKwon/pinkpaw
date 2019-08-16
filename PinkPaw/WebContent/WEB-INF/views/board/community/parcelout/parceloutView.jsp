@@ -9,14 +9,15 @@
 	List<BoardComment> commentList = (List<BoardComment>)request.getAttribute("commentList");
 	System.out.println("commentList@view="+commentList);
 	
+	String str = "한쌍";
+	if(p.getParceloutGender().equals("m")){
+		str = "수컷";
+		}else if(p.getParceloutGender().equals("f")){
+		str = "암컷";
+		}
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>분양동물 게시판 상세보기</title>
-<script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<%@ include file="/WEB-INF/views/common/header.jsp"%><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <style>
 div.comment-editor button#btn-insert{
@@ -67,68 +68,91 @@ table#tbl-comment tr:hover button.btn-delete{
 }
 </style>
 <script>
-function goBoardList(){
-	location.href 
-		= "<%=request.getContextPath()%>/board/parcelout/parceloutList";	
+
+function loginAlert(){
+	alert("로그인 후 이용하세요.");	
+// 	$("#memberId").focus();
 }
 
+
 $(()=>{
-	
-	//boardCommentFrm 유효성 검사: jquery.submit이벤트 핸들러
-	$("[name=boardCommentFrm]").submit((e)=>{
-		//댓글 유효성 검사
-		var len = $("#boardCommentContent").val()
-										.trim()
-										.length;
-		//작성된 글이 없는 경우
-		if(len == 0){
-			e.preventDefault();//제출을 못하도록 함.
-			
+	//로그인하지 않고 댓글쓰기 방지
+	$("[name=boardCommentContent]").click(()=>{
+		if(<%=memberLoggedIn==null%>){
+			loginAlert();
 		}
 	});
+	
+	//boardCommentFrm 유효성 검사: jquery.submit이벤트핸들러 이용
+	$("[name=boardCommentFrm]").submit((e)=>{
+		
+		//댓글 유효성검사
+		var len = $("#boardCommentContent").val()
+										   .trim()
+										   .length;
+		if(len == 0){
+			e.preventDefault();
+		}
+	});
+	
 	//답글(대댓글) 작성
-	$(".btn-reply").on("click",(e)=>{
+	$(".btn-reply").on("click", (e)=>{
+		/* 로그인여부에 따라 분기 */
+		<% if(memberLoggedIn != null){%>
+			//로그인한 경우
 			var tr = $("<tr></tr>");
 			var html = "<td style='display:none; text-align:left;' colspan='2'>";
 			html += "<form action='<%=request.getContextPath()%>/board/parceloutboard/boardCommentInsert' method='post'>";
-			html += "<input type= 'hidden' name='boardRef' value='<%=p.getParceloutNo()%>'/>";
-			html += "<input type= 'hidden' name='boardCommentWriter' value='admin'/>";
-			html += "<input type= 'hidden' name='boardCommentLevel' value='2'/>";//답글(대댓글)이기 때문에 2로 작성
-			html += "<input type= 'hidden' name='boardCommentRef' value='"+e.target.value+"'/>";
+			html += "<input type='hidden' name='boardRef' value='<%=p.getParceloutNo()%>'/>";
+			html += "<input type='hidden' name='boardCommentWriter' value='<%=memberLoggedIn.getMemberId()%>'/>";
+			html += "<input type='hidden' name='boardCommentLevel' value='2'/>";
+			html += "<input type='hidden' name='boardCommentRef' value='"+e.target.value+"'/>";
 			html += "<textarea name='boardCommentContent' cols='60' rows='1'></textarea>";
 			html += "<button type='submit' class='btn-insert2'>등록</button>";
 			html += "</form>";
-			html += "</td>";
-			
+			html +="</td>";
 			tr.html(html);
 			
 			//클릭한 버튼이 속한 tr 다음에 tr을 추가
 			tr.insertAfter($(e.target).parent().parent())
-				.children("td").slideDown(800)//td가 0.8초동안 슬라이드가 밑으로 내려옴.
-				.children("form").submit((e)=>{//form이 제출 될때
-									//여기서 e는 form을 가리킴
-									console.log($(e.target));
-									var len = $(e.target).children("textarea")
-														.val()
-														.trim()
-														.length;
-									if(len == 0){
-										e.preventDefault();
-									}
-								});
-
+			  .children("td")
+			  .slideDown(800)
+			  .children("form")
+			  .submit((e)=>{
+				 console.log($(e.target));
+				 var len = $(e.target).children("textarea")
+				 					  .val()
+				 					  .trim()
+				 					  .length;
+				 if(len == 0)
+					 e.preventDefault();
+				 
+			  })
+			  .find("textarea").focus();
+			
+			//한번 댓글폼 생성후 이벤트핸들러 제거
+			$(e.target).off('click');
+			
+			
+		<% } else { %>
+			//로그인하지 않은 경우
+			loginAlert();
+		<% } %>
 	});
 	
-	//댓글/답글 삭제버튼 클릭시
-	$(".btn-delete").click(function(){
-    if(!confirm("정말 삭제하시겠습니까?")) return;
-    //삭제처리후 돌아올 현재게시판번호도 함께 전송함.
-    location.href="<%=request.getContextPath()%>/board/parceloutBoard/ParceloutCommentDelete?parceloutNo=<%=p.getParceloutNo()%>&del="+$(this).val();
-
-	});
+	 //삭제버튼 클릭시
+    $(".btn-delete").click(function(){
+        if(!confirm("정말 삭제하시겠습니까?")) return;
+        //삭제처리후 돌아올 현재게시판번호도 함께 전송함.
+        location.href="<%=request.getContextPath()%>/board/parceloutBoard/ParceloutCommentDelete?parceloutNo=<%=p.getParceloutNo() %>&del="+$(this).val();
+    });
 	
 });
-			
+
+function goBoardList() {
+	location.href = "<%=request.getContextPath()%>/board/parcelout/parceloutList";
+}		
+
 function goParceloutViewReportOpen(){
 	var url = "<%=request.getContextPath()%>/board/parcelout/parceloutReport?parceloutNo=<%=p.getParceloutNo()%>";
 	var target = "new";
@@ -136,6 +160,7 @@ function goParceloutViewReportOpen(){
 	
 	window.open(url,target,option);
 }
+
 </script>
 </head>
 <body>
@@ -143,12 +168,14 @@ function goParceloutViewReportOpen(){
 <section id="board-container">
 <h2>게시판 상세보기</h2>
 <input type="button" value="목록" onclick="goBoardList();"/>
-<input type="button" value="신고하기" onclick="goParceloutViewReportOpen();"	 />
-<table id="tbl-parcelout-view">
+<%if(memberLoggedIn!=null){ %>
+<input type="button" value="신고" onclick="goParceloutViewReportOpen();"/>
+<%} %>
+<table id="tbl-parcelout-view" >
 <tr>
 	<th>
 		<td>
-	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
   <div class="carousel-inner">
 		<% if(p.getParceloutOriginalImg() != null){
 				String[] renamedImgList = p.getParceloutRenamedImg().split("§");
@@ -210,38 +237,45 @@ function goParceloutViewReportOpen(){
 				<th>조회수</th>
 				<td><%=p.getParceloutCount() %></td>
 			</tr>
-			
 			<tr>
-				<th>신고수</th>
-				<td><%=p.getParceloutReportCount() %></td>
+				<th>분양지역</th>
+				<td><%=p.getParceloutPlace()%></td>
 			</tr>
-
 			<tr>
-				<th>신고 사유</th>
-				<td><%=p.getParceloutReportReason() %></td>
+				<th>책임비</th>
+				<td><%=p.getParceloutMoney()%>원</td>
 			</tr>
-			
-		<tr>
-			<th>첨부파일</th>
-			<td>
-				<!-- 첨부파일이 있는 경우만 보임 처리 -->
+			<tr>
+				<th>동물종류</th>
+				<% if(p.getParceloutKind() != null){
+				String[] arr = p.getParceloutKind().split("_");%>
+				<td><%=arr.length == 1?p.getParceloutKind():arr[1]%></td>
+				<%} %>
+			</tr>
+			<tr>
+				<th>성 별</th>
+				<td><%=str %></td>
+			</tr>
 				<% if(p.getParceloutOriginalImg() != null){
 				String[] renamedImgList = p.getParceloutRenamedImg().split("§");
 					for(int i=0;i<renamedImgList.length;i++){%>
-				<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:200px;' />	
-				</a>
+<!-- 		<tr> -->
+<!-- 			<th>첨부파일</th> -->
+<!-- 			<td> -->
+<!-- 				첨부파일이 있는 경우만 보임 처리 -->
+<%-- 				<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:200px;' />	 --%>
+<!-- 			</td> -->
+<!-- 		</tr>		 -->
 				<% }
-				}%>
-			</td>
-		</tr>		
+ 				}%> 
 		<tr>
-			<th>내용</th>
+			<th>내 용</th>
 			<td><%=p.getParceloutContent()%></td>
 		</tr>
 		<!-- 글작성자/관리자인 경우에만 수정/삭제버튼이 보이도록함. -->	
-<%-- 		<% if(memberLoggedIn!=null &&  --%>
-<!-- 			(b.getBoardWriter().equals(memberLoggedIn.getMemberId()) -->
-<!-- 			|| "admin".equals(memberLoggedIn.getMemberId())) ){ %>	 -->
+		<% if(memberLoggedIn!=null && 
+ 			(p.getParceloutWriter().equals(memberLoggedIn.getMemberId()) 
+ 			|| "admin".equals(memberLoggedIn.getMemberId())) ){ %>	 
 		<tr>
 			<th colspan="2">
 				<input type="button" value="수정" 
@@ -261,7 +295,7 @@ function goParceloutViewReportOpen(){
 		</form>
 		<script>
 		function updateBoard(){
-			location.href = "<%=request.getContextPath()%>/board/community/parcelout/parceloutUpdate?parceloutNo=<%=p.getParceloutNo()%>";
+			location.href = "<%=request.getContextPath()%>/board/parcelout/parceloutUpdate?parceloutNo=<%=p.getParceloutNo()%>";
 		}
 		function deleteBoard(){
 			if(!confirm("정말 삭제 하시겠습니까?")){
@@ -271,19 +305,19 @@ function goParceloutViewReportOpen(){
 		}
 		</script>
 			
-<%-- 		<%} %> --%>
+		<%} %>
 	</table>
 	
 	<hr style="margin-top: 30px;"/>
-	<div id="comment-container">
-		<div class="comment-editor">
+	<div id="comment-container" style="overflow:scroll;">
+		<div class="comment-editor" style="text-align: center;">
 			<form action="<%=request.getContextPath()%>/board/parceloutboard/boardCommentInsert"
 				  name="boardCommentFrm"
 				  method="post">
 				<input type="hidden" name="boardRef" 
 					   value="<%=p.getParceloutNo()%>" />
-				<input type="hidden" name="boardCommentWriter" value="admin">
-<%-- 					   value="<%=memberLoggedIn!=null?memberLoggedIn.getMemberId():""%>" /> --%>
+				<input type="hidden" name="boardCommentWriter" 
+					   value="<%=memberLoggedIn!=null?memberLoggedIn.getMemberId():""%>" />
 				<input type="hidden" name="boardCommentLevel" 
 					   value="1" />
 				<input type="hidden" name="boardCommentRef" 
@@ -296,11 +330,12 @@ function goParceloutViewReportOpen(){
 			</form>
 		</div>
 		<!-- 댓글목록테이블 -->
-		<table id="tbl-comment">
+		<table id="tbl-comment" style="overflow:scroll;">
 			<%
- 			if(commentList != null){
-			for(BoardComment bc : commentList){
- 			if(bc.getBoardCommentLevel()==1){%>
+			if(commentList != null){
+				for(BoardComment bc : commentList){
+					if(bc.getBoardCommentLevel()==1){
+			%>
 					<tr class=level1>
 						<td>
 							<sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
@@ -311,11 +346,19 @@ function goParceloutViewReportOpen(){
 						<td>
 							<button class="btn-reply" 
 									value="<%=bc.getBoardCommentNo()%>">답글</button>
-							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>									
+							<!-- @실습문제:
+								 관리자/댓글작성자에 한해 이버튼을 노출시키고,
+								 댓글 삭제 기능추가. 
+								 댓글삭제후에는 현재페이지로 다시 이동함. -->
+							 
+							<%if(memberLoggedIn!=null 
+								&& ("admin".equals(memberLoggedIn.getMemberId()) 
+										|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
+							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<%} %>
 						</td>
 					</tr>
-					<%} 
-				else{%>
+			<% 		} else { %>
 					<tr class=level2>
 						<td>
 							<sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
@@ -324,16 +367,23 @@ function goParceloutViewReportOpen(){
 							<%=bc.getBoardCommentContent() %>
 						</td>
 						<td>
+							<!-- 삭제버튼 추가 -->
+							<%if(memberLoggedIn!=null 
+								&& ("admin".equals(memberLoggedIn.getMemberId()) 
+								|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
 							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<%} %>
 						</td>
 					</tr>
-					<%
-				}
-					}
-				} 
+		
+			<%
+					}//end of if : level1, level2
+		
+				}//end of for	
+			} 
 			%>
 		</table>
 	</div>	
 </section>
-</body>
-</html>
+
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

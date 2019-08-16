@@ -2,7 +2,6 @@ package com.pinkpaw.board.parceloutboard.model.service;
 
 import java.sql.Connection;
 import java.util.List;
-
 import com.pinkpaw.board.common.model.vo.BoardComment;
 import com.pinkpaw.board.parceloutboard.model.dao.ParceloutDAO;
 import com.pinkpaw.board.parceloutboard.model.vo.ParceloutBoard;
@@ -126,6 +125,27 @@ public class ParceloutService {
 		close(conn);
 		System.out.println("result@service="+result);
 		return result;
+	}
+
+	public ParceloutBoard selectOne(int parceloutNo, boolean hasRead) {
+		Connection conn = getConnection();
+		//1.조회수 증가
+		int result = 0;
+		if(!hasRead) {
+			result = new ParceloutDAO().increaseReadCount(conn, parceloutNo);			
+		}
+		
+		//2.게시글 조회
+		ParceloutBoard board = new ParceloutDAO().selectOne(conn, parceloutNo);
+		
+		//트랜잭션 처리
+		if(result>0)
+			commit(conn);
+		else 
+			rollback(conn);
+		
+		close(conn);
+		return board;
 	}
 	
 	

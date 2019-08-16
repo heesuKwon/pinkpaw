@@ -3,11 +3,9 @@
     pageEncoding="UTF-8"%>
 <%
 	int parceloutNo = Integer.parseInt(request.getParameter("parceloutNo"));
-	/* Member memberLoggedIn
-	= (Member)session.getAttribute("memberLoggedIn"); */
-	Member memberLoggedIn = new Member();
-	memberLoggedIn.setMemberId("admin");
-	System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
+	Member memberLoggedIn
+	= (Member)session.getAttribute("memberLoggedIn");
+// 	System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 %>
 <!DOCTYPE html>
 <html>
@@ -33,8 +31,6 @@
 				<tr>
 					<th>신고 내용</th>
 					<td>	
-						<!-- <textarea name="reportContent" cols="40" rows="5"
-						placeholder="내용을 입력해주세요."></textarea> -->
 						<select name="parceloutReportContent" id="parceloutReportContent" onchange="change()">
 							<option value="">신고 사유 선택</option>
 							<option value="광고글">광고글</option>

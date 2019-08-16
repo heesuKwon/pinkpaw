@@ -35,7 +35,7 @@ public class ParceloutCommentDeleteServlet extends HttpServlet {
 	
 	String view = "/WEB-INF/views/common/msg.jsp";
 	String msg = "";
-	String loc = "/board/community/parcelout/parceloutView?parceloutNo="+parceloutNo;
+	String loc = "/board/parcelout/parceloutView?parceloutNo="+parceloutNo;
 	
 	if(result > 0) {
 		msg = "댓글 삭제 성공!";

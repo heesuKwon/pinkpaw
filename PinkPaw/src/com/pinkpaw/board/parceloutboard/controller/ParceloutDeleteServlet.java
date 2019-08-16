@@ -39,7 +39,7 @@ public class ParceloutDeleteServlet extends HttpServlet {
 	
 	if(result > 0) {
 		msg = "성공적으로 삭제";
-		loc = "/board/community/parcelout/parceloutList";
+		loc = "/board/parcelout/parceloutList";
 	}else {
 		msg = "삭제실패";
 	}

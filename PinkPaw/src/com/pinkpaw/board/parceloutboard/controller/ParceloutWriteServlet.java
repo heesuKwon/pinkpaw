@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ParceloutFormServlet
  */
-@WebServlet("/board/community/parcelout/parceloutWrite")
+@WebServlet("/board/parcelout/parceloutWrite")
 public class ParceloutWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,7 +26,9 @@ public class ParceloutWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	
+	
+		
 	request.getRequestDispatcher("/WEB-INF/views/board/community/parcelout/parceloutWrite.jsp").forward(request, response);
 	
 	}

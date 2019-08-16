@@ -36,7 +36,7 @@ public class ParceloutUpdateEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(!ServletFileUpload.isMultipartContent(request)) {
-			request.setAttribute("msg", "게시판작성오류![form:enctype 관리자에게 문의하세요.");
+			request.setAttribute("msg", "게시판작성오류! 관리자에게 문의하세요.");
 			request.setAttribute("loc", "/");
 			request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp")
 				   .forward(request, response);
@@ -82,7 +82,20 @@ public class ParceloutUpdateEndServlet extends HttpServlet {
 				String parceloutKind = mReq.getParameter("parceloutKind");
 				String parceloutGender = mReq.getParameter("parceloutGender");
 				String parceloutContent = mReq.getParameter("parceloutContent");
+				String others = mReq.getParameter("others");
 				
+				if(parceloutGender.equals("수")) {
+					parceloutGender = "m";
+				}else if(parceloutGender.equals("암")) {
+					parceloutGender = "f";
+				}else {
+					parceloutGender = "s";
+				}
+				
+				
+				if(parceloutKind.equals("animal")) {
+					parceloutKind = others;
+				}
 				String parceloutRenamedImg = mReq.getFilesystemName("upFile");
 				String parceloutOriginalImg = mReq.getOriginalFileName("upFile");
 				
@@ -146,11 +159,11 @@ public class ParceloutUpdateEndServlet extends HttpServlet {
 				int result = new ParceloutService().updateParcelout(p);
 						
 				String msg = "";
-				String loc = "/board/community/parcelout/parceloutList";
+				String loc = "/board/parcelout/parceloutList";
 				
 				if(result>0) {
 					msg = "게시글 수정성공!";
-					loc = "/board/community/parcelout/parceloutView?parceloutNo="+parceloutNo;
+					loc = "/board/parcelout/parceloutView?parceloutNo="+parceloutNo;
 				}
 				else {
 					msg = "게시글 수정실패!";

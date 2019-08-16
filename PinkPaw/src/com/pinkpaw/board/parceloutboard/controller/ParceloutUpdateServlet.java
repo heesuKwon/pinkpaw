@@ -13,7 +13,7 @@ import com.pinkpaw.board.parceloutboard.model.vo.ParceloutBoard;
 /**
  * Servlet implementation class ParceloutUpdateServlet
  */
-@WebServlet("/board/community/parcelout/parceloutUpdate")
+@WebServlet("/board/parcelout/parceloutUpdate")
 public class ParceloutUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,7 +41,7 @@ public class ParceloutUpdateServlet extends HttpServlet {
 		
 		if(p == null) {
 			request.setAttribute("msg", "조회한 게시글이 존재하지 않습니다.");
-			request.setAttribute("loc", "/board/community/parcelout/parceloutList");
+			request.setAttribute("loc", "/board/parcelout/parceloutList");
 			view = "/WEB-INF/views/common/msg.jsp";
 		}
 		
