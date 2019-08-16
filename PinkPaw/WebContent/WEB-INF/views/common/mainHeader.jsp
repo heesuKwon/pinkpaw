@@ -156,9 +156,9 @@ function validate(){
             <div class="panel-heading">
                 <div class="panel-title"></div>
             </div>
-            <div class="panel-body" style="border: 1px solid #e1c1c6; background-color: #e1c1c6;">
+            <div class="panel-body" style="">
                
-               <div style="margin-left: 55px; margin-top: 35px;">
+               <div style="margin-left: 0px; margin-top: 35px;">
                
                     <div>
                     	<input
@@ -167,6 +167,7 @@ function validate(){
 									   name="memberId"
 									   id="memberId"
 									   placeholder="아이디"
+									   style="width: 200px;"
 									   tabindex="1" 
 									   value="<%=saveId?memberId:""%>"/>
                         
@@ -176,10 +177,11 @@ function validate(){
                     <div>
                     
                     <input 
-                    					class="from-control"
-                    					type="password" 
+                    				   class="from-control"
+                    				   type="password" 
 									   name="password" 
 									   id="password"
+									   style="width: 200px;"
 									   placeholder="비밀번호" 
 									   tabindex="2"/>
                        
@@ -192,7 +194,7 @@ function validate(){
                   
                    </div>
                    
-                    <div style="position: relative; text-align: center; float: left; left:30px">
+                    <div style="position: relative; text-align: center; float: left; left: 0px;">
                     
                     	
 								<input type="checkbox" 
@@ -206,14 +208,14 @@ function validate(){
                     
                     <br /><br />
                     
-                    <div style=" position: relative; text-align: center; float: left; left:30px">
+                    <div style=" position: relative; text-align: center; float: left; left:0px">
                     				    
                     <input
 								class="btn btn-info"
 								type="submit" value="로그인"
 									   tabindex="3" />
 					</div>				   
-				   <div style=" position: relative;  text-align: center; float: right; left:-90px; ">
+				   <div style=" position: relative;  text-align: center; float: right; left:-150px; ">
 				   <button
 								class="btn btn-info" 
 								value="회원가입"
