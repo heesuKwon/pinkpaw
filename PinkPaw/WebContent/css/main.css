@@ -83,8 +83,8 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 
 /*section01*/
 #sec01{}
-#sec01 h2{font-size:40px; line-height:70px; color:#fff; margin-bottom:20px; position:absolute; top:200px; font-family:'Noto Regular';}
-#sec01 h1{font-size:56px; line-height:70px; color:#fff; margin-bottom:20px; position:absolute; top:260px; /*padding-top:242px;*/ /*font-weight:400;*/ font-family:'Noto Regular';}
+#sec01 h2{font-size:40px; line-height:70px; color:#fff; margin-bottom:20px; position:absolute; top:200px; font-family:'Noto Regular'; margin-left: 30px;}
+#sec01 h1{font-size:56px; line-height:70px; color:#fff; margin-bottom:20px; position:absolute; top:260px; /*padding-top:242px;*/ /*font-weight:400;*/ font-family:'Noto Regular'; margin-left: 30px;}
 #sec01 h1>strong{/*font-weight:bold;*/ font-family:'Noto Bold';}
 #sec01 p{font-size:16px; line-height:26px; color:#fff; /*font-weight:300;*/ font-family:'Noto Light'; margin-top:20px;}
 #sec01 .btn_magazine{position:absolute; /*bottom:242px;*/ top:622px; left:50%; margin-left:323px;}
