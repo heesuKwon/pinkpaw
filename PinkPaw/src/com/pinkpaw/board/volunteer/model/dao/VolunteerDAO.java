@@ -288,9 +288,9 @@ public class VolunteerDAO {
 		ResultSet rset = null;
 		String sql = "";
 		switch (key) {
-		case "Volunteer_title": sql = prop.getProperty("selectVolunteerBoardListAllnotAllTitle"); break;
-		case "Volunteer_writer": sql = prop.getProperty("selectVolunteerBoardListAllnotAllWriter"); break;
-		case "Volunteer_content": sql = prop.getProperty("selectVolunteerBoardListAllnotAllContent"); break;
+		case "volunteer_title": sql = prop.getProperty("selectVolunteerBoardListAllnotAllTitle"); break;
+		case "volunteer_writer": sql = prop.getProperty("selectVolunteerBoardListAllnotAllWriter"); break;
+		case "volunteer_content": sql = prop.getProperty("selectVolunteerBoardListAllnotAllContent"); break;
 		}
 		
 		try {
@@ -302,103 +302,6 @@ public class VolunteerDAO {
 			pstmt.setString(1, "%"+keyword+"%");
 			pstmt.setInt(2, start);
 			pstmt.setInt(3, end);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				VolunteerBoard rb = new VolunteerBoard();
-				rb.setVolunteerNo(rset.getInt("s_volunteer_no"));
-				rb.setVolunteerTitle(rset.getString("s_volunteer_title"));
-				rb.setVolunteerWriter(rset.getString("s_volunteer_writer"));
-				rb.setVolunteerContent(rset.getString("s_volunteer_content"));
-				rb.setVolunteerOriginalImg(rset.getString("s_volunteer_original_img"));
-				rb.setVolunteerRenamedImg(rset.getString("s_volunteer_renamed_img"));
-				rb.setVolunteerEnrolldate(rset.getDate("s_volunteer_enrolldate"));
-				rb.setVolunteerCount(rset.getInt("s_volunteer_count"));
-				
-				list.add(rb);
-			}			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-			close(rset);
-		}
-		
-		return list;
-	}
-
-
-	public List<VolunteerBoard> selectVolunteerBoardListnotAllAll(Connection conn, int cPage, int numPerPage, String kind,
-			String keyword) {
-		List<VolunteerBoard> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectVolunteerBoardListnotAllAll");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			int start = (cPage-1)*numPerPage+1;
-			int end = cPage*numPerPage;
-			
-			pstmt.setString(1, kind);
-			pstmt.setString(2, "%"+keyword+"%");
-			pstmt.setString(3, "%"+keyword+"%");
-			pstmt.setString(4, "%"+keyword+"%");
-			pstmt.setInt(5, start);
-			pstmt.setInt(6, end);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				VolunteerBoard rb = new VolunteerBoard();
-				rb.setVolunteerNo(rset.getInt("s_volunteer_no"));
-				rb.setVolunteerTitle(rset.getString("s_volunteer_title"));
-				rb.setVolunteerWriter(rset.getString("s_volunteer_writer"));
-				rb.setVolunteerContent(rset.getString("s_volunteer_content"));
-				rb.setVolunteerOriginalImg(rset.getString("s_volunteer_original_img"));
-				rb.setVolunteerRenamedImg(rset.getString("s_volunteer_renamed_img"));
-				rb.setVolunteerEnrolldate(rset.getDate("s_volunteer_enrolldate"));
-				rb.setVolunteerCount(rset.getInt("s_volunteer_count"));
-				
-				list.add(rb);
-			}			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-			close(rset);
-		}
-		
-		return list;
-	}
-
-
-	public List<VolunteerBoard> selectVolunteerBoardListnotAllnotAll(Connection conn, int cPage, int numPerPage, String kind,
-			String key, String keyword) {
-		List<VolunteerBoard> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = "";
-		switch (key) {
-		case "Volunteer_title": sql = prop.getProperty("selectVolunteerBoardListnotAllnotAllTitle"); break;
-		case "Volunteer_writer": sql = prop.getProperty("selectVolunteerBoardListnotAllnotAllWriter"); break;
-		case "Volunteer_content": sql = prop.getProperty("selectVolunteerBoardListnotAllnotAllContent"); break;
-		}
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			int start = (cPage-1)*numPerPage+1;
-			int end = cPage*numPerPage;
-			
-			pstmt.setString(1, kind);
-			pstmt.setString(2, "%"+keyword+"%");
-			pstmt.setInt(3, start);
-			pstmt.setInt(4, end);
 			
 			rset = pstmt.executeQuery();
 			

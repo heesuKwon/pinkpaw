@@ -92,19 +92,5 @@ public class VolunteerService {
 		return list;
 	}
 
-	public List<VolunteerBoard> selectVolunteerBoardListnotAllAll(int cPage, int numPerPage, String kind, String keyword) {
-		Connection conn = getConnection();
-		List<VolunteerBoard> list = new VolunteerDAO().selectVolunteerBoardListnotAllAll(conn, cPage, numPerPage, kind, keyword);
-		close(conn);
-		return list;
-	}
-
-	public List<VolunteerBoard> selectVolunteerBoardListnotAllnotAll(int cPage, int numPerPage, String kind, String key,
-			String keyword) {
-		Connection conn = getConnection();
-		List<VolunteerBoard> list = new VolunteerDAO().selectVolunteerBoardListnotAllnotAll(conn, cPage, numPerPage, kind, key, keyword);
-		close(conn);
-		return list;
-	}
 
 }
