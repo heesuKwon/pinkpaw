@@ -5,14 +5,7 @@
 	List<ReportBoard> list = (List<ReportBoard>)request.getAttribute("list");
 	String pageBar = (String)request.getAttribute("pageBar");
 	String[] arr = new String[list.size()];
-	for(int i = 0; i<list.size(); i++ ){
-		switch(list.get(i).getReportTableName()){
-			case "review" : arr[i] = "후기게시판"; break;
-			case "missing" : arr[i] = "실종게시판"; break;
-			case "free" : arr[i] = "자유게시판"; break;
-			case "parcelout" : arr[i] = "분양게시판"; break;
-		}
-	}
+	
 	
 	
 %>
@@ -52,9 +45,40 @@
 			<td><%=list.get(i).getReportTableName() %></td>
 			<td><%=list.get(i).getReportNo() %></td>
 			<td>
-				<a href="<%=request.getContextPath()%>/board/dm/reportDMView?dmNo=<%=list.get(i).getReportNo()%>">
+				<%if(list.get(i).getReportTableName().equals("리뷰게시판")){ %>
+				
+				<a href="<%=request.getContextPath()%>/board/review/reviewView?reviewNo=<%=list.get(i).getReportNo()%>">
 					<%=list.get(i).getReportTitle() %>
 				</a>
+				<%} %>
+				<%if(list.get(i).getReportTableName().equals("자유게시판")){ %>
+				
+				<a href="<%=request.getContextPath()%>/board/community/free/freeView?freeNo=<%=list.get(i).getReportNo()%>">
+					<%=list.get(i).getReportTitle() %>
+				</a>
+				<%} %>
+				
+				<%if(list.get(i).getReportTableName().equals("봉사게시판")){ %>
+				
+				<a href="<%=request.getContextPath()%>/board/volunteer/volunteerView?volunteerNo=<%=list.get(i).getReportNo()%>">
+					<%=list.get(i).getReportTitle() %>
+				</a>
+				<%} %>
+				
+				<%if(list.get(i).getReportTableName().equals("분양게시판")){ %>
+				
+				<a href="<%=request.getContextPath()%>/board/parcelout/parceloutView?parceloutNo=<%=list.get(i).getReportNo()%>">
+					<%=list.get(i).getReportTitle() %>
+				</a>
+				<%} %>
+				<%if(list.get(i).getReportTableName().equals("실종게시판")){ %>
+				
+				<a href="<%=request.getContextPath()%>/board/parcelout/missingView?missingNo=<%=list.get(i).getReportNo()%>">
+					<%=list.get(i).getReportTitle() %>
+				</a>
+				<%} %>
+				
+				
 			</td>
 			<td><%= list.get(i).getReportReason() %></td>
 		</tr>
