@@ -38,6 +38,11 @@ table#tbl-write td .writer {
     width: 150px;
 }
 
+table#tbl-write td .others {
+	float: left;
+    width: 200px;
+} 
+
 table#tbl-write td div.custom-radio {
     float: left;
     margin-right: 30px;
@@ -128,4 +133,10 @@ div.filebox{
 }
 #attachFileDiv dv{
 	padding-left: 30px;
+}
+
+.btn-outline-gray{
+	border-color: #ddd;
+    font-size: 15px;
+    color: #666;
 }

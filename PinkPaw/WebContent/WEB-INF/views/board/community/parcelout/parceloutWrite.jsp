@@ -2,6 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
 <style>
 #fileField {
 position: relative;
@@ -59,102 +64,148 @@ $('document').ready(function() {
 </script>
 </head>
 <body>
-	<h2>분양 글쓰기</h2>
+<div id="img-div">
+	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">분양 게시판 글쓰기</span>
+</div>
+<section class="board-container">
 	<form action="<%=request.getContextPath()%>/board/parceloutboard/parceloutWriteEnd"
 	      method="post"
 	      enctype="multipart/form-data">
 	      
-		<table id="tbl-board-view" style="margin-top: 100px;">
+		<table id="tbl-write" class="table">
 			<tr>
-				<th>제목</th>
-				<td><input type="text" name="parceloutTitle" required/></td>
+				<th class="text-left">제목<i class="ico-star">*</i></th>
+				<td><input type="text" name="parceloutTitle" class="form-control title" required placeholder="한글 20자까지 작성가능"/></td>
 			</tr>		
 			<tr>
-				<th>작성자</th>
+				<th class="text-left">작성자<i class="ico-star">*</i></th>
 				<td><input type="text" 
 						   name="parceloutWriter"
 						   value="<%=memberLoggedIn.getMemberId()%>"
-						   required readonly/></td>
+						   class="form-control writer" required readonly/></td>
 			</tr>		
 			<tr>
-				<th>분양지역</th>
-				<td>
-					<select name="sido" id="sido"></select>
-					<select name="gugun" id="gugun"></select>			
+				<th class="text-left">분양지역<i class="ico-star">*</i></th>
+				<td class="left">
+					<select name="sido" id="sido" class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown"></select>
+					<select name="gugun" id="gugun" class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown"></select>			
 				</td>
 			</tr>
 			<tr>
-				<th>책임비</th>
+				<th class="text-left">책임비<i class="ico-star">*</i></th>
 				<td>
-				<input type="radio" name="parceloutMoney" value="10000" >1만원
-			    <input type="radio" name="parceloutMoney" value="20000" >2만원
-    			<input type="radio" name="parceloutMoney" value="30000" >3만원
-    			<input type="radio" name="parceloutMoney" value="40000" >4만원
-    			<input type="radio" name="parceloutMoney" value="50000" >5만원
+					<div class="custom-radio">
+						<input type="radio" name="parceloutMoney" id="10000" value="10000" required>
+						<label for="10000">1만원</label>
+					</div>
+					<div class="custom-radio">
+					    <input type="radio" name="parceloutMoney" id="20000" value="20000" required>
+					    <label for="10000">2만원</label>
+				   	</div>
+				    <div class="custom-radio">
+		    			<input type="radio" name="parceloutMoney" id="30000" value="30000" required>
+		    			<label for="10000">3만원</label>
+	    			</div>
+	    			<div class="custom-radio">
+		    			<input type="radio" name="parceloutMoney" id="40000" value="40000" required>
+		    			<label for="10000">4만원</label>
+	    			</div>
+	    			<div class="custom-radio">
+		    			<input type="radio" name="parceloutMoney" id="50000" value="50000" required>
+		    			<label for="10000">5만원</label>
+	    			</div>
 				</td>
 			</tr>	
 			
 			<tr>
-				<th>분류</th>
-				<td><input type="radio" id="animal-dog" name="parceloutKind" value="개" />개
-					<input type="radio" id="animal-cat" name="parceloutKind" value="고양이" />고양이
-					<input type="radio" id="animal" name="parceloutKind" value="animal" />기타&nbsp;&nbsp;
+				<th class="text-left">분류<i class="ico-star">*</i></th>
+				<td>
+					<div class="custom-radio">
+						<input type="radio" id="animal-dog" name="parceloutKind" value="개" required/>
+						<label for="animal-dog">개</label>
+					</div>
+					<div class="custom-radio">
+						<input type="radio" id="animal-cat" name="parceloutKind" value="고양이" required/>
+						<label for="animal-cat">고양이</label>
+					</div>
+					<div class="custom-radio">
+						<input type="radio" id="animal" name="parceloutKind" value="animal" required/>
+						<label for="animal">기타</label>
+					</div>
 					<div id='show-me' style='display: none'>
-						<input type="text" id="animal-and" name="others"
+						<input type="text" id="animal-and" name="others" class="form-control others"
+							style="display:inline-block;"
 							placeholder="기타 분류 입력해주세요">
 					</div></td>
 			</tr>
 			
 			<tr>
-				<th>암수구분</th>
+				<th class="text-left">암수구분<i class="ico-star">*</i></th>
 				<td>
-				<input type="radio" name="parceloutGender" value="m" >수컷
-			    <input type="radio" name="parceloutGender" value="f">암컷
-    			<input type="radio" name="parceloutGender" value="s" >한쌍
+					<div class="custom-radio">
+						<input type="radio" name="parceloutGender" id="m" value="m" required>
+						<label for="m">수컷</label>
+	    			</div>
+	    			<div class="custom-radio">
+					    <input type="radio" name="parceloutGender" id="f" value="f" required>
+					    <label for="f">암컷</label>
+					</div>
+					<div class="custom-radio">
+		    			<input type="radio" name="parceloutGender" id="s" value="s"  required>
+		    			<label for="s">한쌍</label>
+		    		</div>
     			</td>
 			</tr>	
-				
 			<tr>
-				<th>내용</th>
+				<th class="text-left">사진첨부</th>
+				<td>
+					<span class="small-text">※ 사진첨부시 주의사항 </span>
+					<input type="button" value="추가" class="btn btn-small btn-pink" onclick="attachFile.add()"><br/>
+					<span class="small-text">1. 등록가능 한 확장자는 jp(e)g, png입니다.</span> <br>
+					<span class="small-text">2. 첫번째로 첨부된 사진이 메인사진으로 등록됩니다.</span> <br>
+					
+					<div class="left">
+						<div class="filebox" id="mainImg">
+							<label for="upFile" class="btn btn-small btn-pink">이미지선택</label> 
+							<input class="upload-name" value="선택된 파일 없음" disabled="disabled">
+							<input type="file" name="upFile" id="upFile" class="upload-hidden" onchange="previewImage(this,'view_area')"/>
+							<input type="button" value="삭제" class="btn btn-small btn-gray" onclick="delFile()">
+						</div>
+						<div id='view_area' style='position:relative; width: 500px; display: none; '></div>
+						<br>
+						<div id="attachFileDiv">
+						</div>
+					</div>
+				</td>    
+			</tr>					
+			<tr>
+				<th class="text-left">내용<i class="ico-star">*</i></th>
 				<td>
 					<textarea name="parceloutContent" 
-							  cols="40" rows="20" required></textarea>
+							  cols="40" rows="5" class="form-control" required></textarea>
 				</td>
 			</tr>
 					
+
 			<tr>
-				<th>사진첨부</th>
-				<td>
-					첫번째로 첨부된 사진이 메인사진으로 등록됩니다.<br/>
-					<input type="file" name="upFile" onchange="previewImage(this,'view_area')"/>
-					<input type="button" value="추가" onclick="attachFile.add()"><br/>
-					<div id='view_area' style='position:relative; width: 100px; height: 100px; display: none; '></div>
-					<div id="attachFileDiv">
-					</div>
-				</td>	    
-			</tr>	
-			
-				<tr>
-					<th></th>
-					<td>
-					</td>
-				</tr>
-			    
-			    
-			<tr>
-				<th colspan="2">
+				<td colspan="2">
 					<input type="submit" 
 						   value="등록" 
+						   class="btn btn-pink"
 						   onclick="return parceloutValidate();"/>
 					<input type="button" 
 						   value="취소" 
+						   class="btn btn-gray"
 						   onclick="goList();"/>
 					
-				</th>
+				</td>
 			</tr>		
 		
 		</table>
 	</form>
+</section>
 <script>
 
 $("input[id='animal']").click(function () {
@@ -187,47 +238,44 @@ function parceloutValidate(){
 	
 	return true;
 }
+function delFile() {
+	 if(document.getElementById('upFile').value != '' && !confirm('삭제 하시겠습니까?')){
+        return;
+    }
+    document.getElementById('upFile').remove();
+    document.getElementById('view_area').removeChild(document.querySelector("#view_area img"));
+    
+    var file = document.createElement('input');
+    file.type = 'file';
+    file.name = 'upFile';
+    file.size = '40';
+    file.id = 'upFile';
+    file.className = 'upload-hidden';
+    file.setAttribute('onchange', 'previewImage(this,"view_area")');
+    
+    document.getElementById('mainImg').appendChild(file);
+    $("#mainImg").children('.upload-name').val("선택된 파일 없음");
+}
+
+
 function previewImage(targetObj, View_area) {
 	var preview = document.getElementById(View_area); //div id
 	var ua = window.navigator.userAgent;
 	
 	preview.style.position = 'relative'; 
 	preview.style.width = '100px'; 
-	preview.style.height = '100px';
+	/* preview.style.height = '100px'; */
 	preview.style.color = 'black'; 
 	preview.style.border = '0px solid black'; 
 	preview.style.display = 'inline';
 
-  //ie일때(IE8 이하에서만 작동)
-	if (ua.indexOf("MSIE") > -1) {
-		targetObj.select();
-		try {
-			var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
-			var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
 
-
-			if (ie_preview_error) {
-				preview.removeChild(ie_preview_error); //error가 있으면 delete
-			}
-
-			var img = document.getElementById(View_area); //이미지가 뿌려질 곳
-
-			//이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
-			img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='scale')";
-		} catch (e) {
-			if (!document.getElementById("ie_preview_error_" + View_area)) {
-				var info = document.createElement("<p>");
-				info.id = "ie_preview_error_" + View_area;
-				info.innerHTML = e.name;
-				preview.insertBefore(info, null);
-			}
-		}
-  //ie가 아닐때(크롬, 사파리, FF)
-	} else {
-		var files = targetObj.files;
+	var files = targetObj.files;
 		for ( var i = 0; i < files.length; i++) {
 			var file = files[i];
 			var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+			var filename = file.name;
+			$('#'+View_area).siblings('.filebox').children('.upload-name').val(filename); 
 			if (!file.type.match(imageType))
 				continue;
 			var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
@@ -239,7 +287,7 @@ function previewImage(targetObj, View_area) {
 			img.classList.add("obj");
 			img.file = file;
 			img.style.width = '100px'; 
-			img.style.height = '100px';
+			/* img.style.height = '100px'; */
 			preview.appendChild(img);
 			if (window.FileReader) { // FireFox, Chrome, Opera 확인.
 				var reader = new FileReader();
@@ -259,131 +307,121 @@ function previewImage(targetObj, View_area) {
 					preview.insertBefore(info, null);
 				}
 			}
-		}
+		
 	}
-}
+} 
 
 var cnt = 0;
 attachFile = {
-        idx:0,
-        add:function(){ // 파일필드 추가
-        	if(cnt>1){
-        		alert("사진은 세장까지만 추가가 가능합니다.")
-        		return;
-        	}
-        	cnt = cnt+1;
-            var o = this;
-            var idx = o.idx;
+       idx:0,
+       add:function(){ // 파일필드 추가
+       	if(cnt>1){
+       		alert("사진은 세장까지만 추가가 가능합니다.")
+       		return;
+       	}
+       	cnt = cnt+1;
+           var o = this;
+           var idx = o.idx;
 
-            var div = document.createElement('div');
-            div.style.marginTop = '3px';
-            div.id = 'file' + o.idx;
+           var div = document.createElement('div');
+           div.style.marginTop = '3px';
+           div.id = 'file' + o.idx;
+           div.className = "filebox";
 
-            var dv = document.createElement('dv');
-            dv.style.marginTop = '3px';
-            dv.id = 'dv' + o.idx;
+           var dv = document.createElement('dv');
+           dv.style.marginTop = '3px';
+           dv.id = 'dv' + o.idx;
+           
+           var uploadName = document.createElement('input');
+           uploadName.value = '선택된 파일 없음';
+           uploadName.disabled = 'disabled';
+           uploadName.className = 'upload-name';
+           
+           var label = document.createElement('label');
+           label.htmlFor = 'fileField' + o.idx;
+           label.className = 'btn btn-small btn-pink';
+           label.innerHTML = "이미지선택";
 
-            var file = document.all ? document.createElement('<input name="upFile"+cnt>') : document.createElement('input');
-            file.type = 'file';
-            file.name = 'upFile'+cnt;
-            file.size = '40';
-            file.id = 'fileField' + o.idx;
-            file.onchange = function(){o.prev(this,'dv'+idx)};
+           var file = document.all ? document.createElement('<input name="upFile"+cnt>') : document.createElement('input');
+           file.type = 'file';
+           file.name = 'upFile'+cnt;
+           file.size = '40';
+           file.id = 'fileField' + o.idx;
+           file.className = 'upload-hidden';
+           file.onchange = function(){o.prev(this,'dv'+idx)};
 
-            var btn = document.createElement('input');
-            btn.type = 'button';
-            btn.value = '삭제';
-            btn.onclick = function(){o.del(idx)};
-            btn.style.marginLeft = '5px';
+           var btn = document.createElement('input');
+           btn.type = 'button';
+           btn.value = '삭제';
+           btn.onclick = function(){o.del(idx)};
+           btn.style.marginLeft = '5px';
+           btn.className = 'btn btn-small btn-gray';
 
 
+			div.appendChild(label);
+			div.appendChild(uploadName);
+           div.appendChild(file);
+           div.appendChild(btn);
+           document.getElementById('attachFileDiv').appendChild(div);
+           document.getElementById('attachFileDiv').appendChild(dv);
 
-            div.appendChild(file);
-            div.appendChild(btn);
-            document.getElementById('attachFileDiv').appendChild(div);
-                        document.getElementById('attachFileDiv').appendChild(dv);
-
-            o.idx++;
-        },
-        del:function(idx){ // 파일필드 삭제
-            if(document.getElementById('fileField' + idx).value != '' && !confirm('삭제 하시겠습니까?')){
-                return;
-            }
-            document.getElementById('attachFileDiv').removeChild(document.getElementById('file' + idx));
-                        document.getElementById('attachFileDiv').removeChild(document.getElementById('dv' + idx));
-        },
-        prev:function(targetObj,View_area){ // 이미지 미리보기
-            var preview = document.getElementById(View_area); //div id
-            /* alert(View_area); */
+           o.idx++;
+       },
+       del:function(idx){ // 파일필드 삭제
+           if(document.getElementById('fileField' + idx).value != '' && !confirm('삭제 하시겠습니까?')){
+               return;
+           }
+           cnt--;
+           document.getElementById('attachFileDiv').removeChild(document.getElementById('file' + idx));
+           document.getElementById('attachFileDiv').removeChild(document.getElementById('dv' + idx));
+       },
+       prev:function(targetObj,View_area){ // 이미지 미리보기
+           var preview = document.getElementById(View_area); //div id
            var ua = window.navigator.userAgent;
-  //ie일때(IE8 이하에서만 작동)
-    if (ua.indexOf("MSIE") > -1) {
-        targetObj.select();
-        try {
-            var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
-            var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
-
-
-            if (ie_preview_error) {
-                preview.removeChild(ie_preview_error); //error가 있으면 delete
-            }
-
-            var img = document.getElementById(View_area); //이미지가 뿌려질 곳
-
-            //이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
-            img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='scale')";
-        } catch (e) {
-            if (!document.getElementById("ie_preview_error_" + View_area)) {
-                var info = document.createElement("<p>");
-                info.id = "ie_preview_error_" + View_area;
-                info.innerHTML = e.name;
-                preview.insertBefore(info, null);
-            }
-        }
-  //ie가 아닐때(크롬, 사파리, FF)
-    } else {
-        var files = targetObj.files;
-        for ( var i = 0; i < files.length; i++) {
-            var file = files[i];
-            var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
-            var prevImg = document.getElementById("prev_" + View_area);
-            if (!file.type.match(imageType)){
-                preview.removeChild(prevImg);
-                continue;
-                }
-             //이전에 미리보기가 있다면 삭제
-            if (prevImg) {
-                preview.removeChild(prevImg);
-            }
-            var img = document.createElement("img"); 
-            img.id = "prev_" + View_area;
-            img.classList.add("obj");
-            img.file = file;
-            img.style.width = '100px'; 
-            img.style.height = '100px';
-            preview.appendChild(img);
-            if (window.FileReader) { // FireFox, Chrome, Opera 확인.
-                var reader = new FileReader();
-                reader.onloadend = (function(aImg) {
-                    return function(e) {
-                        aImg.src = e.target.result;
-                    };
-                })(img);
-                reader.readAsDataURL(file);
-            } else { // safari is not supported FileReader
-                //alert('not supported FileReader');
-                if (!document.getElementById("sfr_preview_error_"
-                        + View_area)) {
-                    var info = document.createElement("p");
-                    info.id = "sfr_preview_error_" + View_area;
-                    info.innerHTML = "not supported FileReader";
-                    preview.insertBefore(info, null);
-                }
-            }
-        }
-    }
-
-  }
+           
+	        var files = targetObj.files;
+	        for ( var i = 0; i < files.length; i++) {
+	            var file = files[i];
+	            var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+	            var prevImg = document.getElementById("prev_" + View_area);
+	            var filename = file.name; //filename 가져오기
+	            if (!file.type.match(imageType)){
+	                preview.removeChild(prevImg);
+	                continue;
+	             }
+	             //이전에 미리보기가 있다면 삭제
+	            if (prevImg) {
+	                preview.removeChild(prevImg);
+	            }
+	            var img = document.createElement("img"); 
+	            img.id = "prev_" + View_area;
+	            img.classList.add("obj");
+	            img.file = file;
+	            img.style.width = '100px'; 
+	            /* img.style.height = '100px'; */
+	            
+	            $('#'+View_area).prev('.filebox').children('.upload-name').val(filename); 
+	            preview.appendChild(img);
+	            if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+	                var reader = new FileReader();
+	                reader.onloadend = (function(aImg) {
+	                    return function(e) {
+	                        aImg.src = e.target.result;
+	                    };
+	                })(img);
+	                reader.readAsDataURL(file);
+	            } else { // safari is not supported FileReader
+	                //alert('not supported FileReader');
+	                if (!document.getElementById("sfr_preview_error_"
+	                        + View_area)) {
+	                    var info = document.createElement("p");
+	                    info.id = "sfr_preview_error_" + View_area;
+	                    info.innerHTML = "not supported FileReader";
+	                    preview.insertBefore(info, null);
+	                }
+	            }
+       	}
+ }
 }
 </script>	
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

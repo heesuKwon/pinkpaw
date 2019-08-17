@@ -33,44 +33,15 @@
 	</article>
 
 </footer>
-<!-- <style>
-/* footer {
-	width: 100%;
-	height: 300px;
-	padding: 60px;
-	background-color: #394141;
-	color: #7c8c8c;
-	bottom: 0%
-} */
-
-footer p:nth-child(2) {
-	font-size: 14px;
-}
-
-footer p:nth-child(3) {
-	font-size: 10px;
-}
-
-.underline {
-	text-decoration: underline;
-}
-
-footer h4 {
-	font-size: 18px;
-	font-weight: bold;
-	font-family: "Arial";
-}
-
-</style> -->
-<%-- <script>
+<script>
 	$(function(){
 		var dWidth=$(window).width();
 		var dHeight=$(window).height();
-		$('section').css({height:dHeight+'px'});
+		/* $('section').css({height:dHeight+'px'}); */
 
 		//선택되어져 있는 네비게이션 표시
 		$(window).scroll(function(e){
-		var ht=$(window).height();
+		var ht=300;
 		var dScroll=$(window).scrollTop();
 		if(dScroll>=0 && dScroll<ht){
 			$('nav>ul>li').removeClass('on');
@@ -117,7 +88,7 @@ footer h4 {
 			});
 
 		//마우스 휠 이벤트
-		$('section').on('mousewheel',function(event,delta){
+		/* $('section').on('mousewheel',function(event,delta){
 			if(delta>0 && $('#sec02','#sec03','#sec04')){
 				var prev=$(this).prev().offset().top;
 				$('body,html').stop().animate({scrollTop:prev},1200,'swing');
@@ -130,7 +101,7 @@ footer h4 {
 			
 			if(dWidth <= 767 && $(window).scrollTop() > 0){
 				$('.headerWrap').css('background','#fff!important');
-			}
+			} */
 		
 		//header width값 고정
 		if(dWidth < 1024){
@@ -161,33 +132,9 @@ footer h4 {
 			$('.menuWrap_m dl>dd>p').css('padding-top',dWidth/100*5*0.772);
 			$('.menuWrap_m dl>dd>p').css('padding-bottom',dWidth/100*5*0.772);
 
-			/*sec01*/
-			$('#sec01 h1>p').html("KG에듀원의 또 다른 이름은<br> 꿈을 이루는 '드림파트너'입니다.");
-			$('#sec01 .btn_magazine>img').attr('src','images/main/btn_magazine_m.png');
-
-			/*sec02*/
-			$('#sec02 h2').html('KG에듀원의<br>브랜드를 소개합니다.');
-			$('#sec02 .brand>li').removeClass('mt50 mt-50');
-			$('#sec02 .brand>li>a').height(dWidth/100*28.888);
-			$('.brandWrap').removeClass('swiper-container');
-			$('.brand').removeClass('swiper-wrapper');
-			$('.brand>li').removeClass('swiper-slide');
-
-			/*sec03*/
-			$('#sec03 h2').html('KG에듀원의 새로운 소식');
-			$('#sec03 .swiper-container>ul').addClass('swiper-wrapper');
-			$('#sec03 .swiper-container>ul>li').addClass('swiper-slide');
-
-			/*sec04*/
-			$('#sec04 h2').html('KG에듀원과<br>함께 할 당신을 기다립니다.');
-			$('#sec04 .career').height(dWidth/100*28.888);
-			$('#sec04 ul>li').removeClass('rightBox');
-			$('#sec04 .career>.careerTxt>p').html('자세히보기');
-
-			/*sec05*/
-			$('#sec05 .noticeWrap>.linkBnr>ul>li').height(dWidth/100*35.533);
-		}
-	});
-</script> --%>
+		
+	}
+});
+</script>
 </body>
 </html>
