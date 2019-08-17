@@ -62,7 +62,7 @@ footer h4 {
 }
 
 </style> -->
-<script>
+<%-- <script>
 	$(function(){
 		var dWidth=$(window).width();
 		var dHeight=$(window).height();
@@ -188,6 +188,6 @@ footer h4 {
 			$('#sec05 .noticeWrap>.linkBnr>ul>li').height(dWidth/100*35.533);
 		}
 	});
-</script>
+</script> --%>
 </body>
 </html>

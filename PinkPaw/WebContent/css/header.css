@@ -11,6 +11,7 @@ img#review_header {
 	left: 0px;
 	width: 1024px;
 	height: 300px;
+	z-index: -10;
 }
 .header-title {
 	color: white;
@@ -21,7 +22,7 @@ img#review_header {
 	left: 300px;
 	font-weight: 500;
 	font-family: 'Nanum Pen Script', cursive;
-	z-index: 10;
+	z-index: 0;
 }
 
 #blackbg {
@@ -31,6 +32,6 @@ img#review_header {
 	top: 0px;
 	position: absolute;
 	background: black;
-	opacity: .3;
-	z-index: 5;
+	opacity: .2;
+	z-index: -5;
 }
