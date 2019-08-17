@@ -3,19 +3,14 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
-<div id="img">
+<div id="img-div">
 	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">후기 게시판 글쓰기</span>
 </div>
-<style>
-	img#review_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
-</style>
 
 <section class="board-container">
 	<form action="<%=request.getContextPath()%>/board/review/reviewWriteEnd"
@@ -63,12 +58,12 @@
 				<td>
 					<span class="small-text">※ 사진첨부시 주의사항 </span>
 					<input type="button" value="추가" class="btn btn-small btn-pink" onclick="attachFile.add()"><br/>
-					<span class="small-text">1. 등록가능 한 확장자는 jp(e)g, gif입니다.</span> <br>
+					<span class="small-text">1. 등록가능 한 확장자는 jp(e)g, png입니다.</span> <br>
 					<span class="small-text">2. 첫번째로 첨부된 사진이 메인사진으로 등록됩니다.</span> <br>
 
 					<div class="filebox" id="mainImg">
-						<input class="upload-name" value="선택된 파일 없음" disabled="disabled">
 						<label for="upFile" class="btn btn-small btn-pink">이미지선택</label> 
+						<input class="upload-name" value="선택된 파일 없음" disabled="disabled">
 						<input type="file" name="upFile" id="upFile" class="upload-hidden" onchange="previewImage(this,'view_area')"/>
 						<input type="button" value="삭제" class="btn btn-small btn-gray" onclick="delFile()">
 					</div>
