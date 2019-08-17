@@ -43,9 +43,6 @@
 </script>
 
 <div id="img" class="sub_title_area">
-	<h3>자유게시판</h3>
-	<p>pinkpaw에 자유롭게 글을 남겨주세요.</p>
-	<p>동물들의 행복을 찾아주고 이루도록 돕는 Pink Paw</p>
 	<img id="free_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 자유게시판 사진" />
 </div>
 <style>
