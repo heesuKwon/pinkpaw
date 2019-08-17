@@ -24,17 +24,17 @@ table#tbl-write td {
     padding: 20px 40px;
 }
 
-table#tbl-write td .form-control {
+td .form-control {
     border-color: #ddd;
     font-size: 15px;
     background-color: #fff;
 }
 
-table#tbl-write td .title {
+td .title {
     width: 350px;
 } 
 
-table#tbl-write td .writer {
+td .writer {
     width: 150px;
 }
 
@@ -42,6 +42,15 @@ table#tbl-write td .others {
 	float: left;
     width: 200px;
 } 
+
+table#tbl-write td .number {
+    width: 100px;
+} 
+
+table#tbl-write td .center{
+	display:inline-block; 
+	vertical-align: middle;
+}
 
 table#tbl-write td div.custom-radio {
     float: left;
@@ -66,6 +75,11 @@ table#tbl-write span{
 .btn-gray{
 	color: white;
 	background: lightgray;
+}
+.btn-gray:hover{
+	border-color: #bbb;
+	background: white;
+    color: #bbb;
 }
 
 .btn-small{
@@ -129,7 +143,7 @@ div.filebox{
 	text-align: left;
 }
 #view_area img{
-	padding-left: 30px;
+	margin-left: 30px;
 }
 #attachFileDiv dv{
 	padding-left: 30px;
@@ -139,4 +153,19 @@ div.filebox{
 	border-color: #ddd;
     font-size: 15px;
     color: #666;
+}
+
+.dm-container th{
+	color: white;
+	/* background: #e1c1c6; */
+	background: #d6a09d;
+}
+.btn-lightpink{
+	color: white;
+	background: #d6a09d;
+}
+.btn-lightpink:hover{
+	color: #d6a09d;
+	background: white;
+	border-color: #d6a09d;
 }

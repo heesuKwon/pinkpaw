@@ -138,7 +138,8 @@ $('document').ready(function() {
 						<input type="text" id="animal-and" name="others" class="form-control others"
 							style="display:inline-block;"
 							placeholder="기타 분류 입력해주세요">
-					</div></td>
+					</div>
+				</td>
 			</tr>
 			
 			<tr>
