@@ -119,3 +119,13 @@ div.filebox{
 .small-text{
 	font-size: 11px;
 }
+
+.left{
+	text-align: left;
+}
+#view_area img{
+	padding-left: 30px;
+}
+#attachFileDiv dv{
+	padding-left: 30px;
+}

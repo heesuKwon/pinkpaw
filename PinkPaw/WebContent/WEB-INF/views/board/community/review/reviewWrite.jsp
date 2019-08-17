@@ -60,15 +60,18 @@
 					<input type="button" value="추가" class="btn btn-small btn-pink" onclick="attachFile.add()"><br/>
 					<span class="small-text">1. 등록가능 한 확장자는 jp(e)g, png입니다.</span> <br>
 					<span class="small-text">2. 첫번째로 첨부된 사진이 메인사진으로 등록됩니다.</span> <br>
-
-					<div class="filebox" id="mainImg">
-						<label for="upFile" class="btn btn-small btn-pink">이미지선택</label> 
-						<input class="upload-name" value="선택된 파일 없음" disabled="disabled">
-						<input type="file" name="upFile" id="upFile" class="upload-hidden" onchange="previewImage(this,'view_area')"/>
-						<input type="button" value="삭제" class="btn btn-small btn-gray" onclick="delFile()">
-					</div>
-					<div id='view_area' style='position:relative; width: 100px; height: 100px; display: none; '></div>
-					<div id="attachFileDiv">
+					
+					<div class="left">
+						<div class="filebox" id="mainImg">
+							<label for="upFile" class="btn btn-small btn-pink">이미지선택</label> 
+							<input class="upload-name" value="선택된 파일 없음" disabled="disabled">
+							<input type="file" name="upFile" id="upFile" class="upload-hidden" onchange="previewImage(this,'view_area')"/>
+							<input type="button" value="삭제" class="btn btn-small btn-gray" onclick="delFile()">
+						</div>
+						<div id='view_area' style='position:relative; width: 500px; display: none; '></div>
+						<br>
+						<div id="attachFileDiv">
+						</div>
 					</div>
 				</td>
 			<tr>
@@ -122,7 +125,6 @@ function delFile() {
 	 if(document.getElementById('upFile').value != '' && !confirm('삭제 하시겠습니까?')){
          return;
      }
-     cnt--;
      document.getElementById('upFile').remove();
      document.getElementById('view_area').removeChild(document.querySelector("#view_area img"));
      
@@ -145,7 +147,7 @@ function delFile() {
 	
 	preview.style.position = 'relative'; 
 	preview.style.width = '100px'; 
-	preview.style.height = '100px';
+	/* preview.style.height = '100px'; */
 	preview.style.color = 'black'; 
 	preview.style.border = '0px solid black'; 
 	preview.style.display = 'inline';
@@ -239,8 +241,8 @@ attachFile = {
             btn.className = 'btn btn-small btn-gray';
 
 
-			div.appendChild(uploadName);
 			div.appendChild(label);
+			div.appendChild(uploadName);
             div.appendChild(file);
             div.appendChild(btn);
             document.getElementById('attachFileDiv').appendChild(div);
