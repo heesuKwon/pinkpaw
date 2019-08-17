@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <%@ page
 	import="com.pinkpaw.board.missingboard.model.vo.MissingBoard, java.util.*"%>
 <%
@@ -10,8 +11,6 @@
 	
 	System.out.println(str.substring(0, str.indexOf(" ", 6)));
  */
-	
-	
 	%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -41,8 +40,22 @@ text-align: center;
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<section style="margin-top: 100px;" id="board-container">
-<table id="missing-board" style="border:0px; border-collapse: collapse;">
+
+<div id="img">
+	<img id="missing_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 실종게시판 사진" />
+</div>
+<style>
+	img#missing_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
+
+<section class="board-container">
+<table id="missing-board" style="border:0px; border-collapse: collapse;" >
 
 	<div class="input-group mb-3" >
 		<div class="input-group-prepend" >
