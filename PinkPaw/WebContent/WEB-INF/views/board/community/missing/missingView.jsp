@@ -1,26 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.pinkpaw.board.missingboard.model.vo.MissingBoard, com.pinkpaw.board.common.model.vo.BoardComment, java.util.*"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!DOCTYPE html>
 
-<%@ page
-	import="com.pinkpaw.board.missingboard.model.vo.MissingBoard,
-			com.pinkpaw.board.common.model.vo.BoardComment
-			, java.util.*"%>
-	<%
-	 
+<% 
 	List<BoardComment> commentList = (List<BoardComment>)request.getAttribute("commentList");
 	MissingBoard b = (MissingBoard)request.getAttribute("board");
 	/* BoardComment bc = new BoardComment(); */
-	
-	
-	%>
-<!DOCTYPE html>
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
+%>
 
-<link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" />
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-	  
 <script>
 function fileDownload(oName, rName){
 	//ie에서 요청한 한글파일명은 오류를 유발하므로,
@@ -229,7 +221,7 @@ $(()=>{
 							<%=bc.getBoardCommentContent() %>
 						</td>
 						<td>
-							<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
+							<button class="btn-reply btn btn-small btn-pink" value="<%=bc.getBoardCommentNo()%>">답글</button>
 							<!-- @실습문제:
 								 관리자/댓글작성자에 한해 이버튼을 노출시키고,
 								 댓글 삭제 기능추가. 
@@ -238,7 +230,7 @@ $(()=>{
 							<%if(memberLoggedIn!=null 
 								&& ("admin".equals(memberLoggedIn.getMemberId()) 
 										|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 							<%} %>
 						</td>
 					</tr>
@@ -254,7 +246,7 @@ $(()=>{
 							<%if(memberLoggedIn!=null 
 								&& ("admin".equals(memberLoggedIn.getMemberId()) 
 								|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 							<%} %>
 						</td>
 					</tr>

@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="com.pinkpaw.board.common.model.vo.BoardComment"%>
 <%@page import="java.util.List"%>
 <%@page import="com.pinkpaw.board.parceloutboard.model.vo.ParceloutBoard"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
 
 <%
 	ParceloutBoard p = (ParceloutBoard)request.getAttribute("p");
@@ -170,9 +171,9 @@ function goParceloutViewReportOpen(){
 </script>
 <!-- </head>
 <body> -->
-<section class="board-container">
-	<h2>분양동물</h2>
+<h2>분양동물</h2>
 <h2>게시판 상세보기</h2>
+<section class="board-container">
 <input type="button" value="목록" onclick="goBoardList();"/>
 <%if(memberLoggedIn!=null){ %>
 <input type="button" value="신고" onclick="goParceloutViewReportOpen();"/>
@@ -318,21 +319,15 @@ function goParceloutViewReportOpen(){
 <hr style="margin-top: 30px;"/>
 <form action="<%=request.getContextPath()%>/board/parceloutboard/boardCommentInsert"
 				  name="boardCommentFrm" method="post">
-<div class="input-group mb-3">
-				<input type="hidden" name="boardRef" 
-					   value="<%=p.getParceloutNo()%>" />
-				<input type="hidden" name="boardCommentWriter" 
-					   value="<%=memberLoggedIn!=null?memberLoggedIn.getMemberId():""%>" />
-				<input type="hidden" name="boardCommentLevel" 
-					   value="1" />
-				<input type="hidden" name="boardCommentRef" 
-					   value="0" /> <!-- 댓글인 경우 참조댓글이 없으므로 0으로 초기화 -->
-				<textarea name="boardCommentContent" class="form-control"
-						  id="boardCommentContent" 
-						  cols="60" rows="1"></textarea>
-				<div class="input-group-append" style="background-color: #da7f84; border-radius: 0.2em;" >
+	<div class="input-group mb-3">
+			<input type="hidden" name="boardRef" value="<%=p.getParceloutNo()%>" />
+			<input type="hidden" name="boardCommentWriter" value="<%=memberLoggedIn!=null?memberLoggedIn.getMemberId():""%>" />
+			<input type="hidden" name="boardCommentLevel" value="1" />
+			<input type="hidden" name="boardCommentRef" value="0" /> <!-- 댓글인 경우 참조댓글이 없으므로 0으로 초기화 -->
+			<textarea name="boardCommentContent" class="form-control" cols="60" rows="1"></textarea>
+			<div class="input-group-append" style="background-color: #da7f84; border-radius: 0.2em;" >
 				<button type="submit" class="btn btn-outline-secondary" style="color: white; border:0px solid transparent;">등록</button>
-				</div>
+			</div>
 	</div>			
 </form>
 
@@ -346,12 +341,11 @@ function goParceloutViewReportOpen(){
 					<tr class="level1, list-group-item">
 						<td>
 							<sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
-							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub><br /><br />
+							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub> <br /><br />
 							<%=bc.getBoardCommentContent() %>
 						</td>
 						<td>
-							<button class="btn-reply" 
-									value="<%=bc.getBoardCommentNo()%>">답글</button>
+							<button class="btn-reply btn btn-small btn-pink" value="<%=bc.getBoardCommentNo()%>">답글</button>
 							<!-- @실습문제:
 								 관리자/댓글작성자에 한해 이버튼을 노출시키고,
 								 댓글 삭제 기능추가. 
@@ -360,7 +354,7 @@ function goParceloutViewReportOpen(){
 							<%if(memberLoggedIn!=null 
 								&& ("admin".equals(memberLoggedIn.getMemberId()) 
 										|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 							<%} %>
 						</td>
 					</tr>
@@ -368,7 +362,7 @@ function goParceloutViewReportOpen(){
 					<tr class="level2, list-group-item">
 						<td style="padding-left: 20px">
 							<sub class=comment-writer>ㄴ&nbsp;<%=bc.getBoardCommentWriter() %></sub>
-							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub> <br /><br />
+							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub><br /><br />
 							<%=bc.getBoardCommentContent() %>
 						</td>
 						<td>
@@ -376,7 +370,7 @@ function goParceloutViewReportOpen(){
 							<%if(memberLoggedIn!=null 
 								&& ("admin".equals(memberLoggedIn.getMemberId()) 
 								|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 							<%} %>
 						</td>
 					</tr>

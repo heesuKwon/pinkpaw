@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <%
@@ -179,8 +180,8 @@ $(()=>{
 	<input type="button" value="목록으로"
 				onclick="goVolunteerList();" />
 	
-	<!--댓글 부분 -->
-	<hr style="margin-top: 30px;"/>
+<!--댓글 부분 -->
+<hr style="margin-top: 30px;"/>
 <form action="<%=request.getContextPath()%>/board/volunteer/volunteerBoardCommentInsert"
 				name="boardCommentFrm" method="post">
 <div class="input-group mb-3">
@@ -199,52 +200,51 @@ $(()=>{
 		</div>
 </form>
 		
-		<!-- 댓글 목록 테이블 -->
-		<table id="tbl-comment" class="list-group">
-		<%if(boardCommentList != null){
-			for(BoardComment bc:boardCommentList) {		
-				if(bc.getBoardCommentLevel()==1){%>
-				
-				<tr class="level1, list-group-item">
-					<td> 
-						<sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub> 
-						<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub><br /><br />
-						<%=bc.getBoardCommentContent() %>
-					</td>
-					<td>
-						<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
-						<%--@실습문제: 관리자/댓글작성자에 한하여 이 버튼을 노출시키고,
-							댓글 삭제 기능 추가.
-							댓글 삭제 후에는 현재 페이지로 다시 이동함.	
-						 --%>
-						 <%if(memberLoggedIn!=null&&
-						 ("admin".equals(memberLoggedIn.getMemberId())||
-								 memberLoggedIn.getMemberId().equals(bc.getBoardCommentWriter()))) {%>
-						<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
-						<%} %>
-					</td>
+<!-- 댓글 목록 테이블 -->
+	<table id="tbl-comment" class="list-group">
+	<%if(boardCommentList != null){
+		for(BoardComment bc:boardCommentList) {		
+			if(bc.getBoardCommentLevel()==1){%>
+			
+			<tr class="level1, list-group-item">
+				<td> 
+					<sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub> 
+					<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub><br /><br />
+					<%=bc.getBoardCommentContent() %>
+				</td>
+				<td>
+					<button class="btn-reply btn btn-small btn-pink" value="<%=bc.getBoardCommentNo()%>">답글</button>
+					<%--@실습문제: 관리자/댓글작성자에 한하여 이 버튼을 노출시키고,
+						댓글 삭제 기능 추가.
+						댓글 삭제 후에는 현재 페이지로 다시 이동함.	
+					 --%>
+					 <%if(memberLoggedIn!=null&&
+					 ("admin".equals(memberLoggedIn.getMemberId())||
+							 memberLoggedIn.getMemberId().equals(bc.getBoardCommentWriter()))) {%>
+					<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+					<%} %>
+				</td>
 				</tr>
-				<%} 
+			<%} 
 				else{%>
-				<tr class="level2, list-group-item">
-
-					<td style="padding-left: 20px"> 
-						<sub class="comment-writer">ㄴ&nbsp;<%=bc.getBoardCommentWriter() %></sub> 
-						<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub><br /><br />
-						<%=bc.getBoardCommentContent() %>
-					</td>
-					<td>
-						<%if(memberLoggedIn!=null&&
-						 ("admin".equals(memberLoggedIn.getMemberId())||
-								 memberLoggedIn.getMemberId().equals(bc.getBoardCommentWriter()))) {%>
-						<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
-						<%} %>
-					</td>
-				</tr>
+			<tr class="level2, list-group-item">
+				<td style="padding-left: 20px"> 
+					<sub class="comment-writer">ㄴ&nbsp;<%=bc.getBoardCommentWriter() %></sub> 
+					<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub><br /><br />
+					<%=bc.getBoardCommentContent() %>
+				</td>
+				<td>
+					<%if(memberLoggedIn!=null&&
+					 ("admin".equals(memberLoggedIn.getMemberId())||
+							 memberLoggedIn.getMemberId().equals(bc.getBoardCommentWriter()))) {%>
+					<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+					<%} %>
+				</td>
+			</tr>
 			<% 	} 
 			}
 		}%>
-		</table>
+	</table>
 
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

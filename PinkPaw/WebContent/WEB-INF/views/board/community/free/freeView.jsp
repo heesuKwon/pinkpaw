@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@page import="com.pinkpaw.board.common.model.vo.BoardComment"%>
 <%@page import="com.pinkpaw.board.freeboard.model.vo.FreeBoard"%>
 <%@page import="java.util.List"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <%
@@ -118,7 +118,7 @@
 <hr style="margin-top: 30px;" />
 <form action="<%=request.getContextPath()%>/board/community/free/freeBoardCommentInsert"
 				name="freeBoardCommentFrm" method="post">
-<div class="input-group mb-3">
+	<div class="input-group mb-3">
 			<input type="hidden" name="boardRef" value="<%=f.getFreeNo()%>" />
 			<input type="hidden" name="boardCommentWriter" value="<%=memberLoggedIn!=null?memberLoggedIn.getMemberId():""%>" />
 			<input type="hidden" name="boardCommentLevel" value="1" />
@@ -132,56 +132,56 @@
 	</div>
 </form>
 
-		<!-- 댓글 목록 테이블 -->
-		<table id="tbl-comment" class="list-group">
-				<%
-					if(commentList != null){
-						for(BoardComment bc : commentList){
-							if(bc.getBoardCommentLevel()==1){
-				%>
-			<tr class="level1, list-group-item">
-				<td><sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
-					<sub class=comment-date><%=bc.getBoardCommentDate()%></sub> <br /><br />
+<!-- 댓글 목록 테이블 -->
+	<table id="tbl-comment" class="list-group">
+		<%
+			if(commentList != null){
+				for(BoardComment bc : commentList){
+					if(bc.getBoardCommentLevel()==1){
+		%>
+		<tr class="level1, list-group-item">
+			<td>
+				<sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
+				<sub class=comment-date><%=bc.getBoardCommentDate()%></sub> <br /><br />
 					<%=bc.getBoardCommentContent() %>
-				</td>
-				<td>
-					<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
+			</td>
+			<td>
+				<button class="btn-reply btn btn-small btn-pink" value="<%=bc.getBoardCommentNo()%>">답글</button>
 					<!-- 관리자/댓글작성자에 한해 이버튼을 노출시키고, 댓글 삭제 기능추가. 
 						댓글삭제후에는 현재페이지로 다시 이동함. -->
-						 <%if(memberLoggedIn!=null 
-										&& ("admin".equals(memberLoggedIn.getMemberId()) 
-												|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-					<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
-						<%} %>
-				</td>
-			</tr>
-			<% 		} else { %>
-			<tr class="level2, list-group-item">
-				<td style="padding-left: 20px">
-					<sub class=comment-writer>ㄴ&nbsp;<%=bc.getBoardCommentWriter() %></sub>
-					<sub class=comment-date><%=bc.getBoardCommentDate()%></sub> <br /><br />
+					<%if(memberLoggedIn!=null 
+								&& ("admin".equals(memberLoggedIn.getMemberId()) 
+									|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
+				<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+					<%} %>
+			</td>
+		</tr>
+					<% } else { %>
+		<tr class="level2, list-group-item">
+			<td style="padding-left: 20px">
+				<sub class=comment-writer>ㄴ&nbsp;<%=bc.getBoardCommentWriter() %></sub>
+				<sub class=comment-date><%=bc.getBoardCommentDate()%></sub> <br /><br />
 					<%=bc.getBoardCommentContent() %>
-				</td>
-				<td>
-					<!--삭제버튼 추가 -->
-					 <%if(memberLoggedIn!=null 
-										&& ("admin".equals(memberLoggedIn.getMemberId()) 
-										|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-					<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
-					 <%} %>
-				</td>
-			</tr>
+			</td>
+			<td>
+				<!--삭제버튼 추가 -->
+					<%if(memberLoggedIn!=null 
+								&& ("admin".equals(memberLoggedIn.getMemberId()) 
+									|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
+				<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+					<%} %>
+			</td>
+		</tr>
 
 			<%
 							}//end of if : level1, level2
 				
 						}//end of for	
 					} 
-					%>
-		</table>
+			%>
+	</table>
 
 </section>
-
 
 <script>
  	function fileDownload(oName, rName){
@@ -196,11 +196,11 @@
 		
 	}
 	
-	/* function loginAlert(){
+	function loginAlert(){
 		alert("로그인 후 이용하세요.");	
 		$("#memberId").focus();
 	}
- */
+
 
 $(()=>{
 	//로그인하지 않고 댓글쓰기 방지
