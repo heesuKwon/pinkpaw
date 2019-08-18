@@ -76,12 +76,6 @@ System.out.println("recvCount@header="+recvCount);
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Sans+KR:100,300,400,500,700,900"
 	rel="stylesheet" />
-	
-
-
-
-
-
 <script>
 
 function register(){
@@ -291,20 +285,13 @@ function validate(){
 							type="button" 
 								   value="마이페이지" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/memberView?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
-									
 						</div>
 						</div>
-						
 						<br />
 						<br />
 						<br />
-				
 				</div>
-				
 				</div>
-				
-				
-				
 			<% } %>		
 			
 			</dl>

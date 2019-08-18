@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@page import=" com.pinkpaw.board.freeboard.model.vo.FreeBoard"%>
 <%@page import="java.util.List"%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 
 <%
 	List<FreeBoard> list = (List<FreeBoard>)request.getAttribute("list");
 	System.out.println("list@왜 아니ㅉㄲ혀 : "+list);
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+
 <script>
 	function goFreeWrite(){
 		location.href = "<%=request.getContextPath()%>/board/community/free/freeWrite";	
@@ -42,7 +42,7 @@
 	}
 </script>
 
-<div id="img">
+<div id="img" class="sub_title_area">
 	<img id="free_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 자유게시판 사진" />
 </div>
 <style>
