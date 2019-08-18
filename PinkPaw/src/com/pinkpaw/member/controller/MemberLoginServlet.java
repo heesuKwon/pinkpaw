@@ -1,7 +1,6 @@
 package com.pinkpaw.member.controller;
 
-import java.io.IOException; 
-
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
@@ -14,10 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pinkpaw.board.dmboard.model.service.DMService;
 import com.pinkpaw.member.model.service.MemberService;
 import com.pinkpaw.member.model.vo.Member;
-
-import com.pinkpaw.member.model.vo.*;
 
 
 
@@ -128,6 +126,12 @@ public class MemberLoginServlet extends HttpServlet {
 			//System.out.println("sessionId="+session.getId());
 			session.setAttribute("memberLoggedIn", memberLoggedIn);
 			
+			int recvCount = new DMService().ReceiveTotalContents(memberLoggedIn.getMemberId());
+			System.out.println("recvCount@servlet="+recvCount);
+			session.setAttribute("recvCount", recvCount);
+			
+			
+			
 			//아이디저장관련 쿠키처리
 			if(saveId != null) {
 				Cookie c = new Cookie("saveId", memberId);
@@ -176,6 +180,7 @@ public class MemberLoginServlet extends HttpServlet {
 			= request.getRequestDispatcher(view);
 			reqDispatcher.forward(request, response);
 		}
+		
 		
 		
 	}

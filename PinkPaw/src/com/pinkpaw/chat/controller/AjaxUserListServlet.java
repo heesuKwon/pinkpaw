@@ -1,27 +1,29 @@
-package com.pinkpaw.board.dmboard.controller;
+package com.pinkpaw.chat.controller;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
-import com.pinkpaw.board.dmboard.model.service.DMService;
-import com.pinkpaw.board.dmboard.model.vo.DM;
+import com.google.gson.Gson;
 
 /**
- * Servlet implementation class DMViewServlet
+ * Servlet implementation class AjaxUserListServlet
  */
-@WebServlet("/board/dm/DMView")
-public class DMViewServlet extends HttpServlet {
+@WebServlet("/chat/userList.do")
+public class AjaxUserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DMViewServlet() {
+    public AjaxUserListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,32 +32,18 @@ public class DMViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//1.접속자목록
+		Map<String, Session> clients
+			= HelloWebSocket.clients;
+		Set<String> userIdSet = clients.keySet();
+		System.out.println("userIdSet="+userIdSet);
 		
-		//업무로직
-		int dmNo = Integer.parseInt(request.getParameter("dmNo"));
-		int read = 0;
-		try {
-			
-			read = Integer.parseInt(request.getParameter("dmRead"));
-		}catch (NumberFormatException e) {
-			e.printStackTrace();
-		}catch (NullPointerException e) {
-			
-		}
-		System.out.println("뷰넘버"+dmNo);
-		
-		DM dm = new DMService().selectOne(dmNo, read);
-		
-		System.out.println("dm"+dm);
-		//System.out.println("읽었음?:"+dm.getDmRecvRead());
+		//2.view단 처리
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(userIdSet, response.getWriter());
 		
 		
 		
-		
-		
-		request.setAttribute("dm", dm);
-		request.getRequestDispatcher("/WEB-INF/views/board/dm/DMView.jsp")
-		   .forward(request, response);
 	}
 
 	/**

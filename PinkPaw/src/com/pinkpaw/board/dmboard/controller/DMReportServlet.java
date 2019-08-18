@@ -30,8 +30,8 @@ public class DMReportServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int dmNo = Integer.parseInt(request.getParameter("dmNo"));
-		
-		DM dm = new DMService().selectOne(dmNo);
+		int read = 1;
+		DM dm = new DMService().selectOne(dmNo, read);
 		System.out.println("dm"+dm);
 		
 		

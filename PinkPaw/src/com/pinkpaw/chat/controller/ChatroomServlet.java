@@ -1,27 +1,23 @@
-package com.pinkpaw.board.dmboard.controller;
+package com.pinkpaw.chat.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pinkpaw.board.dmboard.model.service.DMService;
-import com.pinkpaw.board.dmboard.model.vo.DM;
-
 /**
- * Servlet implementation class DMViewServlet
+ * Servlet implementation class ChatroomServlet
  */
-@WebServlet("/board/dm/DMView")
-public class DMViewServlet extends HttpServlet {
+@WebServlet("/chat/chatroom.do")
+public class ChatroomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DMViewServlet() {
+    public ChatroomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,32 +26,18 @@ public class DMViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//1.encoding
+		request.setCharacterEncoding("utf-8");
 		
-		//업무로직
-		int dmNo = Integer.parseInt(request.getParameter("dmNo"));
-		int read = 0;
-		try {
-			
-			read = Integer.parseInt(request.getParameter("dmRead"));
-		}catch (NumberFormatException e) {
-			e.printStackTrace();
-		}catch (NullPointerException e) {
-			
-		}
-		System.out.println("뷰넘버"+dmNo);
+		//2.parameter handling
+		String userId = request.getParameter("userId");
+		//WebSocket Config클래스에서 property저장을 위해
+		//httpSession에 userId 속성저장
+		request.getSession().setAttribute("userId", userId);
 		
-		DM dm = new DMService().selectOne(dmNo, read);
-		
-		System.out.println("dm"+dm);
-		//System.out.println("읽었음?:"+dm.getDmRecvRead());
-		
-		
-		
-		
-		
-		request.setAttribute("dm", dm);
-		request.getRequestDispatcher("/WEB-INF/views/board/dm/DMView.jsp")
-		   .forward(request, response);
+		//3.view단처리
+		request.getRequestDispatcher("/WEB-INF/views/chat/chatroom.jsp")
+			   .forward(request, response);
 	}
 
 	/**

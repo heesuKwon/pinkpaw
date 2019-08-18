@@ -29,6 +29,14 @@ if(cookies != null){
 }
 
 
+int recvCount = 0;
+if(session.getAttribute("recvCount")!=null){
+		recvCount = (int)session.getAttribute("recvCount");
+}
+System.out.println("recvCount@header="+recvCount);
+
+
+
 
 
 	
@@ -273,9 +281,8 @@ function validate(){
 							class="btn btn-info" 
 							style="float: left; border: 1px solid #e1c1c6; background-color: #e1c1c6;";"	
 							type="button" 
-								   value="쪽지" 
-								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmView"/>
-							
+								   value="쪽지 <%=recvCount %>개"
+								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
 								   
 								   	   
 							<input

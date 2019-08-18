@@ -7,6 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" 
+	  href="<%=request.getContextPath()%>/css/board.css" />
+<script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
 <meta charset="UTF-8">
 <%
 	DM dm = (DM)request.getAttribute("dm");
@@ -18,31 +21,65 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/board/dm/dmReportEnd" method="post">
-	<table>
-	<tr>
-		<th>신고자</th>
-		<td>
-		<input type="text" name="reportWriter" value="<%=memberLoggedIn.getMemberId() %>" />
-		</td>
-	</tr>
-	<tr>
-		<th>신고사유</th>
-		<td>
-		<textarea name="dmReportContent" id="" cols="30" rows="10">
-		</textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<input type="hidden" name="dmNo" value="<%=dm.getDmNo() %>" />
-		<input type="submit" value="신고 " onclick="report();" />
-		<input type="button" value="닫기" onclick="self.close();" />
-		</td>
-	</tr>
+
+<section class="board-container">
+<div id="reportReview-container">
+<form action="<%=request.getContextPath()%>/board/dm/dmReportEnd" method="post">
+			<table>
+				<tr>
+					<th>작성자</th>
+					<td>
+						<input type="text" name="reportWriter" id="reportWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly required>
+					</td>
+				</tr>
+				<tr>
+					<th>신고 내용</th>
+					<td>	
+						<!-- <textarea name="reportContent" cols="40" rows="5"
+						placeholder="내용을 입력해주세요."></textarea> -->
+						<select name="dmReportContent">
+							<option value="">신고 사유 선택</option>
+							<option value="광고글">광고글</option>
+							<option value="언어폭력(욕설,비방,명예훼손 등)">언어폭력(욕설,비방,명예훼손 등)</option>
+							<option value="부적절한 이미지">부적절한 이미지</option>
+							<option value="부적절한 내용">부적절한 내용</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit"  value="신고보내기" onclick="return reportValidate();"/>&nbsp;
+						<input type="button" value="취소" onclick="self.close();"/>						
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" name="dmNo" value="<%=dm.getDmNo()%>" />
+		</form>
+	</div>
+</section>
+
+<script>
+function reportValidate() {
+	var content = $("[name=reviewReportContent]").val();
+	//좌우 공백을 제거하고 길이가 0이면(내용이 비어 있는 경우)
+	if(content.trim().length == 0){
+		alert("신고 사유를 선택하세요.");
+		return false;
+	}
+
+	return true;
+}
+$(()=>{
 	
-	</table>
-	</form>
+	var close = <%=request.getParameter("close")%>;
+	if(close==true){
+		self.close();
+	}
+})();
+
+
+</script>
+
 
 </body>
 </html>

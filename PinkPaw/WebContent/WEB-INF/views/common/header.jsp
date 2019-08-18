@@ -32,7 +32,11 @@ if(cookies != null){
 }
 
 
-
+int recvCount = 0;
+if(session.getAttribute("recvCount")!=null){
+		recvCount = (int)session.getAttribute("recvCount");
+}
+System.out.println("recvCount@header="+recvCount);
 
 	
 %>  
@@ -96,6 +100,53 @@ function validate(){
 	
 	return true;
 }
+
+
+$(()=>{
+	var host = location.host;
+	var ws = new WebSocket('ws://'+host+"<%=request.getContextPath()%>/chat/helloWebSocket");
+	
+	//최초연결시 open이벤트 핸들러
+	ws.onopen = e => {
+		console.log("ws open!");
+	};
+	//서버로부터 message를 전달 받았을 때 핸들러
+	ws.onmessage = e => {
+		//console.log("ws message: "+e.data);
+		var o = JSON.parse(e.data);
+		
+		//타입 메세지 처리
+		if(o.type === 'message'){
+			
+			var html = "<li class='list-group-item'>";
+			html += "<span class='badge badge-dark'>"+o.sender+"</span>";
+			html += "&nbsp;&nbsp;"+o.msg;
+			html += "</li>";
+			
+			$("#msg-container ul").append(html);
+			
+			//scroll처리
+			var scrollHeight = $("#msg-container").prop("scrollHeight");
+			//console.log(scrollHeight);
+			$("#msg-container").scrollTop(scrollHeight);
+		}
+		else if(o.type === "dm"){
+			alert("쪽지가 도착했습니다");
+		}
+	};
+	//서버처리 도중 error발생시 핸들러
+	ws.onerror = e =>{
+		console.log("ws error!");		
+	};
+	//서버와 연결 종료시 핸들러
+	ws.onclose = e =>{
+		console.log("ws close!");			
+	};
+	
+});
+
+
+
 
 </script>
 	
@@ -203,8 +254,9 @@ function validate(){
 					<tr>
 						<td>
 							<input type="button" 
-								   value="쪽지" 
-								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmView"/>
+								   value="쪽지 <%=recvCount %>개" 
+								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
+							
 							
 							<%if(memberLoggedIn != null && "admin".equals(memberLoggedIn.getMemberId())){ %>
 							<input type="button" 
