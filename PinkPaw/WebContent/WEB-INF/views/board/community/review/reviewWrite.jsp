@@ -3,19 +3,14 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
-<div id="img">
+<div id="img-div">
 	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">후기 게시판 글쓰기</span>
 </div>
-<style>
-	img#review_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
-</style>
 
 <section class="board-container">
 	<form action="<%=request.getContextPath()%>/board/review/reviewWriteEnd"
@@ -63,17 +58,20 @@
 				<td>
 					<span class="small-text">※ 사진첨부시 주의사항 </span>
 					<input type="button" value="추가" class="btn btn-small btn-pink" onclick="attachFile.add()"><br/>
-					<span class="small-text">1. 등록가능 한 확장자는 jp(e)g, gif입니다.</span> <br>
+					<span class="small-text">1. 등록가능 한 확장자는 jp(e)g, png입니다.</span> <br>
 					<span class="small-text">2. 첫번째로 첨부된 사진이 메인사진으로 등록됩니다.</span> <br>
-
-					<div class="filebox" id="mainImg">
-						<input class="upload-name" value="선택된 파일 없음" disabled="disabled">
-						<label for="upFile" class="btn btn-small btn-pink">이미지선택</label> 
-						<input type="file" name="upFile" id="upFile" class="upload-hidden" onchange="previewImage(this,'view_area')"/>
-						<input type="button" value="삭제" class="btn btn-small btn-gray" onclick="delFile()">
-					</div>
-					<div id='view_area' style='position:relative; width: 100px; height: 100px; display: none; '></div>
-					<div id="attachFileDiv">
+					
+					<div class="left">
+						<div class="filebox" id="mainImg">
+							<label for="upFile" class="btn btn-small btn-pink">이미지선택</label> 
+							<input class="upload-name" value="선택된 파일 없음" disabled="disabled">
+							<input type="file" name="upFile" id="upFile" class="upload-hidden" onchange="previewImage(this,'view_area')"/>
+							<input type="button" value="삭제" class="btn btn-small btn-gray" onclick="delFile()">
+						</div>
+						<div id='view_area' style='position:relative; width: 500px; display: none; '></div>
+						<br>
+						<div id="attachFileDiv">
+						</div>
 					</div>
 				</td>
 			<tr>
@@ -109,25 +107,11 @@ function boardValidate() {
 function goReviewList(){
 	location.href = "<%=request.getContextPath()%>/board/review/reviewList";
 }
-$(document).ready(function(){ 
-	var fileTarget = $('.filebox .upload-hidden'); 
-	fileTarget.on('change', function(){ // 값이 변경되면 
-		if(window.FileReader){ // modern browser 
-			var filename = $(this)[0].files[0].name; 
-		}
-		else { 
-			// old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-		} 
-		// 추출한 파일명 삽입 
-		$(this).siblings('.upload-name').val(filename); 
-	}); 
-});
+
 function delFile() {
 	 if(document.getElementById('upFile').value != '' && !confirm('삭제 하시겠습니까?')){
          return;
      }
-     cnt--;
      document.getElementById('upFile').remove();
      document.getElementById('view_area').removeChild(document.querySelector("#view_area img"));
      
@@ -150,7 +134,7 @@ function delFile() {
 	
 	preview.style.position = 'relative'; 
 	preview.style.width = '100px'; 
-	preview.style.height = '100px';
+	/* preview.style.height = '100px'; */
 	preview.style.color = 'black'; 
 	preview.style.border = '0px solid black'; 
 	preview.style.display = 'inline';
@@ -244,8 +228,8 @@ attachFile = {
             btn.className = 'btn btn-small btn-gray';
 
 
-			div.appendChild(uploadName);
 			div.appendChild(label);
+			div.appendChild(uploadName);
             div.appendChild(file);
             div.appendChild(btn);
             document.getElementById('attachFileDiv').appendChild(div);

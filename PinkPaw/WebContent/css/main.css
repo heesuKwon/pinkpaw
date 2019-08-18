@@ -222,7 +222,7 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 .topBtn{width:60px; position:absolute; left:50%; margin-left:610px; top:170px; z-index:9;}
 
 /*footer*/
-footer{width:100%; background:#222; line-height:normal; position:relative;}
+footer{padding: 0 50px; width:100%; background:#222; line-height:normal; position:relative;}
 footer article{padding-top:0;}
 footer .footerNav{width:100%; height:40px; border-bottom:1px solid rgba(167,167,167,0.2); box-sizing:border-box;}
 footer .footerNav ul{float:left;}

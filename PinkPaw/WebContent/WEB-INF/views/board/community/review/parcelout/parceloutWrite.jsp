@@ -1,13 +1,17 @@
+<%@page import="com.pinkpaw.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
-<link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" />
+    pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
+<style>
+#fileField {
+position: relative;
+}
+</style>
 <script>
 $('document').ready(function() {
  var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도","세종특별자치시"];
@@ -58,39 +62,76 @@ $('document').ready(function() {
  });
 });
 </script>
+</head>
+<body>
 <div id="img-div">
 	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
-	<span class="header-title">실종 게시판 글쓰기</span>
+	<span class="header-title">분양 게시판 글쓰기</span>
 </div>
 <section class="board-container">
-	<form action="<%=request.getContextPath() %>/board/missingFormEnd"
-		method="post" enctype="multipart/form-data">
+	<form action="<%=request.getContextPath()%>/board/parceloutboard/parceloutWriteEnd"
+	      method="post"
+	      enctype="multipart/form-data">
+	      
 		<table id="tbl-write" class="table">
-
 			<tr>
 				<th class="text-left">제목<i class="ico-star">*</i></th>
-				<td><input type="text" name="boardTitle" class="form-control title" required placeholder="한글 20자까지 작성가능"/></td>
-			</tr>
+				<td><input type="text" name="parceloutTitle" class="form-control title" required placeholder="한글 20자까지 작성가능"/></td>
+			</tr>		
 			<tr>
 				<th class="text-left">작성자<i class="ico-star">*</i></th>
-				<td><input type="text" name="boardWriter" value="admin" class="form-control writer"
-					required readonly />
+				<td><input type="text" 
+						   name="parceloutWriter"
+						   value="<%=memberLoggedIn.getMemberId()%>"
+						   class="form-control writer" required readonly/></td>
+			</tr>		
+			<tr>
+				<th class="text-left">분양지역<i class="ico-star">*</i></th>
+				<td class="left">
+					<select name="sido" id="sido" class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown"></select>
+					<select name="gugun" id="gugun" class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown"></select>			
 				</td>
 			</tr>
+			<tr>
+				<th class="text-left">책임비<i class="ico-star">*</i></th>
+				<td>
+					<div class="custom-radio">
+						<input type="radio" name="parceloutMoney" id="10000" value="10000" required>
+						<label for="10000">1만원</label>
+					</div>
+					<div class="custom-radio">
+					    <input type="radio" name="parceloutMoney" id="20000" value="20000" required>
+					    <label for="10000">2만원</label>
+				   	</div>
+				    <div class="custom-radio">
+		    			<input type="radio" name="parceloutMoney" id="30000" value="30000" required>
+		    			<label for="10000">3만원</label>
+	    			</div>
+	    			<div class="custom-radio">
+		    			<input type="radio" name="parceloutMoney" id="40000" value="40000" required>
+		    			<label for="10000">4만원</label>
+	    			</div>
+	    			<div class="custom-radio">
+		    			<input type="radio" name="parceloutMoney" id="50000" value="50000" required>
+		    			<label for="10000">5만원</label>
+	    			</div>
+				</td>
+			</tr>	
+			
 			<tr>
 				<th class="text-left">분류<i class="ico-star">*</i></th>
 				<td>
 					<div class="custom-radio">
-						<input type="radio" id="animal-dog" name="kind" value="개" required/>
+						<input type="radio" id="animal-dog" name="parceloutKind" value="개" required/>
 						<label for="animal-dog">개</label>
 					</div>
 					<div class="custom-radio">
-						<input type="radio" id="animal-cat" name="kind" value="고양이" required/>
+						<input type="radio" id="animal-cat" name="parceloutKind" value="고양이" required/>
 						<label for="animal-cat">고양이</label>
 					</div>
 					<div class="custom-radio">
-						<input type="radio" id="animal" name="kind" value="animal" required/>
+						<input type="radio" id="animal" name="parceloutKind" value="animal" required/>
 						<label for="animal">기타</label>
 					</div>
 					<div id='show-me' style='display: none'>
@@ -100,52 +141,24 @@ $('document').ready(function() {
 					</div>
 				</td>
 			</tr>
+			
 			<tr>
-				<th class="text-left">잃어버린 장소</th>
-				<td class="left">
-					<select name="sido" id="sido" class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown"></select>
-					<select name="gugun" id="gugun" class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown"></select>			
-					<div class="center">
-						<input type="text"
-						name="detailPlace" maxlength="20" size="17" class="form-control others" placeholder="9글자까지 목록에 노출"> 
-					</div>
-					</td>
-			</tr>
-
-			<tr>
-				<th class="text-left">잃어버린 날짜</th>
-				<td><input type="date" name="lostDate" class="form-control others" required /></td>
-			</tr>
-			<tr>
-				<th class="text-left">사례금</th>
-
+				<th class="text-left">암수구분<i class="ico-star">*</i></th>
 				<td>
 					<div class="custom-radio">
-						<input type="radio" id="reward-1" name="reward" value="-1"
-						onclick="reward_chk(this.value);">
-						<label for="reward-1">있음(찾은 후 협의)</label> 
+						<input type="radio" name="parceloutGender" id="m" value="m" required>
+						<label for="m">수컷</label>
+	    			</div>
+	    			<div class="custom-radio">
+					    <input type="radio" name="parceloutGender" id="f" value="f" required>
+					    <label for="f">암컷</label>
 					</div>
 					<div class="custom-radio">
-						<input type="radio" id="reward0"name="reward" value="0"
-						onclick="reward_chk(this.value);">
-						<label for="reward0">없음</label> 
-					</div>
-					<div class="custom-radio">
-						<input type="radio" id="reward1"name="reward" value="1"
-						onclick="reward_chk(this.value);">
-						<label for="reward1">있음</label> 
-					</div>
-					<div id='show-me2' style='display: none'>
-						<input type="number" name="rewardText" size="4" maxlength="4" class="form-control number center" >
-						만원
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th class="text-left">연락처</th>
-				<td><input type="text" name="phone"  class="form-control others" placeholder="-없이 입력해주세요."
-					required /></td>
-			</tr>
+		    			<input type="radio" name="parceloutGender" id="s" value="s"  required>
+		    			<label for="s">한쌍</label>
+		    		</div>
+    			</td>
+			</tr>	
 			<tr>
 				<th class="text-left">사진첨부</th>
 				<td>
@@ -166,38 +179,36 @@ $('document').ready(function() {
 						<div id="attachFileDiv">
 						</div>
 					</div>
-				</td>   
-			</tr> 
-
+				</td>    
+			</tr>					
 			<tr>
-				<th class="text-left">상세설명</th>
-				<td><textarea name="boardContent" cols="40" rows="5"
-						class="form-control" required></textarea></td>
-			</tr>
-			
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="등록" class="btn btn-pink"
-					onclick="return boardValidate();"/> 
-					<input type="button" value="취소" class="btn btn-gray"
-					onclick="goMissingList();" />
+				<th class="text-left">내용<i class="ico-star">*</i></th>
+				<td>
+					<textarea name="parceloutContent" 
+							  cols="40" rows="5" class="form-control" required></textarea>
 				</td>
 			</tr>
+					
 
+			<tr>
+				<td colspan="2">
+					<input type="submit" 
+						   value="등록" 
+						   class="btn btn-pink"
+						   onclick="return parceloutValidate();"/>
+					<input type="button" 
+						   value="취소" 
+						   class="btn btn-gray"
+						   onclick="goList();"/>
+					
+				</td>
+			</tr>		
+		
 		</table>
 	</form>
-
-
 </section>
 <script>
 
-
-//뒤로가기
-function goMissingList(){
-			location.href = "<%=request.getContextPath()%>/board/missingList";
-		}
-
-//분류기타
 $("input[id='animal']").click(function () {
     $('#show-me').css('display', ($(this).val() === 'animal') ? 'inline':'none');
 });
@@ -208,35 +219,26 @@ $("input[id='animal-cat']").click(function () {
     $('#show-me').css('display', ($(this).val() === 'animal') ? 'inline':'none');
 });
 
-//사례금
-$("input[id='reward-1']").click(function () {
-    $('#show-me2').css('display', ($(this).val() === '1') ? 'inline':'none');
-});
-$("input[id='reward0']").click(function () {
-    $('#show-me2').css('display', ($(this).val() === '1') ? 'inline':'none');
-});
-$("input[id='reward1']").click(function () {
-    $('#show-me2').css('display', ($(this).val() === '1') ? 'inline':'none');
-});
 
-
-function boardValidate() {
-	var content = $("[name=boardContent]").val();
-	//좌우 공백을 제거하고 길이가 0이면(내용이 비어 있는 경우)
+function goList() {
+	location.href = "<%=request.getContextPath()%>/board/parcelout/parceloutList";
+	
+}
+function parceloutValidate(){
+	var content = $("[name=parceloutContent]").val();
 	if(content.trim().length == 0){
 		alert("내용을 입력하세요.");
 		return false;
 	}
-
-	if($(':radio[name="kind"]:checked').length < 1){
-	    alert('분류를 선택해주세요');                        
-	    event.preventDefault();
+	
+	if($("select[name^=sido]").val()=="시/도 선택"){
+		alert("지역을 선택하세요.");
 		return false;
-	}	
+	}
+	
 	
 	return true;
 }
-	
 function delFile() {
 	 if(document.getElementById('upFile').value != '' && !confirm('삭제 하시겠습니까?')){
         return;
@@ -420,12 +422,7 @@ attachFile = {
 	                }
 	            }
        	}
-   
-
  }
 }
-</script>
-
-
-
+</script>	
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
