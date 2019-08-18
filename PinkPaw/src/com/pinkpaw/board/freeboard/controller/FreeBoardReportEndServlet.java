@@ -31,13 +31,14 @@ public class FreeBoardReportEndServlet extends HttpServlet {
 		int freeNo = Integer.parseInt(request.getParameter("freeNo"));
 		String freeReportWriter = request.getParameter("reportWriter");
 		String freeReportContent = request.getParameter("freeReportContent");
-		freeReportContent = freeReportContent.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+		String otherReason = request.getParameter("freeOtherReason");
+		otherReason = otherReason.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 		
 		FreeBoard freeBoard = new FreeBoardService().selectOneFreeBoard(freeNo);
 
 		// 신고 사례가 없는 경우
 		if(freeBoard.getFreeReportReason() == null) {
-			newReport = freeReportContent;
+			newReport = freeReportContent + otherReason;
 			freeBoard.setFreeReportReason(newReport);
 			
 			result = new FreeBoardService().updateFreeBoardReport(freeBoard);
@@ -45,7 +46,7 @@ public class FreeBoardReportEndServlet extends HttpServlet {
 		// 기존에 신고로 신고 사유가 존재하는 경우
 		else if(freeBoard.getFreeReportReason().length() > 0) {
 			origin = freeBoard.getFreeReportReason();
-			newReport = ", " + freeReportContent;
+			newReport = ", " + freeReportContent + otherReason;
 			
 			FreeBoard f = new FreeBoard();
 			f = new FreeBoardService().selectOneFreeBoard(freeNo);

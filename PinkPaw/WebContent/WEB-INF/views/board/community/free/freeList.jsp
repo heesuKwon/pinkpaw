@@ -7,10 +7,12 @@
 	href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <%
 	List<FreeBoard> list = (List<FreeBoard>)request.getAttribute("list");
-	System.out.println("list@왜 아니ㅉㄲ혀 : "+list);
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
 
@@ -42,18 +44,11 @@
 	}
 </script>
 
-<div id="img" class="sub_title_area">
-	<img id="free_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 자유게시판 사진" />
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">자유 게시판</span>
 </div>
-<style>
-	img#free_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
-</style>
 
 
 <section class="board-container">	

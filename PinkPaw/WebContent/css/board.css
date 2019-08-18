@@ -18,3 +18,13 @@ div#pageBar a{margin-right: 5px;}
 #loginFrm{
         padding: 20px;
 }
+
+/*신고하기 부분*/
+.report-container{
+	padding-top: 50px;
+	padding-left: 35px;
+}
+.report-button{
+	padding-top: 20px;
+	text-align: center;
+}
