@@ -35,8 +35,10 @@
 	href="<%=request.getContextPath()%>/css/slick-theme.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/slick.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/view.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/view.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <script>
 var content = <%=p.getParceloutContent()%>;
@@ -141,16 +143,13 @@ function goParceloutViewReportOpen(){
 </script>
 </head>
 <body>
-<section id="board-container">
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">분양 게시판 상세보기</span>
+</div>
 
-
-<div id="img">
-	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-<input type="button" value="목록" onclick="goBoardList();"/>
-<%if(memberLoggedIn!=null){ %>
-<input type="button" value="신고" onclick="goParceloutViewReportOpen();"/>
-<%} %>
-
+<section class="board-container">
 
 <% if(memberLoggedIn!=null && 
  			(p.getParceloutWriter().equals(memberLoggedIn.getMemberId()) 
@@ -368,8 +367,7 @@ function goParceloutViewReportOpen(){
 			} 
 			%>
 		</table>
-	</div>	
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+		
 </section>
 
 <script>
@@ -411,6 +409,5 @@ $('.slider-nav').slick({
 		  focusOnSelect: true
 		}); */
 
-
-
 </script>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

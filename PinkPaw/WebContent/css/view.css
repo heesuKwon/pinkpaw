@@ -18,13 +18,7 @@
 	background: lightgray;
 }
 
-	img#review_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		/* text-align: center; */
-	}
+
 
 .tg {
 	border-collapse: collapse;
@@ -67,7 +61,7 @@ table {
 }
 
 #menu{
-	position: relative; left:480px;
+	position: relative; left:50%;
 }
 
 

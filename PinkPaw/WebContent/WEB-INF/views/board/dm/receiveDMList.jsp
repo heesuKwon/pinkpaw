@@ -20,7 +20,7 @@ $(()=>{
 		var url = "<%=request.getContextPath()%>/board/dm/DMSendView?dmNo="+dmNo;
 		
 	    var title = "DMWrite";
-	    var status =  "left=500px, top=200px, width=400px, height=500px";
+	    var status =  "left=500px, top=200px, width=350px, height=300px";
 	    
 		var popup = window.open(url,title,status);
 	

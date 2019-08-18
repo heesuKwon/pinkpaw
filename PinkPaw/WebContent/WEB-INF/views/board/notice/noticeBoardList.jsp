@@ -8,7 +8,8 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <script>
 
@@ -24,22 +25,11 @@ $(document).ready(function(){
 </script>
 
 
-<section id="board-container">
-	<h2>공지사항</h2>
-	
-
-<div id="img">
-	<img id="notice_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 공지사항 사진" />
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">공지사항</span>
 </div>
-<style>
-	img#notice_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
-</style>
 
 <section class="board-container">	
 
@@ -57,8 +47,6 @@ $(document).ready(function(){
 	
 
 	<table class="table table-gray table-hover" id="noticeList">
-
-	<table id="tbl-board" class="table table-hover">
 
 		<tr>
 			<th scope="col">No</th>
