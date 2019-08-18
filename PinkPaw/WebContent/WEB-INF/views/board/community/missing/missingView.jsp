@@ -9,15 +9,25 @@
 	 
 	List<BoardComment> commentList = (List<BoardComment>)request.getAttribute("commentList");
 	MissingBoard b = (MissingBoard)request.getAttribute("board");
-	/* BoardComment bc = new BoardComment(); */
+	int count = 0;
+	if (b.getMissingRenamedImg() != null) {
+		String[]	imgList = b.getMissingRenamedImg().split("§");
+		count = imgList.length; 
+	}
 	
 	
 	%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick-theme.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
 
-<link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" />
 <script>
 function fileDownload(oName, rName){
 	//ie에서 요청한 한글파일명은 오류를 유발하므로,
@@ -112,55 +122,30 @@ $(()=>{
 });
 
 </script>	  
-<style>
-#board-container{
-	height:1000px;
-	width:1000px;
-	margin-top: 50px;
-}
 
-</style>
+
 <section id="board-container">
 
-	<h2>실종게시판 상세보기</h2>
-			<p>
-			글번호:<%=b.getMissingNo() %> <br />
-			제목:<%=b.getMissingTitle() %> <br />
-			글쓴이:<%=b.getMissingWriter() %> <br />
-			잃어버린장소:<%=b.getMissingHpPlace() %> <br />
-			잃어버린 날짜:<%=b.getMissingHpDate() %> <br />
-			동물종류:<%=b.getMissingKind() %> <br />
-			사례금:<%=b.getMissingMoney() ==-1?"사례금협의":b.getMissingMoney() == 0?"사례금없음":b.getMissingMoney()+"만원"%> <br />
-			상세설명:<%=b.getMissingContent() %> <br />
-			게시일:<%=b.getMissingEnrollDate() %> <br />
-			조회수:<%=b.getMissingCount() %> <br />
-			신고수:<%=b.getMissingReportCount() %> <br />
-			신고사유:<%=b.getMissingReportReason() %> <br />
-			첨부파일:
+
+<div id="img">
+	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+</div>
+	<%if(memberLoggedIn != null&&
+			(memberLoggedIn.getMemberId().equals(b.getMissingWriter()) ||
+			"admin".equals(memberLoggedIn.getMemberId()))){%>
+			<div style='height:50px; padding:5px;'>
 			
-				<!-- 첨부파일이 있는 경우만 보임 처리 -->
-			<%if(b.getMissingOriginalImg()!=null) {
-				String[] renamedImgList = b.getMissingRenamedImg().split("§");
-				for(int i=0;i<renamedImgList.length;i++){%>
-				<img src="<%=request.getContextPath()%>/upload/board/missing/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:200px;' />					
-			<%} 
-			}%>
-		
-	
-		<!-- 글작성자/관리자인 경우에만 수정/삭제버튼이 보이도록함. -->	
-		<% if(memberLoggedIn!=null && 
-			(b.getMissingWriter().equals(memberLoggedIn.getMemberId())
-			|| "admin".equals(memberLoggedIn.getMemberId())) ){ %>	
-		
-				<input type="button" value="수정" 
-					   onclick="updateBoard();" />
-				<input type="button" value="삭제" 
-					   onclick="deleteBoard();" />
-				<input type="button" value="신고하기" 
-					   onclick="goMissingViewReportOpen();"	 />
-				
-			
-	
+				<input type="button" value="삭제"  
+						class="btn btn-gray"
+						style='position: absolute; right: 0.5em;'
+				onclick="deleteBoard();" />
+				<input type="button" value="수정"  
+						class="btn btn-pink"
+						style='position: absolute; right: 7em;'
+				onclick="updateBoard();" />
+			</div>
+
+		<!--삭제 부분  -->
 		<form action="<%=request.getContextPath()%>/board/missingDelete"
 		      name="boardDeleteFrm"
 		      method="post">
@@ -184,10 +169,113 @@ $(()=>{
 	</script>
 			
 		<%} %>
-	<input type="button" value="목록으로"
-				onclick="goMissingList();" />
-					   
 
+
+<table class="tg" style="table-layout: fixed;   width: 1024px;">
+		<colgroup>
+			<col style="width: 35px">
+			<col style="width: 100px">
+			<col style="width: 35px">
+			<col style="width: 100px">
+		</colgroup>
+		<tr>
+			<th class="tg-th">작성자</th>
+			<th class="tg" colspan="3"><%=b.getMissingWriter() %> </th>
+		</tr>
+		<tr>
+			<td class="tg-th">제목</td>
+			<td class="tg" colspan="3"><%=b.getMissingTitle() %></td>
+		</tr>
+		<tr>
+			<td class="tg-th">글번호</td>
+			<td class="tg-ml2k"><%=b.getMissingNo() %></td>
+			<td class="tg-th">조회수</td>
+			<td class="tg-yc5w"><%=b.getMissingCount() %> </td>
+		</tr>
+		<tr>
+			<td class="tg-th">신고수</td>
+			<td class="tg-yc5w"><%=b.getMissingReportCount() %></td>
+			<td class="tg-th">게시일</td>
+			<td class="tg-yc5w"><%=b.getMissingEnrollDate() %></td>
+		</tr>
+		<tr>
+			<td class="tg-th">잃어버린장소</td>
+			<td class="tg-yc5w"><%=b.getMissingHpPlace() %></td>
+			<td class="tg-th">잃어버린날짜</td>
+			<td class="tg-yc5w"><%=b.getMissingHpDate() %></td>
+		</tr>
+		<tr>
+			<td class="tg-th">동물종류</td>
+			<td class="tg-yc5w"><%=b.getMissingKind() %></td>
+			<td class="tg-th">사례금</td>
+			<td class="tg-yc5w"><%=b.getMissingMoney() ==-1?"사례금협의":b.getMissingMoney() == 0?"사례금없음":b.getMissingMoney()+"만원"%> </td>
+		</tr>
+	
+		<tr>
+			<td class="tg-th">사진</td>
+			<td class="tg-img"  colspan="3">
+				<!-- 첨부파일이 있는 경우만 보임 처리 -->
+				<%if(count > 0) {%>
+				<div class="slider slider-for" style='width: 700px; height: 450px;'>
+
+					<%
+						if (b.getMissingRenamedImg() != null) {
+							String[] renamedImgList = b.getMissingRenamedImg().split("§");
+							for (int i = 0; i < renamedImgList.length; i++) {
+					%>
+					<img
+						src="<%=request.getContextPath()%>/upload/board/missing/<%=renamedImgList[i]%>"
+						alt="첨부파일" style='max-width: 700px; max-height: 450px;' />
+					<%
+						}
+						}
+					%>
+				</div>
+				<%} %>
+					<br />
+
+					<% if ( count == 2 || count == 3) {%>
+				<div class="slider slider-nav" align="center" style='width: 700px; height: 150px;'>
+						<% 
+						if (b.getMissingRenamedImg()!= null) {
+							String[] renamedImgList = b.getMissingRenamedImg().split("§");
+							for (int i = 0; i < renamedImgList.length; i++) {
+					%>
+					<img
+							src="<%=request.getContextPath()%>/upload/board/missing/<%=renamedImgList[i]%>"
+							alt="첨부파일" style='height: 150px; width: 200px;' />
+				
+					<%
+						}
+						}
+					}
+					%>
+				</div>
+				
+			</td>
+			
+		</tr>
+		<tr>
+			<td class="tg-th">내용</td>
+			<td class="tg-kw6a" colspan="3"><%=b.getMissingContent() %></td>
+		</tr>
+
+	</table>
+
+
+<div style='padding: 10px'>
+	<%if(memberLoggedIn!=null){ %>
+	<input type="button" value="신고하기" id="menu"  class="btn btn-pink" 
+				onclick="goMissingViewReportOpen();;" />
+	<%} %>
+<input type="button" value="목록으로"   id="menu" class="btn btn-gray"
+				onclick="goMissingList();"  />
+</div>	
+
+
+
+<!-- 수정전  -->
+	
 	
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container">
@@ -267,6 +355,8 @@ $(()=>{
 		
 	
 	</div>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
 </section> 
 
 <!-- 신고하기 부분 -->
@@ -286,4 +376,48 @@ function goMissingViewReportOpen(){
 }
 </script>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
+
+
+<script>
+
+
+
+//3개일때
+$('.slider-for').slick({
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  arrows: false,
+	  fade: true,
+	  asNavFor: '.slider-nav'
+	});
+$('.slider-nav').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  asNavFor: '.slider-for',
+	  arrows: true,
+	  dots: false,
+	  centerMode: true,
+	  focusOnSelect: true
+	});
+
+//두개일때
+	/*  $('.slider-for').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  arrows: false,
+		  fade: true,
+		  asNavFor: '.slider-nav'
+		});
+		$('.slider-nav').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  asNavFor: '.slider-for',
+		  dots: true,
+		  centerMode: true,
+		  focusOnSelect: true
+		}); */
+
+
+
+</script>

@@ -11,7 +11,8 @@
 	href="<%=request.getContextPath()%>/css/slick-theme.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/slick.js"></script>
-
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
 <%
 	ReviewBoard reviewBoard = (ReviewBoard)request.getAttribute("reviewBoard");
 	List<BoardComment> boardCommentList = (List<BoardComment>)request.getAttribute("boardCommentList");
@@ -134,63 +135,6 @@ $(()=>{
 
 </script>
 
-<style>
-	img#review_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		/* text-align: center; */
-	}
-
-.tg {
-	border-collapse: collapse;
-	border-spacing: 0;
-	border-color: #da7f84;
-}
-
-.tg td {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	padding: 11px 5px;
-	border-style: solid;
-	border-width: 0px;
-	text-align:center;
-	overflow: hidden;
-	word-break: normal;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-color: #aaa;
-	color: #333;
-	background-color: #fff;
-}
-
-.tg th {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	padding: 11px 5px;
-	border-style: solid;
-	border-width: 0px;
-	overflow: hidden;
-	word-break: normal;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-color: #aaa;
-	color: #333;
-	background-color: #fff;
-	text-align: center;
-}
-/* input[type=button]{
-	background-color:#e1c1c6;
-	color: black;
-	
-} */
-
-.tg .tg-th{background-color:#da7f84;color:#333333;border-color:inherit;text-align:center;vertical-align:top}
-   td.tg-img{color:#333333;border-color:inherit;text-align:center; padding: 0px 100px;}
-
-</style>
 <section class="board-container">
 	<div id="img">
 	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
@@ -198,14 +142,14 @@ $(()=>{
 			<%if(memberLoggedIn != null&&
 			(memberLoggedIn.getMemberId().equals(reviewBoard.getReviewWriter()) ||
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
-			<div style='height:50px;'>
+			<div style='height:50px; padding:5px;'>
 				<input type="button" value="삭제"  
-						class="btn btn-outline-danger"
-						style='position: absolute; right: 12em;'
+						class="btn btn-gray"
+						style='position: absolute; right: 0.5em;'
 				onclick="deleteBoard();" />
 				<input type="button" value="수정"  
-						class="btn btn-outline-danger"
-						style='position: absolute; right: 19em;'
+						class="btn btn-pink"
+						style='position: absolute; right: 7em;'
 				onclick="updateBoard();" />
 			</div>
 				
@@ -236,8 +180,8 @@ $(()=>{
 	<table class="tg" style="table-layout: fixed;   width: 1024px;">
 		<colgroup>
 			<col style="width: 35px">
-			<col style="width: 45px">
-			<col style="width: 73px">
+			<col style="width: 100px">
+			<col style="width: 35px">
 			<col style="width: 100px">
 		</colgroup>
 		<tr>
@@ -316,11 +260,14 @@ $(()=>{
 	</table>
 		<!-- 글작성자/관리자인 경우에만 수정/삭제 버튼이 보이도록 함. -->
 
-	<input type="button" value="목록으로"  class="btn btn-outline-danger"
-				onclick="goReviewList();" style='position: absolute; right: 12em;' /> &nbsp;&nbsp;
-	<input type="button" value="신고하기"  class="btn btn-outline-danger" style='position: absolute; right: 19em;' 
+	<div style='padding:10px;'>
+	<%if(memberLoggedIn!=null){ %>
+	<input type="button" value="신고하기" id="menu"  class="btn btn-pink" 
 				onclick="goReviewViewReportOpen();" />
-	
+	<%} %>
+	<input type="button" value="목록으로" id="menu"   class="btn btn-gray"
+				onclick="goReviewList();"  /> 
+	</div>
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container">
 		<div class="comment-editor">

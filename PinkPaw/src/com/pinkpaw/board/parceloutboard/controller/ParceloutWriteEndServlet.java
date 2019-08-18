@@ -50,7 +50,7 @@ public class ParceloutWriteEndServlet extends HttpServlet {
 		//new MultipartRequest(HttpServletRequest, saveDirectory, maxPostSize, encoding, FileRenamePolicy(중복파일naming정책))
 		//a.saveDirectory: 실제파일저장경로(절대경로)
 		String root = getServletContext().getRealPath("/");
-		String saveDirectory = root + "upload" + File.separator	 + "board\\parcelout";
+		String saveDirectory = root + "upload" + File.separator	 + "board/parcelout";
 		System.out.println("saveDirectory="+saveDirectory);
 		
 		
@@ -66,7 +66,7 @@ public class ParceloutWriteEndServlet extends HttpServlet {
 		
 		MultipartRequest mReq
 			= new MultipartRequest(request, saveDirectory, maxPostSize, encoding, policy);
-		
+
 		/*********** 파일업로드 로직끝 ***********/
 		String parceloutTitle = mReq.getParameter("parceloutTitle");
 		String parceloutWriter = mReq.getParameter("parceloutWriter");

@@ -5,12 +5,25 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick-theme.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+
 
 <%
 	VolunteerBoard volunteerBoard = (VolunteerBoard)request.getAttribute("volunteerBoard");
 	List<BoardComment> boardCommentList = (List<BoardComment>)request.getAttribute("boardCommentList");
+	int count = 0;
+	if (volunteerBoard.getVolunteerRenamedImg() != null) {
+		String[]	imgList = volunteerBoard.getVolunteerRenamedImg().split("§");
+		count = imgList.length; 
+	}
 %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
 <script>
 function loginAlert() {
@@ -97,58 +110,28 @@ $(()=>{
 	
 });
 </script>
+
 <section class="board-container">
-	<table id="tbl-board-view">
-		<tr>
-			<th>글번호</th>
-			<td><%=volunteerBoard.getVolunteerNo() %></td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td><%=volunteerBoard.getVolunteerTitle() %></td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td><%=volunteerBoard.getVolunteerWriter() %></td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td><%=volunteerBoard.getVolunteerCount() %></td>
-		</tr>
-		<tr>
-			<th>게시일</th>
-			<td><%=volunteerBoard.getVolunteerEnrolldate() %></td>
-		</tr>
-		<tr>
-			<th>첨부파일</th>
-			<td>
-			<!-- 첨부파일이 있는 경우만 보임 처리 -->
-			<%if(volunteerBoard.getVolunteerOriginalImg()!=null) {
-				String[] renamedImgList = volunteerBoard.getVolunteerRenamedImg().split("§");
-				for(int i=0;i<renamedImgList.length;i++){%>
-				<img src="<%=request.getContextPath()%>/upload/board/volunteer/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:200px;' />					
-			<%} 
-			}%>
-			</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>
-				<%=volunteerBoard.getVolunteerContent() %>
-			</td>
-		</tr>
-		<!-- 글작성자/관리자인 경우에만 수정/삭제 버튼이 보이도록 함. -->
-		<%if(memberLoggedIn != null&&
+
+<div id="img">
+	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+</div>
+	
+	<%if(memberLoggedIn != null&&
 			(memberLoggedIn.getMemberId().equals(volunteerBoard.getVolunteerWriter()) ||
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
-		<tr>
-			<th colspan="2">
-				<input type="button" value="수정"
-				onclick="updateBoard();" />
-				<input type="button" value="삭제"
+				<div style='height:50px; padding:5px;'>
+			
+				<input type="button" value="삭제"  
+						class="btn btn-gray"
+						style='position: absolute; right: 0.5em;'
 				onclick="deleteBoard();" />
-			</th>
-		</tr>
+				<input type="button" value="수정"  
+						class="btn btn-pink"
+						style='position: absolute; right: 7em;'
+				onclick="updateBoard();" />
+			</div>
+
 		<form action="<%=request.getContextPath()%>/board/volunteer/volunteerDelete"
 			name="volunteerDeleteFrm"
 			method="post">
@@ -173,10 +156,87 @@ $(()=>{
 		}
 		</script>
 		<%} %>
-	</table>
-	<input type="button" value="목록으로"
-				onclick="goVolunteerList();" />
 	
+<table class="tg" style="table-layout: fixed;   width: 1024px;">
+		<colgroup>
+			<col style="width: 35px">
+			<col style="width: 100px">
+			<col style="width: 35px">
+			<col style="width: 100px">
+		</colgroup>
+		<tr>
+			<th class="tg-th">작성자</th>
+			<th class="tg" colspan="3"><%=volunteerBoard.getVolunteerWriter() %></th>
+		</tr>
+		<tr>
+			<td class="tg-th">제목</td>
+			<td class="tg" colspan="3"><%=volunteerBoard.getVolunteerTitle() %></td>
+		</tr>
+		<tr>
+			<td class="tg-th">글번호</td>
+			<td class="tg-ml2k"><%=volunteerBoard.getVolunteerNo() %></td>
+			<td class="tg-th">조회수</td>
+			<td class="tg-yc5w"><%=volunteerBoard.getVolunteerCount() %></td>
+		</tr>
+		<tr>
+			<td class="tg-th">게시일</td>
+			<td class="tg-yc5w"><%=volunteerBoard.getVolunteerEnrolldate() %></td>
+		</tr>
+			<tr>
+			<td class="tg-th">사진</td>
+			<td class="tg-img"  colspan="3">
+				<!-- 첨부파일이 있는 경우만 보임 처리 -->
+				<%if(count > 0) {%>
+				<div class="slider slider-for" style='width: 700px; height: 450px;'>
+
+					<%
+						if (volunteerBoard.getVolunteerRenamedImg() != null) {
+							String[] renamedImgList = volunteerBoard.getVolunteerRenamedImg().split("§");
+							for (int i = 0; i < renamedImgList.length; i++) {
+					%>
+					<img
+						src="<%=request.getContextPath()%>/upload/board/volunteer/<%=renamedImgList[i]%>"
+						alt="첨부파일" style='max-width: 700px; max-height: 450px;' />
+					<%
+						}
+						}
+					%>
+				</div>
+				<%} %>
+					<br />
+
+					<% if ( count == 2 || count == 3) {%>
+				<div class="slider slider-nav" align="center" style='width: 700px; height: 150px;'>
+						<% 
+						if (volunteerBoard.getVolunteerRenamedImg()!= null) {
+							String[] renamedImgList =volunteerBoard.getVolunteerRenamedImg().split("§");
+							for (int i = 0; i < renamedImgList.length; i++) {
+					%>
+					<img
+							src="<%=request.getContextPath()%>/upload/board/volunteer/<%=renamedImgList[i]%>"
+							alt="첨부파일" style='height: 150px; width: 200px;' />
+				
+					<%
+						}
+						}
+					}
+					%>
+				</div>
+				
+			</td>
+			
+		</tr>
+	
+		<tr>
+			<td class="tg-th">내용</td>
+			<td class="tg-kw6a" colspan="3"><%=volunteerBoard.getVolunteerContent() %></td>
+		</tr>
+
+	</table>
+		<div style='padding:10px;'>
+				<input type="button" id="menu"  value="목록으로"  class="btn btn-gray"
+				onclick="goVolunteerList();" />
+		</div>
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container">
 		<div class="comment-editor">
@@ -243,6 +303,52 @@ $(()=>{
 			}
 		}%>
 		</table>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	</div>
 </section>
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
+
+<script>
+
+function goVolunteerList(){
+	location.href = "<%=request.getContextPath()%>/board/volunteer/volunteerList";
+}
+
+//3개일때
+$('.slider-for').slick({
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  arrows: false,
+	  fade: true,
+	  asNavFor: '.slider-nav'
+	});
+$('.slider-nav').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  asNavFor: '.slider-for',
+	  arrows: true,
+	  dots: false,
+	  centerMode: true,
+	  focusOnSelect: true
+	});
+
+//두개일때
+	/*  $('.slider-for').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  arrows: false,
+		  fade: true,
+		  asNavFor: '.slider-nav'
+		});
+		$('.slider-nav').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  asNavFor: '.slider-for',
+		  dots: true,
+		  centerMode: true,
+		  focusOnSelect: true
+		}); */
+
+
+
+</script>
