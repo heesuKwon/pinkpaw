@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.pinkpaw.board.missingboard.model.vo.MissingBoard, com.pinkpaw.board.common.model.vo.BoardComment, java.util.*"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!DOCTYPE html>
 
-<%@ page
-	import="com.pinkpaw.board.missingboard.model.vo.MissingBoard,
-			com.pinkpaw.board.common.model.vo.BoardComment
-			, java.util.*"%>
-	<%
-	 
+<% 
 	List<BoardComment> commentList = (List<BoardComment>)request.getAttribute("commentList");
 	MissingBoard b = (MissingBoard)request.getAttribute("board");
 	int count = 0;
@@ -17,8 +17,6 @@
 	
 	
 	%>
-<!DOCTYPE html>
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick.css">
 <link rel="stylesheet" type="text/css"
@@ -72,22 +70,24 @@ $(()=>{
 		/* 로그인여부에 따라 분기 */
 		<% if(memberLoggedIn != null){%>
 			//로그인한 경우
-			var tr = $("<tr></tr>");
-			var html = "<td style='display:none; text-align:left;' colspan='2'>";
-			html += "<form action='<%=request.getContextPath()%>/board/missingCommentInsert' method='post'>";
+			var div = $("<div></div>");
+			var html = "<form action='<%=request.getContextPath()%>/board/missingCommentInsert' method='post'>";
+			html += "<div class='input-group'>";
 			html += "<input type='hidden' name='boardRef' value='<%=b.getMissingNo()%>'/>";
 			html += "<input type='hidden' name='boardCommentWriter' value='<%=memberLoggedIn.getMemberId()%>'/>";
 			html += "<input type='hidden' name='boardCommentLevel' value='2'/>";
 			html += "<input type='hidden' name='boardCommentRef' value='"+e.target.value+"'/>";
 			html += "<textarea name='boardCommentContent' cols='60' rows='1'></textarea>";
-			html += "<button type='submit' class='btn-insert2'>등록</button>";
+			html += "<div class='input-group-append' style='background-color: #da7f84; border-radius: 0.2em;'>";
+			html += "<button type='submit' class='btn btn-outline-secondary' style='color: white; border:0px solid transparent;'>등록</button>";
+			html += "</div>";
+			html += "</div>";
 			html += "</form>";
-			html +="</td>";
-			tr.html(html);
+			div.html(html);
 			
 			//클릭한 버튼이 속한 tr 다음에 tr을 추가
-			tr.insertAfter($(e.target).parent().parent())
-			  .children("td")
+			div.insertAfter($(e.target).parent().parent())
+			  .children("form")
 			  .slideDown(800)
 			  .children("form")
 			  .submit((e)=>{
@@ -120,11 +120,8 @@ $(()=>{
     });
 	
 });
-
-</script>	  
-
-
-<section id="board-container">
+</script>
+<section class="board-container">
 
 
 <div id="img">
@@ -277,12 +274,11 @@ $(()=>{
 <!-- 수정전  -->
 	
 	
-	<hr style="margin-top: 30px;"/>
-	<div id="comment-container">
-		<div class="comment-editor">
-			<form action="<%=request.getContextPath()%>/board/missingCommentInsert"
-				  name="boardCommentFrm"
-				  method="post">
+<!--댓글 부분 -->
+<hr style="margin-top: 30px;"/>
+<form action="<%=request.getContextPath()%>/board/missingCommentInsert"
+				name="boardCommentFrm" method="post">
+<div class="input-group mb-3">
 				<input type="hidden" name="boardRef" 
 					   value="<%=b.getMissingNo()%>" />
 				<input type="hidden" name="boardCommentWriter" 
@@ -291,30 +287,30 @@ $(()=>{
 					   value="1" />
 				<input type="hidden" name="boardCommentRef" 
 					   value="0" /> <!-- 댓글인 경우 참조댓글이 없으므로 0으로 초기화 -->
-				<textarea name="boardCommentContent" 
+				<textarea name="boardCommentContent" class="form-control"
 						  id="boardCommentContent" 
-						  cols="60" rows="3"></textarea>
-				<button type="submit"
-					    id="btn-insert">등록</button>			
-			</form>
-		</div>
+						  cols="60" rows="1"></textarea>
+				<div class="input-group-append" style="background-color: #da7f84; border-radius: 0.2em;" >
+				<button type="submit" class="btn btn-outline-secondary" style="color: white; border:0px solid transparent;">등록</button>
+				</div>
+	</div>			
+</form>
+
 		<!-- 댓글목록테이블 -->
-		<table id="tbl-comment">
+		<table id="tbl-comment" class="list-group">
 			<%
 			if(commentList != null){
 				for(BoardComment bc : commentList){
 					if(bc.getBoardCommentLevel()==1){
 			%>
-					<tr class=level1>
+					<tr class="level1, list-group-item">
 						<td>
 							<sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
-							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub>
-							<br />
+							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub> <br /><br />
 							<%=bc.getBoardCommentContent() %>
 						</td>
 						<td>
-							<button class="btn-reply" 
-									value="<%=bc.getBoardCommentNo()%>">답글</button>
+							<button class="btn-reply btn btn-small btn-pink" value="<%=bc.getBoardCommentNo()%>">답글</button>
 							<!-- @실습문제:
 								 관리자/댓글작성자에 한해 이버튼을 노출시키고,
 								 댓글 삭제 기능추가. 
@@ -323,16 +319,15 @@ $(()=>{
 							<%if(memberLoggedIn!=null 
 								&& ("admin".equals(memberLoggedIn.getMemberId()) 
 										|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 							<%} %>
 						</td>
 					</tr>
 			<% 		} else { %>
-					<tr class=level2>
-						<td>
-							<sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
-							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub>
-							<br />
+					<tr class="level2, list-group-item">
+						<td style="padding-left: 20px">
+							<sub class=comment-writer>ㄴ&nbsp;<%=bc.getBoardCommentWriter() %></sub>
+							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub><br /><br />
 							<%=bc.getBoardCommentContent() %>
 						</td>
 						<td>
@@ -340,7 +335,7 @@ $(()=>{
 							<%if(memberLoggedIn!=null 
 								&& ("admin".equals(memberLoggedIn.getMemberId()) 
 								|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 							<%} %>
 						</td>
 					</tr>
@@ -354,7 +349,6 @@ $(()=>{
 		</table>
 		
 	
-	</div>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 </section> 
