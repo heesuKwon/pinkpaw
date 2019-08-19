@@ -26,6 +26,17 @@ img#header-img {
 	font-family: 'Nanum Pen Script', cursive;
 	z-index: 0;
 }
+.header-viewTitle {
+	color: white;
+	position: absolute;
+	/* text-align: left; */
+	font-size: 4em;
+	top: 130px;
+	left: 25%;
+	font-weight: 500;
+	font-family: 'Nanum Pen Script', cursive;
+	z-index: 0;
+}
 
 #blackbg {
 	width: 100%;

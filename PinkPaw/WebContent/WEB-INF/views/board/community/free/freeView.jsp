@@ -4,18 +4,23 @@
 <%@page import="com.pinkpaw.board.freeboard.model.vo.FreeBoard"%>
 <%@page import="java.util.List"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+
+<link rel="stylesheet" 
+	  href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick-theme.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/view.css">
+	href="<%=request.getContextPath()%>/css/header.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/slick.js"></script>
-	
-
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
 <%
 	FreeBoard f = (FreeBoard)request.getAttribute("freeBoard");
 	List<BoardComment> commentList = (List<BoardComment>)request.getAttribute("commentList");
@@ -141,11 +146,13 @@ $(()=>{
 </script>
 
 
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg"  alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title" >자유게시판 상세보기</span>
+</div>
 
 <section class="board-container">
-	<div id="img">
-	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-</div>
 	<%if(memberLoggedIn != null&&
 			(memberLoggedIn.getMemberId().equals(f.getFreeWriter()) ||
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
@@ -186,7 +193,7 @@ $(()=>{
 		 <%} %>
 
 
-<table class="tg" style="table-layout: fixed;   width: 1024px;">
+<table class="tg" style="table-layout: fixed;   width: 800px;">
 		<colgroup>
 			<col style="width: 35px">
 			<col style="width: 100px">
@@ -266,15 +273,14 @@ $(()=>{
 	</table>
 
 
-
+	<div style='padding:10px;'>
 	<%if(memberLoggedIn!=null){ %>
 	<input type="button" value="신고하기" id="menu"  class="btn btn-pink"
 				onclick="goFreeViewReportOpen();" />
 	<%} %>
-<input type="button" value="목록으로" id="menu"  class="btn btn-gray"
+	<input type="button" value="목록으로" id="menu"  class="btn btn-gray"
 				onclick="goFreeViewList();"  />
-	
-	
+	</div>
 <!--댓글 부분  -->
 <hr style="margin-top: 30px;" />
 <form action="<%=request.getContextPath()%>/board/community/free/freeBoardCommentInsert"
@@ -344,14 +350,8 @@ $(()=>{
 
 	
 
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </section>
-
-
-
 <script>
-
-
 
 //3개일때
 $('.slider-for').slick({
@@ -371,6 +371,5 @@ $('.slider-nav').slick({
 	  focusOnSelect: true
 	});
 
-
-
 </script>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

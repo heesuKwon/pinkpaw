@@ -5,17 +5,21 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<link rel="stylesheet" 
+	  href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick-theme.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/view.css">
+	href="<%=request.getContextPath()%>/css/header.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/slick.js"></script>
-
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <%
 	VolunteerBoard volunteerBoard = (VolunteerBoard)request.getAttribute("volunteerBoard");
@@ -160,7 +164,7 @@ $(()=>{
 		</script>
 		<%} %>
 	
-<table class="tg" style="table-layout: fixed;   width: 1024px;">
+<table class="tg" style="table-layout: fixed;   width: 800px;">
 		<colgroup>
 			<col style="width: 35px">
 			<col style="width: 100px">
