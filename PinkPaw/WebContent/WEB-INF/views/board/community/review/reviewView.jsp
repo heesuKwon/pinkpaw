@@ -136,7 +136,7 @@ $(()=>{
 		
 		var url = "<%=request.getContextPath()%>/board/review/reviewBoardReport?reviewNo=<%=reviewBoard.getReviewNo()%>";
 		var target = "new";
-		var option = "top=200, left=450, width=450, height=300";
+		var option = "top=200, left=270, width=450, height=300";
 		
 		window.open(url,target,option);
 	}

@@ -372,7 +372,7 @@ function goMissingViewReportOpen(){
 	
 	var url = "<%=request.getContextPath()%>/board/missing/missingReport?missingNo=<%=b.getMissingNo()%>";
     var target = "new";
-    var option = "top=200, left=450, width=450, height=300";
+    var option = "top=200, left=270, width=450, height=300";
    /*  var status =  "left=500px, top=200px, width=400px, height=500px"; */
     
     window.open(url,target,option);
