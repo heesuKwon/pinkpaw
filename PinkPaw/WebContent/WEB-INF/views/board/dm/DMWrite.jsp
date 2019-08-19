@@ -16,8 +16,6 @@
 <script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
 <%
 Member memberLoggedIn = new Member();
-memberLoggedIn.setMemberId("admin");
-String memberId = (String)request.getAttribute("memberId");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
 	
