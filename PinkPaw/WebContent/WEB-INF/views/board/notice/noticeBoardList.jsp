@@ -15,9 +15,10 @@
 
 $(document).ready(function(){
 	
-	if("#noticeList td").click(function(){
-		
-		alert("dddd");
+	$("td").click((e)=>{		
+		var notice = $("#noticeNo").text();
+
+		location.href = "<%=request.getContextPath()%>/board/notice/noticeBoardView?noticeNo="+notice;
 	});
 	
 });
@@ -36,6 +37,8 @@ $(document).ready(function(){
 		<%-- 관리자만 글쓰기가능 --%>
 	<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>
 	<input type="button" value="글쓰기" id="btn-add"
+		   class="btn btn-secondary"
+					   style="background-color: #c54b54;"
 		   onclick="goBoardForm();" />
 	<script>
 	function goBoardForm(){
@@ -63,12 +66,8 @@ $(document).ready(function(){
 		else{
 			for(NoticeBoard b : list){%>
 		<tr>
-			<th scope="row"><%=b.getNoticeNo() %></th>
-			<td>
-				<a href="<%=request.getContextPath()%>/board/notice/noticeBoardView?noticeNo=<%=b.getNoticeNo() %>">
-					<%= b.getNoticeTitle() %>
-				</a>
-			</td>
+			<th scope="row" id="noticeNo"><%=b.getNoticeNo() %></th>
+			<td><%= b.getNoticeTitle() %></td>
 			<td><%= b.getNoticeWriter() %></td>
 			<td><%= b.getNoticeEnrollDate() %></td>
 			<td><%=b.getNoticeCount() %></td>

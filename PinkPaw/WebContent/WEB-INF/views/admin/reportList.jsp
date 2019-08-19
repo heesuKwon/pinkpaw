@@ -9,6 +9,21 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
+<script>
+
+$(()=>{
+	$("td").click((e)=>{		
+		var no = $(e.target).parents("tr").children("td").eq(1).val();
+		
+			alert(no);
+					
+			location.href = "<%=request.getContextPath()%>/board/dm/reportDMView?dmNo="+no;
+				
+		});
+	});
+
+</script>
+
 <section class="board-container">
 <!--신고쪽지  -->
 	<table id="tbl-board" class="table table-hover">
@@ -26,13 +41,10 @@
 		else{
 			for(DM d : list){ %>
 		<tr>
+			<td><input type="hidden" value="<%=d.getDmNo()%>" /></td>
 			<td><%=d.getDmSend() %></td>
 			<td><%=d.getDmRecive() %></td>
-			<td>
-				<a href="<%=request.getContextPath()%>/board/dm/reportDMView?dmNo=<%=d.getDmNo() %>">
-					<%=d.getDmTitle() %>
-				</a>
-			</td>
+			<td><%=d.getDmTitle() %></td>
 			<td><%= d.getDmDate() %></td>
 		</tr>
 		<% } }%>

@@ -42,9 +42,10 @@
 						style='position: absolute; right: 7em;'
 				onclick="updateBoard();" />
 			</div>
+		<!-- 관리자인 경우에만 수정/삭제버튼이 보이도록함. -->	
 		<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>	
-
-					<form action="<%=request.getContextPath()%>/board/notice/noticeBoardDelete"
+		
+		<form action="<%=request.getContextPath()%>/board/notice/noticeBoardDelete"
 		      name="boardDeleteFrm"
 		      method="post">
 			<input type="hidden" name="noticeNo"
@@ -66,7 +67,6 @@
 				location.href = "<%=request.getContextPath()%>/board/notice/noticeBoardList";
 		 }
 		</script>
-			
 		<%} %>	
 	
 <table class="tg" style="table-layout: fixed;   width: 800px;">
@@ -99,7 +99,6 @@
 			<td class="tg-th">내용</td>
 			<td class="tg-kw6a" colspan="3"><%=b.getNoticeContent() %></td>
 		</tr>
-
 	</table>
 	
 	<div style='padding:10px;'>
@@ -107,11 +106,6 @@
 	<input type="button" value="목록으로" id="menu"  class="btn btn-gray"
 				onclick="goFreeViewList();"  />
 	</div>
-	
-	
-	
-	
-
 	
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

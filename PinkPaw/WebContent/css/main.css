@@ -22,7 +22,7 @@
 }
 
 img{width:100%; vertical-align:middle;}
-article{width:1160px; height:100%; margin:0 auto; padding-top:90px;/*173px*/}
+article{width:1024px; height:100%; margin:0 auto; padding-top:90px;/*173px*/}
 
 article h2{font-size:32px; text-align:center; font-family:'Noto Bold'; /*font-weight:bold;*/ margin-bottom:60px; letter-spacing:-1px;}
 article h2>.smallTitle{font-size:18px; display:block; font-family:'Noto DemiLight'; /*font-weight:normal;*/ margin-bottom:5px;}
@@ -118,7 +118,7 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec02 h2{color:#222;}
 #sec02 .brandWrap{width:100%; overflow:hidden; padding-top:20px;/**/}
 #sec02 .brand{}
-#sec02 .brand>li{width:370px!important; height:496px; float:left; /*margin-right:25px;*/ position:relative;}
+#sec02 .brand>li{width:300px!important; height:496px; float:left; /*margin-right:25px;*/ position:relative;}
 #sec02 .brand>li:nth-child(2n){margin-top:60px;}
 #sec02 .brand>li>a:hover .brandTxt{border:2px solid #693eab; padding:18px; box-sizing:border-box; transition:all 0.3s ease-in-out;}
 #sec02 .brand>li .brandImg{width:100%; height:380px; position:absolute; top:0; left:0; background-repeat:no-repeat; background-position:center center;}
@@ -132,7 +132,7 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec02 .brand>li:nth-child(8) .brandImg{background-image:url('../images/main/main_brand_B08.jpg');}
 #sec02 .brand>li:nth-child(9) .brandImg{background-image:url('../images/main/main_brand_B09.jpg');}
 #sec02 .brand>li .brandNum{width:35px; height:35px; line-height:35px; font-size:16px; text-align:center; background:#693eab; color:#fff; display:inline-block; position:absolute; bottom:116px; left:25px; z-index:2; font-family:'Noto DemiLight';}
-#sec02 .brand>li .brandTxt{width:360px; height:136px; background:#fff; position:absolute; bottom:0; left:5px; padding:20px; box-sizing:border-box;}
+#sec02 .brand>li .brandTxt{width:280px; height:136px; background:#fff; position:absolute; bottom:0; left:5px; padding:20px; box-sizing:border-box;}
 #sec02 .brand>li .brandTxt>h3{font:20px/45px 'Noto Bold', sans-serif; color:#222; letter-spacing:-0.5px;}
 #sec02 .brand>li .brandTxt>h3>span{font-weight:bold;}
 #sec02 .brand>li .brandTxt>p{font-size:13px; color:#666; line-height:1.5; letter-spacing:-0.3px; font-family:'Noto Light';}
@@ -387,5 +387,7 @@ footer #footerFamilyWrap{display:none;}
 #sec02 .brandWrap{display:none;}
 #sec02 .mbrandWrap{display:block;}
 }
+
+
 
 

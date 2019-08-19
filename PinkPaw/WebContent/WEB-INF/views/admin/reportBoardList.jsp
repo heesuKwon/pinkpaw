@@ -4,7 +4,6 @@
 <%
 	List<ReportBoard> list = (List<ReportBoard>)request.getAttribute("list");
 	String pageBar = (String)request.getAttribute("pageBar");
-	String[] arr = new String[list.size()];
 	
 	
 	
@@ -26,6 +25,41 @@
 	}
 </style>
 
+<script>
+
+$(()=>{
+	$("td").click((e)=>{		
+		var no = $(e.target).parents("tr").children("td").eq(1).text();
+		
+		var table = $(e.target).parents("tr").children("td").eq(0).text();
+		
+		if(table == "리뷰게시판"){
+			
+		location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+no;
+		}
+		if(table == "자유게시판"){
+			
+			location.href = "<%=request.getContextPath()%>/board/community/free/freeView?freeNo="+no;
+		}
+		if(table == "봉사게시판"){
+			
+			location.href = "<%=request.getContextPath()%>/board/volunteer/volunteerView?volunteerNo="+no;
+		}
+		if(table == "분양게시판"){
+			
+			location.href = "<%=request.getContextPath()%>/board/parcelout/parceloutView?parceloutNo="+no;
+		}
+		if(table == "실종게시판"){
+			
+			location.href = "<%=request.getContextPath()%>/board/parcelout/missingView?missingNo="+no;
+		}
+		
+		});
+	});
+
+
+</script>
+
 <section class="board-container">
 	<table id="tbl-board" class="table table-hover">
 		<tr>
@@ -40,47 +74,12 @@
 		</tr>
 		<%}
 		else{
-			for(int i = 0; i<list.size(); i++){ %>
+			for(ReportBoard r : list){ %>
 		<tr>
-			<td><%=list.get(i).getReportTableName() %></td>
-			<td><%=list.get(i).getReportNo() %></td>
-			<td>
-				<%if(list.get(i).getReportTableName().equals("리뷰게시판")){ %>
-				
-				<a href="<%=request.getContextPath()%>/board/review/reviewView?reviewNo=<%=list.get(i).getReportNo()%>">
-					<%=list.get(i).getReportTitle() %>
-				</a>
-				<%} %>
-				<%if(list.get(i).getReportTableName().equals("자유게시판")){ %>
-				
-				<a href="<%=request.getContextPath()%>/board/community/free/freeView?freeNo=<%=list.get(i).getReportNo()%>">
-					<%=list.get(i).getReportTitle() %>
-				</a>
-				<%} %>
-				
-				<%if(list.get(i).getReportTableName().equals("봉사게시판")){ %>
-				
-				<a href="<%=request.getContextPath()%>/board/volunteer/volunteerView?volunteerNo=<%=list.get(i).getReportNo()%>">
-					<%=list.get(i).getReportTitle() %>
-				</a>
-				<%} %>
-				
-				<%if(list.get(i).getReportTableName().equals("분양게시판")){ %>
-				
-				<a href="<%=request.getContextPath()%>/board/parcelout/parceloutView?parceloutNo=<%=list.get(i).getReportNo()%>">
-					<%=list.get(i).getReportTitle() %>
-				</a>
-				<%} %>
-				<%if(list.get(i).getReportTableName().equals("실종게시판")){ %>
-				
-				<a href="<%=request.getContextPath()%>/board/parcelout/missingView?missingNo=<%=list.get(i).getReportNo()%>">
-					<%=list.get(i).getReportTitle() %>
-				</a>
-				<%} %>
-				
-				
-			</td>
-			<td><%= list.get(i).getReportReason() %></td>
+			<td><%=r.getReportTableName() %></td>
+			<td><%=r.getReportNo() %></td>
+			<td><%=r.getReportTitle() %></td>
+			<td><%=r.getReportReason() %></td>
 		</tr>
 		<% } }%>
 	</table>

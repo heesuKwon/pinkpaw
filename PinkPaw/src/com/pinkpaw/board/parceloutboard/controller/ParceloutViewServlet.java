@@ -51,7 +51,7 @@ public class ParceloutViewServlet extends HttpServlet {
 					for(Cookie c: cookies) {
 						String name = c.getName();
 						String value = c.getValue();
-						if("boardCookie".equals(name)) {
+						if("parceloutCookie".equals(name)) {
 							boardCookieVal = value;
 							if(value.contains("|"+parceloutNo+"|")) {
 								hasRead = true;
@@ -64,7 +64,7 @@ public class ParceloutViewServlet extends HttpServlet {
 				//현재 게시글을 최초로 읽는다면.   
 				if(!hasRead) {
 					Cookie boardCookie 
-						= new Cookie("boardCookie", boardCookieVal+"|"+parceloutNo+"|");
+						= new Cookie("parceloutCookie", boardCookieVal+"|"+parceloutNo+"|");
 					//setMaxAge를 생략하면, 영속한다.
 					boardCookie.setPath(request.getContextPath()+"/board");
 					
