@@ -21,9 +21,7 @@
 		String[]	imgList = p.getParceloutRenamedImg().split("§");
 		count = imgList.length; 
 	}
-	
-	
-	
+
 %>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -145,15 +143,7 @@ function goParceloutViewReportOpen(){
 	<span class="header-title">분양 게시판 상세보기</span>
 </div>
 
-<<<<<<< HEAD
-
-<div id="img">
-	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-</div>
-
-=======
 <section class="board-container">
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 
 <% if(memberLoggedIn!=null && 
  			(p.getParceloutWriter().equals(memberLoggedIn.getMemberId()) 
@@ -383,7 +373,7 @@ function goParceloutViewReportOpen(){
 			} 
 			%>
 		</table>
-		
+	</div>
 </section>
 
 <script>
