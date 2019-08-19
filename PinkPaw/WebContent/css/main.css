@@ -23,8 +23,9 @@
 
 img{width:100%; vertical-align:middle;}
 article{width:950px; height:768px; margin:0 auto; padding-top:90px;/*173px*/}
+section{width:100%; height:100%;}
 
-article h2{font-size:32px; text-align:center; font-family:'Noto Bold'; /*font-weight:bold;*/ margin-bottom:60px; letter-spacing:-1px;}
+article h2{font-size:32px; text-align:center; font-family:'Noto Bold'; /*font-weight:bold;*/ margin-bottom:30px; letter-spacing:-1px; margin-top: 10px;}
 article h2>.smallTitle{font-size:18px; display:block; font-family:'Noto DemiLight'; /*font-weight:normal;*/ margin-bottom:5px;}
 body{margin:0; padding:0;}
 
@@ -123,11 +124,11 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec02 .brand>li:nth-child(2n){margin-top:60px!important;}
 #sec02 .brand>li>a:hover .brandTxt{border:2px solid #693eab; padding:18px; box-sizing:border-box; transition:all 0.3s ease-in-out;}
 #sec02 .brand>li .brandImg{width:100%; height:290px; position:absolute; top:0; left:0; background-repeat:no-repeat; background-position:center center;}
-#sec02 .brand>li:nth-child(1) .brandImg{background-image:url('../images/main/main_brand_B01.jpg');}
-#sec02 .brand>li:nth-child(2) .brandImg{background-image:url('../images/main/main_brand_B02.jpg');}
-#sec02 .brand>li:nth-child(3) .brandImg{background-image:url('../images/main/main_brand_B03.jpg');}
-#sec02 .brand>li:nth-child(4) .brandImg{background-image:url('../images/main/main_brand_B04.jpg');}
-#sec02 .brand>li:nth-child(5) .brandImg{background-image:url('../images/main/main_brand_B05.jpg');}
+#sec02 .brand>li:nth-child(1) .brandImg{background-image:url('../images/main/sec02-1.jpg');}
+#sec02 .brand>li:nth-child(2) .brandImg{background-image:url('../images/main/sec02-2.jpeg');}
+#sec02 .brand>li:nth-child(3) .brandImg{background-image:url('../images/main/sec02-3.jpg');}
+#sec02 .brand>li:nth-child(4) .brandImg{background-image:url('../images/main/sec02-4.jpg');}
+#sec02 .brand>li:nth-child(5) .brandImg{background-image:url('../images/main/sec02-5.jpeg');}
 #sec02 .brand>li:nth-child(6) .brandImg{background-image:url('../images/main/main_brand_B06.jpg');}
 #sec02 .brand>li:nth-child(7) .brandImg{background-image:url('../images/main/main_brand_B07.jpg');}
 #sec02 .brand>li:nth-child(8) .brandImg{background-image:url('../images/main/main_brand_B08.jpg');}
@@ -143,19 +144,19 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec03 h2>.smallTitle{color:#f7f7f7;}
 #sec03 h2{color:#fff;}
 #sec03 ul{width:100%; /*overflow:hidden;*/ padding-left:5px; box-sizing:border-box;}
-#sec03 ul>li{width:285px; /*height:323px;*/ position:relative; float:left; box-shadow:3px 3px 18px rgba(0,0,0,0.15); margin-right:42px; margin-bottom: 40px; margin-top: -20px;}
+#sec03 ul>li{width:270px; /*height:323px;*/ position:relative; float:left; box-shadow:3px 3px 18px rgba(0,0,0,0.15); margin: -20px 20px 40px 20px; /* margin-bottom: 40px; margin-top: -20px; */}
 #sec03 ul>li:nth-child(3n){margin-right:0;}
 #sec03 ul>li>a{width:100%;}
 #sec03 .news{width:100%;}
 #sec03 .news>.newsImg{width:100%; display:block;}
-#sec03 .news>.newsImg>img{width:100%; display:block;}
+#sec03 .news>.newsImg>img{width:100%; display:block; height: 150px;}
 #sec03 .news>.newsTxt{width:100%; height:120px; background:#fff; padding:15px 17px; box-sizing:border-box;}
 #sec03 .news>.newsTxt>span{font-size:12px; color:#888;}
 #sec03 .news>.newsTxt>h3{font-size:20px; color:#222; line-height:32px; font-family:'Noto Bold'; margin:5px 0 4px;}
 #sec03 .news>.newsTxt>p{font-size:14px; color:#666; line-height:1.5; letter-spacing:-0.3px; font-family:'Noto Demi';}
 #sec03 ul>li>a>span{width:80px; height:27px; font-size:12px; text-align:center; line-height:27px; display:inline-block; position:absolute; top:-5px; left:-5px; font-family:'Noto Regular';}
-#sec03 ul>li>a>span.pBox{background:#ed0081; color:#fff;}
-#sec03 ul>li>a>span.yBox{background:#fdb833; color:#252525;}
+#sec03 ul>li>a>span.pBox{background:#c54b54; color:#fff;}
+#sec03 ul>li>a>span.yBox{background:#fdb833; color:#fff;}
 #sec03 ul>li>a>div.newsBlind{width:100%; height:100%; background:rgba(0,0,0,0.7) url('../images/main/icon_blind.png') no-repeat center center; position:absolute; top:0; left:0; opacity:0; /*display:none;*/ transition:all 0.3s ease-in-out;}
 #sec03 ul>li>a:hover>div.newsBlind{opacity:1; /*display:block;*/}
 #sec03 .swiper-container_pc{display:block;}
