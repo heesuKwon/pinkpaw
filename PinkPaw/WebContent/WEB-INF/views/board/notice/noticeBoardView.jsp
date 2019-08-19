@@ -23,13 +23,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-<scrip>
+<script>
 
  function goFreeViewList(){
 				location.href = "<%=request.getContextPath()%>/board/notice/noticeBoardList";
 		 }
 
-</scrip>
+</script>
 
 <div id="img-div">
 	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg"  alt="헤더 - 후기게시판 사진" />
