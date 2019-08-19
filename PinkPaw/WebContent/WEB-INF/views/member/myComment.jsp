@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.pinkpaw.admin.model.vo.*, java.util.*" %>
 <%@ page import="com.pinkpaw.member.model.vo.MyComment" %>
-<%@ include file="/WEB-INF/views/common/mainHeader.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 
 <%

@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.pinkpaw.admin.model.vo.*, java.util.*" %>
 <%@ page import="com.pinkpaw.member.model.vo.MyBoard" %>
-<%@ include file="/WEB-INF/views/common/mainHeader.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
 <%
