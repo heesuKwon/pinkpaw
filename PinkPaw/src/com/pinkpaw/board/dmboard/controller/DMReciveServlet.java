@@ -36,7 +36,7 @@ public class DMReciveServlet extends HttpServlet {
 		//1.파라미터 인코딩
 				final int numPerPage = 10;
 				
-				String memberId = "admin";
+				String memberId = request.getParameter("memberId");
 				int cPage = 1;
 				try {
 					cPage = Integer.parseInt(request.getParameter("cPage"));

@@ -24,13 +24,13 @@
 	</tr>
 	<tr>
 		<th>쪽지제목</th>
-		<td><%=dm.getDmContent() %>
+		<td><%=dm.getDmTitle() %>
 		</td>
 	</tr>
 	<tr>
 		<th>쪽지내용</th>
 		
-		<td><textarea name="" id="" cols="30" rows="10" readonly><%=dm.getDmTitle() %></textarea></td>
+		<td><textarea name="" id="" cols="30" rows="10" readonly><%=dm.getDmContent() %></textarea></td>
 	</tr>	
 	<tr>
 		<td>
