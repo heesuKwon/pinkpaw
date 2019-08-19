@@ -45,13 +45,6 @@ public class AdminService {
 		return list;
 	}
 
-	public List<Member> selectMemberByGender(String searchKeyword) {
-		Connection conn = getConnection();
-		List<Member> list= new AdminDAO().selectMemberByGender(conn,searchKeyword);
-		close(conn);
-		return list;
-	}
-
 	public int selecTotalContents() {
 		Connection conn = getConnection();
 		int totalContents = new AdminDAO().selecTotalContents(conn);

@@ -9,10 +9,31 @@
 %>
 <link rel="stylesheet" 
 	  href="<%=request.getContextPath()%>/css/board.css" />
-  
+
+<div id="img">
+	<img id="reportDM_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 쪽지 신고게시판 사진" />
+</div>
+<style>
+	img#reportDM_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+	
+	.con{
+	
+	margin: 15px;
+	padding: 35px;
+	
+	}
+	
+</style>
+	  
+ <div class="con"> 
 <section id="board-container">
-	<h2>신고쪽지 상세보기</h2>
-	<table id="tbl-board-view">
+	<table id="tbl-board-view" class="table table-hover">
 			<tr>
 				<th>쪽지번호</th>
 				<td><%=d.getDmNo() %></td>
@@ -23,7 +44,8 @@
 			</tr>
 			<tr>
 				<th>보낸사람</th>
-				<td><%=d.getDmSend() %></td>
+				<td><a href="<%=request.getContextPath()%>/member/memberView?memberId=<%=d.getDmSend() %>"><%=d.getDmSend() %></a>
+				</td>
 			</tr>
 			<tr>
 				<th>받은사람</th>
@@ -41,6 +63,8 @@
 		<tr>
 			<th colspan="2">
 				<input type="button" value="삭제" 
+					   class="btn btn-info" 
+					   style="background-color: #c54b54";
 					   onclick="deleteBoard();" />
 			</th>
 		</tr>
@@ -51,7 +75,7 @@
 				   value="<%=d.getDmNo()%>" />
 			      
 		</form>
-		
+		</div>
 		<script>
 		
 		function deleteBoard(){

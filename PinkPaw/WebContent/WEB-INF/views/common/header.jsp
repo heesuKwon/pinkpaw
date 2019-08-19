@@ -6,9 +6,6 @@
 Member memberLoggedIn
 	= (Member)session.getAttribute("memberLoggedIn");
 System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
-/* memberLoggedIn = new Member();
-memberLoggedIn.setMemberId("admin");
-System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn); */
 
 //쿠키관련 처리
 Cookie[] cookies = request.getCookies();
@@ -31,7 +28,10 @@ if(cookies != null){
 	System.out.println("-------------------------");
 }
 
-
+int recvCount = 0;
+if(session.getAttribute("recvCount")!=null){
+		recvCount = (int)session.getAttribute("recvCount");
+}
 
 
 	
@@ -71,6 +71,11 @@ if(cookies != null){
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Sans+KR:100,300,400,500,700,900"
 	rel="stylesheet" />
+	
+
+
+
+
 
 <script>
 
@@ -83,12 +88,10 @@ function register(){
 <script>
 function validate(){
 	if($("#memberId").val().trim().length == 0){
-		alert("아이디를 입력하세요.");
 		$("#memberId").focus();
 		return false;
 	}
 	if($("#password").val().trim().length == 0){
-		alert("비밀번호를 입력하세요.");
 		$("#password").focus();
 		return false;
 	}
@@ -96,6 +99,49 @@ function validate(){
 	
 	return true;
 }
+
+$(()=>{
+	var host = location.host;
+	var ws = new WebSocket('ws://'+host+"<%=request.getContextPath()%>/chat/helloWebSocket");
+	
+	//최초연결시 open이벤트 핸들러
+	ws.onopen = e => {
+		console.log("ws open!");
+	};
+	//서버로부터 message를 전달 받았을 때 핸들러
+	ws.onmessage = e => {
+		//console.log("ws message: "+e.data);
+		var o = JSON.parse(e.data);
+		
+		//타입 메세지 처리
+		if(o.type === 'message'){
+			
+			var html = "<li class='list-group-item'>";
+			html += "<span class='badge badge-dark'>"+o.sender+"</span>";
+			html += "&nbsp;&nbsp;"+o.msg;
+			html += "</li>";
+			
+			$("#msg-container ul").append(html);
+			
+			//scroll처리
+			var scrollHeight = $("#msg-container").prop("scrollHeight");
+			//console.log(scrollHeight);
+			$("#msg-container").scrollTop(scrollHeight);
+		}
+		else if(o.type === "dm"){
+			alert("쪽지가 도착했습니다");
+		}
+	};
+	//서버처리 도중 error발생시 핸들러
+	ws.onerror = e =>{
+		console.log("ws error!");		
+	};
+	//서버와 연결 종료시 핸들러
+	ws.onclose = e =>{
+		console.log("ws close!");			
+	};
+	
+});
 
 </script>
 	
@@ -107,7 +153,7 @@ function validate(){
 	<!--header-->
 	<div class="headerWrap">
 	<header>
-		<h1  style="width: 800px; margin-left: -20px;">
+		<h1 style="width: 800px; margin-left: -20px;">
 			<a href="<%=request.getContextPath()%>"><img src="<%=request.getContextPath()%>/images/main/logo_white.png" alt="logo" style="margin-top: -9px;"></a>
 		</h1>
 
@@ -148,88 +194,156 @@ function validate(){
 					  id="loginFrm"
 					  method="post"
 					  onsubmit="return validate();">
-					<table>
-						<tr>
-							<td>
-								<input type="text" 
+					  <div class="container">
+
+					  <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title"></div>
+            </div>
+            <div class="panel-body" style="">
+               
+               <div style="margin-left: 0px; margin-top: 35px;">
+               
+                    <div>
+                    	<input
+                    	class="from-control"
+                    				 type="text" 
 									   name="memberId"
 									   id="memberId"
 									   placeholder="아이디"
+									   style="width: 200px;"
 									   tabindex="1" 
 									   value="<%=saveId?memberId:""%>"/>
-							</td>
-							<td>
-								<input type="submit" value="로그인" class="btn btn-primary"
-									   tabindex="3" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="password" 
+                        
+                    </div>
+                    
+                    <br>
+                    <div>
+                    
+                    <input 
+                    				   class="from-control"
+                    				   type="password" 
 									   name="password" 
 									   id="password"
+									   style="width: 200px;"
 									   placeholder="비밀번호" 
 									   tabindex="2"/>
-							</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td colspan="2">
+                       
+                    </div>
+                    
+                       <br>
+                       <br />
+                    
+                    
+                  
+                   </div>
+                   
+                    <div style="position: relative; text-align: center; float: left; left: 0px;">
+                    
+                    	
 								<input type="checkbox" 
 									   name="saveId" 
 									   id="saveId" 
 									   <%=saveId?"checked":""%>/>
 								<label for="saveId">아이디저장</label>
 								
-								<button
-								class="btn btn-primary" 
+                    
+                    </div>
+                    
+                    <br /><br />
+                    
+                    <div style=" position: relative; text-align: center; float: left; left:0px">
+                    				    
+                    <input
+								class="btn btn-info"
+								style="background-color: #da7f84;"
+								type="submit" value="로그인"
+									   tabindex="3" />
+					</div>				   
+				   <div style=" position: relative;  text-align: center; float: right; left:-150px; ">
+				   <button
+								class="btn btn-info"
+								style="background-color: gray;" 
 								value="회원가입"
 								onclick="register();" >회원가입</button>
+									   
+								   
+				   </div>
+               
+                               
+                     <br>
+                    <br><br><br>
+                    
+                   
+                
+            </div>
+        </div>
+    </div>
+
 								
 																
-							</td>
-						</tr>
-					</table>
+						
+					<br>
+					<br>
+					<br>
+					
 				</form>	
 			<% } 
 			//로그인에 성공한 경우
 			else {%>	
-				<table id="logged-in">
-					<tr>
-						<td>
-							<%=memberLoggedIn.getMemberName() %>님, 안녕하세요.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="button" 
-								   value="쪽지" 
-								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmView"/>
-							
-							<%if(memberLoggedIn != null && "admin".equals(memberLoggedIn.getMemberId())){ %>
-							<input type="button" 
-								   value="신고쪽지" 
-								   onclick="location.href='<%=request.getContextPath()%>/board/dm/reportDMList'"/>
-								   <input type="button" 
-								   value="신고게시판" 
-								   onclick="location.href='<%=request.getContextPath()%>/admin/reportBoardList'"/>
-							<%} %>	   
-								   	   
-							<input type="button" 
-								   value="마이페이지" 
-								   onclick="location.href='<%=request.getContextPath()%>/member/memberView?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
-							<input type="button" 
-								   value="내가쓴글보기" 
-								   onclick="location.href='<%=request.getContextPath()%>/member/myBoard'"/>
-								   <input type="button" 
-								   value="내가쓴댓글보기" 
-								   onclick="location.href='<%=request.getContextPath()%>/member/myComment'"/>	   
-							<input type="button" 
+			
+			<div>
+			
+			<div>
+               
+               <div >
+								
+								<div style="margin: auto; width: 100%;">
+					<h1 style="font-size: 20px; font-weight:bolder; float: left;">
+							<%=memberLoggedIn.getMemberName() %>님 환영합니다!
+						</h1>
+						
+						<input
+							style="float: right; background-color: gray;" 
+							class="btn btn-info"
+							type="button" 
 								   value="로그아웃" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>
-						</td>
-					</tr>				
-				</table>
+						</div>
+						<br />
+						<br />
+						<br />
+					
+						<div style="margin: auto; width: 100%;">
+							
+							<input 
+							class="btn" 
+							style="float: left; border: 0px solid white;"	
+							type="button" 
+								   value="쪽지 <%=recvCount %>개" 
+								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
+							
+								   
+								   	   
+							<input
+							style="float: right; border: 1px solid #e1c1c6; background-color: #e1c1c6;"	
+							class="btn btn-info" 
+							type="button" 
+								   value="마이페이지" 
+								   onclick="location.href='<%=request.getContextPath()%>/member/memberView?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
+									
+						</div>
+						</div>
+						
+						<br />
+						<br />
+						<br />
+				
+				</div>
+				
+				</div>
+				
+				
 				
 			<% } %>		
 			
@@ -274,11 +388,6 @@ function validate(){
 				<dd>
 					<a href="<%=request.getContextPath()%>/board/community/free/freeList">자유게시판</a>
 				</dd>
-			</dl>
-			<dl>
-					<%if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())){ %>
-					<a href="<%=request.getContextPath()%>/admin/memberList">회원리스트</a>
-					<%} %>
 			</dl>
 		</div>
 		<script>

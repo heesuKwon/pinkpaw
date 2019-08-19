@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.pinkpaw.admin.model.vo.*, java.util.*" %>
 <%@ page import="com.pinkpaw.member.model.vo.MyBoard" %>
-<%@ include file="/WEB-INF/views/common/mainHeader.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
 <%
@@ -29,6 +29,39 @@ List<MyBoard> list1 = new MemberService().selectMyBoard(1, 10, memberLoggedIn.ge
 	}
 </style>
 
+<script>
+$(()=>{
+$("td").click((e)=>{		
+	var no = $(e.target).parents("tr").children("td").eq(1).text();
+	
+	var table = $(e.target).parents("tr").children("td").eq(0).text();
+	
+	if(table == "리뷰게시판"){
+		
+	location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+no;
+	}
+	if(table == "자유게시판"){
+		
+		location.href = "<%=request.getContextPath()%>/board/community/free/freeView?freeNo="+no;
+	}
+	if(table == "봉사게시판"){
+		
+		location.href = "<%=request.getContextPath()%>/board/volunteer/volunteerView?volunteerNo="+no;
+	}
+	if(table == "분양게시판"){
+		
+		location.href = "<%=request.getContextPath()%>/board/parcelout/parceloutView?parceloutNo="+no;
+	}
+	if(table == "실종게시판"){
+		
+		location.href = "<%=request.getContextPath()%>/board/parcelout/missingView?missingNo="+no;
+	}
+	
+	});
+});
+
+</script>
+
 <section class="board-container">
 	<!--내가 쓴 글 리스트-->
 	
@@ -47,39 +80,9 @@ List<MyBoard> list1 = new MemberService().selectMyBoard(1, 10, memberLoggedIn.ge
 		else{
 			for(MyBoard m : list1){ %>
 		<tr>
-			<td><%=m.getMyTable() %></td>
-			<td><%=m.getMyNo() %></td>
-			<td>
-				
-				<%if(m.getMyTable().equals("리뷰게시판")){ %>
-				
-				<a href="<%=request.getContextPath()%>/board/review/reviewView?reviewNo=<%=m.getMyNo()%>">
-					<%=m.getMyTitle() %>
-				</a>
-				<%} %>
-				<%if(m.getMyTable().equals("자유게시판")){ %>
-				<a href="<%=request.getContextPath()%>/board/community/free/freeView?freeNo=<%=m.getMyNo()%>">
-					<%=m.getMyTitle() %>
-				</a>
-				<%} %>
-				<%if(m.getMyTable().equals("봉사게시판")){ %>
-				<a href="<%=request.getContextPath()%>/board/volunteer/volunteerView?volunteerNo=<%=m.getMyNo()%>">
-					<%=m.getMyTitle() %>
-				</a>
-				<%} %>
-				<%if(m.getMyTable().equals("분양게시판")){ %>
-				<a href="<%=request.getContextPath()%>/board/parcelout/parceloutView?parceloutNo=<%=m.getMyNo()%>">
-					<%=m.getMyTitle() %>
-				</a>
-				<%} %>
-				<%if(m.getMyTable().equals("실종게시판")){ %>
-				<a href="<%=request.getContextPath()%>/board/parcelout/missingView?missingNo=<%=m.getMyNo()%>">
-					<%=m.getMyTitle() %>
-				</a>
-				<%} %>
-				
-				
-			</td>
+			<td id="myTable"><%=m.getMyTable() %></td>
+			<td id="myNo"><%=m.getMyNo() %></td>
+			<td><%=m.getMyTitle() %></td>
 			<td><%=m.getMyDate() %></td>
 		</tr>
 		<% } }%>

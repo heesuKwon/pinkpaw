@@ -11,7 +11,22 @@
 	  href="<%=request.getContextPath()%>/css/board.css" />
   
 <section id="board-container">
-	<h2>공지사항</h2>
+
+<div id="img">
+	<img id="notice_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 공지사항 사진" />
+</div>
+<style>
+	img#notice_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
+<br />
+<br />
+<br />
 	<table class="table table-gray table-hover">
 			<tr>
 				<th>글번호</th>
@@ -36,14 +51,7 @@
 		</tr>
 		<!-- 관리자인 경우에만 수정/삭제버튼이 보이도록함. -->	
 		<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>	
-		<tr>
-			<th colspan="2">
-				<input type="button" value="수정" 
-					   onclick="updateBoard();" />
-				<input type="button" value="삭제" 
-					   onclick="deleteBoard();" />
-			</th>
-		</tr>
+		
 		<form action="<%=request.getContextPath()%>/board/notice/noticeBoardDelete"
 		      name="boardDeleteFrm"
 		      method="post">
@@ -63,8 +71,22 @@
 		}
 		</script>
 			
-		<%} %>
 	</table>
+	
+	
+	<div style="margin-top: 50px; margin-left: 40%;">
+			
+				<input type="button" value="수정"
+					   class="btn btn-secondary"
+					   style="background-color: #c54b54;"
+					   onclick="updateBoard();" />
+				<input type="button" value="삭제"
+					   class="btn btn-secondary"
+					   style="background-color: #c54b54; margin-left: 150px;" 
+					   onclick="deleteBoard();" />
+			
+		</div>
+		<%} %>
 	
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

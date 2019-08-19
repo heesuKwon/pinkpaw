@@ -15,7 +15,6 @@
 div#search-container{
 	margin: 0 0 10px;
 	padding: 3px;
-	background-color: rgba(0,188,212,0.3)
 }
 div#search-memberId{display: <%="memberId".equals(searchType)?"inline-block":"none"%>;}
 div#search-memberName{display: <%="memberName".equals(searchType)?"inline-block":"none"%>;}
@@ -30,6 +29,14 @@ $(()=>{
 		$("#search-"+type).css('display','inline-block');
 		
 	});
+	
+	$("td").click((e)=>{		
+		var member = $("#memberId").text();
+
+		location.href = "<%=request.getContextPath()%>/member/memberView?memberId="+member;
+	});
+	
+	
 });
 </script>
 
@@ -45,10 +52,13 @@ $(()=>{
 <br />
 
 <section id="memberList-container">
-	<h2>회원관리</h2>
+	<h2 style="margin: 15px; text-align: center; font-size: 30px; font-weight: bold; color: #c54b54;">회원관리</h2>
+	<br /><br />
+	
 	<div id="search-container">
-		검색타입: 
-		<select id="searchType">
+		
+		<div id="search-form" style="margin-left: 70%;">
+			<select id="searchType" style="margin: 30px;">
 			<option value="memberId" <%="memberId".equals(searchType)?"selected":"" %>>아이디</option>
 			<option value="memberName" <%="memberName".equals(searchType)?"selected":"" %>>회원명</option>
 		</select>	
@@ -62,9 +72,14 @@ $(()=>{
 					   size="25"
 					   value="<%="memberId".equals(searchType)?searchKeyword:"" %>"
 					   placeholder="검색할 아이디를 입력하세요." />
-				<input type="submit" value="검색" />
+				<input type="submit" 
+					   value="검색" 
+					   class="btn btn-secondary" 
+					   style="background-color: #da7f84; height: 35px;"/>
 			</form>
 		</div>
+		
+		
 		<div id="search-memberName" class="searchFrm">
 			<form action="<%=request.getContextPath()%>/admin/memberFinder">
 				<input type="hidden" 
@@ -75,10 +90,14 @@ $(()=>{
 					   size="25"
 					   value="<%="memberName".equals(searchType)?searchKeyword:"" %>"
 					   placeholder="검색할 회원명을 입력하세요." />
-				<input type="submit" value="검색" />
+				<input type="submit" 
+					   value="검색" 
+					   class="btn btn-secondary" 
+					   style="background-color: #da7f84; height: 35px;"
+					   />
 			</form>
 		</div>
-	
+	</div>
 	
 	</div>
 	<table class="table table-gray table-hover">
@@ -95,10 +114,7 @@ $(()=>{
 			</tr>
 		</thead>
 		<tbody>
-		<%--@실습문제: 회원정보를 테이블행으로 출력.
-			단, 회원아이디를 클릭하면, 
-			해당회원의 상세보기페이지로 이동해야함.
-		 --%>
+		
 		<% if(list==null || list.isEmpty()){ %>
             <tr>
                 <td colspan="9" align="center"> 검색 결과가 없습니다. </td>
@@ -109,12 +125,8 @@ $(()=>{
                 for(Member m : list){ 
         %>
             <tr>
-                <td>
-				    <a href="<%=request.getContextPath() %>/member/memberView?memberId=<%=m.getMemberId()%>">
-					<%=m.getMemberId()%>
-				    </a>
-				</td>
-                 <td><%=m.getMemberName()%></td>
+               	<td id="memberId"><%=m.getMemberId()%></td>
+                <td><%=m.getMemberName()%></td>
                 <td><%=m.getEmail()%></td>
                 <td><%=m.getPhone()%></td>
                 <td><%=m.getAddress()%></td>
@@ -128,7 +140,7 @@ $(()=>{
 		
 		</tbody>
 	</table>
-	<div id='pageBar'>
+	<div id="pageBar">
 		<%=pageBar%>
 	</div>
 

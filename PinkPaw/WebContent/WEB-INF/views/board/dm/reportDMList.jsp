@@ -22,6 +22,19 @@
 	}
 </style>
 
+<script>
+
+$(()=>{
+	$("td").click((e)=>{		
+		var no = $(e.target).parents("tr").children("th").text();
+		
+			location.href = "<%=request.getContextPath()%>/board/dm/reportDMView?dmNo="+no;
+				
+		});
+	});
+
+</script>
+
 <section class="board-container">
 	<table id="tbl-board" class="table table-hover">
 		<tr>
@@ -41,11 +54,7 @@
 			<th scope="row"><%=d.getDmNo() %></th>
 			<td><%=d.getDmSend() %></td>
 			<td><%=d.getDmRecive() %></td>
-			<td>
-				<a href="<%=request.getContextPath()%>/board/dm/reportDMView?dmNo=<%=d.getDmNo() %>">
-					<%=d.getDmTitle() %>
-				</a>
-			</td>
+			<td><%=d.getDmTitle() %></td>
 			<td><%= d.getDmDate() %></td>
 		</tr>
 		<% } }%>

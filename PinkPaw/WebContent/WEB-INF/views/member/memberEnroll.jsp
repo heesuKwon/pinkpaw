@@ -48,6 +48,25 @@ function checkIdDuplicate(){
 color: red;
 }
 
+.enrollmain{
+margin-left: 40%;
+margin-top: 115px;
+margin-bottom: 115px;
+
+}
+
+td{
+padding: 10px;
+}
+
+img#free_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+
 </style>
 
 <script>
@@ -70,26 +89,49 @@ $(function(){
     });
 });
 
-
+function enrollValidate(){
+	
+	//아이디 중복검사 여부
+	if($("#idValid").val() == 1){
+		alert("아이디 중복검사를 실행해주세요");
+		return false;
+	}
+	
+	if($("#state").val() == null){
+		alert("주소를 선택해주세요");
+		return false;
+	}
+	
+	return true;
+}
 
 
 </script>
 
+<div id="img">
+	<img id="free_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 자유게시판 사진" />
+</div>
+
+
+<!-- <h2 style="text-align: center; font-weight: bold; font-size: 29px; color: #da7f84; ">회원가입 </h2> -->
+	<div class="enrollmain" >
+	
 <form action="" name="checkIdDuplicateFrm">
 	<input type="hidden" name="memberId" />
 </form>
-
 	  <form action="<%=request.getContextPath()%>/member/memberEnrollEnd" 
     	  name="memberEnrollFrm" 
     	  method="post"
           onsubmit="return enrollValidate();">
 
-        <table>
+        <table id="enrolltable">
             <tr>
                 <th>아이디<span class="star">*</span></th>
                 <td>
                     <input type="text" name="memberId" id="memberId_" placeholder="아이디" required />
-                    <input type="button" value="중복검사" 
+                    <input type="button" value="중복검사"
+                    	   class="btn btn-secondary"
+                    	   style="background-color: #c54b54; height: 35px;" 
 						   onclick="checkIdDuplicate();"/>
                     <div class="idCheck" id="idCheck"></div>
                     <input type="hidden" id="idValid" value="1" />
@@ -119,7 +161,7 @@ $(function(){
             <tr>
                 <th>이메일<span class="star">*</span></th>
                 <td>
-                    <input type="email" name="email" id="email" />
+                    <input type="email" name="email" id="email" placeholder="temp@naver.com" />
                 </td>
             </tr>
 
@@ -442,15 +484,18 @@ $(function(){
                     <input type="hidden" name="address" id="address" value=""/>
 
             </tr>
+        
         </table>
-
-        <input type="submit" value="회원가입" id="btn" />
-        <button onclick="cancle()">취소</button>
+        <input type="submit" value="회원가입" id="btn" class="btn btn-secondary" style="background-color: #c54b54; height: 35px; margin-top: 35px; margin-left: 55px;" />
+        <button onclick="cancle()" class="btn btn-secondary" style="height: 35px ; margin-top: 35px; margin-left: 95px;" >취소</button>
+ 
         
         
                      
 
     </form>
+    
+      </div>
        
         <script>
         
