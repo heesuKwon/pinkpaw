@@ -222,46 +222,6 @@ public class AdminDAO {
 	
 	
 
-	public List<Member> selectMemberByGender(Connection conn, String searchKeyword) {
-		List<Member> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String query = prop.getProperty("selectMemberByGender");
-		
-		try{
-			//미완성쿼리문을 가지고 객체생성. 
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, searchKeyword);
-			
-			//쿼리문실행
-			//완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()){
-				Member m = new Member();
-				m.setMemberId(rset.getString("MEMBER_ID"));
-				m.setPassword(rset.getString("member_PASSWORD"));
-				m.setMemberName(rset.getString("MEMBER_NAME"));
-				m.setPhone(rset.getString("member_PHONE"));
-				m.setEmail(rset.getString("member_EMAIL"));
-				m.setAddress(rset.getString("member_ADDRESS"));
-				m.setEnrolldate(rset.getString("member_enrolldate"));
-				m.setReportCount(rset.getInt("member_112_count"));
-				m.setGrade(rset.getString("member_grade"));
-				
-				list.add(m);
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			close(rset);
-			close(pstmt);
-		}
-		
-		return list;
-	}
-
 	public int selecTotalContents(Connection conn) {
 		int totalContents = 0;
 		PreparedStatement pstmt = null;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/views/common/mainHeader.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ page import="com.pinkpaw.member.model.vo.*"%>
 
 
@@ -108,7 +108,7 @@ display: inline-block;
 
 overflow: hidden;
 
-border-bottom: 3px solid #318294;
+border-bottom: 3px solid #e1c1c6;
 
 }
 
@@ -126,13 +126,13 @@ height: 50px;
 
 line-height: 50px;
 
-background-color: #3ea3ba;
+background-color: #c54b54;
 
 color: #ddd;
 
 padding: 0 35px;
 
-border-right: 1px solid #358da1;
+border-right: 1px solid white;
 
 }
 
@@ -144,7 +144,7 @@ border-right: 0;
 
 .horizontal-menu a:hover { 
 
-background-color: #358da1;
+background-color: #da7f84;
 
 color: #fff;
 
@@ -159,7 +159,7 @@ color: #fff;
 <section id="enroll-container">
 
 
-	<h2 style="font-size: 30px; font-weight: bold;">마이페이지</h2>
+	<h2 style="font-size: 30px; font-weight: bold; color: #c54b54;">마이페이지</h2>
 	
 	<form action="<%=request.getContextPath()%>/member/myBoardEnd"
 		name="myBoardEnd" method="post">
@@ -198,7 +198,11 @@ color: #fff;
 
 
 </ul>
-		
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
 		
 
 		<div class="table-container">
@@ -544,10 +548,23 @@ color: #fff;
 				</tr>
 			</table>
 		</div>
+		
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		
 		<div class="btn2-container">
-			<input type="submit" value="정보수정" id="btn" class="btn btn-info"/> 
-			<input type="button" value="비밀번호변경" onclick="updatePassword();" class="btn btn-info"/> 
-			<input type="button" value="회원탈퇴" onclick="deleteMember();" class="btn btn-info"/>
+			<input type="submit" value="정보수정" id="btn" class="btn btn-secondary" style="background-color: #da7f84;"/> 
+			<input type="button" value="비밀번호변경" onclick="updatePassword();" class="btn btn-secondary" style="background-color: #da7f84;"/>
+<!-- 			관리자면 탈퇴안보이게 처리 -->
+			<% if(memberLoggedIn!=null && !"admin".equals(memberLoggedIn.getMemberId())) {%> 
+			<input type="button" value="회원탈퇴" onclick="deleteMember();" class="btn btn-secondary"/>
+			<%} %>
+			<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>
+			<input type="button" value="회원강퇴" onclick="deleteMember();" class="btn btn-secondary"/>
+			<%} %>
 		</div>
 
 		
@@ -1072,14 +1089,23 @@ function updatePassword(){
 	}
 
 	function deleteMember() {
-		var bool = confirm("정말로 탈퇴하시겠습니까?");
+		var bool; 
+		
+		if(<%=memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())%>){
+			bool = confirm("정말로 이 회원을 강제퇴출 시키겠습니까?");
+		}
+		else{
+			bool = confirm("정말로 탈퇴하시겠습니까?");
+		}
+		
 		if (bool) {
 			var frm = $("#memberDelFrm");
 			frm.submit();
 		}
 
 	}
-
+	
+	
 	function updateValidate() {
 
 		return true;

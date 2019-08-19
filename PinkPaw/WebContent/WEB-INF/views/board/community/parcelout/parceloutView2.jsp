@@ -164,13 +164,7 @@ function goParceloutViewReportOpen(){
 </script>
 </head>
 <body>
-	<h2>분양동물</h2>
 <section id="board-container" style="">
-<h2>게시판 상세보기</h2>
-<input type="button" value="목록" onclick="goBoardList();"/>
-<%if(memberLoggedIn!=null){ %>
-<input type="button" value="신고" onclick="goParceloutViewReportOpen();"/>
-<%} %>
 <table id="tbl-parcelout-view" >
 <tr>
 	<th>

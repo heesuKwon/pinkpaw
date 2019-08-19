@@ -44,7 +44,7 @@ function passwordValidate(){
 <body>
 	<div id="updatePassword-container">
 		<form name="updatePwdFrm" action="<%=request.getContextPath()%>/member/updatePasswordEnd" method="post" >
-			<table class="table table-danger">
+			<table class="table">
 				<tr>
 					<th>현재 비밀번호</th>
 					<td><input type="password" name="password" id="password" required></td>
@@ -63,8 +63,8 @@ function passwordValidate(){
 				</tr>
 				<tr>
 					<td colspan="2" >
-						<input type="submit" style="margin-left: 80px;" class="btn btn-info" value="변경" onclick="return passwordValidate();"/>&nbsp;
-						<input type="button" style="margin-left: 80px;" class="btn btn-info"  onclick="self.close();" value="닫기" />						
+						<input type="submit" style="margin-left: 80px; background-color: #c54b54;" class="btn btn-secondary" value="변경" onclick="return passwordValidate();"/>&nbsp;
+						<input type="button" style="margin-left: 80px;" class="btn btn-secondary"  onclick="self.close();" value="닫기" />						
 					</td>
 				</tr>
 			</table>

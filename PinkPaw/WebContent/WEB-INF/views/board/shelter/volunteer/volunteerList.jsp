@@ -9,6 +9,10 @@
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <script>
 $(()=>{
 	//테이블의 열을 클릭시 해당 게시물로 이동
@@ -19,20 +23,13 @@ $(()=>{
 	});
 });
 </script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<div id="img">
-	<img id="volunteer_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 봉사 요청 사진" />
+
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">봉사요청 게시판</span>
 </div>
-<style>
-	img#volunteer_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
-</style>
+
 
 <section class="board-container">
 

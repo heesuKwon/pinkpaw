@@ -237,14 +237,14 @@ private Properties prop = new Properties();
 		
 		ResultSet rset1 = null;
 		
-		Statement stmt2 = null;
+		PreparedStatement pstmt2 = null;
 		ResultSet rset2 = null;
 		
 		String sql2 = prop.getProperty("searchMyBoard");
 
 		try {
-			cstmt = conn.prepareCall("{call my_text(?)}");
-			cstmt.setString(1, memberId);
+			cstmt = conn.prepareCall("{call my_text}");
+			
 			cstmt.execute();
 			
 		} catch (SQLException e) {
@@ -256,8 +256,9 @@ private Properties prop = new Properties();
 				
 		
 		try {
-			stmt2 = conn.createStatement();
-			rset2 = stmt2.executeQuery(sql2);
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setString(1, memberId);
+			rset2 = pstmt2.executeQuery();
 			
 			while(rset2.next()){
 				MyBoard m = new MyBoard();
@@ -272,7 +273,7 @@ private Properties prop = new Properties();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(stmt2);
+			close(pstmt2);
 			close(rset2);
 			
 		}
@@ -287,14 +288,13 @@ private Properties prop = new Properties();
 		
 		ResultSet rset1 = null;
 		
-		Statement stmt2 = null;
+		PreparedStatement pstmt2 = null;
 		ResultSet rset2 = null;
 		
 		String sql2 = prop.getProperty("searchMyComment");
 
 		try {
-			cstmt = conn.prepareCall("{call my_comments(?)}");
-			cstmt.setString(1, memberId);
+			cstmt = conn.prepareCall("{call my_comments}");
 			cstmt.execute();
 			
 		} catch (SQLException e) {
@@ -305,8 +305,9 @@ private Properties prop = new Properties();
 		
 		
 		try {
-			stmt2 = conn.createStatement();
-			rset2 = stmt2.executeQuery(sql2);
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setString(1, memberId);
+			rset2 = pstmt2.executeQuery();
 			
 			while(rset2.next()){
 				MyComment m = new MyComment();
@@ -320,7 +321,7 @@ private Properties prop = new Properties();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(stmt2);
+			close(pstmt2);
 			close(rset2);
 			
 		}

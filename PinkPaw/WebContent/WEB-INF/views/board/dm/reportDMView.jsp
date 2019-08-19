@@ -9,65 +9,87 @@
 %>
 <link rel="stylesheet" 
 	  href="<%=request.getContextPath()%>/css/board.css" />
-  
 
-<section class="board-container">
-<div id="reportReview-container">
-		<form name="reportFrm" action="<%=request.getContextPath()%>/board/review/reviewBoardReportEnd" method="post" >
-			<table>
-				<tr>
-					<th>작성자</th>
-					<td>
-						<input type="text" name="reportWriter" id="reportWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly required>
-					</td>
-				</tr>
-				<tr>
-					<th>신고 내용</th>
-					<td>	
-						<!-- <textarea name="reportContent" cols="40" rows="5"
-						placeholder="내용을 입력해주세요."></textarea> -->
-						<select name="reviewReportContent">
-							<option value="">신고 사유 선택</option>
-							<option value="광고글">광고글</option>
-							<option value="언어폭력(욕설,비방,명예훼손 등)">언어폭력(욕설,비방,명예훼손 등)</option>
-							<option value="부적절한 이미지">부적절한 이미지</option>
-							<option value="부적절한 내용">부적절한 내용</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="submit"  value="신고보내기" onclick="return reportValidate();"/>&nbsp;
-						<input type="button" value="취소" onclick="self.close();"/>						
-					</td>
-				</tr>
-			</table>
-			<input type="hidden" name="dmNo" value="<%=d.getDmNo()%>" />
-		</form>
-	</div>
-</section>
-
-<script>
-function reportValidate() {
-	var content = $("[name=reviewReportContent]").val();
-	//좌우 공백을 제거하고 길이가 0이면(내용이 비어 있는 경우)
-	if(content.trim().length == 0){
-		alert("신고 사유를 선택하세요.");
-		return false;
+<div id="img">
+	<img id="reportDM_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 쪽지 신고게시판 사진" />
+</div>
+<style>
+	img#reportDM_header{
+		width: 1024px;
+		height: 300px;
 	}
-
-	return true;
-}
-$(()=>{
+	#img{
+		text-align: center;
+	}
 	
-	var close = <%=request.getParameter("close")%>;
-	if(close==true){
-		self.close();
+	.con{
+	
+	margin: 15px;
+	padding: 35px;
+	
 	}
-})();
-
-
-</script>
+	
+</style>
+	  
+ <div class="con"> 
+<section id="board-container">
+	<table id="tbl-board-view" class="table table-hover">
+			<tr>
+				<th>쪽지번호</th>
+				<td><%=d.getDmNo() %></td>
+			</tr>
+			<tr>
+				<th>제 목</th>
+				<td><%=d.getDmTitle() %></td>
+			</tr>
+			<tr>
+				<th>보낸사람</th>
+				<td><a href="<%=request.getContextPath()%>/member/memberView?memberId=<%=d.getDmSend() %>"><%=d.getDmSend() %></a>
+				</td>
+			</tr>
+			<tr>
+				<th>받은사람</th>
+				<td><%=d.getDmRecive() %></td>
+			</tr>
+		<tr>
+			<th>내용</th>
+			<td><%=d.getDmContent()%></td>
+		</tr>
+		<tr>
+			<th>신고이유</th>
+			<td><%=d.getDmReportReason()%></td>
+		</tr>
+		
+		<tr>
+			<th colspan="2">
+				<input type="button" value="삭제" 
+					   class="btn btn-info" 
+					   style="background-color: #c54b54";
+					   onclick="deleteBoard();" />
+			</th>
+		</tr>
+		<form action="<%=request.getContextPath()%>/board/dm/reportDMDelete"
+		      name="dmDeleteFrm"
+		      method="post">
+			<input type="hidden" name="DmNo"
+				   value="<%=d.getDmNo()%>" />
+			      
+		</form>
+		</div>
+		<script>
+		
+		function deleteBoard(){
+			if(!confirm("정말 삭제 하시겠습니까?")){
+				return;
+			}
+			$("[name=dmDeleteFrm]").submit();
+		}
+		</script>
+			
+		
+	</table>
+	
+</section>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 

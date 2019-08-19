@@ -509,4 +509,28 @@ public class ReviewDAO {
 		return result;
 	}
 
+
+	public int increaseReadCount(Connection conn, int boardNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("increaseReadCount"); 
+		
+		try {
+			//미완성쿼리문을 가지고 객체생성.
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			
+			//쿼리문실행 : 완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)
+			//DML은 executeUpdate()
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

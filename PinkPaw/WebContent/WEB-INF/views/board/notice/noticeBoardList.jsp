@@ -8,15 +8,17 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <script>
 
 $(document).ready(function(){
 	
-	if("#noticeList td").click(function(){
-		
-		alert("dddd");
+	$("td").click((e)=>{		
+		var notice = $("#noticeNo").text();
+
+		location.href = "<%=request.getContextPath()%>/board/notice/noticeBoardView?noticeNo="+notice;
 	});
 	
 });
@@ -24,28 +26,19 @@ $(document).ready(function(){
 </script>
 
 
-<section id="board-container">
-	<h2>공지사항</h2>
-	
-
-<div id="img">
-	<img id="notice_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 공지사항 사진" />
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">공지사항</span>
 </div>
-<style>
-	img#notice_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
-</style>
 
 <section class="board-container">	
 
 		<%-- 관리자만 글쓰기가능 --%>
 	<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>
 	<input type="button" value="글쓰기" id="btn-add"
+		   class="btn btn-secondary"
+					   style="background-color: #c54b54;"
 		   onclick="goBoardForm();" />
 	<script>
 	function goBoardForm(){
@@ -57,8 +50,6 @@ $(document).ready(function(){
 	
 
 	<table class="table table-gray table-hover" id="noticeList">
-
-	<table id="tbl-board" class="table table-hover">
 
 		<tr>
 			<th scope="col">No</th>
@@ -75,12 +66,8 @@ $(document).ready(function(){
 		else{
 			for(NoticeBoard b : list){%>
 		<tr>
-			<th scope="row"><%=b.getNoticeNo() %></th>
-			<td>
-				<a href="<%=request.getContextPath()%>/board/notice/noticeBoardView?noticeNo=<%=b.getNoticeNo() %>">
-					<%= b.getNoticeTitle() %>
-				</a>
-			</td>
+			<th scope="row" id="noticeNo"><%=b.getNoticeNo() %></th>
+			<td><%= b.getNoticeTitle() %></td>
 			<td><%= b.getNoticeWriter() %></td>
 			<td><%= b.getNoticeEnrollDate() %></td>
 			<td><%=b.getNoticeCount() %></td>

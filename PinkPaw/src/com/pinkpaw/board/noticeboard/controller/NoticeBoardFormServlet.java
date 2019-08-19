@@ -27,7 +27,7 @@ public class NoticeBoardFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeBoardForm.jsp")
+		request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeBoardWrite.jsp")
 			   .forward(request, response);
 	}
 

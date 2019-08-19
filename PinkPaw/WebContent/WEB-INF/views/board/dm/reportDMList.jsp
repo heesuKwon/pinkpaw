@@ -9,11 +9,24 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
+<script>
+
+$(()=>{
+	$("td").click((e)=>{		
+		var no = $(e.target).parents("tr").children("th").text();
+		
+			location.href = "<%=request.getContextPath()%>/board/dm/reportDMView?dmNo="+no;
+				
+		});
+	});
+
+</script>
+
 <section id="board-container">
 	<h2>신고쪽지</h2>
 	
 		
-	<table id="tbl-board">
+	<table id="tbl-board" class="table table-hover">
 		<tr>
 			<th>보낸사람</th>
 			<th>받은사람</th>
@@ -21,15 +34,12 @@
 			<th>날짜</th>
 		</tr>
 
-				<% for(reportDM d : list){ %>
+
+	<% for(reportDM d : list){ %>
 		<tr>
 			<td><%=d.getDmSend() %></td>
 			<td><%=d.getDmRecive() %></td>
-			<td>
-				<a href="<%=request.getContextPath()%>/board/dm/reportDMView?dmNo=<%=d.getDmNo() %>">
-					<%=d.getDmTitle() %>
-				</a>
-			</td>
+			<td><%=d.getDmTitle() %></td>
 			<td><%= d.getDmDate() %></td>
 		</tr>
 		<% } %>

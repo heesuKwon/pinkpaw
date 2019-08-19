@@ -10,13 +10,14 @@
 	
 	System.out.println(str.substring(0, str.indexOf(" ", 6)));
  */
-	
-	
 	%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<%-- <link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" /> --%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <style>
 #btn-add{
@@ -41,8 +42,15 @@ text-align: center;
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<section style="margin-top: 100px;" id="board-container">
-<table id="missing-board" style="border:0px; border-collapse: collapse;">
+
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">실종동물 게시판</span>
+</div>
+
+<section class="board-container">
+<table id="missing-board" style="border:0px; border-collapse: collapse;" >
 
 	<div class="input-group mb-3" >
 		<div class="input-group-prepend" >

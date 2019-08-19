@@ -1,6 +1,8 @@
 <%@page import="com.pinkpaw.member.model.vo.Member"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+
 <%
 	int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 	/* Member memberLoggedIn
@@ -9,25 +11,16 @@
 	memberLoggedIn.setMemberId("admin");
 	System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>신고하기</title>
-<link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" />
-<script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
-</head>
-<body>
 
-<section class="board-container">
-<div id="reportReview-container">
+<title>신고하기</title>
+
+<div class="report-container">
 		<form name="reportFrm" action="<%=request.getContextPath()%>/board/review/reviewBoardReportEnd" method="post" >
 			<table>
 				<tr>
 					<th>작성자</th>
 					<td>
-						<input type="text" name="reportWriter" id="reportWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly required>
+						<input type="text" name="reportWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly required>
 					</td>
 				</tr>
 				<tr>
@@ -35,17 +28,34 @@
 					<td>	
 						<!-- <textarea name="reportContent" cols="40" rows="5"
 						placeholder="내용을 입력해주세요."></textarea> -->
-						<select name="reviewReportContent">
+						<select name="reviewReportContent" id="reviewReportContent" onchange="change()">
 							<option value="">신고 사유 선택</option>
 							<option value="광고글">광고글</option>
 							<option value="언어폭력(욕설,비방,명예훼손 등)">언어폭력(욕설,비방,명예훼손 등)</option>
 							<option value="부적절한 이미지">부적절한 이미지</option>
 							<option value="부적절한 내용">부적절한 내용</option>
+							<option value="기타">기타(직접 입력)</option>
 						</select>
+						<div id="reviewOtherReason">
+							<textarea name="reviewOtherReason" cols="40" rows="5" placeholder="내용을 입력해주세요." ></textarea>
+						</div>				
+						<script>
+							$("#reviewOtherReason").hide();
+							function change() {
+								var state = $('#reviewReportContent option:selected').val();
+								
+								if(state == "기타"){
+									$("#reviewOtherReason").show();									
+								}
+								else{
+									$("#reviewOtherReason").hide();							
+								}
+							}
+						</script>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
+					<td colspan="2" class="report-button">
 						<input type="submit"  value="신고보내기" onclick="return reportValidate();"/>&nbsp;
 						<input type="button" value="취소" onclick="self.close();"/>						
 					</td>
@@ -54,7 +64,6 @@
 			<input type="hidden" name="reviewNo" value="<%=reviewNo%>" />
 		</form>
 	</div>
-</section>
 
 <script>
 function reportValidate() {
@@ -74,8 +83,4 @@ $(()=>{
 		self.close();
 	}
 })();
-
-
 </script>
-</body>
-</html>

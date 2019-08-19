@@ -60,36 +60,39 @@ public class ParceloutListServlet extends HttpServlet {
 	System.out.println("pageStart["+pageStart+"] ~ pageEnd["+pageEnd+"]");
 	
 	//[이전] section
-	if(pageNo == 1 ){
-		//pageBar += "<span>[이전]</span>"; 
+	if(pageNo == 1) {
+		pageBar += "<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span>";
 	}
 	else {
-		pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+(pageNo-1)+"'>[이전]</a> ";
+		pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+(pageNo-1)+"' class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</a>";
 	}
-		
-	// pageNo section
-	// 보통 !(빠져나가는 조건식)으로 많이 쓴다.
-	while(!(pageNo>pageEnd || pageNo > totalPage)){
-		
-		if(cPage == pageNo ){
-			pageBar += "<span class='cPage'>"+pageNo+"</span> ";
-		} 
+	//b.page
+	while(pageNo <= pageEnd && pageNo <= totalPage) {
+		//현재페이지인 경우. 링크필요없음
+		if(pageNo == cPage) {
+			pageBar += "<span class='w3-bar-item w3-black w3-button'>"+pageNo+"</span>";
+		}
 		else {
-			pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+pageNo+"'>"+pageNo+"</a> ";
+			pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>"+pageNo+"</a>";				
 		}
 		pageNo++;
 	}
-	
-	//[다음] section
-	if(pageNo > totalPage){
-		//pageBar += "<span>[다음]</span>";
-	} else {
-		pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+pageNo+"'>[다음]</a>";
+	//c.[다음]
+	if(pageNo > totalPage) {
+		pageBar += "<span class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</span>";
 	}
+	//while문을 빠져나올 때 이미 pageNo가 증가되어있는 상태기 때문에 +1을 하지않고 pageNo로 이동시킨다.
+	else {
+		pageBar += "<a href='"+request.getContextPath()+"/board/parcelout/parceloutList?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</a>";
+	}
+	System.out.println("pageBar="+pageBar);
 	
-		
+	//3.view단 처리 
 	request.setAttribute("list", list);
-	request.setAttribute("pageBar",pageBar);
+	request.setAttribute("pageBar", pageBar);
+	request.setAttribute("cPage", cPage);
+	request.setAttribute("numPerPage", numPerPage);
+
 	
 	request.getRequestDispatcher("/WEB-INF/views/board/community/parcelout/parceloutList.jsp").forward(request, response);
 	

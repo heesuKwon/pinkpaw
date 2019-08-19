@@ -9,6 +9,8 @@
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <script>
@@ -23,18 +25,11 @@ $(()=>{
 			
 </script>
 
-<div id="img">
-	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">후기 게시판</span>
 </div>
-<style>
-	img#review_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
-</style>
 
 <section class="board-container">
 	

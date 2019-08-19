@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,11 +39,41 @@ public class ReviewViewServlet extends HttpServlet {
 		System.out.println("reviewBoardNo@ReviewViewServlet="+reviewNo);
 		
 		//2.업무로직
-		ReviewBoard reviewBoard = new ReviewService().selectOne(reviewNo);
+		//조회수 증가
+		//쿠키검사
+		Cookie[] cookies = request.getCookies();
+		String boardCookieVal = "";
+		boolean hasRead = false;
+		if(cookies != null) {
+			for(Cookie c: cookies) {
+				String name = c.getName();
+				String value = c.getValue();
+				if("reivewCookie".equals(name)) {
+					boardCookieVal = value;
+					if(value.contains("|"+reviewNo+"|")) {
+						hasRead = true;
+						break;
+					}
+				}
+			}
+		}
+		
+		//현재 게시글을 최초로 읽는다면.   
+		if(!hasRead) {
+			Cookie boardCookie 
+			= new Cookie("reivewCookie", boardCookieVal+"|"+reviewNo+"|");
+			//setMaxAge를 생략하면, 영속한다.
+			boardCookie.setPath(request.getContextPath()+"/board");
+			
+			response.addCookie(boardCookie);
+		}
+		
+		ReviewBoard reviewBoard = new ReviewService().selectOne(reviewNo, hasRead);
 		System.out.println("reviewBoard@ReviewViewServlet="+reviewBoard);
 		
 		List<BoardComment> boardCommentList = new ReviewCommentService().selectBoardCommentList(reviewNo);
 		System.out.println("boardCommentList@ReviewViewServlet="+boardCommentList.toString());
+		
 		
 		//3.view단 처리
 		request.setAttribute("reviewBoard", reviewBoard);

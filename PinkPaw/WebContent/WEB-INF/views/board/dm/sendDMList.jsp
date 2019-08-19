@@ -25,7 +25,7 @@ $(()=>{
 		var url = "<%=request.getContextPath()%>/board/dm/DMView?dmNo="+dmNo+"&dmRead="+dmRead;
 		
 	    var title = "DMWrite";
-	    var status =  "left=500px, top=200px, width=400px, height=500px";
+	    var status =  "left=500px, top=200px, width=350px, height=300px";
 	    
 		var popup = window.open(url,title,status);
 	
@@ -99,7 +99,7 @@ $(()=>{
 function DMWrite(){
 	var url = "<%=request.getContextPath()%>/dmWrite?memberId=<%=memberLoggedIn.getMemberId()%>";
     var title = "DMWrite";
-    var status =  "left=500px, top=200px, width=400px, height=500px";
+    var status =  "left=500px, top=200px, width=450px, height=300px";
     
 	var popup = window.open(url,title,status);
 }
