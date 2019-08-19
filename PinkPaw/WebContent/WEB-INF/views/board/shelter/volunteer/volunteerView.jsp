@@ -131,14 +131,14 @@ $(()=>{
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
 				<div style='height:50px; padding:5px;'>
 			
-				<input type="button" value="삭제"  
-						class="btn btn-gray"
-						id="modify"
-				onclick="deleteBoard();" />
 				<input type="button" value="수정"  
 						class="btn btn-pink"
 						id="modify"
 				onclick="updateBoard();" />
+				<input type="button" value="삭제"  
+						class="btn btn-gray"
+						id="modify"
+				onclick="deleteBoard();" />
 			</div>
 
 		<form action="<%=request.getContextPath()%>/board/volunteer/volunteerDelete"

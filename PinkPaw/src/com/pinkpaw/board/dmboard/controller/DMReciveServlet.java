@@ -37,7 +37,6 @@ public class DMReciveServlet extends HttpServlet {
 				final int numPerPage = 10;
 				
 				String memberId = request.getParameter("memberId");
-				System.out.println("dmReciveServlet"+memberId);
 				int cPage = 1;
 				try {
 					cPage = Integer.parseInt(request.getParameter("cPage"));

@@ -142,14 +142,14 @@ $(()=>{
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
 			<div style='height:50px; padding:5px;'>
 			
-				<input type="button" value="삭제"  
-						class="btn btn-gray"
-						style='position: absolute; right: 0.5em;'
-				onclick="deleteBoard();" />
 				<input type="button" value="수정"  
 						class="btn btn-pink"
-						style='position: absolute; right: 7em;'
+						id="modify"
 				onclick="updateBoard();" />
+				<input type="button" value="삭제"  
+						class="btn btn-gray"
+						id="modify"
+				onclick="deleteBoard();" />
 			</div>
 
 		<!--삭제 부분  -->
@@ -372,7 +372,7 @@ function goMissingViewReportOpen(){
 	
 	var url = "<%=request.getContextPath()%>/board/missing/missingReport?missingNo=<%=b.getMissingNo()%>";
     var target = "new";
-    var option = "top=200, left=450, width=450, height=300";
+    var option = "top=200, left=270, width=450, height=300";
    /*  var status =  "left=500px, top=200px, width=400px, height=500px"; */
     
     window.open(url,target,option);

@@ -139,7 +139,7 @@ $(()=>{
 		
 		var url = "<%=request.getContextPath()%>/board/community/free/freeBoardReport?freeNo=<%=f.getFreeNo()%>";
 		var target = "new";
-		var option = "top=200, left=450, width=450, height=300";
+		var option = "top=200, left=270, width=450, height=300";
 		
 		window.open(url,target,option);
 	}
@@ -157,14 +157,14 @@ $(()=>{
 			(memberLoggedIn.getMemberId().equals(f.getFreeWriter()) ||
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
 			<div style='height:50px; padding:5px;'>
-				<input type="button" value="삭제"  
-						class="btn btn-gray"
-						style='position: absolute; right: 0.5em;'
-				onclick="deleteFreeBoard();" />
 				<input type="button" value="수정"  
 						class="btn btn-pink"
-						style='position: absolute; right: 7em;'
+						id="modify"
 				onclick="updateFreeBoard();" />
+				<input type="button" value="삭제"  
+						class="btn btn-gray"
+						id="modify"
+				onclick="deleteFreeBoard();" />
 			</div>
 
 		<!--삭제 부분  -->

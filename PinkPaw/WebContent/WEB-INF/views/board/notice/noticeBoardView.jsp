@@ -23,7 +23,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<scrip>
 
+ function goFreeViewList(){
+				location.href = "<%=request.getContextPath()%>/board/notice/noticeBoardList";
+		 }
+
+</scrip>
 
 <div id="img-div">
 	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg"  alt="헤더 - 후기게시판 사진" />
@@ -33,14 +39,14 @@
 
 <section class="board-container" >
 			<div style='height:50px; padding:5px;'>
-				<input type="button" value="삭제"  
-						class="btn btn-gray"
-						style='position: absolute; right: 0.5em;'
-				onclick="deleteBoard();" />
 				<input type="button" value="수정"  
 						class="btn btn-pink"
-						style='position: absolute; right: 7em;'
+						id="modify"
 				onclick="updateBoard();" />
+				<input type="button" value="삭제"  
+						class="btn btn-gray"
+						id="modify"
+				onclick="deleteBoard();" />
 			</div>
 		<!-- 관리자인 경우에만 수정/삭제버튼이 보이도록함. -->	
 		<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>	
@@ -63,9 +69,7 @@
 		}
 		
 		
-		 function goFreeViewList(){
-				location.href = "<%=request.getContextPath()%>/board/notice/noticeBoardList";
-		 }
+		
 		</script>
 		<%} %>	
 	

@@ -129,7 +129,7 @@ function goBoardList() {
 function goParceloutViewReportOpen(){
 	var url = "<%=request.getContextPath()%>/board/parcelout/parceloutReport?parceloutNo=<%=p.getParceloutNo()%>";
 	var target = "new";
-	var option = "top=200, left=450, width=450, height=300";
+	var option = "top=200, left=270, width=450, height=300";
 	
 	window.open(url,target,option);
 }
@@ -151,14 +151,14 @@ function goParceloutViewReportOpen(){
  			|| "admin".equals(memberLoggedIn.getMemberId())) ){ %>	 
  				<div style='height:50px; padding:5px;'>
  			
-				<input type="button" value="삭제"   
-						class="btn btn-gray"
-						style='position: absolute; right: 0.5em;'
-						onclick="deleteBoard();" />
 				<input type="button"  value="수정"  
 						class="btn btn-pink"
-						style='position: absolute; right: 7em;'						
+						id="modify"
 						onclick="updateBoard();" />
+				<input type="button" value="삭제"   
+						class="btn btn-gray"
+						id="modify"
+						onclick="deleteBoard();" />
 		</div>
 		<form action="<%=request.getContextPath()%>/board/parceloutboard/parceloutDelete"
 		      name="parceloutDeleteFrm"
