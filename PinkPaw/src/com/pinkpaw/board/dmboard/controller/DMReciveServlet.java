@@ -16,7 +16,7 @@ import com.pinkpaw.board.dmboard.model.vo.DM;
 /**
  * Servlet implementation class DMListServlet
  */
-@WebServlet("/dmList")
+@WebServlet("/board/dm/dmList")
 public class DMReciveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

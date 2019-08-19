@@ -12,23 +12,29 @@ String pageBar = (String)request.getAttribute("pageBar");
 %>
 
 <script>
+
+
+
 $(()=>{
 	//테이블의 열을 클릭시 해당 게시물로 이동
 	$("td").click((e)=>{		
-		var dmNo = $(e.target).parents("tr").children("th").children("input").val();
+		var dmNo = $(e.target).parents("tr").children("td").children("input[name=dmNo]").val();
 		console.log(dmNo);
+		var dmRead = $(e.target).parents("tr").children("td").children("input[name=dmRead]").val();
+		console.log(dmRead);
+		var url = "<%=request.getContextPath()%>/board/dm/DMView?dmNo="+dmNo+"&dmRead="+dmRead;
 		
-		var url = "<%=request.getContextPath()%>/board/dm/DMView?dmNo="+dmNo;
 	    var title = "DMWrite";
-	    var status =  "left=500px, top=200px, width=400px, height=500px";
+	    var status =  "left=500px, top=200px, width=350px, height=300px";
 	    
 		var popup = window.open(url,title,status);
 	
 	});
+	
+	
 });
 			
 </script>
-
 
 <div id="img">
 	<img id="sendDM_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 수신쪽지 사진" />
@@ -43,18 +49,13 @@ $(()=>{
 	}
 </style>
 
-
+<input type="button" value="쪽지쓰기"
+		onclick="DMWrite();"/>
 
 <input type="button" value="수신 쪽지함"
-		onclick="DMRecive();"/>
-<input type="button" value="발신 쪽지함"
 		onclick="DMSend();"/>
-<input type="button" value="신고 쪽지함"
-		onclick="DMReport();"/>
-		
-		
-		
-	
+<input type="button" value="발신 쪽지함"
+		onclick="DMRecieve();"/>
 
 	<%-- 함수를 console에 직접 쳐서 이동할 수 있으므로 그것을 방지하기 위해 if문 안에 script사용--%>
 <section class="board-container">
@@ -62,6 +63,7 @@ $(()=>{
 		<tr>
 			<th scope="col">보낸사람</th>
 			<th scope="col">쪽지제목</th>
+			<th scope="col">읽음여부</th>
 			<th scope="col">날짜</th>
 		</tr>
 		<%if(list==null || list.isEmpty()){ %>
@@ -73,20 +75,16 @@ $(()=>{
 			for(DM d: list){%>		
 		<tr>
 			
-			<th scope="row">
+			<td scope="row">
 			<%=d.getDmSend() %>
 			<input type="hidden" name="dmNo" value="<%=d.getDmNo() %>" />			
-			</th>
+			<input type="hidden" name="dmRead" value="<%=d.getDmRecvRead() %>" />			
+			</td>
 			<td>
 			<%=d.getDmTitle() %>
 			</td>
+			<td><%=d.getDmRecvRead()==0?"안읽음":"읽음" %></td>			
 			<td><%=d.getDmDate() %></td>
-<<<<<<< HEAD
-			
-			
-			
-=======
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 		</tr>
 		<%} 
 		}%>
@@ -96,33 +94,24 @@ $(()=>{
 	</div>
 </section>
 
-<<<<<<< HEAD
-
-<input type="button" value="쪽지쓰기"
-		onclick="DMWrite();"/>
-
-=======
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 <script>
 //쪽지쓰기
 function DMWrite(){
 	var url = "<%=request.getContextPath()%>/dmWrite?memberId=<%=memberLoggedIn.getMemberId()%>";
     var title = "DMWrite";
-    var status =  "left=500px, top=200px, width=400px, height=500px";
+    var status =  "left=500px, top=200px, width=450px, height=300px";
     
 	var popup = window.open(url,title,status);
 }
 
 //쪽지읽기
-<%-- function DMView(){
-	var url = "<%=request.getContextPath()%>/board/dm/dmView?dmNo=<%=b.getMissingNo()%>";
-    var title = "DMView";
-    var status =  "left=500px, top=200px, width=400px, height=500px";
-    
-	var popup = window.open(url,title,status);
-	
+function DMSend(){
+	location.href = "<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>";
 }
- --%>
+function DMRecieve(){
+	location.href = "<%=request.getContextPath()%>/board/dm/dmSendList?memberId=<%=memberLoggedIn.getMemberId()%>";
+}
+
 // /jquery/json/member/insert.do
 //객체단위로 요청파라미터에 추가할 것.
 </script>

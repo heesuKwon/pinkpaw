@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#img-div {
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+}
+
+img#header-img {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	min-width: 1024px;
+	/* width: 1024px; */
+	height: 300px;
+	z-index: -10;
+}
+.header-title {
+	color: white;
+	position: absolute;
+	/* text-align: left; */
+	font-size: 4em;
+	top: 120px;
+	left: 35%;
+	font-weight: 500;
+	font-family: 'Nanum Pen Script', cursive;
+	z-index: 0;
+}
+
+#blackbg {
+	width: 100%;
+	min-width: 1024px;
+	/* width: 1024px; */
+	height: 300px;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	background: black;
+	opacity: .2;
+	z-index: -5;
+}

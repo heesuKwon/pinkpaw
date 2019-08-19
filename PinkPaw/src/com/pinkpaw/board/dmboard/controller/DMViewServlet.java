@@ -33,11 +33,21 @@ public class DMViewServlet extends HttpServlet {
 		
 		//업무로직
 		int dmNo = Integer.parseInt(request.getParameter("dmNo"));
+		int read = 0;
+		try {
+			
+			read = Integer.parseInt(request.getParameter("dmRead"));
+		}catch (NumberFormatException e) {
+			e.printStackTrace();
+		}catch (NullPointerException e) {
+			
+		}
 		System.out.println("뷰넘버"+dmNo);
 		
-		DM dm = new DMService().selectOne(dmNo);
+		DM dm = new DMService().selectOne(dmNo, read);
 		
 		System.out.println("dm"+dm);
+		//System.out.println("읽었음?:"+dm.getDmRecvRead());
 		
 		
 		

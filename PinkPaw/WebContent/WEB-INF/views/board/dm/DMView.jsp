@@ -10,7 +10,7 @@
 	DM dm = (DM)request.getAttribute("dm");
 
 %>
-
+<!-- 수신함일때  -->
 </head>
 <body>
 	<table>
@@ -24,14 +24,13 @@
 	</tr>
 	<tr>
 		<th>쪽지제목</th>
-		<td>
-		<textarea name="" id="" cols="30" rows="10" readonly><%=dm.getDmTitle() %>
-		</textarea>
+		<td><%=dm.getDmContent() %>
 		</td>
 	</tr>
 	<tr>
 		<th>쪽지내용</th>
-		<td><%=dm.getDmContent() %></td>
+		
+		<td><textarea name="" id="" cols="30" rows="10" readonly><%=dm.getDmTitle() %></textarea></td>
 	</tr>	
 	<tr>
 		<td>
@@ -43,11 +42,30 @@
 	
 	</table>
 <script>
+
+$(()=>{
+	
+	var close = <%=request.getParameter("close")%>;
+	if(close==true){
+		self.close();
+	}
+})();
+
+
+
+
 function dmReport(){
 	
 	
 	location.href = "<%=request.getContextPath()%>/board/dm/dmReport?dmNo=<%=dm.getDmNo()%>"; 
 }
+function dmDelete(){
+	if(!confirm("정말 삭제하시겠습니까?")){
+		return;
+	}		
+	location.href = "<%=request.getContextPath()%>/board/dm/dmDelete?dmNo=<%=dm.getDmNo()%>&dmReceive=<%=dm.getDmRecive()%>"; 
+}
+
 
 </script>
 

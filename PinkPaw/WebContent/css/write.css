@@ -1,0 +1,171 @@
+@charset "UTF-8";
+table#tbl-write th {
+    color: #333;
+    font-size: 15px;
+    font-weight: 400;
+    border-right: 0;
+    vertical-align: middle;
+    background-color: #f7f7f7;
+}
+
+table#tbl-write th.text-left {
+    padding-left: 30px;
+}
+
+ 
+table#tbl-write th .ico-star {
+    font-style: normal;
+    vertical-align: middle;
+    color: red;
+}
+
+table#tbl-write td {
+    color: #666;
+    padding: 20px 40px;
+}
+
+td .form-control {
+    border-color: #ddd;
+    font-size: 15px;
+    background-color: #fff;
+}
+
+td .title {
+    width: 350px;
+} 
+
+td .writer {
+    width: 150px;
+}
+
+table#tbl-write td .others {
+	float: left;
+    width: 200px;
+} 
+
+table#tbl-write td .number {
+    width: 100px;
+} 
+
+table#tbl-write td .center{
+	display:inline-block; 
+	vertical-align: middle;
+}
+
+table#tbl-write td div.custom-radio {
+    float: left;
+    margin-right: 30px;
+}
+
+table#tbl-write span{
+    float: left;
+}
+.custom-control {
+    position: relative;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.btn-pink{
+	color: white;
+	background: #da7f84;
+}
+
+.btn-gray{
+	color: white;
+	background: lightgray;
+}
+.btn-gray:hover{
+	border-color: #bbb;
+	background: white;
+    color: #bbb;
+}
+
+.btn-small{
+	height: 20px;
+    font-size: 12px;
+    padding: 1px 3px;
+    width: 35px;
+}
+
+.btn-pink:hover{
+	color: #da7f84;
+	background: white;
+	border-color: #da7f84;
+}
+
+.filebox label {
+	display: inline-block;
+	line-height: normal;
+	vertical-align: middle;
+	font-size: 12px;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	width: 80px;
+}
+
+.filebox input[type="file"] { /* 파일 필드 숨기기 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+/* named upload */
+.filebox .upload-name {
+	display: inline-block;
+	font-size: 13px;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	border: 1px solid white;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+	background-color: white;
+}
+
+div.filebox{
+	padding: 5px;
+	width: 500px;
+	text-align: left;
+}
+.small-text{
+	font-size: 11px;
+}
+
+.left{
+	text-align: left;
+}
+#view_area img{
+	margin-left: 30px;
+}
+#attachFileDiv dv{
+	padding-left: 30px;
+}
+
+.btn-outline-gray{
+	border-color: #ddd;
+    font-size: 15px;
+    color: #666;
+}
+
+.dm-container th{
+	color: white;
+	/* background: #e1c1c6; */
+	background: #d6a09d;
+}
+.btn-lightpink{
+	color: white;
+	background: #d6a09d;
+}
+.btn-lightpink:hover{
+	color: #d6a09d;
+	background: white;
+	border-color: #d6a09d;
+}

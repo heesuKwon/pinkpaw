@@ -24,17 +24,41 @@ public class ReviewService {
 		close(conn);
 		return totalContents;
 	}
-
+	
 	public ReviewBoard selectOne(int boardNo) {
 		Connection conn = getConnection();
 		ReviewBoard board = new ReviewDAO().selectOne(conn, boardNo);
 		close(conn);
+		return board;
+	}
+
+	public ReviewBoard selectOne(int boardNo, boolean hasRead) {
+		Connection conn = getConnection();
+		//1.조회수 증가
+		int result = 0;
+		if(!hasRead) {
+			result = new ReviewDAO().increaseReadCount(conn, boardNo);			
+		}
+		
+		//2.게시글 조회
+		ReviewBoard board = new ReviewDAO().selectOne(conn, boardNo);
+		
+		//트랜잭션 처리
+		if(result>0)
+			commit(conn);
+		else 
+			rollback(conn);
+
+
+		close(conn);
+		
 		return board;		
 	}
 
 	public int insertReview(ReviewBoard rb) {
 		Connection conn = getConnection();
 		int result = new ReviewDAO().insertReview(conn, rb);
+		
 		
 		if(result>0){
 			//마지막에 추가한 시퀀스번호 가져오기

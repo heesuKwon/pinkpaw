@@ -6,7 +6,7 @@
 	margin: 0 0 15px;
 }
 /*게시판*/
-section.board-container{padding-top: 100px; width:800px; margin:0 auto; text-align:center; height: 1000px!important;}
+section.board-container{position: relative; padding-top: 350px; width:800px; margin:0 auto; text-align:center; padding-bottom: 100px;}
 section.board-container h2{margin:10px 0;}
 
 /*페이지바*/
@@ -17,4 +17,14 @@ div#pageBar a{margin-right: 5px;}
 
 #loginFrm{
         padding: 20px;
-    }
+}
+
+/*신고하기 부분*/
+.report-container{
+	padding-top: 50px;
+	padding-left: 35px;
+}
+.report-button{
+	padding-top: 20px;
+	text-align: center;
+}

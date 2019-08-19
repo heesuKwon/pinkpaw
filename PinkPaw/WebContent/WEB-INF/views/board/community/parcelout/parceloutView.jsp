@@ -15,59 +15,32 @@
 		}else if(p.getParceloutGender().equals("f")){
 		str = "암컷";
 		}
+	
+	int count = 0;
+	if (p.getParceloutRenamedImg() != null) {
+		String[]	imgList = p.getParceloutRenamedImg().split("§");
+		count = imgList.length; 
+	}
+
 %>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<style>
-div.comment-editor button#btn-insert{
-	width: 60px;
-	height: 50px;
-	color: white;
-	background-color: #30f;
-	position: relative;
-	top: -20px;
-}
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick-theme.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/view.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
-/*댓글테이블*/
-table#tbl-comment{width:580px; margin:0 auto; border-collapse:collapse; clear:both;} 
-table#tbl-comment tr td{border-bottom:1px solid; border-top:1px solid; padding:5px; text-align:left; line-height:120%;}
-table#tbl-comment tr td:first-of-type {padding: 5px 5px 5px 50px;}
-table#tbl-comment tr td:last-of-type {text-align:right; width: 100px;}
-table#tbl-comment button.btn-reply{display:none;}
-table#tbl-comment tr:hover {background:lightgray;}
-table#tbl-comment tr:hover button.btn-reply{display:inline;}
-table#tbl-comment sub.comment-writer {color:navy; font-size:14px}
-table#tbl-comment sub.comment-date {color:tomato; font-size:10px}
-
-table#tbl-comment tr.level2 {color:gray; font-size: 14px;}
-table#tbl-comment tr.level2 td:first-of-type{padding-left:100px;}
-table#tbl-comment tr.level2 sub.comment-writer {color:#8e8eff; font-size:14px}
-table#tbl-comment tr.level2 sub.comment-date {color:#ff9c8a; font-size:10px}
-
-/* 답글관련 */
-table#tbl-comment textarea{
-	margin: 4px 0 0;
-}
-table#tbl-comment button.btn-insert2{
-	width: 60px;
-	height: 23px;
-	color: white;
-	background: #30f;
-	position: relative;
-	top: -5px;
-	left: 10px;
-}
-table#tbl-comment button.btn-delete{
-	background: red;
-	color: white;
-	display: none;
-}
-table#tbl-comment tr:hover button.btn-delete{
-	display: inline;
-}
-</style>
 <script>
+var content = <%=p.getParceloutContent()%>;
+content = content.replace(/(?:\r\n|\r|\n)/g, '<br />');
+document.getElementById("content").value = content;
+
 
 function loginAlert(){
 	alert("로그인 후 이용하세요.");	
@@ -164,126 +137,28 @@ function goParceloutViewReportOpen(){
 </script>
 </head>
 <body>
-	<h2>분양동물</h2>
-<section id="board-container" style="">
-<h2>게시판 상세보기</h2>
-<input type="button" value="목록" onclick="goBoardList();"/>
-<%if(memberLoggedIn!=null){ %>
-<input type="button" value="신고" onclick="goParceloutViewReportOpen();"/>
-<%} %>
-<table id="tbl-parcelout-view" >
-<tr>
-	<th>
-		<td>
-	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
-  <div class="carousel-inner">
-		<% if(p.getParceloutOriginalImg() != null){
-				String[] renamedImgList = p.getParceloutRenamedImg().split("§");
-	if(renamedImgList.length == 1){ %>
-    <div class="carousel-item active">
-	<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[0]%>" class="d-block w-100" width="500" height="300"/>	
-    </div>
-    <% 
-	}else if(renamedImgList.length == 2){
-    %>
-    <div class="carousel-item active">
-	<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[0]%>" class="d-block w-100" width="500" height="300"/>	
-    </div>
-    <div class="carousel-item">
-	<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[1]%>" class="d-block w-100" width="500" height="300"/>	
-    </div>
-    <% 
-	}else if(renamedImgList.length == 3){
-    %>
-    <div class="carousel-item active">
-	<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[0]%>" class="d-block w-100" width="500" height="300"/>	
-    </div>
-    <div class="carousel-item">
-	<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[1]%>" class="d-block w-100" width="500" height="300"/>	
-    </div>
-    <div class="carousel-item">
-	<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[2]%>" class="d-block w-100" width="500" height="300"/>	
-    </div>
-  </div>
-	<% }
-		}%>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">분양 게시판 상세보기</span>
 </div>
-		
-		
-		</td>
-	</th>
-</tr>
-			<tr>
-				<th>글번호</th>
-				<td><%=p.getParceloutNo() %></td>
-			</tr>
-			<tr>
-				<th>제 목</th>
-				<td><%=p.getParceloutTitle() %></td>
-			</tr>
-			<tr>
-				<th>작성자</th>
-				<td><%=p.getParceloutWriter() %></td>
-			</tr>
-			<tr>
-				<th>조회수</th>
-				<td><%=p.getParceloutCount() %></td>
-			</tr>
-			<tr>
-				<th>분양지역</th>
-				<td><%=p.getParceloutPlace()%></td>
-			</tr>
-			<tr>
-				<th>책임비</th>
-				<td><%=p.getParceloutMoney()%>원</td>
-			</tr>
-			<tr>
-				<th>동물종류</th>
-				<% if(p.getParceloutKind() != null){
-				String[] arr = p.getParceloutKind().split("_");%>
-				<td><%=arr.length == 1?p.getParceloutKind():arr[1]%></td>
-				<%} %>
-			</tr>
-			<tr>
-				<th>성 별</th>
-				<td><%=str %></td>
-			</tr>
-				<% if(p.getParceloutOriginalImg() != null){
-				String[] renamedImgList = p.getParceloutRenamedImg().split("§");
-					for(int i=0;i<renamedImgList.length;i++){%>
-<!-- 		<tr> -->
-<!-- 			<th>첨부파일</th> -->
-<!-- 			<td> -->
-<!-- 				첨부파일이 있는 경우만 보임 처리 -->
-<%-- 				<img src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[i]%>" alt="첨부파일"  style='width:200px;' />	 --%>
-<!-- 			</td> -->
-<!-- 		</tr>		 -->
-				<% }
- 				}%> 
-		<tr>
-			<th>내 용</th>
-			<td><%=p.getParceloutContent()%></td>
-		</tr>
-		<!-- 글작성자/관리자인 경우에만 수정/삭제버튼이 보이도록함. -->	
-		<% if(memberLoggedIn!=null && 
+
+<section class="board-container">
+
+<% if(memberLoggedIn!=null && 
  			(p.getParceloutWriter().equals(memberLoggedIn.getMemberId()) 
  			|| "admin".equals(memberLoggedIn.getMemberId())) ){ %>	 
-		<tr>
-			<th colspan="2">
-				<input type="button" value="수정" 
-					   onclick="updateBoard();" />
-				<input type="button" value="삭제" 
-					   onclick="deleteBoard();" />
-			</th>
-		</tr>
+ 				<div style='height:50px; padding:5px;'>
+ 			
+				<input type="button" value="삭제"   
+						class="btn btn-gray"
+						style='position: absolute; right: 0.5em;'
+						onclick="deleteBoard();" />
+				<input type="button"  value="수정"  
+						class="btn btn-pink"
+						style='position: absolute; right: 7em;'						
+						onclick="updateBoard();" />
+		</div>
 		<form action="<%=request.getContextPath()%>/board/parceloutboard/parceloutDelete"
 		      name="parceloutDeleteFrm"
 		      method="post">
@@ -306,7 +181,122 @@ function goParceloutViewReportOpen(){
 		</script>
 			
 		<%} %>
+
+
+
+<table class="tg" style="table-layout: fixed;   width: 1024px;">
+		<colgroup>
+			<col style="width: 35px">
+			<col style="width: 100px">
+			<col style="width: 35px">
+			<col style="width: 100px">
+		</colgroup>
+		<tr>
+			<th class="tg-th">작성자</th>
+			<th class="tg" colspan="3"><%=p.getParceloutWriter() %> </th>
+		</tr>
+		<tr>
+			<td class="tg-th">제목</td>
+			<td class="tg" colspan="3"><%=p.getParceloutTitle() %></td>
+		</tr>
+		<tr>
+			<td class="tg-th">글번호</td>
+			<td class="tg-ml2k"><%=p.getParceloutNo() %></td>
+			<td class="tg-th">조회수</td>
+			<td class="tg-yc5w"><%=p.getParceloutCount() %> </td>
+		</tr>
+		<tr>
+			<td class="tg-th">신고수</td>
+			<td class="tg-yc5w"><%=p.getParceloutReportCount() %></td>
+			<td class="tg-th">게시일</td>
+			<td class="tg-yc5w"><%=p.getParceloutEnrolldate() %></td>
+		</tr>
+		<tr>
+			<td class="tg-th">성별</td>
+			<td class="tg-yc5w"><%=str %></td>
+			<td class="tg-th">동물종류</td>
+			<% if(p.getParceloutKind() != null){
+				String[] arr = p.getParceloutKind().split("_");%>
+				<td class="tg-yc5w"><%=arr.length == 1?p.getParceloutKind():arr[1]%></td>
+				<%} %>
+		</tr>
+		<tr>
+			<td class="tg-th">분양지역</td>
+			<td class="tg-yc5w"><%=p.getParceloutPlace()%></td>
+			<td class="tg-th">책임비</td>
+			<td class="tg-yc5w"><%=p.getParceloutMoney()%>원</td>
+		</tr>
+	<tr>
+			<td class="tg-th">사진</td>
+			<td class="tg-img"  colspan="3">
+				<!-- 첨부파일이 있는 경우만 보임 처리 -->
+				<%if(count > 0) {%>
+				<div class="slider slider-for" style='width: 700px; height: 450px;'>
+
+					<%
+						if (p.getParceloutRenamedImg() != null) {
+							String[] renamedImgList = p.getParceloutRenamedImg().split("§");
+							for (int i = 0; i < renamedImgList.length; i++) {
+					%>
+					<img
+						src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[i]%>"
+						alt="첨부파일" style='max-width: 700px; max-height: 450px;' />
+					<%
+						}
+						}
+					%>
+				</div>
+				<%} %>
+					<br />
+
+					<% if ( count == 2 || count == 3) {%>
+				<div class="slider slider-nav" align="center" style='width: 700px; height: 150px;'>
+						<% 
+						if (p.getParceloutRenamedImg()!= null) {
+							String[] renamedImgList = p.getParceloutRenamedImg().split("§");
+							for (int i = 0; i < renamedImgList.length; i++) {
+					%>
+					<img
+							src="<%=request.getContextPath()%>/upload/board/parcelout/<%=renamedImgList[i]%>"
+							alt="첨부파일" style='height: 150px; width: 200px;' />
+				
+					<%
+						}
+						}
+					}
+					%>
+				</div>
+				
+			</td>
+			
+		</tr>
+		<tr>
+			<td class="tg-th">내용</td>
+			<td class="tg-kw6a" colspan="3"><%=p.getParceloutContent() %>
+			</td>
+		</tr>
+
 	</table>
+
+
+
+
+
+	
+	
+	<div style='padding: 10px'>
+	<%if(memberLoggedIn!=null){ %>
+	<input type="button" value="신고하기" id="menu"   class="btn btn-pink" 
+				onclick="goParceloutViewReportOpen();;" />
+
+	<%} %>
+<input type="button" value="목록으로 " id="menu"   class="btn btn-gray"
+				onclick="goBoardList();"  /> 
+	</div>
+	
+	
+	
+	
 	
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container" style="overflow:scroll;">
@@ -383,7 +373,47 @@ function goParceloutViewReportOpen(){
 			} 
 			%>
 		</table>
-	</div>	
+	</div>
 </section>
 
+<script>
+
+
+
+//3개일때
+$('.slider-for').slick({
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  arrows: false,
+	  fade: true,
+	  asNavFor: '.slider-nav'
+	});
+$('.slider-nav').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  asNavFor: '.slider-for',
+	  arrows: true,
+	  dots: false,
+	  centerMode: true,
+	  focusOnSelect: true
+	});
+
+//두개일때
+	/*  $('.slider-for').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  arrows: false,
+		  fade: true,
+		  asNavFor: '.slider-nav'
+		});
+		$('.slider-nav').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  asNavFor: '.slider-for',
+		  dots: true,
+		  centerMode: true,
+		  focusOnSelect: true
+		}); */
+
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
