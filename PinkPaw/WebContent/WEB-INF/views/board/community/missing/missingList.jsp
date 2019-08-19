@@ -15,8 +15,10 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ -->
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <style>
@@ -76,45 +78,45 @@ text-align: center;
   		<button class="btn btn-outline-secondary" style="border-radius: 0" onclick="srch();">검색하기</button>
 	</div>
 	<script>
-	function srch() {
-		var kind = $("[name=kind]").val().trim();
-		var key = $("[name=key]").val().trim();
-		var keyword = $("#keyword").val().trim();
-		$.ajax({
-			url: "<%=request.getContextPath()%>/board/review/reviewSearch",
-			data: "kind="+kind+"&key="+key+"&keyword="+keyword,
-			type: "get",
-			success: function(data){
-				console.log(data);
+// 	function srch() {
+// 		var kind = $("[name=kind]").val().trim();
+// 		var key = $("[name=key]").val().trim();
+// 		var keyword = $("#keyword").val().trim();
+// 		$.ajax({
+<%-- 			url: "<%=request.getContextPath()%>/board/review/reviewSearch", --%>
+// 			data: "kind="+kind+"&key="+key+"&keyword="+keyword,
+// 			type: "get",
+// 			success: function(data){
+// 				console.log(data);
 				
-				/* var html = "<tr><th scope='col'>번호</th><th scope='col'>첨부파일</th><th scope='col'>종류</th><th scope='col'>제목</th><th scope='col'>작성자</th><th scope='col'>게시일</th></tr>";
-				var num = 1;
-				$(data).each((i,b)=>{
-					num = num + 1;
-					html += "<tr onclick='view(this);'>";
-					html += "<th scope='row'>"+b.reviewNo+"</th>";
-					html += "<td></td>";
-					html += "<td>"+b.reviewKind+"</td>";
-					html += "<td>"+b.reviewTitle+"</td>";
-					html += "<td>"+b.reviewWriter+"</td>";
-					html += "<td>"+b.reviewEnrollDate+"</td>";
-					html += "</tr>"; */
-				});
-				$("#tbl-board").html(html);
-				if(num < 10){
-					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
-				}
-				else{
-					$("#pageBar").html("<%=pageBar%>");
-				}
+// 				/* var html = "<tr><th scope='col'>번호</th><th scope='col'>첨부파일</th><th scope='col'>종류</th><th scope='col'>제목</th><th scope='col'>작성자</th><th scope='col'>게시일</th></tr>";
+// 				var num = 1;
+// 				$(data).each((i,b)=>{
+// 					num = num + 1;
+// 					html += "<tr onclick='view(this);'>";
+// 					html += "<th scope='row'>"+b.reviewNo+"</th>";
+// 					html += "<td></td>";
+// 					html += "<td>"+b.reviewKind+"</td>";
+// 					html += "<td>"+b.reviewTitle+"</td>";
+// 					html += "<td>"+b.reviewWriter+"</td>";
+// 					html += "<td>"+b.reviewEnrollDate+"</td>";
+// 					html += "</tr>"; */
+// 				});
+// 				$("#tbl-board").html(html);
+// 				if(num < 10){
+// 					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
+// 				}
+// 				else{
+<%-- 					$("#pageBar").html("<%=pageBar%>"); --%>
+// 				}
 				
-			},
-			error: function(jqxhr, textStatus, errorThrown){
-				console.log("ajax 처리 실패");
-				console.log(jqxhr, textStatus, errorThrown);
-			}
-		});
-	}
+// 			},
+// 			error: function(jqxhr, textStatus, errorThrown){
+// 				console.log("ajax 처리 실패");
+// 				console.log(jqxhr, textStatus, errorThrown);
+// 			}
+// 		});
+// 	}
 	function view(tr) {		
 		var reviewNo = $(tr).children("th").text();
 		location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+reviewNo;
@@ -152,7 +154,7 @@ text-align: center;
 	<br />
 	<span style="font-weight:bold; font-size: 18px; color: dark-gray;"><%= b.getMissingTitle()%></span>		
 	<br />
-	<span style="font-size: 13px;"><%=b.getMissingHpPlace().substring(0, b.getMissingHpPlace().indexOf(" ", 6)) %></span>
+	<span style="font-size: 13px;"><%=b.getMissingHpPlace() %></span>
 	</p>
 	<p style="font-size: 11px; color: gray; text-align: right;"><%=b.getMissingEnrollDate() %>
 	<br />

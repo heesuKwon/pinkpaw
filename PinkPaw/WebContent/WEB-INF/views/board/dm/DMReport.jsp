@@ -7,8 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
 <script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
 <meta charset="UTF-8">
 <%
@@ -22,18 +28,20 @@
 </head>
 <body>
 
-<section class="board-container">
-<div id="reportReview-container">
+<div id="reportReview-container" id="reportReview-container" 
+	style="padding-top: 165px;
+		   text-align: center;
+		   padding-left: 91px;">
 <form action="<%=request.getContextPath()%>/board/dm/dmReportEnd" method="post">
-			<table>
+			<table class="tg">
 				<tr>
-					<th>작성자</th>
+					<th class="tg-th" style='width:100px' >작성자</th>
 					<td>
-						<input type="text" name="reportWriter" id="reportWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly required>
+						<%=memberLoggedIn.getMemberId()%>
 					</td>
 				</tr>
 				<tr>
-					<th>신고 내용</th>
+					<th class="tg-th">신고 내용</th>
 					<td>	
 						<!-- <textarea name="reportContent" cols="40" rows="5"
 						placeholder="내용을 입력해주세요."></textarea> -->
@@ -48,15 +56,15 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit"  value="신고보내기" onclick="return reportValidate();"/>&nbsp;
-						<input type="button" value="취소" onclick="self.close();"/>						
+					<br /><br /><br />
+						<input type="submit" class='btn btn-pink'  value="신고" onclick="return reportValidate();"/>&nbsp;
+						<input type="button" class='btn btn-gray' value="취소" onclick="self.close();"/>						
 					</td>
 				</tr>
 			</table>
 			<input type="hidden" name="dmNo" value="<%=dm.getDmNo()%>" />
 		</form>
 	</div>
-</section>
 
 <script>
 function reportValidate() {

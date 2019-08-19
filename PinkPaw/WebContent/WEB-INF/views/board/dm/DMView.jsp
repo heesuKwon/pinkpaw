@@ -4,6 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+
 <meta charset="UTF-8">
 <title>쪽지</title>
 <%
@@ -13,34 +22,39 @@
 <!-- 수신함일때  -->
 </head>
 <body>
-	<table>
-	<tr>
-		<th>보낸사람</th>
-		<td><%=dm.getDmSend() %></td>
-	</tr>
-	<tr>
-		<th>보낸날짜</th>
-		<td><%=dm.getDmDate() %></td>
-	</tr>
-	<tr>
-		<th>쪽지제목</th>
-		<td><%=dm.getDmTitle() %>
-		</td>
-	</tr>
-	<tr>
-		<th>쪽지내용</th>
-		
-		<td><textarea name="" id="" cols="30" rows="10" readonly><%=dm.getDmContent() %></textarea></td>
-	</tr>	
-	<tr>
-		<td>
-		<input type="button" value="닫기" onclick="self.close();" />
-		<input type="button" value="삭제" onclick="dmDelete();" />
-		<input type="button" value="신고 " onclick="dmReport();" />
-		</td>
-	</tr>
+
 	
+	<table class="tg" style="table-layout: fixed;   width: 400px;">
+		<tr>
+			<th class="tg-th">보낸사람</th>
+			<th class="tg" colspan="3"><%=dm.getDmSend() %></th>
+		</tr>
+		<tr>
+			<td class="tg-th">보낸날짜</td>
+			<td class="tg" colspan="3"><%=dm.getDmDate()%></td>
+		</tr>
+		<tr>
+			<td class="tg-th">쪽지제목</td>
+			<td class="tg-ml2k"><%=dm.getDmTitle()%></td>
+		</tr>
+		
+		<tr>
+			<td class="tg-th">내용</td>
+			<td class="tg-kw6a" colspan="3"><textarea name="" id="" cols="30" rows="10" readonly><%=dm.getDmContent() %></textarea></td>
+		</tr>
+		<tr>
+			<td>
+		</td>
+		</tr>
 	</table>
+	<div style='left:50px; text-align: center;'>
+	
+		<input type="button" class="btn btn-pink" style='display: inline-block;' value="닫기" onclick="self.close();" />
+		<input type="button" class="btn btn-pink"  style='display: inline-block;' value="삭제" onclick="dmDelete();" />
+		<input type="button" class="btn btn-gray" style='display: inline-block;' value="신고 " onclick="dmReport();" />
+	
+	</div>
+	
 <script>
 
 $(()=>{

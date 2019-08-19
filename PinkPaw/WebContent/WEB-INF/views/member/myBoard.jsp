@@ -5,6 +5,8 @@
 <%@ page import="com.pinkpaw.member.model.vo.MyBoard" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+
 
 <%
 List<MyBoard> list = (List<MyBoard>)request.getAttribute("list");

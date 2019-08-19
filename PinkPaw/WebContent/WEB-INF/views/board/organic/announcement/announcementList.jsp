@@ -22,8 +22,11 @@
 #PA{width: 1000px; height: 1450px; margin-top: 100px; margin-left: 20px;}
 .sub{display: none; border-radius: 0;}
 </style>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ -->
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+ 
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <script>
 function srch(val) {
 	var num = val.value;
