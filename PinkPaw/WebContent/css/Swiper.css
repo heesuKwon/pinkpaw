@@ -164,7 +164,7 @@
   .swiper-button-prev,
   .swiper-button-next {
     position: absolute;
-    top: 50%;
+    top: 40%;
     width: 49px;
     height: 49px;
     margin-top: -25px;
@@ -185,14 +185,14 @@
     background-image: url("../images/main/main_prev_btn_ov.png");
     /*left: 10px;
     right: auto;*/
-      right:50%; margin-right:600px;
+      right:50%; margin-right:450px;
   }
   .swiper-button-next,
   .swiper-container-rtl .swiper-button-prev {
     background-image: url("../images/main/main_next_btn_ov.png");
     /*right: 10px;
     left: auto;*/
-      left:50%; margin-left:600px;
+      left:50%; margin-left:450px;
   }
   .swiper-button-prev.swiper-button-white,
   .swiper-container-rtl .swiper-button-next.swiper-button-white {

@@ -22,13 +22,13 @@
 }
 
 img{width:100%; vertical-align:middle;}
-article{width:1024px; height:100%; margin:0 auto; padding-top:90px;/*173px*/}
+article{width:950px; height:100%; margin:0 auto; padding-top:90px;/*173px*/}
 
 article h2{font-size:32px; text-align:center; font-family:'Noto Bold'; /*font-weight:bold;*/ margin-bottom:60px; letter-spacing:-1px;}
 article h2>.smallTitle{font-size:18px; display:block; font-family:'Noto DemiLight'; /*font-weight:normal;*/ margin-bottom:5px;}
 body{margin:0; padding:0;}
 
-.purple{color:#693eab;}
+.purple{color:#da7f84;}
 
 /*header*/
 .headerWrap{width:100%; height:84px;/*140px*/ position:fixed; top:0; z-index:99;}
@@ -40,7 +40,7 @@ header>div>ul{float:left; /*overflow:hidden;*/ padding:0 16px; position:relative
 header>div>ul>li{float:left; margin:0 11px;}
 header>div>ul>li>a{height:64px; font:18px/64px 'Noto DemiLight', sans-serif; color:#fff; display:inline-block;}
 header>div>ul:first-child>li>a{height:64px; font:18px/64px 'Noto DemiLight', sans-serif; display:inline-block;}
-header>div>a{margin-left:20px; margin-top:14px; float:left;}
+header>div>a{margin-left:20px; margin-top:14px; float:left; left:50%;}
 header .asideNav>p{/*border-left:1px solid rgba(255,255,255,0.3);*/ background:url('../images/main/bg_gnbLine.png') no-repeat left center; padding-left:23px; width:1px; height:20px; display:inline;}
 header .asideNav>li>a{opacity:0.5;}
 header .asideNav>li:first-child>a{color:#fff; opacity:1;}
@@ -77,7 +77,7 @@ nav>ul>li>a{width:100%; height:100%; display:inline-block;}
 /*section background*/
 div#wrap>section#sec01{background:url('../images/main/bg_cnt_01.jpg') no-repeat center top; background-size:cover;}
 div#wrap>section#sec02{background:#f5f5f5 url('../images/main/bg_cnt_02.jpg') no-repeat center bottom fixed; background-size:cover;}
-div#wrap>section#sec03{width:100%; height:100%; background:linear-gradient(90deg, #846fee, #8c96f5);}
+div#wrap>section#sec03{width:100%; height:100%; background:linear-gradient(90deg, #da7f84, #e1c1c6);}
 div#wrap>section#sec04{background:url('../images/main/bg_cnt_04_v2.jpg') no-repeat center bottom; background-size:cover;}
 div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-repeat center top; /*background-size:cover;*/}
 
@@ -118,10 +118,11 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec02 h2{color:#222;}
 #sec02 .brandWrap{width:100%; overflow:hidden; padding-top:20px;/**/}
 #sec02 .brand{}
-#sec02 .brand>li{width:300px!important; height:496px; float:left; /*margin-right:25px;*/ position:relative;}
-#sec02 .brand>li:nth-child(2n){margin-top:60px;}
+#sec02 .brand>li{width:290px!important; height:400px; float:left; margin: 0 15px!important; position:relative;}
+#sec02 .brand>li:nth-child(1){margin-left:20px!important;}
+#sec02 .brand>li:nth-child(2n){margin-top:60px!important;}
 #sec02 .brand>li>a:hover .brandTxt{border:2px solid #693eab; padding:18px; box-sizing:border-box; transition:all 0.3s ease-in-out;}
-#sec02 .brand>li .brandImg{width:100%; height:380px; position:absolute; top:0; left:0; background-repeat:no-repeat; background-position:center center;}
+#sec02 .brand>li .brandImg{width:100%; height:290px; position:absolute; top:0; left:0; background-repeat:no-repeat; background-position:center center;}
 #sec02 .brand>li:nth-child(1) .brandImg{background-image:url('../images/main/main_brand_B01.jpg');}
 #sec02 .brand>li:nth-child(2) .brandImg{background-image:url('../images/main/main_brand_B02.jpg');}
 #sec02 .brand>li:nth-child(3) .brandImg{background-image:url('../images/main/main_brand_B03.jpg');}
@@ -131,7 +132,7 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec02 .brand>li:nth-child(7) .brandImg{background-image:url('../images/main/main_brand_B07.jpg');}
 #sec02 .brand>li:nth-child(8) .brandImg{background-image:url('../images/main/main_brand_B08.jpg');}
 #sec02 .brand>li:nth-child(9) .brandImg{background-image:url('../images/main/main_brand_B09.jpg');}
-#sec02 .brand>li .brandNum{width:35px; height:35px; line-height:35px; font-size:16px; text-align:center; background:#693eab; color:#fff; display:inline-block; position:absolute; bottom:116px; left:25px; z-index:2; font-family:'Noto DemiLight';}
+#sec02 .brand>li .brandNum{width:35px; height:35px; line-height:35px; font-size:16px; text-align:center; background:#da7f84; color:#fff; display:inline-block; position:absolute; bottom:116px; left:25px; z-index:2; font-family:'Noto DemiLight';}
 #sec02 .brand>li .brandTxt{width:280px; height:136px; background:#fff; position:absolute; bottom:0; left:5px; padding:20px; box-sizing:border-box;}
 #sec02 .brand>li .brandTxt>h3{font:20px/45px 'Noto Bold', sans-serif; color:#222; letter-spacing:-0.5px;}
 #sec02 .brand>li .brandTxt>h3>span{font-weight:bold;}
@@ -141,14 +142,14 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec03{}
 #sec03 h2>.smallTitle{color:#f7f7f7;}
 #sec03 h2{color:#fff;}
-#sec03 ul{width:100%; /*overflow:hidden;*/ padding-top:5px; padding-left:5px; box-sizing:border-box;}
-#sec03 ul>li{width:357px; /*height:323px;*/ position:relative; float:left; box-shadow:3px 3px 18px rgba(0,0,0,0.15); margin-right:42px; margin-bottom:42px;}
+#sec03 ul{width:100%; /*overflow:hidden;*/ padding-left:5px; box-sizing:border-box;}
+#sec03 ul>li{width:285px; /*height:323px;*/ position:relative; float:left; box-shadow:3px 3px 18px rgba(0,0,0,0.15); margin-right:42px; margin-bottom: 40px; margin-top: -20px;}
 #sec03 ul>li:nth-child(3n){margin-right:0;}
 #sec03 ul>li>a{width:100%;}
 #sec03 .news{width:100%;}
 #sec03 .news>.newsImg{width:100%; display:block;}
 #sec03 .news>.newsImg>img{width:100%; display:block;}
-#sec03 .news>.newsTxt{width:100%; height:133px; background:#fff; padding:15px 17px; box-sizing:border-box;}
+#sec03 .news>.newsTxt{width:100%; height:120px; background:#fff; padding:15px 17px; box-sizing:border-box;}
 #sec03 .news>.newsTxt>span{font-size:12px; color:#888;}
 #sec03 .news>.newsTxt>h3{font-size:20px; color:#222; line-height:32px; font-family:'Noto Bold'; margin:5px 0 4px;}
 #sec03 .news>.newsTxt>p{font-size:14px; color:#666; line-height:1.5; letter-spacing:-0.3px; font-family:'Noto Demi';}
