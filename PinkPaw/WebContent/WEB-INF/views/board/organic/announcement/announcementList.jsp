@@ -14,8 +14,6 @@
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
-<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <script>
 function srch(val) {
 	var num = val.value;
@@ -41,11 +39,6 @@ function srchList() {
 	}
 }
 </script>
-<div id="img-div">
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-	<div id="blackbg"></div>
-	<span class="header-title">봉사요청 게시판</span>
-</div>
 
 <div id="PA">
 
