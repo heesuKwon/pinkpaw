@@ -171,18 +171,12 @@ $(()=>{
 			$('.headerWrap').mouseout(function(e){
 				$(this).css('background','none');}
 			);
-​
-			$('header>div>ul:first-child>li').mouseover(function(e){
-				$('.headerWrap').css('height','140px');
-				});
-			$('header>div>ul:first-child>li').mouseout(function(e){
-				$('.headerWrap').css('height','84px');
-				});
-			});
+		});
 		</script>
 		<div>
-			​ <a href="#none" onClick="$('.menuWrap').fadeIn(300);"><img
-				src="<%=request.getContextPath()%>/images/main/icon_meun.png" alt="메뉴바"></a>
+			​<a href="#none" onClick="$('.menuWrap').fadeIn(300);">
+				<img src="<%=request.getContextPath()%>/images/main/icon_meun.png" alt="메뉴바">
+			</a>
 		</div>
 	</header>
 	​ ​
