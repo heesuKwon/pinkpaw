@@ -104,13 +104,12 @@ public class BoardUpdateEndServlet extends HttpServlet {
 		
 		//장소
 //		String missingPlace = mReq.getParameter("missingPlace");
-		//시
-//		String sido = mReq.getParameter("sido");
+		String sido = mReq.getParameter("sido");
 		//구군
-//		String gugun  = mReq.getParameter("gugun");
+		String gugun  = mReq.getParameter("gugun");
 		//상세
 		String detailPlace = mReq.getParameter("detailPlace");
-		String missingPlace = detailPlace;
+		String missingPlace = sido+" "+ gugun+" "+detailPlace;
 		System.out.println("잃어버린장소: "+missingPlace);
 		//잃어버린날짜 문자열타입
 		String missingDate = mReq.getParameter("lostDate");
