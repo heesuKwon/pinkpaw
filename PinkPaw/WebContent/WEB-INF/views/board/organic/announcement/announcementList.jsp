@@ -3,12 +3,22 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
+
 <%
 	List<ProtectedAnimal> list = (List<ProtectedAnimal>)request.getAttribute("list");
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
+
+<div class="header_background"></div>
+
 <style>
+.header_background{
+	height: 84px;
+	background: black;
+    opacity: 0.5;
+}
+
 #PA{width: 1000px; height: 1450px; margin-top: 100px; margin-left: 20px;}
 .sub{display: none; border-radius: 0;}
 </style>

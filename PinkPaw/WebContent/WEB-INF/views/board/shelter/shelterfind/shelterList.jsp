@@ -11,7 +11,16 @@
 %>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
+
+<div class="header_background"></div>
+
 <style>
+.header_background{
+	height: 84px;
+	background: black;
+    opacity: 0.5;
+}
+
 #shelter{width: 900px; height: 760px; margin-top: 100px; margin-left: 100px}
 /* table{
 	width: 900px;
