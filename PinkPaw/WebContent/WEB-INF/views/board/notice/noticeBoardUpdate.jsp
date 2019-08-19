@@ -12,7 +12,7 @@ System.out.println("노티스타이틀확인 @@@@@@@"+b.getNoticeTitle());
 <link rel="stylesheet" 
 	  href="<%=request.getContextPath()%>/css/board.css" />
 <div id="img">
-	<img id="notice_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 공지사항 사진" />
+	<img id="notice_header" src="<%=request.getContextPath() %>/images/board/6.jpg" alt="헤더 - 공지사항 사진" />
 </div>
 <style>
 	img#notice_header{

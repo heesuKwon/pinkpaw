@@ -46,7 +46,7 @@ text-align: center;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <div id="img-div">
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg5.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">실종동물 게시판</span>
 </div>

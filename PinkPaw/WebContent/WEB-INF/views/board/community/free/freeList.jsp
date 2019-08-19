@@ -45,7 +45,7 @@
 </script>
 
 <div id="img-div">
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/1.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">자유 게시판</span>
 </div>

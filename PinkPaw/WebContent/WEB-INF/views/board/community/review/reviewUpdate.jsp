@@ -2,10 +2,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
 <%
 	ReviewBoard rb = (ReviewBoard)request.getAttribute("reviewBoard");
 %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg8.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">후기 게시글 수정</span>
+</div>
+
 <section class="board-container">
 	<form action="<%=request.getContextPath()%>/board/review/reviewUpdateEnd"
 		method="post"

@@ -4,10 +4,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<%
-	List<ReviewBoard> list = (List<ReviewBoard>)request.getAttribute("list");
-	String pageBar = (String)request.getAttribute("pageBar");
-%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
@@ -16,6 +12,12 @@
   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
  
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+
+<%
+	List<ReviewBoard> list = (List<ReviewBoard>)request.getAttribute("list");
+	String pageBar = (String)request.getAttribute("pageBar");
+%>
+
 <script>
 $(()=>{
 	//테이블의 열을 클릭시 해당 게시물로 이동
@@ -29,7 +31,7 @@ $(()=>{
 </script>
 
 <div id="img-div">
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg8.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">후기 게시판</span>
 </div>
