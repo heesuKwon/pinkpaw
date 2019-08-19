@@ -117,13 +117,15 @@ $(()=>{
 	
 });
 </script>
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg"  alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title" >봉사요청 상세보기</span>
+</div>
 
 <section class="board-container">
 
-<div id="img">
-	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-</div>
-	
+
 	<%if(memberLoggedIn != null&&
 			(memberLoggedIn.getMemberId().equals(volunteerBoard.getVolunteerWriter()) ||
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
@@ -131,11 +133,11 @@ $(()=>{
 			
 				<input type="button" value="삭제"  
 						class="btn btn-gray"
-						style='position: absolute; right: 0.5em;'
+						id="modify"
 				onclick="deleteBoard();" />
 				<input type="button" value="수정"  
 						class="btn btn-pink"
-						style='position: absolute; right: 7em;'
+						id="modify"
 				onclick="updateBoard();" />
 			</div>
 

@@ -63,6 +63,9 @@ table {
 #menu{
 	position: relative; left:40%;
 }
+#modify{
+	position: relative; left:42%;
+}
 
 
 .tg .tg-th{background-color:#da7f84;color:white;border-color:inherit;text-align:center;vertical-align:middle;}

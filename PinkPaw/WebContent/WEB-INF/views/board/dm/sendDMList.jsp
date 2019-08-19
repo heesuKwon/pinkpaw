@@ -3,7 +3,15 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ page import="com.pinkpaw.board.dmboard.model.vo.DM" %>
 <%@page import="java.util.List"%>
+
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
 
 <%
 List<DM> list = (List<DM>)request.getAttribute("list");
