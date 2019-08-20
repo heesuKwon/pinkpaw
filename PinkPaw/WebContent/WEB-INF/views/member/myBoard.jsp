@@ -70,7 +70,7 @@ $("td").click((e)=>{
 	}
 	if(table == "실종게시판"){
 		
-		location.href = "<%=request.getContextPath()%>/board/parcelout/missingView?missingNo="+no;
+		location.href = "<%=request.getContextPath()%>/board/missingView?missingNo="+no;
 	}
 	
 	});
