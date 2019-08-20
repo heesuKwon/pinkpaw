@@ -23,9 +23,9 @@
 			<h1>
 				사지말고<br> <strong>'입양'하세요!</strong>
 				<p>
-					PinkPaw의 또 다른 이름은 행복을 찾아주는 '해피파트너'입니다. <br>
-					우리와 함께 하는 동물들이 가정을 찾고, 즐거움을 느낄 수 있도록, <br>
-					최선을 다해 서비스를 제공합니다.
+					PinkPaw의 또 다른 이름은 모두의 행복을 찾아주는 '해피파트너'입니다.<br>
+					동물들의 가정을 찾아주고, 보다 많은 사람들의 유기동물에 대한 관심<br> 
+					그리고 유기동물의 입양률을 높이기 위해서 최선을 다해 서비스를 제공합니다.<br>
 				</p>
 			</h1>
 			<!--a href="../webzine/MagazineIndex.php" class="btn_magazine"><img src="images/main/btn_magazine.png" alt="매거진"></a-->
@@ -567,7 +567,7 @@
 								<h2>
 									보호소<br>봉사 요청
 								</h2>
-								<p>+</p>
+								<p>></p>
 						</a></li>
 					</ul>
 				</div>
