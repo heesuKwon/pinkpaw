@@ -23,8 +23,9 @@
 			<h1>
 				사지말고<br> <strong>'입양'하세요!</strong>
 				<p>
-					KG에듀원의 또 다른 이름은 꿈을 이루는 '드림파트너'입니다.<br> 우리와 함께 하는 고객이 교육의 즐거움을
-					찾고, 한 단계씩 성장하는<br> 기쁨을 느낄 수 있도록, 믿을 수 있는 교육 경험을 제공합니다.
+					PinkPaw의 또 다른 이름은 행복을 찾아주는 '해피파트너'입니다. <br>
+					우리와 함께 하는 동물들이 가정을 찾고, 즐거움을 느낄 수 있도록, <br>
+					최선을 다해 서비스를 제공합니다.
 				</p>
 			</h1>
 			<!--a href="../webzine/MagazineIndex.php" class="btn_magazine"><img src="images/main/btn_magazine.png" alt="매거진"></a-->
@@ -335,7 +336,7 @@
 								<div class="newsTxt">
 									<span>2019-08-18</span>
 									<h3>시베리안 허스키</h3>
-									<p>눈옆과 발가락을 조금 다쳐 내일 약을 발라주고 모레 유기견보호소로 보낼까합니다</p>
+									<p>눈옆과 발가락을 조금 다쳐 내일 약을 발라주고 모레 유기견보호소로 보낼...</p>
 								</div>
 							</div>
 							<div class="newsBlind"></div> <span class="pBox">강서구</span>

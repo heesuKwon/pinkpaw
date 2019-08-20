@@ -117,7 +117,7 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec02{}
 #sec02 h2>.smallTitle{color:#888;}
 #sec02 h2{color:#222;}
-#sec02 .brandWrap{width:100%; overflow:hidden; padding-top:20px;/**/}
+#sec02 .brandWrap{width:100%; overflow:hidden; /**/}
 #sec02 .brand{}
 #sec02 .brand>li{width:290px!important; height:400px; float:left; margin: 0 15px!important; position:relative;}
 #sec02 .brand>li:nth-child(1){margin-left:20px!important;}
@@ -133,8 +133,8 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec02 .brand>li:nth-child(7) .brandImg{background-image:url('../images/main/main_brand_B07.jpg');}
 #sec02 .brand>li:nth-child(8) .brandImg{background-image:url('../images/main/main_brand_B08.jpg');}
 #sec02 .brand>li:nth-child(9) .brandImg{background-image:url('../images/main/main_brand_B09.jpg');}
-#sec02 .brand>li .brandNum{width:35px; height:35px; line-height:35px; font-size:16px; text-align:center; background:#da7f84; color:#fff; display:inline-block; position:absolute; bottom:116px; left:25px; z-index:2; font-family:'Noto DemiLight';}
-#sec02 .brand>li .brandTxt{width:280px; height:136px; background:#fff; position:absolute; bottom:0; left:5px; padding:20px; box-sizing:border-box;}
+#sec02 .brand>li .brandNum{width:35px; height:35px; line-height:35px; font-size:16px; text-align:center; background:#da7f84; color:#fff; display:inline-block; position:absolute; bottom:180px; left:25px; z-index:2; font-family:'Noto DemiLight';}
+#sec02 .brand>li .brandTxt{width:280px; height:136px; background:#fff; position:absolute; bottom:0; left:5px; top: 200px; padding:20px; box-sizing:border-box;}
 #sec02 .brand>li .brandTxt>h3{font:20px/45px 'Noto Bold', sans-serif; color:#222; letter-spacing:-0.5px;}
 #sec02 .brand>li .brandTxt>h3>span{font-weight:bold;}
 #sec02 .brand>li .brandTxt>p{font-size:13px; color:#666; line-height:1.5; letter-spacing:-0.3px; font-family:'Noto Light';}
@@ -144,16 +144,16 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec03 h2>.smallTitle{color:#f7f7f7;}
 #sec03 h2{color:#fff;}
 #sec03 ul{width:100%; /*overflow:hidden;*/ padding-left:5px; box-sizing:border-box;}
-#sec03 ul>li{width:270px; /*height:323px;*/ position:relative; float:left; box-shadow:3px 3px 18px rgba(0,0,0,0.15); margin: -20px 20px 40px 20px; /* margin-bottom: 40px; margin-top: -20px; */}
+#sec03 ul>li{width:250px; /*height:323px;*/ position:relative; float:left; box-shadow:3px 3px 18px rgba(0,0,0,0.15); margin: -20px 0px 40px 45px /* margin-bottom: 40px; margin-top: -20px; */}
 #sec03 ul>li:nth-child(3n){margin-right:0;}
 #sec03 ul>li>a{width:100%;}
 #sec03 .news{width:100%;}
 #sec03 .news>.newsImg{width:100%; display:block;}
-#sec03 .news>.newsImg>img{width:100%; display:block; height: 150px;}
-#sec03 .news>.newsTxt{width:100%; height:120px; background:#fff; padding:15px 17px; box-sizing:border-box;}
+#sec03 .news>.newsImg>img{width:100%; display:block; height: 100px;}
+#sec03 .news>.newsTxt{width:100%; height:105px; background:#fff; padding:10px 15px; box-sizing:border-box;}
 #sec03 .news>.newsTxt>span{font-size:12px; color:#888;}
-#sec03 .news>.newsTxt>h3{font-size:20px; color:#222; line-height:32px; font-family:'Noto Bold'; margin:5px 0 4px;}
-#sec03 .news>.newsTxt>p{font-size:14px; color:#666; line-height:1.5; letter-spacing:-0.3px; font-family:'Noto Demi';}
+#sec03 .news>.newsTxt>h3{font-size:15px; color:#222; line-height:32px; font-family:'Noto Bold'; /* margin:5px 0 4px; */}
+#sec03 .news>.newsTxt>p{font-size:13px; color:#666; line-height:1.5; letter-spacing:-0.3px; font-family:'Noto Demi';}
 #sec03 ul>li>a>span{width:80px; height:27px; font-size:12px; text-align:center; line-height:27px; display:inline-block; position:absolute; top:-5px; left:-5px; font-family:'Noto Regular';}
 #sec03 ul>li>a>span.pBox{background:#c54b54; color:#fff;}
 #sec03 ul>li>a>span.yBox{background:#fdb833; color:#fff;}
@@ -168,16 +168,16 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec04 h2{color:#222;}
 #sec04 ul{width:100%; /*padding-top:36px;*/ padding-left:10px; box-sizing:border-box;}
 #sec04 ul>li{/*margin-bottom:46px;*/ clear:both;}
-#sec04 ul>li>.career{width:796px; height:180px; position:relative;}
-#sec04 .career>.careerImg{width:250px; height:165px; position:absolute; top:0; left:40px; box-shadow:2px 2px 8px rgba(0,0,0,0.15); z-index:3;}
-#sec04 .career>.careerTxt{width:706px; height:180px; background:#fff; position:absolute; /* top:36px; */ left:10px; z-index:1; padding-left:335px; box-sizing:border-box;}
+#sec04 ul>li>.career{width:796px; height:135px; position:relative;}
+#sec04 .career>.careerImg{width:200px; height:130px; position:absolute; top:0; left:40px; box-shadow:2px 2px 8px rgba(0,0,0,0.15); z-index:3;}
+#sec04 .career>.careerTxt{width:706px; height:150px; background:#fff; position:absolute; /* top:36px; */ /* left:10px; */ z-index:1; padding-left:300px; box-sizing:border-box;}
 #sec04 .career .careerNum{width:80px; height:46px; border-bottom:3px solid #fdb833; position:absolute; top:0; right:-80px; font:28px/46px 'Noto Bold', sans-serif; padding:0 10px; box-sizing:border-box; color:#fdb833; text-align:right; z-index:2;}
-#sec04 .career>.careerTxt>h3{margin-top:35px; margin-bottom:15px; font:20px/20px 'Noto Bold', sans-serif; color:#222;}
-#sec04 .career>.careerTxt>p{font-size:14px; letter-spacing:-0.5px; line-height:1.5; color:#666; font-family:'Noto Demi';}
+#sec04 .career>.careerTxt>h3{margin-top:10px; margin-bottom:10px; font:18px/20px 'Noto Bold', sans-serif; color:#222;}
+#sec04 .career>.careerTxt>p{font-size:12px; letter-spacing:-0.5px; line-height:1.5; color:#666; font-family:'Noto Demi';}
 #sec04 .career>.careerTxt>a{width:20px; height:20px; display:inline-block; float:right; margin-right:30px;}
 #sec04 ul>li.rightBox{float:right;}
-#sec04 ul>li.rightBox .careerImg{left:auto; right:0;}
-#sec04 ul>li.rightBox .careerNum{right:auto; left:-80px; text-align:left;}
+#sec04 ul>li.rightBox .careerImg{left:auto; right:50px;}
+#sec04 ul>li.rightBox .careerNum{right:auto; left:-60px; text-align:left;}
 #sec04 ul>li.rightBox .careerTxt{left:auto; right:10px; padding-left:40px;}
 #sec04 ul>li.rightBox .careerTxt>a{margin-right:328px;}
 
