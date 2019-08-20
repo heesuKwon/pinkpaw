@@ -150,10 +150,6 @@ function DMRecieve(){
 </script>
 
 
-
-
-
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 

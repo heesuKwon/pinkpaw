@@ -46,11 +46,6 @@ text-align: center;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <div id="img-div">
-<<<<<<< HEAD
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-=======
-	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg5.jpg" alt="헤더 - 후기게시판 사진" />
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 	<div id="blackbg"></div>
 	<span class="header-title">실종동물 게시판</span>
 </div>
@@ -82,45 +77,6 @@ text-align: center;
   		<button class="btn btn-outline-secondary" style="border-radius: 0" onclick="srch();">검색하기</button>
 	</div>
 	<script>
-// 	function srch() {
-// 		var kind = $("[name=kind]").val().trim();
-// 		var key = $("[name=key]").val().trim();
-// 		var keyword = $("#keyword").val().trim();
-// 		$.ajax({
-<%-- 			url: "<%=request.getContextPath()%>/board/review/reviewSearch", --%>
-// 			data: "kind="+kind+"&key="+key+"&keyword="+keyword,
-// 			type: "get",
-// 			success: function(data){
-// 				console.log(data);
-				
-// 				/* var html = "<tr><th scope='col'>번호</th><th scope='col'>첨부파일</th><th scope='col'>종류</th><th scope='col'>제목</th><th scope='col'>작성자</th><th scope='col'>게시일</th></tr>";
-// 				var num = 1;
-// 				$(data).each((i,b)=>{
-// 					num = num + 1;
-// 					html += "<tr onclick='view(this);'>";
-// 					html += "<th scope='row'>"+b.reviewNo+"</th>";
-// 					html += "<td></td>";
-// 					html += "<td>"+b.reviewKind+"</td>";
-// 					html += "<td>"+b.reviewTitle+"</td>";
-// 					html += "<td>"+b.reviewWriter+"</td>";
-// 					html += "<td>"+b.reviewEnrollDate+"</td>";
-// 					html += "</tr>"; */
-// 				});
-// 				$("#tbl-board").html(html);
-// 				if(num < 10){
-// 					$("#pageBar").html('<span>[이전]</span> 1 <span>[다음]</span>');
-// 				}
-// 				else{
-<%-- 					$("#pageBar").html("<%=pageBar%>"); --%>
-// 				}
-				
-// 			},
-// 			error: function(jqxhr, textStatus, errorThrown){
-// 				console.log("ajax 처리 실패");
-// 				console.log(jqxhr, textStatus, errorThrown);
-// 			}
-// 		});
-// 	}
 	function view(tr) {		
 		var reviewNo = $(tr).children("th").text();
 		location.href = "<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+reviewNo;
