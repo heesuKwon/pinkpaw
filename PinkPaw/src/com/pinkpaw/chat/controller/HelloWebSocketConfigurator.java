@@ -26,8 +26,10 @@ public class HelloWebSocketConfigurator
 			
 		Member	memberLoggedIn = (Member)session.getAttribute("memberLoggedIn"); 
 		
-		sec.getUserProperties().put("userId", (String)memberLoggedIn.getMemberId());
-		System.out.println("config: "+(String)memberLoggedIn.getMemberId()+"작업!!!");
+		if(memberLoggedIn!=null) {
+			sec.getUserProperties().put("userId", (String)memberLoggedIn.getMemberId());
+			System.out.println("config: "+(String)memberLoggedIn.getMemberId()+"작업!!!");
+		}
 	}
 	
 	

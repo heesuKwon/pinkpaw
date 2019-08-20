@@ -28,13 +28,14 @@ public class HelloWebSocket {
 	public void onOpen(EndpointConfig config, Session session) {
 		//접속Map객체에 사용자 등록
 		String userId = (String)config.getUserProperties().get("userId");
-		clients.put(userId, session);
-		
-		//userId값을 Session객체의 userProperties에 저장
-		session.getUserProperties()
-			   .put("userId", userId);
-		
-		System.out.println("@OnOpen 현재접속자("+clients.size()+"): "+clients+"]");
+		if(userId!=null) {
+			clients.put(userId, session);
+			
+			//userId값을 Session객체의 userProperties에 저장
+			session.getUserProperties()
+				   .put("userId", userId);
+		}
+		System.out.println("@OnOpen 현재접속자("+clients.size()+"): ["+clients+"]");
 		
 		//다른 접속자에게 메세지 보냄
 		Map<String, Object> map = new HashMap<>();
