@@ -44,7 +44,7 @@ function goBoardForm(){
 	<span class="header-title">분양동물 게시판</span>
 </div>
 
-<section class="board-container">
+<section class="card-container">
 <table id="parcel-board" style="border:0px; border-collapse: collapse;">
 <%if(memberLoggedIn!=null){ %>
 <input type="button" value="글쓰기" id="btn-add" onclick="goBoardForm();" />

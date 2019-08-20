@@ -9,6 +9,7 @@
 section.board-container{position: relative; padding-top: 350px; width:800px; margin:0 auto; text-align:center; padding-bottom: 100px;}
 section.board-container h2{margin:10px 0;}
 
+section.card-container{position: relative; padding-top: 350px; width:1000px; margin:0 auto; text-align:center; padding-bottom: 100px;}
 /*페이지바*/
 div#pageBar{margin-top:10px; text-align:center;}
 div#pageBar span.cPage{ margin-right: 5px;}

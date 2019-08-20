@@ -58,6 +58,7 @@ $('document').ready(function() {
  });
 });
 </script>
+
 <div id="img-div">
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg5.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
