@@ -39,6 +39,11 @@ function passwordValidate(){
 	
 	return true;	
 }
+
+function self (){
+	self.close();
+}
+
 </script>
 </head>
 <body>
@@ -64,7 +69,7 @@ function passwordValidate(){
 				<tr>
 					<td colspan="2" >
 						<input type="submit" style="margin-left: 80px; background-color: #c54b54;" class="btn btn-secondary" value="변경" onclick="return passwordValidate();"/>&nbsp;
-						<input type="button" style="margin-left: 80px;" class="btn btn-secondary"  onclick="self.close();" value="닫기" />						
+						<input type="button" style="margin-left: 80px;" class="btn btn-secondary"  onclick="window.close();" value="닫기" />						
 					</td>
 				</tr>
 			</table>

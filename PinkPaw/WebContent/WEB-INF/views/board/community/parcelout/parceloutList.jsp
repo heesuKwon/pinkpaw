@@ -9,13 +9,14 @@
 %>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
- <li----------nk rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/view.css">
 <style>
 #btn-add{
 display: block
@@ -47,7 +48,7 @@ function goBoardForm(){
 <section class="card-container">
 <table id="parcel-board" style="border:0px; border-collapse: collapse;">
 <%if(memberLoggedIn!=null){ %>
-<input type="button" value="글쓰기" id="btn-add" onclick="goBoardForm();" />
+<input type="button" value="글쓰기" id="btn-add" onclick="goBoardForm();" class="btn btn-pink" />
 <%} %>
 
 <% for(ParceloutBoard p : list){ %>

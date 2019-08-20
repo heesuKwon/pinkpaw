@@ -11,7 +11,6 @@
 <link rel="stylesheet" 
 	  href="<%=request.getContextPath()%>/css/board.css" />
   
-<section id="board-container">
 
 <style>
 	img#notice_header{
@@ -22,9 +21,7 @@
 		text-align: center;
 	}
 </style>
-<br />
-<br />
-<br />
+
 	
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick.css">
