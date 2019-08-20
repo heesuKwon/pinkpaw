@@ -45,7 +45,26 @@ $(()=>{
 	
 	
 });
-			
+
+//쪽지쓰기
+function DMWrite(){
+	var url = "<%=request.getContextPath()%>/dmWrite?memberId=<%=memberLoggedIn.getMemberId()%>";
+    var title = "DMWrite";
+    var status =  "left=500px, top=200px, width=502px, height=344px";
+    
+	var popup = window.open(url,title,status);
+}
+
+//쪽지읽기
+function DMSend(){
+	location.href = "<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>";
+}
+function DMRecieve(){
+	location.href = "<%=request.getContextPath()%>/board/dm/dmSendList?memberId=<%=memberLoggedIn.getMemberId()%>";
+}
+
+// /jquery/json/member/insert.do
+//객체단위로 요청파라미터에 추가할 것.
 </script>
 
 <div id="img-div">
@@ -54,14 +73,14 @@ $(()=>{
 	<span class="header-title" style='left:50%;'>쪽지</span>
 </div>
 <span id="dmBox">
-<input type="button"  class="btn btn-pink" style='padding: 0.6rem .75rem; margin-top:20px; ' value="수신 쪽지함" onclick="DMSend();">
+<input type="button"  class="btn btn-pink" style='padding: 0.6rem .75rem; margin-top:20px; box-shadow: 3px 3px black;  ' value="수신 쪽지함" onclick="DMSend();">
 <br>
 <input type="button" class="btn btn-white" style='padding: 0.6rem .75rem; '  value="발신 쪽지함" onclick="DMRecieve();">
 
 </span>
 
 	<%-- 함수를 console에 직접 쳐서 이동할 수 있으므로 그것을 방지하기 위해 if문 안에 script사용--%>
-<section class="board-container">
+<section class="board-container" style='padding-left: 100px;'>
 
 <div style='height:50px; padding:5px;'>
 <input type="button" 
@@ -106,31 +125,10 @@ $(()=>{
 		<%=pageBar %>
 	</div>
 </section>
-
-<script>
-//쪽지쓰기
-function DMWrite(){
-	var url = "<%=request.getContextPath()%>/dmWrite?memberId=<%=memberLoggedIn.getMemberId()%>";
-    var title = "DMWrite";
-    var status =  "left=500px, top=200px, width=502px, height=344px";
-    
-	var popup = window.open(url,title,status);
-}
-
-//쪽지읽기
-function DMSend(){
-	location.href = "<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>";
-}
-function DMRecieve(){
-	location.href = "<%=request.getContextPath()%>/board/dm/dmSendList?memberId=<%=memberLoggedIn.getMemberId()%>";
-}
-
-// /jquery/json/member/insert.do
-//객체단위로 요청파라미터에 추가할 것.
-</script>
-
-
-
-
-
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
+
+
+
+
+

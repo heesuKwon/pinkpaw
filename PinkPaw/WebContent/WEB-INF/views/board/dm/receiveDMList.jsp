@@ -45,13 +45,13 @@ $(()=>{
 <span id="dmBox">
 <input type="button"  class="btn btn-white" style='padding: 0.6rem .75rem; margin-top:20px; ' value="수신 쪽지함" onclick="DMSend();">
 <br>
-<input type="button" class="btn btn-pink" style='padding: 0.6rem .75rem; '  value="발신 쪽지함" onclick="DMRecieve();">
+<input type="button" class="btn btn-pink" style='padding: 0.6rem .75rem ; box-shadow: 3px 3px black; '  value="발신 쪽지함" onclick="DMRecieve();">
 
 </span>
 
 
 
-<section class="board-container">
+<section class="board-container" style='padding-left: 100px;'>
 
 <div style='height:50px; padding:5px;'>
 <input type="button" 
