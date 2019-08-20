@@ -46,16 +46,12 @@ text-align: center;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <div id="img-div">
-<<<<<<< HEAD
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-=======
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg5.jpg" alt="헤더 - 후기게시판 사진" />
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 	<div id="blackbg"></div>
 	<span class="header-title">실종동물 게시판</span>
 </div>
 
-<section class="board-container">
+<section class="card-container">
 <table id="missing-board" style="border:0px; border-collapse: collapse;" >
 
 	<div class="input-group mb-3" >
