@@ -52,10 +52,10 @@ header .sub li:hover>a{color:#fdb833;}
 
 /*menu_PC*/
 .menuWrap{width:100%; height:100%; position:fixed; top:0; left:0; z-index:999; background:rgba(34,34,34,0.7); display:none;}
-.menuWrap .menu{width:500px; height:100%; background:#fff; position:absolute; top:0; right:0; padding:20px 70px 0 70px;/*219px 120px 0 120px;*/ box-sizing:border-box;}
+.menuWrap .menu{width:500px; height:100%; background:#fff; position:absolute; top:0; right:0; padding:70px 70px 0 70px;/*219px 120px 0 120px;*/ box-sizing:border-box;}
 .menuWrap a.menu_closeBtn{width:27px; position:absolute; top:50px; right:50px;}
 .menuWrap a.menu_closeBtn>img{width:100%;}
-.menuWrap .menu>dl{width:100%; border-bottom:1px dashed #c3c3c3; overflow:hidden; margin-top: -20px; margin-bottom: -20px;}
+.menuWrap .menu>dl{width:100%; border-bottom:1px dashed #c3c3c3; overflow:hidden; margin-top: -5px; margin-bottom: -5px;}
 .menuWrap .menu dt{width:124px; font:24px/90px 'Noto Bold', sans-serif; color:#222; padding-left:7px; box-sizing:border-box; float:left; letter-spacing:-2px;}
 .menuWrap .menu dt>a{text-decoration: none; color: black;}
 .menuWrap .menu dt:hover{cursor: pointer; border-bottom:3px solid #fdb833; box-sizing:border-box;}

@@ -298,23 +298,22 @@ $(()=>{
 						</h1>
 						
 						<input
-							style="float: right;" 
+							style="float: right; height: 35px; width: 85px;" 
 							class="btn btn-gray"
 							type="button" 
 								   value="로그아웃" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>
 						</div>
-						<br />
-						<br />
-						<br /><br><br>
+						<br /><br><br><br>
 					
 						<div style="margin: auto; width: 100%;">
 							
 							<input 
-							class="btn" 
-							style="float: left; border: 0px solid white;"	
+							
+							style="float: left;"	
 							type="button" 
-								   value="쪽지 <%=recvCount %>개" 
+								   value="쪽지 <%=recvCount %>개"
+								   class="btn btn-pink" 
 								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
 							
 								   
