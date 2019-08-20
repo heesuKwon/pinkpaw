@@ -7,6 +7,8 @@
 
 <%
 	MissingBoard b = (MissingBoard) request.getAttribute("board");
+	String missingPlace = b.getMissingHpPlace();
+	String[] places = missingPlace.split(" ");
 %>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/board.css" />
@@ -56,7 +58,6 @@ $('document').ready(function() {
 	   var area16 = ["서귀포시","제주시"];
 	   var area16 = [""];
 
-	 
 
 	 // 시/도 선택 박스 초기화
 
@@ -68,6 +69,7 @@ $('document').ready(function() {
 	  $selsido.next().append("<option value=''>구/군 선택</option>");
 	 });
 
+	 
 	 // 시/도 선택시 구/군 설정
 
 	 $("select[name^=sido]").change(function() {
@@ -159,20 +161,21 @@ else if(money> 0) {
 			</tr>
 			<tr>
 				<th class="text-left">잃어버린 장소</th>
-				<td class="left"><select name="sido" id="sido"
-					class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown"></select>
+				<td class="left">
+					<select name="sido" id="sido"
+					class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown" ></select>
 					<select name="gugun" id="gugun"
-					class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown"></select>
+					class="btn btn-outline-gray dropdown-toggle" data-toggle="dropdown" ></select>
 					<div class="center">
 						<input type="text" name="detailPlace" maxlength="20" size="17"
-							class="form-control others" placeholder="9글자까지 목록에 노출">
+							class="form-control others" value="<%=places[2] %>" placeholder="9글자까지 목록에 노출">
 					</div></td>
 			</tr>
 
 			<tr>
 				<th class="text-left">잃어버린 날짜</th>
 				<td><input type="date" name="lostDate"
-					class="form-control others" required /></td>
+					class="form-control others" value="<%=b.getMissingHpDate() %>" required /></td>
 			</tr>
 			<tr>
 				<th class="text-left">사례금</th>

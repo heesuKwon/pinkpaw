@@ -186,9 +186,11 @@ $(()=>{
 			<col style="width: 100px">
 		</colgroup>
 		<tr>
-			<th class="tg-th">작성자</th>
-			<th class="tg" colspan="3"><%=b.getMissingWriter() %> </th>
-		</tr>
+			<td class="tg-th">작성자</td>
+			<td class="tg-ml2k"><%=b.getMissingWriter() %></td>
+			<td class="tg-th">연락처</td>
+			<td class="tg-yc5w"><%=b.getMissingPhone() %> </td>
+		</tr>		
 		<tr>
 			<td class="tg-th">제목</td>
 			<td class="tg" colspan="3"><%=b.getMissingTitle() %></td>
