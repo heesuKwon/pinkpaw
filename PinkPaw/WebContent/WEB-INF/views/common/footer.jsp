@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <footer>
-	​
-	<article>
+	
 		<div class="footerInfo">
 			<h1>
 				<img src="<%=request.getContextPath()%>/images/common/footer/foot_logo.png" alt="로고">
@@ -30,7 +29,6 @@
 				</p>
 			</div>
 		</div>
-	</article>
 
 </footer>
 <script>
