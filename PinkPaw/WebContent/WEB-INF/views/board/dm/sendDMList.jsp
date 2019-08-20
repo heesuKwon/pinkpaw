@@ -125,6 +125,35 @@ function DMRecieve(){
 		<%=pageBar %>
 	</div>
 </section>
+
+<script>
+//쪽지쓰기
+function DMWrite(){
+	var url = "<%=request.getContextPath()%>/dmWrite?memberId=<%=memberLoggedIn.getMemberId()%>";
+    var title = "DMWrite";
+
+    var status =  "left=500px, top=200px, width=502px, height=344px";
+    
+	var popup = window.open(url,title,status);
+}
+
+//쪽지읽기
+function DMSend(){
+	location.href = "<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>";
+}
+function DMRecieve(){
+	location.href = "<%=request.getContextPath()%>/board/dm/dmSendList?memberId=<%=memberLoggedIn.getMemberId()%>";
+}
+
+// /jquery/json/member/insert.do
+//객체단위로 요청파라미터에 추가할 것.
+</script>
+
+
+
+
+
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 

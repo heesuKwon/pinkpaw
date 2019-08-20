@@ -5,8 +5,18 @@
 <%@ page import="com.pinkpaw.member.model.vo.MyBoard" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+	<link href="<%=request.getContextPath()%>/css/write.css" rel="stylesheet" />
 
 <%
 List<MyBoard> list = (List<MyBoard>)request.getAttribute("list");
@@ -18,11 +28,15 @@ List<MyBoard> list1 = new MemberService().selectMyBoard(1, 10, memberLoggedIn.ge
 
 %>
 
-<div id="img">
-	<img id="myBoard_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 내가 쓴 글 사진" />
+<div id="img-div">
+
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">작성글보기</span>
 </div>
+
 <style>
-	img#myBoard_header{
+	img#reportBoard_header{
 		width: 1024px;
 		height: 300px;
 	}
@@ -64,7 +78,11 @@ $("td").click((e)=>{
 
 </script>
 
-<section class="board-container">
+<section  style="position: relative;
+    padding-top: 387px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 100px;">
 	<!--내가 쓴 글 리스트-->
 	
 	<table id="tbl-board" class="table table-hover">

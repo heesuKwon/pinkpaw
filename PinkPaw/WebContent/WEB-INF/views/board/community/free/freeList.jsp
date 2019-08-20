@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
@@ -45,6 +46,7 @@
 </script>
 
 <div id="img-div">
+
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/1.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">자유 게시판</span>

@@ -10,6 +10,22 @@
 
 <link rel="stylesheet" 
 	  href="<%=request.getContextPath()%>/css/board.css" />
+  
+<section id="board-container">
+
+<style>
+	img#notice_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
+<br />
+<br />
+<br />
+	
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick.css">
 <link rel="stylesheet" type="text/css"
@@ -38,6 +54,7 @@
 </div>
 
 <section class="board-container" >
+		<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>	
 			<div style='height:50px; padding:5px;'>
 				<input type="button" value="수정"  
 						class="btn btn-pink"
@@ -49,7 +66,6 @@
 				onclick="deleteBoard();" />
 			</div>
 		<!-- 관리자인 경우에만 수정/삭제버튼이 보이도록함. -->	
-		<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>	
 		
 		<form action="<%=request.getContextPath()%>/board/notice/noticeBoardDelete"
 		      name="boardDeleteFrm"
@@ -71,6 +87,7 @@
 		
 		
 		</script>
+			
 		<%} %>	
 	
 <table class="tg" style="table-layout: fixed;   width: 800px;">
@@ -105,6 +122,7 @@
 		</tr>
 	</table>
 	
+<%-- 		<%} %> --%>
 	<div style='padding:10px;'>
 	
 	<input type="button" value="목록으로" id="menu"  class="btn btn-gray"

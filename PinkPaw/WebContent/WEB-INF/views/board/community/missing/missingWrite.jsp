@@ -59,7 +59,11 @@ $('document').ready(function() {
 });
 </script>
 <div id="img-div">
+<<<<<<< HEAD
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+=======
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg5.jpg" alt="헤더 - 후기게시판 사진" />
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 	<div id="blackbg"></div>
 	<span class="header-title">실종 게시판 글쓰기</span>
 </div>

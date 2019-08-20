@@ -74,8 +74,8 @@ $(()=>{
 					   placeholder="검색할 아이디를 입력하세요." />
 				<input type="submit" 
 					   value="검색" 
-					   class="btn btn-secondary" 
-					   style="background-color: #da7f84; height: 35px;"/>
+					   class="btn btn-pink" 
+					   style="height: 35px;"/>
 			</form>
 		</div>
 		
@@ -92,8 +92,8 @@ $(()=>{
 					   placeholder="검색할 회원명을 입력하세요." />
 				<input type="submit" 
 					   value="검색" 
-					   class="btn btn-secondary" 
-					   style="background-color: #da7f84; height: 35px;"
+					   class="btn btn-pink" 
+					   style="height: 35px;"
 					   />
 			</form>
 		</div>

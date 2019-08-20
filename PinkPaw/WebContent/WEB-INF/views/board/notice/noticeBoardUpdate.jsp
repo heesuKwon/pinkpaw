@@ -9,6 +9,28 @@ System.out.println("노티스넘버확인 @@@@@@@"+b.getNoticeNo());
 System.out.println("노티스타이틀확인 @@@@@@@"+b.getNoticeTitle());
 
 %>
+<<<<<<< HEAD
+<link rel="stylesheet" 
+	  href="<%=request.getContextPath()%>/css/board.css" />
+<div id="img">
+	<img id="notice_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 공지사항 사진" />
+</div>
+<style>
+	img#notice_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+	.noticeUpdateFrm{
+	margin-top: 70px;
+	}
+</style>	  
+	  
+<div class="noticeUpdateFrm">	  
+<section id="board-container">
+=======
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
@@ -20,10 +42,17 @@ System.out.println("노티스타이틀확인 @@@@@@@"+b.getNoticeTitle());
 	<span class="header-title">공지사항 수정</span>
 </div>
 <section class="board-container">
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 	<form action="<%=request.getContextPath() %>/board/notice/noticeBoardUpdateEnd"
 	      method="post"
 	     >
+<<<<<<< HEAD
+		<input type="hidden" name="noticeNo" value="<%=b.getNoticeNo()%>"/>
+		<table id="tbl-board-view"  class="table table-gray table-hover">
+			
+=======
 			<table id="tbl-write" class="table">
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 			<tr>
 				<th class="text-left">제목<i class="ico-star">*</i></th>
 				<td><input type="text" name="noticeTitle" class="form-control title" required value="<%=b.getNoticeTitle() %>"/></td>
@@ -43,6 +72,9 @@ System.out.println("노티스타이틀확인 @@@@@@@"+b.getNoticeTitle());
 							  cols="40" rows="5" class="form-control" required><%=b.getNoticeContent() %></textarea>
 				</td>
 			</tr>		
+<<<<<<< HEAD
+				
+=======
 			<tr>
 				<td colspan="2">
 				<input type="hidden" name="noticeNo" value="<%=b.getNoticeNo()%>"/>
@@ -54,11 +86,25 @@ System.out.println("노티스타이틀확인 @@@@@@@"+b.getNoticeTitle());
 						onclick="goNoticeView();"/>
 				</td>
 			</tr>		
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 		</table>
+		
+		<div>
+		<input type="submit" 
+						   value="수정" 
+						   class="btn btn-secondary"
+					   	   style="background-color: #c54b54;"
+						   onclick="return boardValidate();"/>
+		
+		</div>
 	</form>
 
 </section>
+<<<<<<< HEAD
+</div>
+=======
 <!-- </div> -->
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 <script>
 function boardValidate(){
 	var content = $("[name=noticeContent]").val();

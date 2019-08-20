@@ -28,7 +28,11 @@ $(()=>{
 		var url = "<%=request.getContextPath()%>/board/dm/DMSendView?dmNo="+dmNo;
 		
 	    var title = "DMWrite";
+<<<<<<< HEAD
+	    var status =  "left=500px, top=200px, width=350px, height=300px";
+=======
 	    var status =  "left=500px, top=200px, width=473px, height=442px";
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 	    
 		var popup = window.open(url,title,status);
 	

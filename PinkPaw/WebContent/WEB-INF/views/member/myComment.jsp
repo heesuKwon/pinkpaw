@@ -4,7 +4,17 @@
 <%@ page import="com.pinkpaw.admin.model.vo.*, java.util.*" %>
 <%@ page import="com.pinkpaw.member.model.vo.MyComment" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+	<link href="<%=request.getContextPath()%>/css/write.css" rel="stylesheet" />
 
 <%
 	
@@ -15,19 +25,21 @@ List<MyComment> list1 = new MemberService().selectMyComment(1, 10, memberLoggedI
 
 	
 %>
-<div id="img">
-	<img id="myComment_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 내가 쓴 글 사진" />
-</div>
-<style>
+<div id="img-div">
 
-img#myComment_header{
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/6.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">작성댓글보기</span>
+</div>
+
+<style>
+	img#reportBoard_header{
 		width: 1024px;
 		height: 300px;
 	}
 	#img{
 		text-align: center;
 	}
-
 </style>
 
 <script>
@@ -70,7 +82,11 @@ $(()=>{
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
-<section id="board-container">
+<section  style="position: relative;
+    padding-top: 387px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 100px;">
 	
 		
 	<table id="tbl-board"  class="table table-hover">
@@ -98,7 +114,7 @@ $(()=>{
 		<% } %>
 <%} %>
 	</table>
-	<div id='pageBar'>
+	<div id='pageBar' style="">
 		<%=pageBar %>
 	</div>
 </section>

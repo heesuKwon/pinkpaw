@@ -15,8 +15,8 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
-<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
- -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
@@ -46,7 +46,11 @@ text-align: center;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <div id="img-div">
+<<<<<<< HEAD
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+=======
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg5.jpg" alt="헤더 - 후기게시판 사진" />
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 	<div id="blackbg"></div>
 	<span class="header-title">실종동물 게시판</span>
 </div>

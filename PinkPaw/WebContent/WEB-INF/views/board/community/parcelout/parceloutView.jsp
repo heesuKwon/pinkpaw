@@ -138,11 +138,18 @@ function goParceloutViewReportOpen(){
 </head>
 <body>
 <div id="img-div">
+<<<<<<< HEAD
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">분양 게시판 상세보기</span>
+</div>
+=======
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/11.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">분양 게시판 상세보기</span>
 </div>
 
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 
 <section class="board-container">
 
@@ -299,6 +306,29 @@ function goParceloutViewReportOpen(){
 	
 	
 	
+<<<<<<< HEAD
+	<hr style="margin-top: 30px;"/>
+	<div id="comment-container" style="overflow:scroll;">
+		<div class="comment-editor" style="text-align: center;">
+			<form action="<%=request.getContextPath()%>/board/parceloutboard/boardCommentInsert"
+				  name="boardCommentFrm"
+				  method="post">
+				<input type="hidden" name="boardRef" 
+					   value="<%=p.getParceloutNo()%>" />
+				<input type="hidden" name="boardCommentWriter" 
+					   value="<%=memberLoggedIn!=null?memberLoggedIn.getMemberId():""%>" />
+				<input type="hidden" name="boardCommentLevel" 
+					   value="1" />
+				<input type="hidden" name="boardCommentRef" 
+					   value="0" /> <!-- 댓글인 경우 참조댓글이 없으므로 0으로 초기화 -->
+				<textarea name="boardCommentContent" 
+						  id="boardCommentContent" 
+						  cols="60" rows="3"></textarea>
+				<button type="submit"
+					    id="btn-insert">등록</button>			
+			</form>
+		</div>
+=======
 <!--댓글 부분 -->
 <hr style="margin-top: 30px;"/>
 <form action="<%=request.getContextPath()%>/board/parceloutboard/boardCommentInsert"
@@ -321,21 +351,24 @@ function goParceloutViewReportOpen(){
 	</div>			
 </form>
 
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 		<!-- 댓글목록테이블 -->
-		<table id="tbl-comment" class="list-group">
+		<table id="tbl-comment" style="overflow:scroll;">
 			<%
 			if(commentList != null){
 				for(BoardComment bc : commentList){
 					if(bc.getBoardCommentLevel()==1){
 			%>
-					<tr class="level1, list-group-item">
+					<tr class=level1>
 						<td>
 							<sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
-							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub> <br /><br />
+							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub>
+							<br />
 							<%=bc.getBoardCommentContent() %>
 						</td>
 						<td>
-							<button class="btn-reply btn btn-small btn-pink" value="<%=bc.getBoardCommentNo()%>">답글</button>
+							<button class="btn-reply" 
+									value="<%=bc.getBoardCommentNo()%>">답글</button>
 							<!-- @실습문제:
 								 관리자/댓글작성자에 한해 이버튼을 노출시키고,
 								 댓글 삭제 기능추가. 
@@ -344,15 +377,16 @@ function goParceloutViewReportOpen(){
 							<%if(memberLoggedIn!=null 
 								&& ("admin".equals(memberLoggedIn.getMemberId()) 
 										|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-							<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 							<%} %>
 						</td>
 					</tr>
 			<% 		} else { %>
-					<tr class="level2, list-group-item">
-						<td style="padding-left: 20px">
-							<sub class=comment-writer>ㄴ&nbsp;<%=bc.getBoardCommentWriter() %></sub>
-							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub><br /><br />
+					<tr class=level2>
+						<td>
+							<sub class=comment-writer><%=bc.getBoardCommentWriter() %></sub>
+							<sub class=comment-date><%=bc.getBoardCommentDate()%></sub>
+							<br />
 							<%=bc.getBoardCommentContent() %>
 						</td>
 						<td>
@@ -360,7 +394,7 @@ function goParceloutViewReportOpen(){
 							<%if(memberLoggedIn!=null 
 								&& ("admin".equals(memberLoggedIn.getMemberId()) 
 								|| bc.getBoardCommentWriter().equals(memberLoggedIn.getMemberId()) )){%>
-							<button class="btn-delete btn btn-small btn-gray" value="<%=bc.getBoardCommentNo()%>">삭제</button>
+							<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 							<%} %>
 						</td>
 					</tr>
@@ -372,6 +406,10 @@ function goParceloutViewReportOpen(){
 			} 
 			%>
 		</table>
+<<<<<<< HEAD
+	</div>
+=======
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 </section>
 
 <script>

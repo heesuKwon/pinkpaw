@@ -219,7 +219,7 @@
        
        
        <div style="margin:auto; width: 15%;">      
-		<button class="btn btn-info" id="click" style="background-color: #c54b54; width: 250px;">회원가입</button>
+		<button class="btn btn-pink" id="click" style="">회원가입</button>
        </div>
        
 
