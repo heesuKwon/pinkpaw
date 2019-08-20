@@ -29,6 +29,17 @@
 					<br>ⓒCOPY RIGHT©2019 PinkPawTeam. ALL RIGHTS RESERVED.
 				</p>
 			</div>
+		<div id="dm-container" style='width:300px'class="input-group mb-3">
+		
+		<div class="input-group-prepend" style='background-color:pink; '>
+		     <label class="input-group-text" 
+		    	   for="dm-client" style='color: white; background-color: #da7f84; border: 1px solid #da7f84;'>회원</label>
+		  </div>
+		  <select class="custom-select" 
+		  		  id="dm-client">
+		    <option selected>접속자 목록</option>
+		  </select>
+		</div>
 		</div>
 	</article>
 
@@ -158,6 +169,33 @@
 			/*sec05*/
 			$('#sec05 .noticeWrap>.linkBnr>ul>li').height(dWidth/100*35.533);
 		}
+	});
+	
+	
+
+	//DM 접속자목록 가져오기
+	$("#dm-client").focus(()=>{
+		$.ajax({
+			url:"<%=request.getContextPath()%>/chat/userList.do",
+			dataType: "json",
+			success: function(data){
+				//console.log(data);
+				
+				var html = "<option value='' disabled>접속자 목록</option>";
+			
+				$.each(data, (i,userId) => {
+					html += "<option value='"+userId+"'>";
+					html += userId;
+					html += "</option>";
+				});
+				$("#dm-client").html(html);
+				
+			},
+			error: function(jqxhr, textStatus, err){
+				console.log("ajax처리실패!");
+				console.log(jqxhr, textStatus, err);
+			}
+		});
 	});
 </script>
 </body>

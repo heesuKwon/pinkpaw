@@ -23,12 +23,11 @@ public class HelloWebSocketConfigurator
 								HandshakeRequest request, 
 								HandshakeResponse response) {
 		HttpSession session = (HttpSession)request.getHttpSession();
-		Member memberLoggedIn = (Member)session.getAttribute("memberLoggedIn"); 
-		String userId = memberLoggedIn.getMemberId();
+			
+		Member	memberLoggedIn = (Member)session.getAttribute("memberLoggedIn"); 
 		
-		
-		sec.getUserProperties().put("userId", userId);
-		System.out.println("config: "+userId+"작업!!!");
+		sec.getUserProperties().put("userId", (String)memberLoggedIn.getMemberId());
+		System.out.println("config: "+(String)memberLoggedIn.getMemberId()+"작업!!!");
 	}
 	
 	
