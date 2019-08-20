@@ -24,7 +24,9 @@
 
 $(()=>{
 	$("td").click((e)=>{		
-		var no = $(e.target).parents("tr").children("th").text();
+		var no = $(e.target).parents("tr").children("td").eq(0).text();
+		
+		alert(no);
 		
 			location.href = "<%=request.getContextPath()%>/board/dm/reportDMView?dmNo="+no;
 				
@@ -56,6 +58,7 @@ $(()=>{
 		
 	<table id="tbl-board" class="table table-hover">
 		<tr>
+			<th>번호</th>
 			<th>보낸사람</th>
 			<th>받은사람</th>
 			<th>제목</th>
@@ -65,6 +68,7 @@ $(()=>{
 
 	<% for(reportDM d : list){ %>
 		<tr>
+			<td><%=d.getDmNo() %></td>
 			<td><%=d.getDmSend() %></td>
 			<td><%=d.getDmRecive() %></td>
 			<td><%=d.getDmTitle() %></td>

@@ -7,26 +7,39 @@
 	DM d = (DM)request.getAttribute("DM");
 
 %>
-<link rel="stylesheet" 
-	  href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+	<link href="<%=request.getContextPath()%>/css/write.css" rel="stylesheet" />
 
 <div id="img">
-	<img id="reportDM_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 쪽지 신고게시판 사진" />
+	<img id="reportBoard_header" src="<%=request.getContextPath() %>/images/board/20.jpg" alt="헤더 - 신고쪽지 게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">신고 쪽지</span>
 </div>
 <style>
-	img#reportDM_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
-	
+		
 	.con{
 	
 	margin: 15px;
 	padding: 35px;
 	
+	}
+	
+	img#reportBoard_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
 	}
 	
 </style>
@@ -63,8 +76,7 @@
 		<tr>
 			<th colspan="2">
 				<input type="button" value="삭제" 
-					   class="btn btn-info" 
-					   style="background-color: #c54b54";
+					   class="btn btn-pink" 
 					   onclick="deleteBoard();" />
 			</th>
 		</tr>
