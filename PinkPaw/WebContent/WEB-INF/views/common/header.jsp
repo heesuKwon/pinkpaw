@@ -270,7 +270,7 @@ $(()=>{
 					<% } 
 			//로그인에 성공한 경우
 			else {%>
-				<div style="padding: 0 20px; height: 100px;">
+				<div style="padding: 0 20px; height: 110px;">
 					<div style="margin: auto; width: 100%;">
 						<h1 style="font-size: 20px; font-weight: bolder; float: left;">
 							<%=memberLoggedIn.getMemberName()%>님 환영합니다!
