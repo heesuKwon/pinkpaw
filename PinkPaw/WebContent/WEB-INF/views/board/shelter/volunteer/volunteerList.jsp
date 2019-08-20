@@ -95,7 +95,7 @@ $(()=>{
 	<%-- 로그인한 경우 글쓰기 가능 --%>
 	<%if(memberLoggedIn!=null){ %>
 	<input type="button" value="글쓰기" id="btn-add"
-			onclick="govolunteerWrite();"/>
+			onclick="govolunteerWrite();" class="btn btn-pink"/>
 	<%-- 함수를 console에 직접 쳐서 이동할 수 있으므로 그것을 방지하기 위해 if문 안에 script사용--%>
 	<script>
 	function govolunteerWrite(){

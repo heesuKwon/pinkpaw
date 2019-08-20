@@ -187,163 +187,119 @@ $(()=>{
 	​ ​
 	<!--menu-->
 	<div class="menuWrap">
-		<div class="menu">
-			<a href="#none" onClick="$('.menuWrap').fadeOut(300);"
-				class="menu_closeBtn"><img src="<%=request.getContextPath()%>/images/main/modal_close.gif"
-				alt="닫기"></a>
-			<dl>
-				
-			<% if(memberLoggedIn == null){ %>
-				<form action="<%=request.getContextPath() %>/member/login" 
-					  id="loginFrm"
-					  method="post"
-					  onsubmit="return validate();">
-					  <div class="container">
+			<div class="menu">
+				<a href="#none" onClick="$('.menuWrap').fadeOut(300);"
+					class="menu_closeBtn"><img
+					src="<%=request.getContextPath()%>/images/main/modal_close.gif"
+					alt="닫기"></a>
+				<dl>
 
-					  <div class="panel panel-success">
-            <div class="panel-heading">
-                <div class="panel-title"></div>
-            </div>
-            <div class="panel-body" style="">
-               
-               <div style="margin-left: 0px; margin-top: 15px;">
-               
-                    <div>
-                    	<input
-                    	class="from-control"
-                    				 type="text" 
-									   name="memberId"
-									   id="memberId"
-									   placeholder="아이디"
-									   style="width: 200px;"
-									   tabindex="1" 
-									   value="<%=saveId?memberId:""%>"/>
-                        
-                    </div>
-                    
-                    <br>
-                    <div>
-                    
-                    <input 
-                    				   class="from-control"
-                    				   type="password" 
-									   name="password" 
-									   id="password"
-									   style="width: 200px;"
-									   placeholder="비밀번호" 
-									   tabindex="2"/>
-                       
-                    </div>
-                    
-                       <br>
-                       <br />
-                    
-                    
-                  
-                   </div>
-                   
-                    <div style="position: relative; text-align: center; float: left; left: 0px;">
-                    
-                    	
-								<input type="checkbox" 
-									   name="saveId" 
-									   id="saveId" 
-									   <%=saveId?"checked":""%>/>
-								<label for="saveId">아이디저장</label>
-								
-                    
-                    </div>
-                    
-                    <br /><br />
-                    
-                    <div style=" position: relative; text-align: center; float: left; left:0px">
-                    				    
-                    <input
-								class="btn btn-pink"
-								type="submit" value="로그인"
-									   tabindex="3" />
-					</div>				   
-				   <div style=" position: relative;  text-align: center; float: right; left:-110px; ">
-				   <button
-								class="btn btn-gray"
-								value="회원가입"
-								onclick="register();" >회원가입</button>
-									   
-								   
-				   </div>
-            </div>
-        </div>
-    </div>
+					<% if(memberLoggedIn == null){ %>
+					<form action="<%=request.getContextPath() %>/member/login"
+						id="loginFrm" method="post" onsubmit="return validate();">
+						<div class="container" style="height: 110px;"  >
 
-								
-																
-						
-					<br>
-					<br><br /><br />
-					
-				</form>	
-			<% } 
+							<div class="panel panel-success">
+								<div class="panel-heading">
+									<div class="panel-title"></div>
+								</div>
+								<div class="panel-body" style="">
+
+									<div style="margin-left: 0px; height: 80px;">
+
+										<div>
+											<input class="from-control" type="text" name="memberId"
+												id="memberId" placeholder="아이디" style="width: 200px;"
+												tabindex="1" value="<%=saveId?memberId:""%>" />
+
+										</div>
+
+										<br>
+										<div>
+
+											<input class="from-control" type="password" name="password"
+												id="password" style="width: 200px;" placeholder="비밀번호"
+												tabindex="2" />
+
+										</div>
+
+										<br> <br />
+
+
+
+									</div>
+
+									<div
+										style="position: relative; text-align: center; float: left; left: 0px;">
+
+
+										<input type="checkbox" name="saveId" id="saveId"
+											<%=saveId?"checked":""%> /> <label for="saveId">아이디저장</label>
+
+
+									</div>
+
+									<br />
+									<br />
+
+									<div
+										style="position: relative; text-align: center; float: left;">
+
+										<input class="btn btn-pink" type="submit" value="로그인"
+											tabindex="3" />
+									</div>
+									<div
+										style="position: relative; text-align: center; float: left; margin-left: 10px;">
+										<button class="btn btn-gray" value="회원가입"
+											onclick="register();">회원가입</button>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<br> <br>
+						<br />
+						<br />
+
+					</form>
+					<% } 
 			//로그인에 성공한 경우
-			else {%>	
-			
-			<div>
-			<br>
-			<div>
-               
-               <div >
-								
-								<div style="margin: auto; width: 100%;">
-					<h1 style="font-size: 20px; font-weight:bolder; float: left;">
-							<%=memberLoggedIn.getMemberName() %>님 환영합니다!
+			else {%>
+				<div style="padding: 0 20px; height: 100px;">
+					<div style="margin: auto; width: 100%;">
+						<h1 style="font-size: 20px; font-weight: bolder; float: left;">
+							<%=memberLoggedIn.getMemberName()%>님 환영합니다!
 						</h1>
-						
-						<input
-							style="float: right; height: 35px; width: 85px;" 
-							class="btn btn-gray"
-							type="button" 
-								   value="로그아웃" 
-								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>
-						</div>
-						<br /><br><br><br>
-					
-						<div style="margin: auto; width: 100%;">
-							
-							<input 
-							
-							style="float: left;"	
-							type="button" 
-								   value="쪽지 <%=recvCount %>개"
-								   class="btn btn-pink" 
-								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
-							
-								   
-								   	   
-							<input
-							style="margin-left: 25px;"	
-							class="btn btn-pink" 
-							type="button" 
-								   value="마이페이지" 
-								   onclick="location.href='<%=request.getContextPath()%>/member/memberView?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
-									
-						</div>
-						</div>
-						
-						<br />
-						<br />
-						
-						<br>
-					
-					
-					
-				
-				</div>
-				
-				</div>
-				
-				
-				
-			<% } %>
-			
+
+						<input style="float: right; height: 35px; width: 85px;"
+							class="btn btn-gray" type="button" value="로그아웃"
+							onclick="location.href='<%=request.getContextPath()%>/member/logout'" />
+					</div>
+					<br />
+					<br>
+					<br>
+					<div style="margin: auto; width: 100%;">
+
+						<input style="float: left;" type="button"
+							value="쪽지 <%=recvCount%>개" class="btn btn-pink"
+							onclick="location.href='<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>'" />
+
+						<input style="float: left; margin-left: 10px;"
+							class="btn btn-pink" type="button" value="마이페이지"
+							onclick="location.href='<%=request.getContextPath()%>/member/memberView?memberId=<%=memberLoggedIn.getMemberId()%>'" />
+
+					</div>
+			<br> <br>
+			</div>
+
+					<%
+						}
+					%>
 			</dl>
 				
 			<dl>
@@ -355,7 +311,7 @@ $(()=>{
 			<dl>
 				<dt class="sub_menu">유기동물</dt>
 				<dd>
-					<a href="<%=request.getContextPath() %>/board/organic/graph/OrganicGraph">유기동물 통계</a>
+					<a href="<%=request.getContextPath()%>/board/organic/graph/OrganicGraph">유기동물 통계</a>
 				</dd>
 				<dd>
 					<a href="<%=request.getContextPath()%>/animal/animalNotice">유기동물 공고</a>
