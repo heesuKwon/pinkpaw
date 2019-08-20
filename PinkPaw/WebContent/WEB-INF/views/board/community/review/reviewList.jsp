@@ -17,15 +17,12 @@
 	List<ReviewBoard> list = (List<ReviewBoard>)request.getAttribute("list");
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
-<<<<<<< HEAD
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-=======
 
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 <script>
 $(()=>{
 	//테이블의 열을 클릭시 해당 게시물로 이동
@@ -39,11 +36,7 @@ $(()=>{
 </script>
 
 <div id="img-div">
-<<<<<<< HEAD
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-=======
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg8.jpg" alt="헤더 - 후기게시판 사진" />
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 	<div id="blackbg"></div>
 	<span class="header-title">후기 게시판</span>
 </div>
