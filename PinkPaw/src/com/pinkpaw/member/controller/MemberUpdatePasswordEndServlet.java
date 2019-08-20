@@ -61,7 +61,7 @@ public class MemberUpdatePasswordEndServlet extends HttpServlet {
 			result = new MemberService().updatePassword(member);
 			if(result>0){
 				msg = "패스워드 변경 성공";
-				String script = "self.close()";
+				String script = "window.close()";
 				//팝업창을 닫기위한 코드 추가
 				request.setAttribute("script",script);
 			}

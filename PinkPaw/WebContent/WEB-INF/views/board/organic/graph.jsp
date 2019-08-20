@@ -408,3 +408,4 @@ var myBarChart = new Chart(ctx, {
 	});
 	
 </script>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

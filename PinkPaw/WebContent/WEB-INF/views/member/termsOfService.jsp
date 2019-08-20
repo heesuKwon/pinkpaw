@@ -6,7 +6,7 @@
 <br />
 <br />
 
- <div style="overflow:scroll; width:1000px; height: 500px; margin:auto;">
+ <div style="overflow:scroll; width:1000px; height: 340px; margin:auto;">
  
 <h2>제1조(목적)</h2> 
 <br /><br />

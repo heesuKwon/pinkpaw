@@ -117,7 +117,7 @@
 	
 	<%-- 로그인한 경우 글쓰기 가능 --%>
 	<% if(memberLoggedIn != null) {%>
-	<input type="button" value="글쓰기" id="btn-add" onclick="goFreeWrite();" />
+	<input type="button" value="글쓰기" id="btn-add" onclick="goFreeWrite();" class="btn btn-pink" />
 
 	<% } %>
 
