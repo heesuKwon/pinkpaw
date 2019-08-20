@@ -206,7 +206,7 @@ $(()=>{
             </div>
             <div class="panel-body" style="">
                
-               <div style="margin-left: 0px; margin-top: 35px;">
+               <div style="margin-left: 0px; margin-top: 15px;">
                
                     <div>
                     	<input
@@ -271,9 +271,6 @@ $(()=>{
 									   
 								   
 				   </div>
-               
-                               
-                     <br>
             </div>
         </div>
     </div>
@@ -282,7 +279,7 @@ $(()=>{
 																
 						
 					<br>
-					<br><br />
+					<br><br /><br />
 					
 				</form>	
 			<% } 
@@ -290,7 +287,7 @@ $(()=>{
 			else {%>	
 			
 			<div>
-			<br /><br><br><br />
+			<br>
 			<div>
                
                <div >
@@ -309,7 +306,7 @@ $(()=>{
 						</div>
 						<br />
 						<br />
-						<br /><br><br><br><br />
+						<br /><br><br>
 					
 						<div style="margin: auto; width: 100%;">
 							
@@ -323,7 +320,7 @@ $(()=>{
 								   
 								   	   
 							<input
-							style="float: right;"	
+							style="margin-left: 25px;"	
 							class="btn btn-pink" 
 							type="button" 
 								   value="마이페이지" 

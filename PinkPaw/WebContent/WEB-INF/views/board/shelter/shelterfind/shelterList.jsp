@@ -21,7 +21,7 @@
     opacity: 0.5;
 }
 
-#shelter{width: 900px; height: 760px; margin-top: 100px; margin-left: 100px}
+#shelter{width: 900px; height: 760px; margin-top: 100px; margin-left: 60px}
 /* table{
 	width: 900px;
 	margin: 0 auto;
