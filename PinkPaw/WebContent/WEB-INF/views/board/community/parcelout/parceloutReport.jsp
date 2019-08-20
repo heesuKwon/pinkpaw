@@ -1,7 +1,6 @@
 <%@page import="com.pinkpaw.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 
 <%
 	int parceloutNo = Integer.parseInt(request.getParameter("parceloutNo"));
@@ -9,21 +8,32 @@
 	= (Member)session.getAttribute("memberLoggedIn");
 // 	System.out.println("memberLoggedIn@index.jsp="+memberLoggedIn);
 %>
-
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/header.css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
 <title>신고하기</title>
 
-<div class="report-container">
+<div class="report-container" style="padding-left: 10px;">
 		<form name="reportFrm" action="<%=request.getContextPath()%>/board/parceloutBoard/parceloutReport" method="post" >
-			<table>
+			<table id="tbl-write" class="table">
 				<tr>
-					<th>작성자</th>
+					<th class="text-left">작성자<i class="ico-star"></i></th>
 					<td>
-						<input type="text" name="reportWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly required>
+					<input type="text" 
+							name="reportWriter" 
+							class="form-control writer" 
+							value="<%=memberLoggedIn.getMemberId()%>" readonly required>
 					</td>
 				</tr>
 				<tr>
-					<th>신고 내용</th>
-					<td>	
+					<th class="text-left">신고내용<i class="ico-star"></i></th>
+					<td>
 						<select name="parceloutReportContent" id="parceloutReportContent" onchange="change()">
 							<option value="">신고 사유 선택</option>
 							<option value="광고글">광고글</option>
@@ -33,7 +43,8 @@
 							<option value="기타">기타(직접 입력)</option>
 						</select>
 						<div id="parceloutOtherReason">
-							<textarea name="parceloutOtherReason" cols="40" rows="5" placeholder="내용을 입력해주세요." ></textarea>
+						<br />
+							<textarea name="parceloutOtherReason" class="form-control" cols="25" rows="5" placeholder="내용을 입력해주세요." ></textarea>
 						</div>				
 						<script>
 							$("#parceloutOtherReason").hide();
@@ -51,10 +62,17 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" class="report-button">
-						<input type="submit"  value="신고보내기" onclick="return reportValidate();"/>&nbsp;
-						<input type="button" value="취소" onclick="self.close();"/>						
-					</td>
+				<td colspan="2" style="text-align:center;">
+					<input type="submit" 
+						   value="신고" 
+						   class="btn btn-pink"
+						   onclick="return reportValidate();"/>
+					<input type="button" 
+						   value="취소" 
+						   class="btn btn-gray"
+						   onclick="self.close();"/>
+					
+				</td>
 				</tr>
 			</table>
 			<input type="hidden" name="parceloutNo" value="<%=parceloutNo%>" />
