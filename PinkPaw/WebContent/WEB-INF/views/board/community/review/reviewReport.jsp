@@ -22,7 +22,7 @@
 
 <div class="report-container" style="padding-left: 10px;">
 		<form name="reportFrm" action="<%=request.getContextPath()%>/board/review/reviewBoardReportEnd" method="post" >
-			<table>
+			<table id="tbl-write" class="table">
 				<tr>
 					<th class="text-left">작성자<i class="ico-star"></i></th>
 					<td>
