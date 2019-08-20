@@ -68,7 +68,7 @@ public class BoardListServlet extends HttpServlet {
 					pageBar += "<span class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</span>";
 				}
 				else {
-					pageBar += "<a href='"+request.getContextPath()+"/board/mssingList?cPage="+(pageNo-1)+"' class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</a>";
+					pageBar += "<a href='"+request.getContextPath()+"/board/missingList?cPage="+(pageNo-1)+"' class='w3-bar-item w3-button w3-hover-black'>&lt;&lt;</a>";
 				}
 				//b.page
 				while(pageNo <= pageEnd && pageNo <= totalPage) {
@@ -77,7 +77,7 @@ public class BoardListServlet extends HttpServlet {
 						pageBar += "<span class='w3-bar-item w3-black w3-button'>"+pageNo+"</span>";
 					}
 					else {
-						pageBar += "<a href='"+request.getContextPath()+"/board/mssingList?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>"+pageNo+"</a>";				
+						pageBar += "<a href='"+request.getContextPath()+"/board/missingList?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>"+pageNo+"</a>";				
 					}
 					pageNo++;
 				}
@@ -87,7 +87,7 @@ public class BoardListServlet extends HttpServlet {
 				}
 				//while문을 빠져나올 때 이미 pageNo가 증가되어있는 상태기 때문에 +1을 하지않고 pageNo로 이동시킨다.
 				else {
-					pageBar += "<a href='"+request.getContextPath()+"/board/mssingList?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</a>";
+					pageBar += "<a href='"+request.getContextPath()+"/board/missingList?cPage="+pageNo+"' class='w3-bar-item w3-button w3-hover-black'>&gt;&gt;</a>";
 				}
 				System.out.println("pageBar="+pageBar);
 				
