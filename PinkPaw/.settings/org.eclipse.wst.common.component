@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="PinkPaw1">
+    <wb-module deploy-name="PinkPaw">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
         <property name="context-root" value="pinkpaw"/>
-        <property name="java-output-path" value="/PinkPaw1/WebContent/WEB-INF/classes"/>
+        <property name="java-output-path" value="/PinkPaw/WebContent/WEB-INF/classes"/>
     </wb-module>
 </project-modules>

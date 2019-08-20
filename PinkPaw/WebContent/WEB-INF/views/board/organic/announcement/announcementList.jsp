@@ -53,6 +53,8 @@ function srchList() {
 	}
 }
 
+</script>
+
 <div id="PA">
 
 	<div class="input-group mb-3" style="width: 800px">
