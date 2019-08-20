@@ -6,9 +6,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
+
 <div id="img-div">
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg8.jpg" alt="헤더 - 후기게시판 사진" />
-<div id="blackbg"></div>
+	<div id="blackbg"></div>
 	<span class="header-title">후기 게시판 글쓰기</span>
 </div>
 

@@ -78,9 +78,9 @@ function DMRecieve(){
 <br>
 <input type="button" class="btn btn-white" style='padding: 0.6rem .75rem; '  value="발신 쪽지함" onclick="DMRecieve();">
 	<%-- 함수를 console에 직접 쳐서 이동할 수 있으므로 그것을 방지하기 위해 if문 안에 script사용--%>
+</span>
 <section class="board-container" style='padding-left: 100px;'>
 
-</span>
 
 <div style='height:50px; padding:5px;'>
 <input type="button" 
@@ -148,7 +148,6 @@ function DMRecieve(){
 // /jquery/json/member/insert.do
 //객체단위로 요청파라미터에 추가할 것.
 </script>
-
 
 
 

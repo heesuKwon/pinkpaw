@@ -26,10 +26,8 @@ $(()=>{
 		var dmNo = $(e.target).parents("tr").children("td").children("input[name=dmNo]").val();
 		console.log("넘버"+dmNo);
 		var url = "<%=request.getContextPath()%>/board/dm/DMSendView?dmNo="+dmNo;
-		
 	    var title = "DMWrite";
 	    var status =  "left=500px, top=200px, width=473px, height=442px";
-	    
 		var popup = window.open(url,title,status);
 	
 	});

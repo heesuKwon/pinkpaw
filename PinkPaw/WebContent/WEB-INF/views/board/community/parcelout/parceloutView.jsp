@@ -138,18 +138,11 @@ function goParceloutViewReportOpen(){
 </head>
 <body>
 <div id="img-div">
-<<<<<<< HEAD
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-	<div id="blackbg"></div>
-	<span class="header-title">분양 게시판 상세보기</span>
-</div>
-=======
 	<img id="header-img" src="<%=request.getContextPath() %>/images/board/11.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">분양 게시판 상세보기</span>
 </div>
 
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 
 <section class="board-container">
 
@@ -305,30 +298,6 @@ function goParceloutViewReportOpen(){
 	
 	
 	
-	
-<<<<<<< HEAD
-	<hr style="margin-top: 30px;"/>
-	<div id="comment-container" style="overflow:scroll;">
-		<div class="comment-editor" style="text-align: center;">
-			<form action="<%=request.getContextPath()%>/board/parceloutboard/boardCommentInsert"
-				  name="boardCommentFrm"
-				  method="post">
-				<input type="hidden" name="boardRef" 
-					   value="<%=p.getParceloutNo()%>" />
-				<input type="hidden" name="boardCommentWriter" 
-					   value="<%=memberLoggedIn!=null?memberLoggedIn.getMemberId():""%>" />
-				<input type="hidden" name="boardCommentLevel" 
-					   value="1" />
-				<input type="hidden" name="boardCommentRef" 
-					   value="0" /> <!-- 댓글인 경우 참조댓글이 없으므로 0으로 초기화 -->
-				<textarea name="boardCommentContent" 
-						  id="boardCommentContent" 
-						  cols="60" rows="3"></textarea>
-				<button type="submit"
-					    id="btn-insert">등록</button>			
-			</form>
-		</div>
-=======
 <!--댓글 부분 -->
 <hr style="margin-top: 30px;"/>
 <form action="<%=request.getContextPath()%>/board/parceloutboard/boardCommentInsert"
@@ -351,7 +320,6 @@ function goParceloutViewReportOpen(){
 	</div>			
 </form>
 
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 		<!-- 댓글목록테이블 -->
 		<table id="tbl-comment" style="overflow:scroll;">
 			<%
@@ -406,10 +374,6 @@ function goParceloutViewReportOpen(){
 			} 
 			%>
 		</table>
-<<<<<<< HEAD
-	</div>
-=======
->>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 </section>
 
 <script>
