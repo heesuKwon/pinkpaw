@@ -17,11 +17,19 @@
 	List<ReviewBoard> list = (List<ReviewBoard>)request.getAttribute("list");
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
-<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" /> --%>
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" /> --%>
+<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet"> -->
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma"> -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <script>
 $(()=>{
