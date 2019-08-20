@@ -61,6 +61,7 @@ if(session.getAttribute("recvCount")!=null){
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/css/main.css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/css/Font.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/css/write.css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/css/Swiper.css"
 	rel="stylesheet" />
 
@@ -73,6 +74,8 @@ if(session.getAttribute("recvCount")!=null){
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Sans+KR:100,300,400,500,700,900"
 	rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
 	
 
 
@@ -186,7 +189,7 @@ $(()=>{
 	<div class="menuWrap">
 		<div class="menu">
 			<a href="#none" onClick="$('.menuWrap').fadeOut(300);"
-				class="menu_closeBtn"><img src="images/main/modal_close.gif"
+				class="menu_closeBtn"><img src="<%=request.getContextPath()%>/images/main/modal_close.gif"
 				alt="닫기"></a>
 			<dl>
 				
@@ -256,15 +259,13 @@ $(()=>{
                     <div style=" position: relative; text-align: center; float: left; left:0px">
                     				    
                     <input
-								class="btn btn-info"
-								style="background-color: #da7f84;"
+								class="btn btn-pink"
 								type="submit" value="로그인"
 									   tabindex="3" />
 					</div>				   
-				   <div style=" position: relative;  text-align: center; float: right; left:-150px; ">
+				   <div style=" position: relative;  text-align: center; float: right; left:-110px; ">
 				   <button
-								class="btn btn-info"
-								style="background-color: gray;" 
+								class="btn btn-gray"
 								value="회원가입"
 								onclick="register();" >회원가입</button>
 									   
@@ -273,7 +274,7 @@ $(()=>{
                
                                
                      <br>
-                    <br><br><br>
+                    <br><br>
                     
                    
                 
@@ -286,7 +287,7 @@ $(()=>{
 						
 					<br>
 					<br>
-					<br>
+					<br><br />
 					
 				</form>	
 			<% } 
@@ -294,7 +295,7 @@ $(()=>{
 			else {%>	
 			
 			<div>
-			
+			<br /><br><br><br />
 			<div>
                
                <div >
@@ -305,15 +306,15 @@ $(()=>{
 						</h1>
 						
 						<input
-							style="float: right; background-color: gray;" 
-							class="btn btn-info"
+							style="float: right;" 
+							class="btn btn-gray"
 							type="button" 
 								   value="로그아웃" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>
 						</div>
 						<br />
 						<br />
-						<br />
+						<br /><br><br><br><br />
 					
 						<div style="margin: auto; width: 100%;">
 							
@@ -321,14 +322,14 @@ $(()=>{
 							class="btn" 
 							style="float: left; border: 0px solid white;"	
 							type="button" 
-								   value="쪽지<%=recvCount %>개" 
+								   value="쪽지 <%=recvCount %>개" 
 								   onclick="location.href='<%=request.getContextPath()%>/board/dm/dmList?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
 							
 								   
 								   	   
 							<input
-							style="float: right; border: 1px solid #e1c1c6; background-color: #e1c1c6;"	
-							class="btn btn-info" 
+							style="float: right;"	
+							class="btn btn-pink" 
 							type="button" 
 								   value="마이페이지" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/memberView?memberId=<%=memberLoggedIn.getMemberId()%>'"/>
@@ -338,7 +339,11 @@ $(()=>{
 						
 						<br />
 						<br />
-						<br />
+						
+						<br>
+					
+					
+					
 				
 				</div>
 				

@@ -22,17 +22,18 @@
 }
 
 img{width:100%; vertical-align:middle;}
-article{width:1024px; height:100%; margin:0 auto; padding-top:90px;/*173px*/}
+article{width:950px; height:768px; margin:0 auto; padding-top:90px;/*173px*/}
+section{width:100%; height:100%;}
 
-article h2{font-size:32px; text-align:center; font-family:'Noto Bold'; /*font-weight:bold;*/ margin-bottom:60px; letter-spacing:-1px;}
+article h2{font-size:32px; text-align:center; font-family:'Noto Bold'; /*font-weight:bold;*/ margin-bottom:30px; letter-spacing:-1px; margin-top: 10px;}
 article h2>.smallTitle{font-size:18px; display:block; font-family:'Noto DemiLight'; /*font-weight:normal;*/ margin-bottom:5px;}
 body{margin:0; padding:0;}
 
-.purple{color:#693eab;}
+.purple{color:#da7f84;}
 
 /*header*/
 .headerWrap{width:100%; height:84px;/*140px*/ position:fixed; top:0; z-index:99;}
-header{width:100%; height:100%;/*84px;*/ /*overflow:hidden;*/ position:absolute; top:0; /*left:50%; margin-left:-840px;*/ z-index:99; padding:20px 7% 0; box-sizing:border-box;}
+header{width:100%; height:100%; position:absolute; top:0; z-index:99; padding:20px 7% 0; box-sizing:border-box;}
 header>h1{float:left; /*vertical-align:middle; line-height:84px;*/ margin-top:14px;}
 header>h1 img{width:17%;}
 header>div{float:right;}
@@ -40,7 +41,7 @@ header>div>ul{float:left; /*overflow:hidden;*/ padding:0 16px; position:relative
 header>div>ul>li{float:left; margin:0 11px;}
 header>div>ul>li>a{height:64px; font:18px/64px 'Noto DemiLight', sans-serif; color:#fff; display:inline-block;}
 header>div>ul:first-child>li>a{height:64px; font:18px/64px 'Noto DemiLight', sans-serif; display:inline-block;}
-header>div>a{margin-left:20px; margin-top:14px; float:left;}
+header>div>a{margin-left:20px; margin-top:14px; float:left; left:50%;}
 header .asideNav>p{/*border-left:1px solid rgba(255,255,255,0.3);*/ background:url('../images/main/bg_gnbLine.png') no-repeat left center; padding-left:23px; width:1px; height:20px; display:inline;}
 header .asideNav>li>a{opacity:0.5;}
 header .asideNav>li:first-child>a{color:#fff; opacity:1;}
@@ -77,7 +78,7 @@ nav>ul>li>a{width:100%; height:100%; display:inline-block;}
 /*section background*/
 div#wrap>section#sec01{background:url('../images/main/bg_cnt_01.jpg') no-repeat center top; background-size:cover;}
 div#wrap>section#sec02{background:#f5f5f5 url('../images/main/bg_cnt_02.jpg') no-repeat center bottom fixed; background-size:cover;}
-div#wrap>section#sec03{width:100%; height:100%; background:linear-gradient(90deg, #846fee, #8c96f5);}
+div#wrap>section#sec03{width:100%; height:100%; background:linear-gradient(90deg, #da7f84, #e1c1c6);}
 div#wrap>section#sec04{background:url('../images/main/bg_cnt_04_v2.jpg') no-repeat center bottom; background-size:cover;}
 div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-repeat center top; /*background-size:cover;*/}
 
@@ -118,20 +119,30 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec02 h2{color:#222;}
 #sec02 .brandWrap{width:100%; overflow:hidden; padding-top:20px;/**/}
 #sec02 .brand{}
+<<<<<<< HEAD
 #sec02 .brand>li{width:300px!important; height:496px; float:left; /*margin-right:25px;*/ position:relative;}
 #sec02 .brand>li:nth-child(2n){margin-top:60px;}
+=======
+#sec02 .brand>li{width:290px!important; height:400px; float:left; margin: 0 15px!important; position:relative;}
+#sec02 .brand>li:nth-child(1){margin-left:20px!important;}
+#sec02 .brand>li:nth-child(2n){margin-top:60px!important;}
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 #sec02 .brand>li>a:hover .brandTxt{border:2px solid #693eab; padding:18px; box-sizing:border-box; transition:all 0.3s ease-in-out;}
-#sec02 .brand>li .brandImg{width:100%; height:380px; position:absolute; top:0; left:0; background-repeat:no-repeat; background-position:center center;}
-#sec02 .brand>li:nth-child(1) .brandImg{background-image:url('../images/main/main_brand_B01.jpg');}
-#sec02 .brand>li:nth-child(2) .brandImg{background-image:url('../images/main/main_brand_B02.jpg');}
-#sec02 .brand>li:nth-child(3) .brandImg{background-image:url('../images/main/main_brand_B03.jpg');}
-#sec02 .brand>li:nth-child(4) .brandImg{background-image:url('../images/main/main_brand_B04.jpg');}
-#sec02 .brand>li:nth-child(5) .brandImg{background-image:url('../images/main/main_brand_B05.jpg');}
+#sec02 .brand>li .brandImg{width:100%; height:290px; position:absolute; top:0; left:0; background-repeat:no-repeat; background-position:center center;}
+#sec02 .brand>li:nth-child(1) .brandImg{background-image:url('../images/main/sec02-1.jpg');}
+#sec02 .brand>li:nth-child(2) .brandImg{background-image:url('../images/main/sec02-2.jpeg');}
+#sec02 .brand>li:nth-child(3) .brandImg{background-image:url('../images/main/sec02-3.jpg');}
+#sec02 .brand>li:nth-child(4) .brandImg{background-image:url('../images/main/sec02-4.jpg');}
+#sec02 .brand>li:nth-child(5) .brandImg{background-image:url('../images/main/sec02-5.jpeg');}
 #sec02 .brand>li:nth-child(6) .brandImg{background-image:url('../images/main/main_brand_B06.jpg');}
 #sec02 .brand>li:nth-child(7) .brandImg{background-image:url('../images/main/main_brand_B07.jpg');}
 #sec02 .brand>li:nth-child(8) .brandImg{background-image:url('../images/main/main_brand_B08.jpg');}
 #sec02 .brand>li:nth-child(9) .brandImg{background-image:url('../images/main/main_brand_B09.jpg');}
+<<<<<<< HEAD
 #sec02 .brand>li .brandNum{width:35px; height:35px; line-height:35px; font-size:16px; text-align:center; background:#693eab; color:#fff; display:inline-block; position:absolute; bottom:116px; left:25px; z-index:2; font-family:'Noto DemiLight';}
+=======
+#sec02 .brand>li .brandNum{width:35px; height:35px; line-height:35px; font-size:16px; text-align:center; background:#da7f84; color:#fff; display:inline-block; position:absolute; bottom:116px; left:25px; z-index:2; font-family:'Noto DemiLight';}
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 #sec02 .brand>li .brandTxt{width:280px; height:136px; background:#fff; position:absolute; bottom:0; left:5px; padding:20px; box-sizing:border-box;}
 #sec02 .brand>li .brandTxt>h3{font:20px/45px 'Noto Bold', sans-serif; color:#222; letter-spacing:-0.5px;}
 #sec02 .brand>li .brandTxt>h3>span{font-weight:bold;}
@@ -141,20 +152,20 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec03{}
 #sec03 h2>.smallTitle{color:#f7f7f7;}
 #sec03 h2{color:#fff;}
-#sec03 ul{width:100%; /*overflow:hidden;*/ padding-top:5px; padding-left:5px; box-sizing:border-box;}
-#sec03 ul>li{width:357px; /*height:323px;*/ position:relative; float:left; box-shadow:3px 3px 18px rgba(0,0,0,0.15); margin-right:42px; margin-bottom:42px;}
+#sec03 ul{width:100%; /*overflow:hidden;*/ padding-left:5px; box-sizing:border-box;}
+#sec03 ul>li{width:270px; /*height:323px;*/ position:relative; float:left; box-shadow:3px 3px 18px rgba(0,0,0,0.15); margin: -20px 20px 40px 20px; /* margin-bottom: 40px; margin-top: -20px; */}
 #sec03 ul>li:nth-child(3n){margin-right:0;}
 #sec03 ul>li>a{width:100%;}
 #sec03 .news{width:100%;}
 #sec03 .news>.newsImg{width:100%; display:block;}
-#sec03 .news>.newsImg>img{width:100%; display:block;}
-#sec03 .news>.newsTxt{width:100%; height:133px; background:#fff; padding:15px 17px; box-sizing:border-box;}
+#sec03 .news>.newsImg>img{width:100%; display:block; height: 150px;}
+#sec03 .news>.newsTxt{width:100%; height:120px; background:#fff; padding:15px 17px; box-sizing:border-box;}
 #sec03 .news>.newsTxt>span{font-size:12px; color:#888;}
 #sec03 .news>.newsTxt>h3{font-size:20px; color:#222; line-height:32px; font-family:'Noto Bold'; margin:5px 0 4px;}
 #sec03 .news>.newsTxt>p{font-size:14px; color:#666; line-height:1.5; letter-spacing:-0.3px; font-family:'Noto Demi';}
 #sec03 ul>li>a>span{width:80px; height:27px; font-size:12px; text-align:center; line-height:27px; display:inline-block; position:absolute; top:-5px; left:-5px; font-family:'Noto Regular';}
-#sec03 ul>li>a>span.pBox{background:#ed0081; color:#fff;}
-#sec03 ul>li>a>span.yBox{background:#fdb833; color:#252525;}
+#sec03 ul>li>a>span.pBox{background:#c54b54; color:#fff;}
+#sec03 ul>li>a>span.yBox{background:#fdb833; color:#fff;}
 #sec03 ul>li>a>div.newsBlind{width:100%; height:100%; background:rgba(0,0,0,0.7) url('../images/main/icon_blind.png') no-repeat center center; position:absolute; top:0; left:0; opacity:0; /*display:none;*/ transition:all 0.3s ease-in-out;}
 #sec03 ul>li>a:hover>div.newsBlind{opacity:1; /*display:block;*/}
 #sec03 .swiper-container_pc{display:block;}
@@ -166,10 +177,10 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec04 h2{color:#222;}
 #sec04 ul{width:100%; /*padding-top:36px;*/ padding-left:10px; box-sizing:border-box;}
 #sec04 ul>li{/*margin-bottom:46px;*/ clear:both;}
-#sec04 ul>li>.career{width:796px; height:228px; position:relative;}
-#sec04 .career>.careerImg{width:308px; height:205px; position:absolute; top:0; left:0; box-shadow:2px 2px 8px rgba(0,0,0,0.15); z-index:3;}
-#sec04 .career>.careerTxt{width:706px; height:192px; background:#fff; position:absolute; top:36px; left:10px; z-index:1; padding-left:335px; box-sizing:border-box;}
-#sec04 .career .careerNum{width:100px; height:46px; border-bottom:3px solid #fdb833; position:absolute; top:0; right:-80px; font:32px/46px 'Noto Bold', sans-serif; padding:0 10px; box-sizing:border-box; color:#fdb833; text-align:right; z-index:2;}
+#sec04 ul>li>.career{width:796px; height:180px; position:relative;}
+#sec04 .career>.careerImg{width:250px; height:165px; position:absolute; top:0; left:40px; box-shadow:2px 2px 8px rgba(0,0,0,0.15); z-index:3;}
+#sec04 .career>.careerTxt{width:706px; height:180px; background:#fff; position:absolute; /* top:36px; */ left:10px; z-index:1; padding-left:335px; box-sizing:border-box;}
+#sec04 .career .careerNum{width:80px; height:46px; border-bottom:3px solid #fdb833; position:absolute; top:0; right:-80px; font:28px/46px 'Noto Bold', sans-serif; padding:0 10px; box-sizing:border-box; color:#fdb833; text-align:right; z-index:2;}
 #sec04 .career>.careerTxt>h3{margin-top:35px; margin-bottom:15px; font:20px/20px 'Noto Bold', sans-serif; color:#222;}
 #sec04 .career>.careerTxt>p{font-size:14px; letter-spacing:-0.5px; line-height:1.5; color:#666; font-family:'Noto Demi';}
 #sec04 .career>.careerTxt>a{width:20px; height:20px; display:inline-block; float:right; margin-right:30px;}
@@ -181,7 +192,7 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 
 /*section05*/
 #sec05{height:385px!important;}
-#sec05>article{padding-top:75px;}
+#sec05>article{padding-top:90px;}
 #sec05 .noticeWrap{width:100%; /*overflow:hidden;*/}
 #sec05 .noticeWrap>.notice{width:450px; padding-right:16px; box-sizing:border-box; float:left;}
 #sec05 .noticeWrap>.notice>h1{width:100%; font-size:32px; line-height:72px; font-family:'Noto Bold'; color:#222; margin-bottom:3px;}

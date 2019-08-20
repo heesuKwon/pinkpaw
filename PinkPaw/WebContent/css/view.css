@@ -1,24 +1,20 @@
 @charset "UTF-8";
 
-
-.btn-pink{
+.btn-pink {
 	color: white;
 	background: #da7f84;
 }
 
-
-.btn-pink:hover{
+.btn-pink:hover {
 	color: #da7f84;
 	background: white;
 	border-color: #da7f84;
 }
 
-.btn-gray{
+.btn-gray {
 	color: white;
 	background: lightgray;
 }
-
-
 
 .tg {
 	border-collapse: collapse;
@@ -32,18 +28,21 @@
 	padding: 11px 5px;
 	border-style: solid;
 	border-width: 0px;
-	text-align:center;
+	text-align: center;
 	overflow: hidden;
 	word-break: normal;
-/* 	border-top-width: 1px;
+	/* 	border-top-width: 1px;
 	border-bottom-width: 1px;
- */	border-color: #aaa;
+ */
+	border-color: #aaa;
 	color: #333;
 	background-color: #fff;
 }
+
 table {
 	font-size: 15px;
 }
+
 .tg th {
 	font-family: Arial, sans-serif;
 	font-weight: normal;
@@ -52,7 +51,7 @@ table {
 	border-width: 0px;
 	overflow: hidden;
 	word-break: normal;
-/* 	border-top-width: 1px;
+	/* 	border-top-width: 1px;
 	border-bottom-width: 1px; */
 	border-color: #aaa;
 	color: #333;
@@ -60,10 +59,46 @@ table {
 	text-align: center;
 }
 
+<<<<<<< HEAD
 #menu{
 	position: relative; left:50%;
+=======
+#menu {
+	position: relative;
+	left: 40%;
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 }
 
+#modify {
+	position: relative;
+	left: 44%;
+}
 
-.tg .tg-th{background-color:#da7f84;color:white;border-color:inherit;text-align:center;vertical-align:middle;}
- td.tg-img{color:#333333;border-color:inherit;text-align:center;vertical-align:middle;  padding: 20px 100px; }
+#dmBox {
+	position: absolute;
+	height: 568px;
+	border: solid black 1px;
+	border-top-style: hidden;
+	border-right-style: solid;
+	border-bottom-style: hidden;
+	border-left-style: hidden;
+	padding-right: 20px;
+	left: 20px;
+	top: 380px;
+}
+
+.tg .tg-th {
+	background-color: #da7f84;
+	color: white;
+	border-color: inherit;
+	text-align: center;
+	vertical-align: middle;
+}
+
+td.tg-img {
+	color: #333333;
+	border-color: inherit;
+	text-align: center;
+	vertical-align: middle;
+	padding: 20px 100px;
+}

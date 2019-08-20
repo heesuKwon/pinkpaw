@@ -2,17 +2,24 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+	<link href="<%=request.getContextPath()%>/css/write.css" rel="stylesheet" />
 <%
  
 
 
 %>
 
-<br />
-<br />
-<br />
-<br />
-<br />
+
 
 <script>
 
@@ -50,22 +57,12 @@ color: red;
 
 .enrollmain{
 margin-left: 40%;
-margin-top: 115px;
 margin-bottom: 115px;
-
 }
 
 td{
 padding: 10px;
 }
-
-img#free_header{
-		width: 1024px;
-		height: 300px;
-	}
-	#img{
-		text-align: center;
-	}
 
 </style>
 
@@ -98,6 +95,7 @@ function enrollValidate(){
 	}
 	
 	if($("#state").val() == "전국"){
+	
 		alert("주소를 선택해주세요");
 		return false;
 	}
@@ -108,12 +106,24 @@ function enrollValidate(){
 
 </script>
 
-<div id="img">
-	<img id="free_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 자유게시판 사진" />
+<div id="img-div">
+
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/12.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">회원가입</span>
 </div>
 
+<style>
+	img#reportBoard_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
 
-<!-- <h2 style="text-align: center; font-weight: bold; font-size: 29px; color: #da7f84; ">회원가입 </h2> -->
+
 	<div class="enrollmain" >
 	
 <form action="" name="checkIdDuplicateFrm">
@@ -122,6 +132,10 @@ function enrollValidate(){
 	  <form action="<%=request.getContextPath()%>/member/memberEnrollEnd" 
     	  name="memberEnrollFrm" 
     	  method="post"
+    	  style="position: relative;
+    padding-top: 360px;
+    margin: 0 auto;
+    padding-bottom: 100px;"
           onsubmit="return enrollValidate();">
 
         <table id="enrolltable">
@@ -130,8 +144,8 @@ function enrollValidate(){
                 <td>
                     <input type="text" name="memberId" id="memberId_" placeholder="아이디" required />
                     <input type="button" value="중복검사"
-                    	   class="btn btn-secondary"
-                    	   style="background-color: #c54b54; height: 35px;" 
+                    	   class="btn btn-pink"
+                    	   style="height: 35px;" 
 						   onclick="checkIdDuplicate();"/>
                     <div class="idCheck" id="idCheck"></div>
                     <input type="hidden" id="idValid" value="1" />
@@ -486,8 +500,8 @@ function enrollValidate(){
             </tr>
         
         </table>
-        <input type="submit" value="회원가입" id="btn" class="btn btn-secondary" style="background-color: #c54b54; height: 35px; margin-top: 35px; margin-left: 55px;" />
-        <button onclick="cancle()" class="btn btn-secondary" style="height: 35px ; margin-top: 35px; margin-left: 95px;" >취소</button>
+        <input type="submit" value="회원가입" id="btn" class="btn btn-pink" style="height: 35px; margin-top: 35px; margin-left: 55px;" />
+        <button onclick="cancle()" class="btn btn-gray" style="height: 35px ; margin-top: 35px; margin-left: 95px;" >취소</button>
  
         
         

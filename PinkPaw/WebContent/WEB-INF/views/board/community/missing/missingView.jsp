@@ -2,8 +2,22 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.pinkpaw.board.missingboard.model.vo.MissingBoard, com.pinkpaw.board.common.model.vo.BoardComment, java.util.*"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" 
+	  href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick-theme.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
 <!DOCTYPE html>
 
 <% 
@@ -17,14 +31,6 @@
 	
 	
 	%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/slick.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/slick-theme.css">
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/slick.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/view.css">
 
 <script>
 function fileDownload(oName, rName){
@@ -121,25 +127,29 @@ $(()=>{
 	
 });
 </script>
+
+
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg5.jpg"  alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title" >실종게시판 상세보기</span>
+</div>
+
 <section class="board-container">
 
-
-<div id="img">
-	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
-</div>
 	<%if(memberLoggedIn != null&&
 			(memberLoggedIn.getMemberId().equals(b.getMissingWriter()) ||
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
 			<div style='height:50px; padding:5px;'>
 			
-				<input type="button" value="삭제"  
-						class="btn btn-gray"
-						style='position: absolute; right: 0.5em;'
-				onclick="deleteBoard();" />
 				<input type="button" value="수정"  
 						class="btn btn-pink"
-						style='position: absolute; right: 7em;'
+						id="modify"
 				onclick="updateBoard();" />
+				<input type="button" value="삭제"  
+						class="btn btn-gray"
+						id="modify"
+				onclick="deleteBoard();" />
 			</div>
 
 		<!--삭제 부분  -->
@@ -168,7 +178,7 @@ $(()=>{
 		<%} %>
 
 
-<table class="tg" style="table-layout: fixed;   width: 1024px;">
+<table class="tg" style="table-layout: fixed;   width: 800px;">
 		<colgroup>
 			<col style="width: 35px">
 			<col style="width: 100px">
@@ -349,7 +359,6 @@ $(()=>{
 		</table>
 		
 	
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 </section> 
 
@@ -363,7 +372,7 @@ function goMissingViewReportOpen(){
 	
 	var url = "<%=request.getContextPath()%>/board/missing/missingReport?missingNo=<%=b.getMissingNo()%>";
     var target = "new";
-    var option = "top=200, left=450, width=450, height=300";
+    var option = "top=200, left=270, width=450, height=300";
    /*  var status =  "left=500px, top=200px, width=400px, height=500px"; */
     
     window.open(url,target,option);
@@ -395,23 +404,7 @@ $('.slider-nav').slick({
 	  focusOnSelect: true
 	});
 
-//두개일때
-	/*  $('.slider-for').slick({
-		  slidesToShow: 1,
-		  slidesToScroll: 1,
-		  arrows: false,
-		  fade: true,
-		  asNavFor: '.slider-nav'
-		});
-		$('.slider-nav').slick({
-		  slidesToShow: 1,
-		  slidesToScroll: 1,
-		  asNavFor: '.slider-for',
-		  dots: true,
-		  centerMode: true,
-		  focusOnSelect: true
-		}); */
-
 
 
 </script>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

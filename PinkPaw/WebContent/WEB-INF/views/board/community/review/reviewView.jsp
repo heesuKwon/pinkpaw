@@ -5,16 +5,22 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+
+<link rel="stylesheet" 
+	  href="<%=request.getContextPath()%>/css/board.css" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/slick-theme.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/slick.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/view.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <%
 	ReviewBoard reviewBoard = (ReviewBoard)request.getAttribute("reviewBoard");
@@ -130,7 +136,7 @@ $(()=>{
 		
 		var url = "<%=request.getContextPath()%>/board/review/reviewBoardReport?reviewNo=<%=reviewBoard.getReviewNo()%>";
 		var target = "new";
-		var option = "top=200, left=450, width=450, height=300";
+		var option = "top=200, left=270, width=450, height=300";
 		
 		window.open(url,target,option);
 	}
@@ -139,22 +145,25 @@ $(()=>{
 
 </script>
 
-<div id="img">
-	<img id="review_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg8.jpg"  alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title" >후기게시판 상세보기</span>
 </div>
 <section class="board-container">
 			<%if(memberLoggedIn != null&&
 			(memberLoggedIn.getMemberId().equals(reviewBoard.getReviewWriter()) ||
 			"admin".equals(memberLoggedIn.getMemberId()))){%>
 			<div style='height:50px; padding:5px;'>
-				<input type="button" value="삭제"  
-						class="btn btn-gray"
-						style='position: absolute; right: 0.5em;'
-				onclick="deleteBoard();" />
 				<input type="button" value="수정"  
 						class="btn btn-pink"
-						style='position: absolute; right: 7em;'
+						id="modify"
 				onclick="updateBoard();" />
+				<input type="button" value="삭제"  
+						class="btn btn-gray"
+						id="modify"
+				onclick="deleteBoard();" />
 			</div>
 				
 		<form action="<%=request.getContextPath()%>/board/review/reviewDelete"
@@ -181,7 +190,7 @@ $(()=>{
 		}
 		</script>
 		<%} %>
-	 <table class="tg" style="table-layout: fixed;   width: 1024px;">
+	 <table class="tg" style="table-layout: fixed;   width: 800px;">
 		<colgroup>
 			<col style="width: 35px">
 			<col style="width: 100px">
@@ -272,14 +281,7 @@ $(()=>{
 	<input type="button" value="목록으로" id="menu"   class="btn btn-gray"
 				onclick="goReviewList();"  /> 
 	</div>
-<%-- 	<hr style="margin-top: 30px;"/>
-	<div id="comment-container">
-		<div class="comment-editor">
-			<form action="<%=request.getContextPath()%>/board/review/reviewBoardCommentInsert"
-				name="boardCommentFrm"
-				method="post">
-=======
- --%>
+
 <!--댓글 부분  -->
 <hr style="margin-top: 30px;"/>
 <form action="<%=request.getContextPath()%>/board/review/reviewBoardCommentInsert"
@@ -329,7 +331,7 @@ $(()=>{
 				else{%>
 				<tr class="level2, list-group-item">
 					<td style="padding-left: 20px">
-						<sub class="comment-writer">ㄴ&nbsp;<%=bc.getBoardCommentWriter() %></sub> 
+						<sub class="comment-writer">&nbsp;<%=bc.getBoardCommentWriter() %></sub> 
 						<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub> <br /><br />
 						<%=bc.getBoardCommentContent() %>
 					</td>
@@ -365,24 +367,6 @@ $('.slider-nav').slick({
 	  centerMode: true,
 	  focusOnSelect: true
 	});
-
-//두개일때
-	/*  $('.slider-for').slick({
-		  slidesToShow: 1,
-		  slidesToScroll: 1,
-		  arrows: false,
-		  fade: true,
-		  asNavFor: '.slider-nav'
-		});
-		$('.slider-nav').slick({
-		  slidesToShow: 1,
-		  slidesToScroll: 1,
-		  asNavFor: '.slider-for',
-		  dots: true,
-		  centerMode: true,
-		  focusOnSelect: true
-		}); */
-
 
 
 </script>

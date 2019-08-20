@@ -2,35 +2,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
 <%
 	ReviewBoard rb = (ReviewBoard)request.getAttribute("reviewBoard");
 %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg8.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">후기 게시글 수정</span>
+</div>
+
 <section class="board-container">
 	<form action="<%=request.getContextPath()%>/board/review/reviewUpdateEnd"
 		method="post"
 		enctype="multipart/form-data">
 		<!-- 파일을 업로드하려면 enctype속성이 꼭 있어야 함. -->
 		<input type="hidden" name="reviewNo" value="<%=rb.getReviewNo()%>" />
-		<table id="tbl-board-view">
-			<tr>
-				<th>제목</th>
+		<table id="tbl-write" class="table">
+		<tr>
+			<th class="text-left">제목<i class="ico-star">*</i>
+		</th>
 				<td>
-					<input type="text" name="reviewTitle" value="<%=rb.getReviewTitle()%>" required></input>
+				<input type="text" name="reviewTitle" class="form-control title" required value="<%=rb.getReviewTitle()%>"></input>
 				</td>
-			</tr>
-			<tr>
-				<th>작성자</th>
+		<tr>
+				<th class="text-left">작성자<i class="ico-star">*</i></th>
 				<td>
 					<input type="text" name="reviewWriter" value="<%=rb.getReviewWriter()%>"
-					required readonly></input>
+					class="form-control writer" required readonly></input>
 				</td>
-			</tr>
+			</tr>		
 			<tr>
-				<th>게시물 종류</th>
+				<th class="text-left">게시물 종류<i class="ico-star">*</i></th>
 				<td>
-					<input type="text" name="reviewKind" value="<%=rb.getReviewKind()%>"
-					required readonly></input>
+					<div class="custom-radio">
+						<input type="radio" name="reviewKind" id="organic" value="입양후기" checked required/>
+						<label for="organic">입양후기</label>
+					</div>
+					<div class="custom-radio">
+					<input type="radio" name="reviewKind" id="parcelout" value="분양후기" required/>
+					<label for="parcelout">분양후기</label>
+					</div>
+					<div class="custom-radio">
+					<input type="radio" name="reviewKind" id="missing" value="찾은후기" required/>
+					<label for="missing">찾은후기</label>
+					</div>
+					<div class="custom-radio">
+					<input type="radio" name="reviewKind" id="volunteer" value="봉사후기" required/>
+					<label for="volunteer">봉사후기</label>
+					</div>
 				</td>
 			</tr>
 			<tr>
@@ -74,28 +99,25 @@
 				</td>
 			</tr>
 			<tr>
-				<th>내용</th>
+				<th class="text-left">내용<i class="ico-star">*</i></th>
 				<td>
 					<textarea name="reviewContent" 
-							cols="40" rows="5" required><%=rb.getReviewContent()%>
-					</textarea>
+							cols="40" rows="5" class="form-control" required><%=rb.getReviewContent()%></textarea>
 				</td>
 			</tr>
 			<tr>
-				<th>
-					<input type="submit" value="수정" 
-							onclick="return boardValidate();"/>
-				</th>
-				<th>
-					<input type="button" value="취소" 
-							onclick="return cancel();"/>
-				</th>
+				<td colspan="2">
+					<input type="submit" value="수정" class="btn btn-pink"
+						onclick="return boardValidate();"/>
+					<input type="button" value="취소" class="btn btn-gray"
+						onclick="return cancel();"/>
+				</td>
 			</tr>
 		</table>	
 	</form>
 </section>
-<script>
 
+<script>
 $("[name=upFile]").change(function(){
 	console.log($(this).val());
 	//사용자가 파일을 선택한 경우
@@ -117,9 +139,10 @@ function boardValidate() {
 		alert("내용을 입력하세요.");
 		return false;
 	}
-	
 	return true;
+	
 }
+
 function cancel(){
 	location.href="<%=request.getContextPath()%>/board/review/reviewView?reviewNo="+<%=rb.getReviewNo()%>;
 }
@@ -243,6 +266,6 @@ attachFile = {
 
   }
 }
-</script>
 
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

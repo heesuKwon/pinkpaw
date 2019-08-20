@@ -8,6 +8,20 @@
 	int numPerPage = (int)request.getAttribute("numPerPage");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
+<link href="<%=request.getContextPath()%>/css/write.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+	<link href="<%=request.getContextPath()%>/css/write.css" rel="stylesheet" />
+
 <style>
 div#search-container{
 	margin: 0 0 10px;
@@ -43,25 +57,42 @@ $(()=>{
 
 
 </script>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br >
-<br >
-<section id="memberList-container">
-	<h2 style="margin: 15px; text-align: center; font-size: 30px; font-weight: bold; color: #c54b54;">회원관리</h2>
+
+<div id="img-div">
+
+	<img id="header-img" src="<%=request.getContextPath() %>/images/bg3.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">회원리스트</span>
+</div>
+
+<style>
+	img#reportBoard_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
+
+<section id="memberList-container"  style="position: relative;
+    padding-top: 170px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 100px;">
+    
+    
+    
+	<h2 style="margin: 15px; text-align: center; font-size: 30px; font-weight: bold; color: white;"> </h2>
+	
+	
 <br >
 <br >
 	
 	<div id="head-wrapper">
 		<div id="search-container">
 		
-			<div id="search-form" style="margin-left: 70%;">
+			<div id="search-form" style="margin-left: 70%; margin-top: 55px;">
 			<select id="searchType" style="margin: 30px;">
 				<option value="memberId">아이디</option>
 				<option value="memberName">회원명</option>
@@ -77,8 +108,8 @@ $(()=>{
 						   placeholder="검색할 아이디를 입력하세요." />
 					<input type="submit" 
 						   value="검색" 
-						   class="btn btn-secondary" 
-						   style="background-color: #da7f84; height: 35px;"/>
+						   class="btn btn-pink" 
+						   style="height: 35px;"/>
 				</form>
 				</div>
 				
@@ -93,15 +124,15 @@ $(()=>{
 						   size="25"
 						   placeholder="검색할 회원명을 입력하세요." />
 					<input type="submit" 
-						   class="btn btn-secondary" 
-						   style="background-color: #da7f84; height: 35px;"	
+						   class="btn btn-pink" 
+						   style="height: 35px;"	
 						   value="검색" />
 				</form>
 			</div>
 		</div>
 		</div>
 		<!-- end of div#search-container -->
-		<div id="numPerPage-container" style="margin: 15px;">
+		<div id="numPerPage-container" style="margin: 15px; float: left;">
 			<form name="numPerPageFrm"
 				  id="numPerPageFrm">
 				<select name="numPerPage" 

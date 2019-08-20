@@ -129,7 +129,7 @@ function goBoardList() {
 function goParceloutViewReportOpen(){
 	var url = "<%=request.getContextPath()%>/board/parcelout/parceloutReport?parceloutNo=<%=p.getParceloutNo()%>";
 	var target = "new";
-	var option = "top=200, left=450, width=450, height=300";
+	var option = "top=200, left=270, width=450, height=300";
 	
 	window.open(url,target,option);
 }
@@ -138,10 +138,18 @@ function goParceloutViewReportOpen(){
 </head>
 <body>
 <div id="img-div">
+<<<<<<< HEAD
 	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">분양 게시판 상세보기</span>
 </div>
+=======
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/11.jpg" alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">분양 게시판 상세보기</span>
+</div>
+
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 
 <section class="board-container">
 
@@ -150,14 +158,14 @@ function goParceloutViewReportOpen(){
  			|| "admin".equals(memberLoggedIn.getMemberId())) ){ %>	 
  				<div style='height:50px; padding:5px;'>
  			
-				<input type="button" value="삭제"   
-						class="btn btn-gray"
-						style='position: absolute; right: 0.5em;'
-						onclick="deleteBoard();" />
 				<input type="button"  value="수정"  
 						class="btn btn-pink"
-						style='position: absolute; right: 7em;'						
+						id="modify"
 						onclick="updateBoard();" />
+				<input type="button" value="삭제"   
+						class="btn btn-gray"
+						id="modify"
+						onclick="deleteBoard();" />
 		</div>
 		<form action="<%=request.getContextPath()%>/board/parceloutboard/parceloutDelete"
 		      name="parceloutDeleteFrm"
@@ -184,7 +192,7 @@ function goParceloutViewReportOpen(){
 
 
 
-<table class="tg" style="table-layout: fixed;   width: 1024px;">
+<table class="tg" style="table-layout: fixed;   width: 800px;">
 		<colgroup>
 			<col style="width: 35px">
 			<col style="width: 100px">
@@ -298,6 +306,7 @@ function goParceloutViewReportOpen(){
 	
 	
 	
+<<<<<<< HEAD
 	<hr style="margin-top: 30px;"/>
 	<div id="comment-container" style="overflow:scroll;">
 		<div class="comment-editor" style="text-align: center;">
@@ -319,6 +328,30 @@ function goParceloutViewReportOpen(){
 					    id="btn-insert">등록</button>			
 			</form>
 		</div>
+=======
+<!--댓글 부분 -->
+<hr style="margin-top: 30px;"/>
+<form action="<%=request.getContextPath()%>/board/parceloutboard/boardCommentInsert"
+				name="boardCommentFrm" method="post">
+<div class="input-group mb-3">
+				<input type="hidden" name="boardRef" 
+					   value="<%=p.getParceloutNo()%>" />
+				<input type="hidden" name="boardCommentWriter" 
+					   value="<%=memberLoggedIn!=null?memberLoggedIn.getMemberId():""%>" />
+				<input type="hidden" name="boardCommentLevel" 
+					   value="1" />
+				<input type="hidden" name="boardCommentRef" 
+					   value="0" /> <!-- 댓글인 경우 참조댓글이 없으므로 0으로 초기화 -->
+				<textarea name="boardCommentContent" class="form-control"
+						  id="boardCommentContent" 
+						  cols="60" rows="1"></textarea>
+				<div class="input-group-append" style="background-color: #da7f84; border-radius: 0.2em;" >
+				<button type="submit" class="btn btn-outline-secondary" style="color: white; border:0px solid transparent;">등록</button>
+				</div>
+	</div>			
+</form>
+
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 		<!-- 댓글목록테이블 -->
 		<table id="tbl-comment" style="overflow:scroll;">
 			<%
@@ -373,7 +406,10 @@ function goParceloutViewReportOpen(){
 			} 
 			%>
 		</table>
+<<<<<<< HEAD
 	</div>
+=======
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 </section>
 
 <script>
@@ -398,22 +434,6 @@ $('.slider-nav').slick({
 	  focusOnSelect: true
 	});
 
-//두개일때
-	/*  $('.slider-for').slick({
-		  slidesToShow: 1,
-		  slidesToScroll: 1,
-		  arrows: false,
-		  fade: true,
-		  asNavFor: '.slider-nav'
-		});
-		$('.slider-nav').slick({
-		  slidesToShow: 1,
-		  slidesToScroll: 1,
-		  asNavFor: '.slider-for',
-		  dots: true,
-		  centerMode: true,
-		  focusOnSelect: true
-		}); */
 
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

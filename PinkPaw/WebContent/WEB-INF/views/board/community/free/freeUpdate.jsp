@@ -1,42 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
-<%@page import="com.pinkpaw.board.freeboard.model.vo.FreeBoard" %>
+	pageEncoding="UTF-8"%>
+
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@page import="com.pinkpaw.board.freeboard.model.vo.FreeBoard"%>
 <%@page import="java.util.List"%>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/board.css" />
 
 <%
 	FreeBoard f = (FreeBoard)request.getAttribute("freeBoard");
 %>
-
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/header.css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg"
+		alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">자유 게시글 수정</span>
+</div>
 <section class="board-container">
-	<form action="<%=request.getContextPath() %>/board/community/free/freeUpdateEnd"
-	      method="post" enctype="multipart/form-data">
-	      
+	<form
+		action="<%=request.getContextPath() %>/board/community/free/freeUpdateEnd"
+		method="post" enctype="multipart/form-data">
+
 		<input type="hidden" name="freeNo" value="<%=f.getFreeNo()%>" />
-		
-		<table id="tbl-board-view">
+
+		<table id="tbl-write" class="table">
 			<tr>
-				<th>제목</th>
-				<td><input type="text" name="freeTitle" 
-						   value="<%=f.getFreeTitle() %>" required/>
-				</td>
-			</tr>	
-				
+				<th class="text-left">제목<i class="ico-star">*</i></th>
+				<td><input type="text" name="freeTitle" class="form-control title" required value="<%=f.getFreeTitle()%>"/></td>
+			</tr>
 			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="freeWriter"
-						   value="<%=f.getFreeWriter() %>" required readonly/></td>
-			</tr>		
-			
-			<tr>
-				<th>내용</th>
+				<th class="text-left">작성자<i class="ico-star">*</i></th>
 				<td>
-					<textarea name="freeContent" cols="40" rows="5" required><%=f.getFreeContent() %></textarea>
+					<input type="text" name="freeWriter" value="<%=f.getFreeWriter() %>" class="form-control writer" required readonly/>
 				</td>
-			</tr>	
-			
+			</tr>
 			<tr>
 				<th>첨부파일</th>
 				<td style="position: relative">
@@ -78,14 +84,62 @@
 					<input type="hidden" name="oldRName" value="<%=f.getFreeRenamedImg()!=null?f.getFreeRenamedImg():""%>"/>
 				</td>
 			</tr>
-											
+<!-- 			<tr> -->
+<!-- 				<th class="text-left">사진첨부</th> -->
+<!-- 				<td> -->
+<!-- 					<span class="small-text">※ 사진첨부시 주의사항 </span> -->
+<!-- 					<input type="button" value="추가" class="btn btn-small btn-pink" onclick="attachFile.add()"><br/> -->
+<!-- 					<span class="small-text">1. 등록가능 한 확장자는 jp(e)g, png입니다.</span> <br> -->
+<!-- 					<span class="small-text">2. 첫번째로 첨부된 사진이 메인사진으로 등록됩니다.</span> <br> -->
+					
+<!-- 					<div class="left"> -->
+<!-- 						<div class="filebox" id="mainImg"> -->
+<!-- 							<label for="upFile" class="btn btn-small btn-pink">이미지선택</label>  -->
+<!-- 							<input class="upload-name" value="선택된 파일 없음" disabled="disabled"> -->
+<!-- 							<input type="file" name="upFile" id="upFile" class="upload-hidden" onchange="previewImage(this,'view_area')"/> -->
+<!-- 							<input type="button" value="삭제" class="btn btn-small btn-gray" onclick="delFile()"> -->
+<!-- 							<br /> -->
+<%-- 						<span id="fname"><%=f.getFreeOriginalImg() != null ? f.getFreeRenamedImg() : ""%></span> --%>
+<%-- 							<% --%>
+<!-- // 								if (f.getFreeOriginalImg() != null) { -->
+<%-- 							%> --%>
+<!-- 							<input type="checkbox" name="delFile" id="delFile" /> <label -->
+<!-- 								for="delFile">첨부파일삭제</label> -->
+<%-- 							<% --%>
+<!-- // 								} -->
+<%-- 							%> --%>
+<!-- 						</div> -->
+<!-- 						<input type="hidden" name="oldOName" -->
+<%-- 							value="<%=f.getFreeOriginalImg()!=null?f.getFreeOriginalImg():""%>" /> --%>
+<!-- 						<input type="hidden" name="oldRName" -->
+<%-- 							value="<%=f.getFreeRenamedImg()!=null?f.getFreeRenamedImg():""%>" /> --%>
+<!-- 						<div id='view_area' style='position:relative; width: 500px; display: none; '></div> -->
+<!-- 						<br> -->
+<!-- 						<div id="attachFileDiv"> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+			
 			<tr>
-				<th colspan="2">
-					<input type="submit" value="수정하기" onclick="return freeBoardValidate();"/>
-					<input type="button" value="취소" onclick="return freeBoardUpdateCancel();"/>
-				</th>
-			</tr>		
-		
+				<th class="text-left">내용<i class="ico-star">*</i></th>
+				<td><textarea name="freeContent" cols="40" rows="5"
+						class="form-control" required><%=f.getFreeContent()%></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" 
+						   value="수정" 
+						   class="btn btn-pink"
+						   onclick="return freeBoardValidate();"/>
+					<input type="button" 
+						   value="취소" 
+						   class="btn btn-gray"
+						   onclick="return freeBoardUpdateCancel();"/>
+					
+				</td>
+
 		</table>
 	</form>
 
@@ -315,4 +369,4 @@
 	}
 </script>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

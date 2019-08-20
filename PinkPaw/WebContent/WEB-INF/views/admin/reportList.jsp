@@ -24,6 +24,19 @@ $(()=>{
 
 </script>
 
+<div id="img">
+	<img id="reportBoard_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 신고쪽지 게시판 사진" />
+</div>
+<style>
+	img#reportBoard_header{
+		width: 1024px;
+		height: 300px;
+	}
+	#img{
+		text-align: center;
+	}
+</style>
+
 <section class="board-container">
 <!--신고쪽지  -->
 	<table id="tbl-board" class="table table-hover">

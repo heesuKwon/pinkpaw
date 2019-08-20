@@ -3,28 +3,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <%
 	VolunteerBoard vb = (VolunteerBoard)request.getAttribute("volunteerBoard");
 %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/10.jpg"  alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title" >봉사 게시글 수정</span>
+</div>
+
 <section class="board-container">
 	<form action="<%=request.getContextPath()%>/board/volunteer/volunteerUpdateEnd"
 		method="post"
 		enctype="multipart/form-data">
 		<!-- 파일을 업로드하려면 enctype속성이 꼭 있어야 함. -->
 		<input type="hidden" name="volunteerNo" value="<%=vb.getVolunteerNo()%>" />
-		<table id="tbl-board-view">
+		<table id="tbl-write" class="table">
 			<tr>
-				<th>제목</th>
+				<th class="text-left">제목<i class="ico-star">*</i></th>
 				<td>
-					<input type="text" name="volunteerTitle" value="<%=vb.getVolunteerTitle()%>" required></input>
+					<input type="text" name="volunteerTitle" class="form-control title" required value="<%=vb.getVolunteerTitle()%>"></input>
 				</td>
 			</tr>
 			<tr>
-				<th>작성자</th>
+				<th class="text-left">작성자<i class="ico-star">*</i></th>
 				<td>
 					<input type="text" name="volunteerWriter" value="<%=vb.getVolunteerWriter()%>"
-					required readonly></input>
+					class="form-control writer" required readonly></input>
 				</td>
 			</tr>
 			<tr>
@@ -63,19 +73,17 @@
 				<th>내용</th>
 				<td>
 					<textarea name="volunteerContent" 
-							cols="40" rows="5" required><%=vb.getVolunteerContent()%>
+							cols="40" rows="5" class="form-control" required><%=vb.getVolunteerContent()%>
 					</textarea>
 				</td>
 			</tr>
 			<tr>
-				<th>
-					<input type="submit" value="수정" 
-							onclick="return boardValidate();"/>
-				</th>
-				<th>
-					<input type="button" value="취소" 
-							onclick="return cancel();"/>
-				</th>
+				<td colspan="2">
+					<input type="submit" value="등록" class="btn btn-pink"
+						onclick="return boardValidate();"/>
+					<input type="button" value="취소" class="btn btn-gray"
+						onclick="return cancel();"/>
+				</td>
 			</tr>
 		</table>	
 	</form>

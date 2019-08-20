@@ -15,9 +15,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="<%= request.getContextPath()%>/js/jquery-3.4.1.js"></script>
 <%
-Member memberLoggedIn = new Member();
-memberLoggedIn.setMemberId("admin");
-String memberId = (String)request.getAttribute("memberId");
+
+Member memberLoggedIn = 
+		(Member)session.getAttribute("memberLoggedIn");
+
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />
 	

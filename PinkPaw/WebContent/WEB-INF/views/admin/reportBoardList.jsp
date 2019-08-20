@@ -11,9 +11,21 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+	<link href="<%=request.getContextPath()%>/css/write.css" rel="stylesheet" />
 
 <div id="img">
 	<img id="reportBoard_header" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 신고쪽지 게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title">신고게시판</span>
 </div>
 <style>
 	img#reportBoard_header{
@@ -60,7 +72,11 @@ $(()=>{
 
 </script>
 
-<section class="board-container">
+<section style="position: relative;
+    padding-top: 170px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 100px;">
 	<table id="tbl-board" class="table table-hover">
 		<tr>
 			<th scope="col">게시판명</th>

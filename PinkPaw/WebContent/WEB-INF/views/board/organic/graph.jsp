@@ -29,8 +29,15 @@
 	String AYearAgo = sdf.format(cal.getTime());
 	
 %>
+<div class="header_background"></div>
 
 <style>
+.header_background{
+	height: 84px;
+	background: black;
+    opacity: 0.5;
+}
+
 #title{
 	font-size: 28px;
 	font-weight: bold;

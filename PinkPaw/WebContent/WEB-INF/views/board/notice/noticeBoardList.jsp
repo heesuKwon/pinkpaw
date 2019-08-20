@@ -7,17 +7,24 @@
 %>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
 
 <script>
 
 $(document).ready(function(){
 	
 	$("td").click((e)=>{		
-		var notice = $("#noticeNo").text();
-
+		var notice = $(e.target).parents("tr").children("th").eq(0).text();
+		
 		location.href = "<%=request.getContextPath()%>/board/notice/noticeBoardView?noticeNo="+notice;
 	});
 	
@@ -27,7 +34,8 @@ $(document).ready(function(){
 
 
 <div id="img-div">
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
+
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/6.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">공지사항</span>
 </div>
@@ -37,8 +45,7 @@ $(document).ready(function(){
 		<%-- 관리자만 글쓰기가능 --%>
 	<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>
 	<input type="button" value="글쓰기" id="btn-add"
-		   class="btn btn-secondary"
-					   style="background-color: #c54b54;"
+		   class="btn btn-pink"
 		   onclick="goBoardForm();" />
 	<script>
 	function goBoardForm(){

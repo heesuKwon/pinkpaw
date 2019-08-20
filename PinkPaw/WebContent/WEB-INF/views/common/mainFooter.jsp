@@ -33,35 +33,6 @@
 	</article>
 
 </footer>
-<!-- <style>
-/* footer {
-	width: 100%;
-	height: 300px;
-	padding: 60px;
-	background-color: #394141;
-	color: #7c8c8c;
-	bottom: 0%
-} */
-
-footer p:nth-child(2) {
-	font-size: 14px;
-}
-
-footer p:nth-child(3) {
-	font-size: 10px;
-}
-
-.underline {
-	text-decoration: underline;
-}
-
-footer h4 {
-	font-size: 18px;
-	font-weight: bold;
-	font-family: "Arial";
-}
-
-</style> -->
 <script>
 	$(function(){
 		var dWidth=$(window).width();

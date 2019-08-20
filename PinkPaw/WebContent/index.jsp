@@ -49,8 +49,8 @@
 	<section id="sec02" style="position: relative;">
 		<article>
 			<h2>
-				<span class="smallTitle">KG 그룹의 교육 전문기업 KG에듀원</span>KG에듀원의 브랜드를
-				소개합니다.
+				<span class="smallTitle">입양 & 분양 & 실종  & 봉사 후기</span>
+				BEST 후기 :)
 			</h2>
 			<div class="brandWrap swiper-container">
 				<ul class="brand swiper-wrapper">
@@ -59,10 +59,11 @@
 							<div class="brandImg"></div> <span class="brandNum">01</span>
 							<div class="brandTxt">
 								<h3>
-									교원임용 <span class="purple">희소/쌤플러스</span>
+									<span class="purple">별이 잘 지내고 있어요~</span>
 								</h3>
 								<p>
-									희소/쌤플러스는 1996년 개원한 최초의 교원임용 전문학원<br>입니다.
+									안녕하세요~핑크포우 덕분에 천사를 알게되었습니다. <br>
+									김살(별이) 는 처음 집올 때 무서워했지만
 								</p>
 							</div>
 					</a></li>
@@ -70,11 +71,12 @@
 							<div class="brandImg"></div> <span class="brandNum">02</span>
 							<div class="brandTxt">
 								<h3>
-									KG에듀원 <span class="purple">법원직·검찰직 &amp; 사서직</span>
+									<span class="purple">많은 관심 가져주셔서 감...</span>
 								</h3>
 								<p>
-									22년 이상의 전문가 노하우로 법원직 &amp; 검찰직 &amp; 사서직<br>공무원 단기합격을 위한
-									전문 서비스를 제공합니다.
+									좋으신분들 만나 덕분에 찾았습니다.<br>
+									잃어버리지않게 잘 키울께요.<br>
+									관심 감사드립니다.
 								</p>
 							</div>
 					</a></li>
@@ -82,10 +84,11 @@
 							<div class="brandImg"></div> <span class="brandNum">03</span>
 							<div class="brandTxt">
 								<h3>
-									KG에듀원 <span class="purple">회계사/세무사</span>
+									<span class="purple">순돌이를 입양해주신 분...</span>
 								</h3>
 								<p>
-									2006년 개원 이래 회계사, 세무사<br>전문 학원으로 최적화된 교육 서비스 제공합니다.
+									본네트에서 구조해 2주정도 데리고 있던게 엊그제 같은데..<br>
+									이것도 인연이겠다 싶어 같이 살고 싶었...
 								</p>
 							</div>
 					</a></li>
@@ -93,10 +96,9 @@
 							<div class="brandImg"></div> <span class="brandNum">04</span>
 							<div class="brandTxt">
 								<h3>
-									KG에듀원 <span class="purple">직무교육</span>
+									<span class="purple">너무 늦었네요...</span>
 								</h3>
-								<p>
-									개인과 기업의 성장을 돕는 HR파트너로서 'Total HRD<br>Solution'을 제공합니다.
+								<p>경산 홈플러스 앞 .. <br>교통사고로 무지개다리 건넜습니다...<br>많은관심가져주셔서 감사합니다 
 								</p>
 							</div>
 					</a></li>
@@ -104,10 +106,10 @@
 							<div class="brandImg"></div> <span class="brandNum">05</span>
 							<div class="brandTxt">
 								<h3>
-									KG에듀원 <span class="purple">학점은행</span>
+									<span class="purple">상어 찾았습니다</span>
 								</h3>
 								<p>
-									교육부에서 평가 인정한 학점은행제 원격교육훈련기관으로 <br>최단기간 학점 취득
+									젊은 남성분이 데리고 계셔서 다음날 바로 찾을 수 있었습니다 ! 도착할때까지 있어주셔서 정말 감사드립니다 ㅠㅠ
 								</p>
 							</div>
 					</a></li>
@@ -115,10 +117,9 @@
 							<div class="brandImg"></div> <span class="brandNum">06</span>
 							<div class="brandTxt">
 								<h3>
-									IT 전문교육 <span class="purple">아이티뱅크</span>
+									
 								</h3>
 								<p>
-									KG에듀원 아이티뱅크는 고객이 신뢰하는 브랜드로서 <br>독보적 1위 IT전문 교육기업입니다.
 								</p>
 							</div>
 					</a></li>
@@ -126,10 +127,8 @@
 							<div class="brandImg"></div> <span class="brandNum">07</span>
 							<div class="brandTxt">
 								<h3>
-									KG에듀원 <span class="purple">인테리어뱅크</span>
 								</h3>
 								<p>
-									국내유일의 실내디자인 법인학원으로서 건축인테리어<br>학원분야 1위 교육기관입니다.
 								</p>
 							</div>
 					</a></li>
@@ -137,10 +136,8 @@
 							<div class="brandImg"></div> <span class="brandNum">08</span>
 							<div class="brandTxt">
 								<h3>
-									KG에듀원 <span class="purple">내일코칭</span>
 								</h3>
 								<p>
-									대한민국 모든 직무/취업 준비생들이 하고 싶은 일을<br>찾아 갈 수 있도록 돕겠습니다.
 								</p>
 							</div>
 					</a></li>
@@ -148,10 +145,8 @@
 							<div class="brandImg"></div> <span class="brandNum">09</span>
 							<div class="brandTxt">
 								<h3>
-									KG에듀원 <span class="purple">취업아카데미</span>
 								</h3>
 								<p>
-									취업에 필요한 각종 자격증을 준비 할 수 있는 전문 콘텐츠를<br>제공합니다.
 								</p>
 							</div>
 					</a></li>
@@ -275,91 +270,88 @@
 	<section id="sec03">
 		<article>
 			<h2>
-				<span class="smallTitle">꿈을 이루는 드림파트너</span>KG에듀원의 새로운 소식
+				<span class="smallTitle">※ 보호중 입니다 ※</span>새로운 유기동물 공고
 			</h2>
 			<div class="swiper-container_pc">
 				<ul>
 					<li><a href="#none">
 							<div class="news">
 								<div class="newsImg">
-									<img src="images/main/main_news_01.jpg" alt="">
+									<img src="images/main/sec03-1.jpg" alt="">
 								</div>
 								<div class="newsTxt">
-									<span>2018-11-02</span>
-									<h3>홀트아동복지타운 사랑의 봉사활동</h3>
-									<p>일산에 위치한 홀트아동복지타운에 선생님들과 학생들이 함께하는 사랑의 봉사활동이 진행되었습니다.</p>
+									<span>2019-08-15</span>
+									<h3>고양이를 보호 중입니다.</h3>
+									<p>만수3동 동부초등학교 부근 빌라단지 밤 11시쯤에 고양이를 발견하였습니...</p>
 								</div>
 							</div>
-							<div class="newsBlind"></div> <span class="pBox">BLOG 소식</span>
+							<div class="newsBlind"></div> <span class="pBox">인천광역시</span>
 					</a></li>
 					<li><a href="../recruit/people.php">
 							<div class="news">
 								<div class="newsImg">
-									<img src="images/main/main_news_190108-1.jpg" alt="">
+									<img src="images/main/sec03-2.jpeg" alt="">
 								</div>
 								<div class="newsTxt">
-									<span>2019-01-16</span>
-									<h3>교원기획팀 - 고정은</h3>
-									<p>안녕하세요. 저는 교원사업본부에서 10년째 근무하고 있습니다. 그동안 R&amp;R은 많이 바뀌긴
-										했지만, 교원 임용과...</p>
+									<span>2019-08-16</span>
+									<h3>흰색 말티즈 남아</h3>
+									<p>경북 영주시 순흥면 소수서원 근처 도로변에서 발견 2019/08/18 오후3시경</p>
 								</div>
 							</div>
-							<div class="newsBlind"></div> <span class="yBox">KG 피플</span>
+							<div class="newsBlind"></div> <span class="yBox">영주시</span>
 					</a></li>
 					<li><a href="#none">
 							<div class="news">
 								<div class="newsImg">
-									<img src="images/main/main_news_03.jpg" alt="">
+									<img src="images/main/sec03-3.jpeg" alt="">
 								</div>
 								<div class="newsTxt">
-									<span>2018-10-21</span>
-									<h3>그린리본캠페인</h3>
-									<p>월드비전등과 같은 단체와의 지속적인 협력을 통해 방송프로그램 제작, 그린리본캠페인 등을 지원 하고
-										있습니다.</p>
+									<span>2019-08-17</span>
+									<h3>[자양사거리]포메라니안</h3>
+									<p>잘 정돈되어있는 포메라니안 남자 아이입니다. 
+										중성화 수술이 안되어있으... </p>
 								</div>
 							</div>
-							<div class="newsBlind"></div> <span class="pBox">BLOG 소식</span>
+							<div class="newsBlind"></div> <span class="pBox">광진구</span>
 					</a></li>
 					<li><a href="../recruit/people.php">
 							<div class="news">
 								<div class="newsImg">
-									<img src="images/main/main_news_190108-2.jpg" alt="">
+									<img src="images/main/sec03-4.jpg" alt="">
 								</div>
 								<div class="newsTxt">
-									<span>2019-01-16</span>
-									<h3>지식콘텐츠사업팀 - 김상경</h3>
-									<p>HRD교육과 관련된 일이라면 콘텐츠 개발부터 시스템 구축까지 가능한 모든 서비스를 제공하는 팀입니다.</p>
+									<span>2019-08-17</span>
+									<h3>목줄한 검정고양이</h3>
+									<p>산책하다 마주쳤는데 먼저 와서 인사하는 걸 보니 사람을 잘 따릅니다.</p>
 								</div>
 							</div>
-							<div class="newsBlind"></div> <span class="yBox">KG 피플</span>
+							<div class="newsBlind"></div> <span class="yBox">송파구</span>
 					</a></li>
 					<li><a href="#none">
 							<div class="news">
 								<div class="newsImg">
-									<img src="images/main/main_news_05.jpg" alt="">
+									<img src="images/main/sec03-5.jpg" alt="">
 								</div>
 								<div class="newsTxt">
-									<span>2018-09-18</span>
-									<h3>KG에듀원, IPO 절차 돌입</h3>
-									<p>KG에듀원과 KB증권이 "코스닥상장을 위한 대표주관계약 체결 협약식"을 진행하였습니다. 2020년
-										상반기 상장을...</p>
+									<span>2019-08-18</span>
+									<h3>시베리안 허스키</h3>
+									<p>눈옆과 발가락을 조금 다쳐 내일 약을 발라주고 모레 유기견보호소로 보낼까합니다</p>
 								</div>
 							</div>
-							<div class="newsBlind"></div> <span class="pBox">BLOG 소식</span>
+							<div class="newsBlind"></div> <span class="pBox">강서구</span>
 					</a></li>
 					<li><a href="../recruit/people.php">
 							<div class="news">
 								<div class="newsImg">
-									<img src="images/main/main_news_190108-3.jpg" alt="">
+									<img src="images/main/sec03-6.jpg" alt="">
 								</div>
 								<div class="newsTxt">
-									<span>2019-01-16</span>
-									<h3>경영기획본부 - 남영진</h3>
-									<p>KG에듀원 전사의 각종 자신관리, 도서물류관리, 계약관리, 공사, 물품구매등 살림을 맞아서 업무를
-										보고...</p>
+									<span>2019-08-19</span>
+									<h3>김해 내외동 소형 말티즈</h3>
+									<p>김해사랑병원 근처에서 발견 계속 기다리다 임시 보호중</p>
 								</div>
 							</div>
-							<div class="newsBlind"></div> <span class="yBox">KG 피플</span>
+							<div class="newsBlind"></div> <span class="yBox">김해시</span>
 					</a></li>
 				</ul>
 			</div>
@@ -373,7 +365,7 @@
 									<img src="images/main/main_news_01.jpg" alt="">
 								</div>
 								<div class="newsTxt">
-									<span>2018-11-02</span>
+									<span>2019-08-</span>
 									<h3>홀트아동복지타운 사랑의 봉사활동</h3>
 									<p>일산에 위치한 홀트아동복지타운에 선생님들과 학생들이 함께하는 사랑의 봉사활동이 진행되었습니다.</p>
 								</div>
@@ -465,22 +457,23 @@
 	<section id="sec04">
 		<article>
 			<h2>
-				<span class="smallTitle">드림 파트너(Dream Partner)들이 모여있는 곳</span>KG에듀원과
-				함께 할 당신을 기다립니다.
+				<span class="smallTitle">반려동물 어떻게 돌보면 좋을까?</span>
+					반려동물을 위해 알아두면 좋은 정보!
 			</h2>
 			<ul>
 				<li>
 					<div class="career">
 						<div class="careerImg">
-							<img src="images/main/main_career_01.jpg" alt="">
+							<img src="images/main/sec04-1.jpg" alt="">
 						</div>
 						<div class="careerTxt">
 							<span class="careerNum">01.</span>
-							<h3>인재상</h3>
+							<h3>반려견 발톱 관리 이렇게 해보세요!</h3>
 							<p>
-								긍정의 가치를 바탕으로 한 고객중심 마인드를 갖추고<br> 적극적인 소통으로 고객을 이해하며, 각
-								협업부서와의 시너지 <br> 효과를 이루어 낼 수 있으며, 목표 달성을 위하여 적극적으로 <br>
-								참여하는 인재가 KG에듀원이 원하는 최고의 인재입니다.
+								반려견들이 사용하는 강아지 전용 발톱깍이를 사용해야 하는데요.
+								사람 발톱깍이를 사용해도 된다고 생각하실 수도 있지만 구조가 전혀 달라서 꼭 전용 도구를 사용해야 한답니다!
+								강아지들의 발톱 관리는 대략 2주 간격으로 정리해주면 좋아요.
+								
 							</p>
 							<a href="../recruit/talent.php"><img
 								src="images/main/icon_narrow.png" alt=""></a>
@@ -490,15 +483,16 @@
 				<li class="rightBox">
 					<div class="career">
 						<div class="careerImg">
-							<img src="images/main/main_career_02.jpg" alt="">
+							<img src="images/main/sec04-2.jpg" alt="">
 						</div>
 						<div class="careerTxt">
 							<span class="careerNum">02.</span>
-							<h3>채용안내</h3>
+							<h3>반려동물 분양시 준비해야 할 체크리스트</h3>
 							<p>
-								여러분의 꿈과 고객의 꿈을 함께 이룰 수 있는 곳,<br> KG에듀원에서 열정적이고, 참신한 인재를
-								기다리고 있습니다.<br> kg에듀원에서는 우수한 인재를 채용하기 위하여 유형별로<br>
-								프로세스가 다르게 진행되고 있습니다.
+								'키울 수 있는 환경인지'<br>
+								'어떤 경우에도 책임질 수 있는지'<br> 
+								'비용을 감당할 수 있는지'<br> 
+								'가족의 동의를 구했는지'
 							</p>
 							<a href="../recruit/info.php"><img
 								src="images/main/icon_narrow.png" alt=""></a>
@@ -508,14 +502,19 @@
 				<li>
 					<div class="career">
 						<div class="careerImg">
-							<img src="images/main/main_career_03.jpg" alt="">
+							<img src="images/main/sec04-3.jpg" alt="">
 						</div>
 						<div class="careerTxt">
 							<span class="careerNum">03.</span>
-							<h3>인사복지제도</h3>
+							<h3>강아지가 먹으면 안되는 음식</h3>
 							<p>
-								KG에듀원에는 끊임없이 학습하는 KG임직원을 위한 <br> 각 분야별 다양한 교육을 제공하고 있으며, <br>
-								다양한 복리후생제도로 임직원들의 최고의 업무성과를 위한 <br> 보탬이 되고자 노력하고있습니다.
+								1. 과일씨, 잎, 줄기 <br>
+								2. 시고 매운 과일, 채소 금지<br>
+								3. 자이리톨 성분 &nbsp;&nbsp;
+								4. 카페인<br>
+								5. 알콜 및 알콜 함유 제품 &nbsp;&nbsp;
+								6. 포도 &nbsp;&nbsp;
+								7. 우유
 							</p>
 							<a href="../recruit/institution.php"><img
 								src="images/main/icon_narrow.png" alt=""></a>
@@ -551,21 +550,21 @@
       </div>-->
 				<div class="linkBnr">
 					<ul>
-						<li><a href="../customer/location.php">
+						<li><a href="<%=request.getContextPath()%>/shelter/shelterList">
 								<h1>
 									<img src="images/main/icon_link02.png" alt="">
 								</h1>
 								<h2>
-									KG에듀원<br>오시는 길
+									보호소<br>찾기
 								</h2>
 								<p>+</p>
 						</a></li>
-						<li><a href="../customer/partner.php">
+						<li><a href="<%=request.getContextPath()%>/board/volunteer/volunteerList">
 								<h1>
 									<img src="images/main/icon_link03.png" alt="">
 								</h1>
 								<h2>
-									업무 제휴<br>문의 및 업무제휴
+									보호소<br>봉사 요청
 								</h2>
 								<p>+</p>
 						</a></li>

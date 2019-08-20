@@ -3,7 +3,19 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ page import="com.pinkpaw.member.model.vo.*"%>
-
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick-theme.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/header.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/view.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/write.css" />  
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <style>
 h2 {
@@ -59,16 +71,7 @@ h2 {
 	System.out.println(split[1]);
 %>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 
 <style>
 
@@ -153,13 +156,16 @@ color: #fff;
 
 </style>
 
+<div id="img-div">
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/6.jpg"  alt="헤더 - 후기게시판 사진" />
+	<div id="blackbg"></div>
+	<span class="header-title" >마이페이지</span>
+</div>
 
 
+<section style="">
 
-<section id="enroll-container">
 
-
-	<h2 style="font-size: 30px; font-weight: bold; color: #c54b54;">마이페이지</h2>
 	
 	<form action="<%=request.getContextPath()%>/member/myBoardEnd"
 		name="myBoardEnd" method="post">
@@ -175,13 +181,13 @@ color: #fff;
 		name="memberUpdateFrm" method="post" id="memberUpdateFrm"
 		onsubmit="return updateValidate();">
 		
-<ul class="horizontal-menu" style="margin-bottom: 15px;">
+<ul class="horizontal-menu" style="padding-bottom: 75px; padding-top: 341px;">
 
 <li><a href="<%=request.getContextPath()%>/">Home</a></li>
 
-<li><a href="<%=request.getContextPath()%>/member/myBoard">내가 쓴 글 보기</a></li>
+<li><a href="<%=request.getContextPath()%>/member/myBoard">작성글보기</a></li>
 
-<li><a href="<%=request.getContextPath()%>/member/myComment">내가 쓴 댓글 보기</a></li>
+<li><a href="<%=request.getContextPath()%>/member/myComment">작성댓글보기</a></li>
 
 
 <%
@@ -556,15 +562,9 @@ color: #fff;
 		<br />
 		
 		<div class="btn2-container">
-			<input type="submit" value="정보수정" id="btn" class="btn btn-secondary" style="background-color: #da7f84;"/> 
-			<input type="button" value="비밀번호변경" onclick="updatePassword();" class="btn btn-secondary" style="background-color: #da7f84;"/>
-<!-- 			관리자면 탈퇴안보이게 처리 -->
-			<% if(memberLoggedIn!=null && !"admin".equals(memberLoggedIn.getMemberId())) {%> 
-			<input type="button" value="회원탈퇴" onclick="deleteMember();" class="btn btn-secondary"/>
-			<%} %>
-			<% if(memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())) {%>
-			<input type="button" value="회원강퇴" onclick="deleteMember();" class="btn btn-secondary"/>
-			<%} %>
+			<input type="submit" value="정보수정" id="btn" class="btn btn-pink" style=""/> 
+			<input type="button" value="비밀번호변경" onclick="updatePassword();" class="btn btn-pink" style=""/> 
+			<input type="button" value="회원탈퇴" onclick="deleteMember();" class="btn btn-gray"/>
 		</div>
 
 		
@@ -1089,23 +1089,14 @@ function updatePassword(){
 	}
 
 	function deleteMember() {
-		var bool; 
-		
-		if(<%=memberLoggedIn!=null && "admin".equals(memberLoggedIn.getMemberId())%>){
-			bool = confirm("정말로 이 회원을 강제퇴출 시키겠습니까?");
-		}
-		else{
-			bool = confirm("정말로 탈퇴하시겠습니까?");
-		}
-		
+		var bool = confirm("정말로 탈퇴하시겠습니까?");
 		if (bool) {
 			var frm = $("#memberDelFrm");
 			frm.submit();
 		}
 
 	}
-	
-	
+
 	function updateValidate() {
 
 		return true;

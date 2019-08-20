@@ -3,12 +3,22 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
+
 <%
 	List<ProtectedAnimal> list = (List<ProtectedAnimal>)request.getAttribute("list");
 	String pageBar = (String)request.getAttribute("pageBar");
 %>
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
+
+<div class="header_background"></div>
+
 <style>
+.header_background{
+	height: 84px;
+	background: black;
+    opacity: 0.5;
+}
+
 #PA{width: 1000px; height: 1450px; margin-top: 100px; margin-left: 20px;}
 .sub{display: none; border-radius: 0;}
 </style>
@@ -16,6 +26,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css" />
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/css/w3.css">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <script>
 function srch(val) {
 	var num = val.value;
@@ -41,11 +53,14 @@ function srchList() {
 	}
 }
 </script>
+<<<<<<< HEAD
 <div id="img-div">
 	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 후기게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title">봉사요청 게시판</span>
 </div>
+=======
+>>>>>>> branch 'master' of https://github.com/heesuKwon/pinkpaw.git
 
 <div id="PA">
 
