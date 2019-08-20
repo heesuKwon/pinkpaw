@@ -24,10 +24,10 @@ public class HelloWebSocketConfigurator
 								HandshakeResponse response) {
 		HttpSession session = (HttpSession)request.getHttpSession();
 		Member memberLoggedIn = (Member)session.getAttribute("memberLoggedIn"); 
-		String userId = "admin";
+		String userId = memberLoggedIn.getMemberId();
+		
 		
 		sec.getUserProperties().put("userId", userId);
-		
 		System.out.println("config: "+userId+"작업!!!");
 	}
 	

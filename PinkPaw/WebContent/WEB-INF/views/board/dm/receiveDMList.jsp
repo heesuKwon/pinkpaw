@@ -36,7 +36,7 @@ $(()=>{
 </script>
 
 <div id="img-div">
-	<img id="header-img" src="<%=request.getContextPath() %>/images/1.jpg" alt="헤더 - 쪽지게시판 사진" />
+	<img id="header-img" src="<%=request.getContextPath() %>/images/board/bg12.jpg" alt="헤더 - 쪽지게시판 사진" />
 	<div id="blackbg"></div>
 	<span class="header-title" style='left:50%;'>쪽지</span>
 </div>

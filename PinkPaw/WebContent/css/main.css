@@ -206,7 +206,7 @@ div#wrap>section#sec05{background:#fff url('../images/main/bg_cnt_05.jpg') no-re
 #sec05 .noticeWrap>.linkBnr>ul>li>a>h2{font-size:20px; color:#222; margin-bottom:17px;}
 #sec05 .noticeWrap>.linkBnr>ul>li>a>p{width:26px; height:26px; text-align:center; line-height:26px; background:#a5a5a5; color:#fff; border-radius:13px; font-size:13px; margin:0 auto; transition:all 0.2s ease-in-out; font-family:'Noto Light';}
 #sec05 .noticeWrap>.linkBnr>ul>li>a:hover>p{width:94px; background:#222;}
-#sec05 .noticeWrap>.linkBnr>ul>li>a:hover>p:before{content:'占쏙옙占쎈�占쏙옙癰��용┛ ';}
+#sec05 .noticeWrap>.linkBnr>ul>li>a:hover>p:before{content:'Click';}
 
 .dreamElement2{}
 .dreamElement2>ul{}
@@ -289,7 +289,7 @@ article h2>.smallTitle{font-size:18px; display:block; font-weight:normal; margin
 
 /*section02*/
 #sec02{height:auto!important; padding-bottom:5%;}
-#sec02 .brand{width:100%; overflow:hidden;}
+#sec02 .brand{width:100%; overnoflow:hidden;}
 #sec02 .brand>li{width:100%; height:auto; float:none; margin-right:0; margin-bottom:5%; position:relative;}
 #sec02 .brand>li:nth-child(2n){margin-top:0;}
 #sec02 .brand>li.mt50{margin-top:50px;}
